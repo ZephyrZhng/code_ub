@@ -1,147 +1,0 @@
-10
-
-dir
-236232
-http://llvm.org/svn/llvm-project/libcxx/trunk/test/std/input.output/file.streams/fstreams
-http://llvm.org/svn/llvm-project
-
-
-
-2015-03-12T15:44:39.879233Z
-232049
-ed
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-91177308-0d34-0410-b5e6-96231b3b80d8
-
-lit.local.cfg
-file
-
-
-
-
-2015-04-30T13:39:43.776065Z
-8b09c84806aef2e20f35e5d2057b49c6
-2015-03-12T15:44:39.879233Z
-232049
-ed
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-107
-
-ofstream
-dir
-
-ofstream.cons
-dir
-
-fstream.assign
-dir
-
-filebuf.virtuals
-dir
-
-fstream.members
-dir
-
-ifstream.assign
-dir
-
-filebuf.assign
-dir
-
-fstream
-dir
-
-fstream.cons
-dir
-
-ofstream.assign
-dir
-
-ifstream.members
-dir
-
-filebuf.members
-dir
-
-ofstream.members
-dir
-
-ifstream
-dir
-
-ifstream.cons
-dir
-
-version.pass.cpp
-file
-
-
-
-
-2015-04-30T13:39:43.772065Z
-283ecbbbf3c78d158509fe478d706a1f
-2014-12-20T01:40:03.335463Z
-224658
-ericwf
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-473
-
-filebuf
-dir
-
-filebuf.cons
-dir
-

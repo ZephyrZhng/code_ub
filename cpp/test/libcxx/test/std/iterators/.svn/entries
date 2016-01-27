@@ -1,86 +1,0 @@
-10
-
-dir
-236232
-http://llvm.org/svn/llvm-project/libcxx/trunk/test/std/iterators
-http://llvm.org/svn/llvm-project
-
-
-
-2015-04-16T21:36:54.381759Z
-235134
-marshall
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-91177308-0d34-0410-b5e6-96231b3b80d8
-
-iterator.synopsis
-dir
-
-predef.iterators
-dir
-
-iterator.primitives
-dir
-
-iterator.range
-dir
-
-stream.iterators
-dir
-
-iterators.general
-dir
-
-iterator.container
-dir
-
-iterator.requirements
-dir
-
-version.pass.cpp
-file
-
-
-
-
-2015-04-30T13:39:34.264065Z
-40bfc270c9caf861c64f926daa5afb8d
-2014-12-20T01:40:03.335463Z
-224658
-ericwf
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-475
-
