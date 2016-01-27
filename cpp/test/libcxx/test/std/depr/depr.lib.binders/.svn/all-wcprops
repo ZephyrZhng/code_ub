@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.lib.binders
+END
+nothing_to_do.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.lib.binders/nothing_to_do.pass.cpp
+END
+test_func.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.lib.binders/test_func.h
+END

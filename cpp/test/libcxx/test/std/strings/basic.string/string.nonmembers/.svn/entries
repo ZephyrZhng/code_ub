@@ -1,0 +1,89 @@
+10
+
+dir
+236232
+http://llvm.org/svn/llvm-project/libcxx/trunk/test/std/strings/basic.string/string.nonmembers
+http://llvm.org/svn/llvm-project
+
+
+
+2015-01-09T20:25:52.501530Z
+225541
+marshall
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+91177308-0d34-0410-b5e6-96231b3b80d8
+
+string_oplt
+dir
+
+string.special
+dir
+
+string_operator==
+dir
+
+string.io
+dir
+
+string_opgt=
+dir
+
+string_op+
+dir
+
+string_opgt
+dir
+
+nothing_to_do.pass.cpp
+file
+
+
+
+
+2015-04-30T13:39:42.756065Z
+de8ffdb592ab304b14832467aef77cb3
+2014-12-20T01:40:03.335463Z
+224658
+ericwf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+372
+
+string_oplt=
+dir
+
+string_op!=
+dir
+

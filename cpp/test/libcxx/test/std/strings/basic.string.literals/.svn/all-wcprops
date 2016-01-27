@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string.literals
+END
+literal2.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string.literals/literal2.fail.cpp
+END
+literal.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string.literals/literal.pass.cpp
+END
+literal1.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string.literals/literal1.pass.cpp
+END
+literal2.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string.literals/literal2.pass.cpp
+END
+literal3.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string.literals/literal3.pass.cpp
+END
+literal1.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string.literals/literal1.fail.cpp
+END

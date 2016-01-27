@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/llvm-project/!svn/ver/227370/libcxx/trunk/test/std/containers/container.adaptors/stack/stack.cons.alloc
+END
+ctor_rcontainer_alloc.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/llvm-project/!svn/ver/227370/libcxx/trunk/test/std/containers/container.adaptors/stack/stack.cons.alloc/ctor_rcontainer_alloc.pass.cpp
+END
+ctor_rqueue_alloc.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/227370/libcxx/trunk/test/std/containers/container.adaptors/stack/stack.cons.alloc/ctor_rqueue_alloc.pass.cpp
+END
+ctor_copy_alloc.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/containers/container.adaptors/stack/stack.cons.alloc/ctor_copy_alloc.pass.cpp
+END
+ctor_alloc.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/containers/container.adaptors/stack/stack.cons.alloc/ctor_alloc.pass.cpp
+END
+ctor_container_alloc.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/containers/container.adaptors/stack/stack.cons.alloc/ctor_container_alloc.pass.cpp
+END

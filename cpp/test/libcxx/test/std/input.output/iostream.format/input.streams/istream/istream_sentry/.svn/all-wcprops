@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/input.streams/istream/istream_sentry
+END
+ctor.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/input.streams/istream/istream_sentry/ctor.pass.cpp
+END

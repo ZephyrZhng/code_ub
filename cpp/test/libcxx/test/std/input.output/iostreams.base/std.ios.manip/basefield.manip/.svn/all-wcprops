@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/basefield.manip
+END
+hex.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/basefield.manip/hex.pass.cpp
+END
+oct.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/basefield.manip/oct.pass.cpp
+END
+dec.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/basefield.manip/dec.pass.cpp
+END

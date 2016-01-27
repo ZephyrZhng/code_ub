@@ -1,0 +1,77 @@
+10
+
+dir
+236232
+http://llvm.org/svn/llvm-project/libcxx/trunk/test/std/localization/locales/locale
+http://llvm.org/svn/llvm-project
+
+
+
+2015-03-10T20:46:04.635856Z
+231841
+ericwf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+91177308-0d34-0410-b5e6-96231b3b80d8
+
+locale.cons
+dir
+
+nothing_to_do.pass.cpp
+file
+
+
+
+
+2015-04-30T13:39:35.060065Z
+de8ffdb592ab304b14832467aef77cb3
+2014-12-20T01:40:03.335463Z
+224658
+ericwf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+372
+
+locale.types
+dir
+
+locale.members
+dir
+
+locale.statics
+dir
+
+locale.operators
+dir
+

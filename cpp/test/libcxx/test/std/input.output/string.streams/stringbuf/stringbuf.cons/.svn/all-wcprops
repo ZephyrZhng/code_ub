@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/string.streams/stringbuf/stringbuf.cons
+END
+default.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/string.streams/stringbuf/stringbuf.cons/default.pass.cpp
+END
+move.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/string.streams/stringbuf/stringbuf.cons/move.pass.cpp
+END
+string.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/string.streams/stringbuf/stringbuf.cons/string.pass.cpp
+END

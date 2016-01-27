@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/llvm-project/!svn/ver/195144/libcxx/trunk/include/support/ibm
+END
+xlocale.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/189623/libcxx/trunk/include/support/ibm/xlocale.h
+END
+support.h
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/195144/libcxx/trunk/include/support/ibm/support.h
+END
+limits.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/188396/libcxx/trunk/include/support/ibm/limits.h
+END

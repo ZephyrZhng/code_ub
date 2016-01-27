@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag
+END
+atomic_flag_test_and_set_explicit.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/atomic_flag_test_and_set_explicit.pass.cpp
+END
+copy_volatile_assign.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/copy_volatile_assign.fail.cpp
+END
+copy_assign.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/copy_assign.fail.cpp
+END
+init.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/init.pass.cpp
+END
+default.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/default.pass.cpp
+END
+clear.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/clear.pass.cpp
+END
+copy_ctor.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/copy_ctor.fail.cpp
+END
+atomic_flag_clear.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/atomic_flag_clear.pass.cpp
+END
+atomic_flag_clear_explicit.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/atomic_flag_clear_explicit.pass.cpp
+END
+test_and_set.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/test_and_set.pass.cpp
+END
+atomic_flag_test_and_set.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/atomics.flag/atomic_flag_test_and_set.pass.cpp
+END

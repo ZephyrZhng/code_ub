@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.auto.ptr/auto.ptr/auto.ptr.conv
+END
+convert_to_auto_ptr_ref.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.auto.ptr/auto.ptr/auto.ptr.conv/convert_to_auto_ptr_ref.pass.cpp
+END
+convert_from_auto_ptr_ref.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.auto.ptr/auto.ptr/auto.ptr.conv/convert_from_auto_ptr_ref.pass.cpp
+END
+convert_to_auto_ptr.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.auto.ptr/auto.ptr/auto.ptr.conv/convert_to_auto_ptr.pass.cpp
+END
+assign_from_auto_ptr_ref.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.auto.ptr/auto.ptr/auto.ptr.conv/assign_from_auto_ptr_ref.pass.cpp
+END

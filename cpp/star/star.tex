@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+
+\usepackage{abstract}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{CJKutf8}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{mathdots}
+\usepackage{mathpazo}
+\usepackage{multirow}
+\usepackage{pstricks-add}
+\usepackage{pst-blur}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{wasysym}
+\usepackage{xcolor}
+\usepackage[BoldFont,SlantFont,CJKsetspaces,CJKchecksingle]{xeCJK}
+
+
+
+\allowdisplaybreaks
+\DeclareMathOperator*{\argmin}{argmin}
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\pagestyle{empty}
+\parindent 2em   %段首缩进
+\setlength{\parindent}{2em}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKmonofont{SimSun}% 设置缺省中文字体
+\usetikzlibrary{arrows, automata, calc, shapes}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\hytt}[1]{\texttt{\hyphenchar\font=\defaulthyphenchar #1}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  
+% \hyphenation{read-Sym-bol re-ad-Space-Tab-New-line str-Tab}
+
+%\footnotesize
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,            % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\ttfamily\color{mygreen},    
+                                   % comment style
+  deletekeywords={},               % if you want to delete keywords from the given language
+  escapeinside={},                 % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                    % the language of the code
+  morekeywords={},                 % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\pagestyle{fancy}
+\rhead{page \thepage\ of \pageref{LastPage}}
+%\chead{}
+\lhead{东北大学}
+\cfoot{}
+
+\begin{document}
+
+\title{菱形输出问题}
+\author{计算机1202 \quad 张艺瀚\\学号:20123852}
+\maketitle
+
+\thispagestyle{fancy}
+%\newpage
+\normalsize
+
+\section{算法}
+将欲输出的图形表示成矩阵，矩阵元素为型号、空格或换行符。用一维数组$a$存放矩阵，容易得到，$a$中第$t$个元素的公式：
+
+\begin{eqnarray*}
+a[t] = 
+\begin{cases}
+\text{星号}                   & if\quad iN+k \le t \le iN+k+2j \\
+\text{换行符}                 & else\ if\quad (t+1)|N \\
+\text{空格}                   & else
+\end{cases}
+\end{eqnarray*}
+
+其中:
+\begin{eqnarray*}
+N &=& 2n \\
+i &=& \left \lfloor \frac{t}{N} \right \rfloor \\
+j &=& 
+\begin{cases}
+2(n-1)-i                   & if\ i > n-1 \\
+i                          & else
+\end{cases} \\
+k &=& n-1-j
+\end{eqnarray*}
+
+\section{代码清单}
+\begin{center}
+\begin{lstlisting}[caption = {代码清单}, label = {lst: code}][htbp]
+#include <iostream>
+using namespace std;
+int main(int argc, char** argv){
+  int n;
+  cin >> n;
+  int N = 2*n;
+  for(int t = 0; t < (2*n-1)*2*n; ++t){
+    int i = t/N;
+    int j = i > (n-1)? (2*(n-1)-i): i;
+    int k = n-1-j;
+    if(t >= i*N+k && t <= i*N+k+2*j){
+      cout << "*";
+    } else if((t+1.0)/N - int((t+1)/N) < 1e-5){
+      cout << "\n";
+    } else{
+      cout << " ";
+    }
+  }
+  return 0;
+}
+\end{lstlisting}
+\end{center}
+
+\section{运行结果}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{star.png}
+\caption{运行结果}
+\label{fig: result}
+\end{figure}
+
+\end{document}

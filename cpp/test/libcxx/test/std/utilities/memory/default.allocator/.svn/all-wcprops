@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/llvm-project/!svn/ver/228344/libcxx/trunk/test/std/utilities/memory/default.allocator
+END
+allocator_types.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/llvm-project/!svn/ver/228344/libcxx/trunk/test/std/utilities/memory/default.allocator/allocator_types.pass.cpp
+END
+allocator_void.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/memory/default.allocator/allocator_void.pass.cpp
+END
+allocator_pointers.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/memory/default.allocator/allocator_pointers.pass.cpp
+END

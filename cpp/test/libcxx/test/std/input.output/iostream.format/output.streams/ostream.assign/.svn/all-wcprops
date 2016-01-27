@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/output.streams/ostream.assign
+END
+move_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/output.streams/ostream.assign/move_assign.pass.cpp
+END
+member_swap.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/output.streams/ostream.assign/member_swap.pass.cpp
+END

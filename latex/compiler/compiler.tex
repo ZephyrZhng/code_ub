@@ -1,0 +1,720 @@
+\documentclass[11pt]{article}
+
+\usepackage{abstract}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{CJKutf8}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{float}
+% \usepackage{flowchart}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{listings}
+% \usepackage{logic}
+\usepackage{mathdots}
+\usepackage{mathpazo}
+\usepackage{multirow}
+\usepackage{pstricks-add}
+\usepackage{pst-blur}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{wasysym}
+\usepackage{xcolor}
+\usepackage[BoldFont,SlantFont,CJKsetspaces,CJKchecksingle]{xeCJK}
+
+\allowdisplaybreaks
+\DeclareMathOperator*{\argmin}{argmin}
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\pagestyle{empty}
+\parindent 2em   %段首缩进
+\setlength{\parindent}{2em}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKmonofont{SimSun}% 设置缺省中文字体
+\usetikzlibrary{arrows, automata, calc, shapes}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\hytt}[1]{\texttt{\hyphenchar\font=\defaulthyphenchar #1}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  
+% \hyphenation{read-Sym-bol re-ad-Space-Tab-New-line str-Tab}
+
+%\footnotesize
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,            % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\ttfamily\color{mygreen},    
+                                   % comment style
+  deletekeywords={},               % if you want to delete keywords from the given language
+  escapeinside={},                 % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                    % the language of the code
+  morekeywords={},                 % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+% Upper part of the page. The '~' is needed because \\
+% only works if a paragraph has started.
+\includegraphics[width=0.5\textwidth]{./neu.png}~\\[0.1cm]
+
+% \textsc{\LARGE 东北大学}\\[0.5cm]
+
+\textsc{\Large 编译原理课程设计报告\uppercase\expandafter{\romannumeral1}}\\[0.5cm]
+
+% Title
+\HRule \\[0.2cm]
+{ \huge \bfseries 语法分析器自动生成器 \\[0.4cm] }
+
+\HRule \\[1cm]
+
+% Author and supervisor
+\noindent
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{小组成员:}\\
+计算机1202\ 张艺瀚(组长) \\ %\textsc{Smith}
+计算机1202\ 马鹏程 \\
+计算机1202\ 马海琴
+\end{flushleft}
+\end{minipage}%
+\begin{minipage}{0.2\textwidth}
+\begin{flushright} \large
+\emph{本模块负责人:}\\
+张艺瀚 \\ %\textsc{Smith}
+\end{flushright}
+\end{minipage}%
+\begin{minipage}{0.2\textwidth}
+\begin{flushright} \large
+\emph{指导教师:} \\
+朱靖波 %\textsc{Brown}
+\end{flushright}
+\end{minipage}
+
+\vfill
+
+% Bottom of the page
+{\large \today}
+
+\end{center}
+\end{titlepage}
+
+% 摘要(300~400字)
+% 目录
+% 1. 概述 
+% 2. 课程设计任务及要求
+%          2.1 设计任务
+%          2.2 设计要求
+% 3. 算法及数据结构
+%          3.1算法的总体思想(流程)
+%          3.2 XXX模块
+%            3.2.1 功能
+%            3.2.2 数据结构
+%            3.2.3 算法
+%          3.3 YYY模块
+%            3.3.1功能
+%            3.3.2 数据结构
+%            3.3.3算法
+% 4. 程序设计与实现
+%          4.1 程序流程图
+%          4.2 程序说明
+%          4.3 实验结果
+% 5. 结论
+% 6. 参考文献.
+% 7. 收获、体会和建议.
+
+\title{语法分析器自动生成器}
+\author{计算机1202 张艺瀚\\学号:20123852}
+\maketitle
+
+\renewcommand{\abstractname}{摘要}
+\begin{onecolabstract}
+\noindent{}摘要:
+本模块实现了3个语法分析器的自动生成:SLR(1)(使用LR(0)自动机),LR(1)和LL(1).
+
+首先对输入文法进行变换,我们使用计算理论中的严格的文法变换方法处理文法:
+\begin{enumerate}
+\item 去除无用符号
+\item 去除$\varepsilon$产生式
+\item 去除单一产生式
+\item 化为CNF(Chomsky Normal Form)
+\item 化为GNF(Greibach Normal Form)
+\end{enumerate}
+
+这部分内容与课程设计题目无关,不做介绍.对于符合各个语法分析器要求的文法,首先计算FIRST和FOLLOW集合,然后分别为其生成相应的语法分析器.
+
+对于SLR(1),使用LR(0)自动机,需要计算每个项目集合的闭包closure和其在各个文法符号下的转换goto,以此为依据计算出所有项目集合:项目集合族,这样就可以生成SLR(1)分析表了.我们为SLR(1)分析表编写表驱动程序,为给定文法分析字符串,验证设计.
+
+对于LR(1),使用LR(1)自动机 ,与SLR(1)类似,只需为每个项目计算向前看符号lookaheadSymbol,并在计算转移goto和生成分析表时考虑它即可.我们也为LR(1)分析表编写了表驱动程序,为给定文法分析字符串,验证设计.
+
+对于LL(1),利用文法的FIRST和FOLLOW集合即可直接生成分析表.同样,为LL(1)分析表编写表驱动程序,为给定文法分析字符串,验证设计.
+
+根据测试结果比较各个语法分析方法的优劣势和性能.
+
+\par   % 摘要内容,\noindent要求在“摘要”二字之前不缩进
+\noindent{}关键字:
+SLR(1),LR(1),LL(1),文法,自动机,语法分析
+% 关键字,\noindent要求不缩进
+\end{onecolabstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{概述}
+本模块实现了3个语法分析器的自动生成:SLR(1)(使用LR(0)自动机),LR(1)和LL(1).对于给定文法,先计算FIRST和FOLLOW集合.然后:
+\begin{enumerate}
+\item SLR(1):计算每个项目集合的闭包closure和其在各个文法符号下的转换goto,以此为依据计算出所有项目集合:项目集合族,最终生成SLR(1)分析表.
+\item LR(1):与SLR(1)类似,只需为每个项目计算向前看符号lookaheadSymbol,并在计算转移goto和生成分析表时考虑它即可.
+\item LL(1):利用文法的FIRST和FOLLOW集合直接生成分析表.
+\end{enumerate}
+
+为每种分析器的分析表编写对应的表驱动程序,为给定文法分析字符串,验证设计并比较性能.
+
+\section{课程设计任务及要求}
+\subsection{设计任务}
+分析表的自动生成算法的设计实现.
+\subsection{设计要求}
+\begin{enumerate}
+\item 在深入理解编译原理基本原理的基础上,对于选定的题目,以小组为单位,先确定设计方案;
+\item 设计系统的数据结构和程序结构,设计每个模块的处理流程.要求设计合理;
+\item 编程序实现系统,要求实现可视化的运行界面,界面应清楚地反映出系统的运行结果;
+\item 确定测试方案,选择测试用例,对系统进行测试;
+\item 运行系统并要通过验收,讲解运行结果,说明系统的特色和创新之处,并回答指导教师的提问;
+\item 提交课程设计报告.
+\end{enumerate}
+
+\section{算法及数据结构}
+\subsection{算法的总体思想}
+对于任意给定的文法,先计算其FIRST和FOLLOW集合,然后针对不同的分析方法生成分析表并使用配套的表驱动程序进行测试.
+
+SLR(1)和LR(1)均要先计算闭包closure,转移goto和项目集合族(LR(1)在计算过程中还要考虑向前看符号lookaheadSymbol)才能生成分析表;LL(1)直接利用文法信息即可直接生成分析表.
+
+\subsection{计算文法的FIRST和FOLLOW集合}
+\subsubsection{功能}
+计算任意给定文法的FIRST和FOLLOW集合.
+
+\subsubsection{数据结构}
+FIRST和FOLLOW集合数据结构见附录\ref{sec: datastructure}(\ref{lst: firstfollow}).
+
+\subsubsection{算法}
+见附录\ref{sec: algorithm}.
+计算FIRST集合算法(\ref{alg: first});
+计算FOLLOW集合算法(\ref{alg: follow}).
+
+\subsection{SLR(1)}
+\subsubsection{功能}
+计算项目集合的闭包closure和在文法符号下的转移goto,以此求得项目集合族,建立分析表.也实现了配套的表驱动程序.
+
+\subsubsection{数据结构}
+SLR(1)分析器数据结构见附录\ref{sec: datastructure}(\ref{lst: lr0}).
+
+\subsubsection{算法}
+见附录\ref{sec: algorithm}.
+计算闭包closure算法(\ref{alg: lr0closure});
+计算转移goto算法(\ref{alg: lr0goto});
+计算项目集合族算法(\ref{alg: lr0itemsetfamily});
+分析表生成算法(\ref{alg: lr0construct});
+表驱动算法(\ref{alg: lr0parse}).
+
+\subsection{LR(1)}
+\subsubsection{功能}
+计算项目集合的闭包closure(项目中考虑向前看符号looaheadSymbol)和在文法符号下的转移goto,以此求得项目集合族,建立分析表.也实现了配套的表驱动程序.
+
+\subsubsection{数据结构}
+LR(1)分析器数据结构见附录\ref{sec: datastructure}(\ref{lst: lr1}).
+
+\subsubsection{算法}
+见附录\ref{sec: algorithm}.
+计算闭包closure算法(\ref{alg: lr1closure});
+计算转移goto算法(\ref{alg: lr1goto});
+计算项目集合族算法(\ref{alg: lr1itemsetfamily});
+分析表生成算法(\ref{alg: lr1construct});
+表驱动算法(\ref{alg: lr1parse}).
+
+\subsection{LL(1)}
+\subsubsection{功能}
+利用文法的FIRST和FOLLOW集合直接建立分析表并实现了配套的表驱动程序.
+
+\subsubsection{数据结构}
+LL(1)分析器数据结构见附录\ref{sec: datastructure}(\ref{lst: ll1}).
+
+\subsubsection{算法}
+见附录\ref{sec: algorithm}.
+分析表生成算法(\ref{alg: ll1construct});
+表驱动算法(\ref{alg: ll1parse}).
+
+\section{程序设计与实现}
+\subsection{程序说明}
+\begin{enumerate}
+\item 程序使用C++编写,大量使用C++11和C++14新特性,开发环境为Ubuntu 12.04 LTS,编译器版本为gcc 4.9.2.
+\item 程序输入从格式化文件中读入,输出打印在终端内.
+\item 用$e$表示空串$\varepsilon$,不同于其他文法符号,程序中做特殊处理.
+\item 计算FIRST和FOLLOW集合时,为了避开迭代算法实现时对求值顺序的考虑,将算法改造为迭代至不动点的形式.
+\item SLR(1)和LR(1)使用增广文法,即添加产生式$S' \rightarrow S$,注意此时FIRST和FOLLOW集合需重新计算.
+\item 将$\$$作为初始时分析栈栈顶符号.
+\end{enumerate}
+
+\subsection{实验结果}
+语法分析器对下面的2个测试语法正确运行.
+
+文法~\ref{eq: grammar1}:
+\begin{equation}
+\begin{aligned} \label{eq: grammar1}
+E &\rightarrow TA \\
+A &\rightarrow +TA|-TA|\varepsilon \\
+T &\rightarrow FB \\
+B &\rightarrow *FB|/FB|\varepsilon \\
+F &\rightarrow (E)|0|1|2|3|4|5|6|7|8|9 \\
+\end{aligned}
+\end{equation}
+
+文法~\ref{eq: grammar2}:
+\begin{equation} \label{eq: grammar2}
+\begin{aligned}
+E &\rightarrow E+T|E-T|T \\
+T &\rightarrow T*F|T/F|F \\
+F &\rightarrow (E)|0|1|2|3|4|5|6|7|8|9 \\
+\end{aligned}
+\end{equation}
+
+对于不含左递归的文法~\ref{eq: grammar1} 和含左递归的文法~\ref{eq: grammar2},均正确计算出FIRST和FOLLOW集合,SLR(1),LR(1)语法分析器均可正确生成分析表,对于不含左递归的文法~\ref{eq: grammar1},LL(1)语法分析器可正确生成分析表.利用自动生成的分析表,SLR(1),LR(1)和LL(1)语法分析器均可正确解析下面的书写正确的复杂的一位数含括号四则运算表达式:
+\[ \texttt{1+(1-3*(2-(8+9-7*6/2)/3+9+(1+3)-2)+1)/4} \]
+均不能正确解析书写错误的表达式(最后一个4之前缺少一个运算符):
+\[ \texttt{1+(1-3*(2-(8+9-7*6/2)/3+9+(1+3)-2)+1)4} \]
+
+\section{结论}
+通过实现该设计并进行测试,可以清楚的看到,LR(1)分析表由于考虑了向前看符号而比SLR(1)分析表大.二者作为自底向上的分析方法,可以容忍带有左递归的文法,而LL(1)作为自顶向下的分析方法,则不允许文法中出现左递归.
+
+\section{参考文献}
+美 Alfred V.Aho Ravi Sethi Jeffrey D. Ullman著.李建中,姜守旭译.《编译原理》.北京:机械工业出版社.2003.
+
+\section{收获、体会和建议}
+本设计完全依照\emph{Compilers Principles, Techniques and Tools second Edition}实现,与课堂内容可能存在出入.事实证明课堂讲授的很多理论出处不明且不具有可操作性.
+
+\section{附录:数据结构} \label{sec: datastructure}
+\begin{center}
+\begin{lstlisting}[caption = {FIRST和FOLLOW集合数据结构}, label = {lst: firstfollow}]
+vector<set<char>> first; // for symbols in VN and VT, elements in VT are followed by elements in VN
+vector<set<char>> follow; // only for symbols in VN
+\end{lstlisting}
+\end{center}
+\begin{center}
+\begin{lstlisting}[caption = {SLR(1)分析器数据结构}, label = {lst: lr0}]
+class LR0Item
+{
+public:
+	LR0Item() = default;
+	LR0Item(unsigned int myLProductionRuleIdx, unsigned int myRProductionRuleIdx, unsigned int myDotPos);
+
+	unsigned int lProductionRuleIdx;
+	unsigned int rProductionRuleIdx;
+	unsigned int dotPos;
+
+	friend bool operator < (const LR0Item& i1, const LR0Item& i2);
+	friend bool operator ==(const LR0Item& i1, const LR0Item& i2);
+	friend bool operator > (const LR0Item& i1, const LR0Item& i2);
+	friend bool operator !=(const LR0Item& i1, const LR0Item& i2);
+
+private:
+
+};
+
+class LR0ActionTabItem
+{
+public:
+	LR0ActionTabItem() = default;
+	LR0ActionTabItem(const Action& myAction, unsigned int myLProductionRuleIdx, unsigned int myRProductionRuleIdx, unsigned int myItemSetIdx);
+
+	Action action;
+	unsigned int lProductionRuleIdx;
+	unsigned int rProductionRuleIdx;
+	unsigned int itemSetIdx;
+};
+
+vector<set<LR0Item>> lr0ItemSetFamily;
+vector<vector<LR0ActionTabItem>> lr0ActionTab;
+vector<vector<unsigned int>> lr0GoToTab;
+vector<unsigned int> lr0Stack;
+string lr0Input;
+\end{lstlisting}
+\end{center}
+\begin{center}
+\begin{lstlisting}[caption = {LR(1)分析器数据结构}, label = {lst: lr1}]
+class LR1Item
+{
+public:
+	LR1Item() = default;
+	LR1Item(const LR0Item& myLR0Item, char myLookaheadSymbol);
+	LR1Item(unsigned int myLProductionRuleIdx, unsigned int myRProductionRuleIdx, unsigned int myDotPos, char myLookaheadSymbol);
+
+	unsigned int lProductionRuleIdx;
+	unsigned int rProductionRuleIdx;
+	unsigned int dotPos;
+	char lookaheadSymbol;
+
+	friend bool operator < (const LR1Item& i1, const LR1Item& i2);
+	friend bool operator ==(const LR1Item& i1, const LR1Item& i2);
+	friend bool operator > (const LR1Item& i1, const LR1Item& i2);
+	friend bool operator !=(const LR1Item& i1, const LR1Item& i2);
+
+private:
+
+};
+
+class LR1ActionTabItem
+{
+public:
+	LR1ActionTabItem() = default;
+	LR1ActionTabItem(const Action& myAction, unsigned int myLProductionRuleIdx, unsigned int myRProductionRuleIdx, unsigned int myItemSetIdx);
+
+	Action action;
+	unsigned int lProductionRuleIdx;
+	unsigned int rProductionRuleIdx;
+	unsigned int itemSetIdx;
+
+private:
+
+};
+
+vector<set<LR1Item>> lr1ItemSetFamily;
+vector<vector<LR1ActionTabItem>> lr1ActionTab;
+vector<vector<unsigned int>> lr1GoToTab;
+vector<unsigned int> lr1Stack;
+string lr1Input;
+\end{lstlisting}
+\end{center}
+\begin{center}
+\begin{lstlisting}[caption = {LL(1)分析器数据结构}, label = {lst: ll1}]
+class LL1Item
+{
+public:
+	LL1Item() = default;
+	LL1Item(unsigned int myI, unsigned int myJ);
+
+	unsigned int i;
+	unsigned int j;
+
+private:
+
+};
+
+vector<vector<LL1Item>> ll1ParseTab;
+vector<char> ll1Stack;
+string ll1Input;
+\end{lstlisting}
+\end{center}
+
+\section{附录:算法} \label{sec: algorithm}
+\begin{algorithm}[h]
+    \caption{calFIRST($G$)}
+    \label{alg: first}
+    \begin{algorithmic}[1]
+    \REPEAT
+    	\IF {$X$ is a terminal symbol}
+    		\STATE FIRST($X$) $\leftarrow \{ X \}$;
+		\ELSIF {$X$ is a nonterminal symbol \AND $X \rightarrow Y_1 Y_2 \ldots Y_k \in G$}
+			\FOR {$i$ from $1$ to $k$}
+				\STATE FIRST($X$) $ \leftarrow $ FIRST($X$) $\bigcup$ FIRST($Y_i$);
+				\IF {$\varepsilon \notin $ FIRST($Y_i$)}
+					\STATE break;
+				\ELSIF {$i=k$}
+					\STATE FIRST($X$) $ \leftarrow $ FIRST($X$) $\bigcup$ $\{\varepsilon\}$;
+				\ENDIF
+			\ENDFOR
+		\ELSIF {$X \rightarrow \varepsilon \in G$}
+			\STATE FIRST($X$) $ \leftarrow $ FIRST($X$) $\bigcup$ $\{\varepsilon\}$;
+		\ENDIF
+	\UNTIL {no terminal symbols or $\varepsilon$ were put into any FIRST}
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+    \caption{calFOLLOW$G$}
+    \label{alg: follow}
+    \begin{algorithmic}[1]
+    \REPEAT
+	    \STATE FOLLOW($S$) $\leftarrow$ FOLLOW($S$) $\bigcup \{\$\}$;
+    	\IF {$A \rightarrow \alpha B \beta \in G$}
+    		\STATE FOLLOW($B$) $\leftarrow$ FOLLOW($B$) $\bigcup$ (FIRST($\beta$)-$\{\varepsilon\}$);
+    		\IF {$\beta=\varepsilon$ \OR $\varepsilon \in$ FIRST($\beta$)}
+    			\STATE FOLLOW($B$) $\leftarrow$ FOLLOW($B$) $\bigcup$ FOLLOW($A$);
+    		\ENDIF
+    	\ENDIF
+	\UNTIL {no terminal symbols were put into any FOLLOW}
+    \end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]
+    \caption{ItemSet closure($I$)}
+    \label{alg: lr0closure}
+    \begin{algorithmic}[1]
+    	\STATE $J \leftarrow I$;
+    	\REPEAT
+    		\FOR {each item $A \rightarrow \alpha \cdot B \beta \in J$}
+    			\FOR {each production rule $B \rightarrow \gamma \in G$}
+    				\IF {item $B \rightarrow \cdot \gamma \notin J$}
+    					\STATE $J \leftarrow J \bigcup \{ B \rightarrow \cdot \gamma \}$;
+    				\ENDIF
+    			\ENDFOR
+    		\ENDFOR
+    	\UNTIL {no new items were put into $J$ in the latest loop}
+    	\RETURN $J$;
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+    \caption{ItemSet goto($I$, $X$)}
+    \label{alg: lr0goto}
+    \begin{algorithmic}[1]
+    	\RETURN $closure(\{[A \rightarrow \alpha X \cdot \beta]|[A \rightarrow \alpha \cdot X \beta] \in I\})$;
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+    \caption{calItemSetFamily($G'$)}
+    \label{alg: lr0itemsetfamily}
+    \begin{algorithmic}[1]
+    	\STATE $C \leftarrow \{$ closure$(\{ [S' \rightarrow \cdot S] \}) \};$
+    	\REPEAT
+    		\FOR {each item $I \in C$}
+    			\FOR {each grammar symbol $X$}
+    				\IF {goto($I$, $X$) $\neq \phi$ \AND goto($I$, $X$) $\notin C$}
+    					\STATE $C \leftarrow C \bigcup $goto($I$, $X$);
+    				\ENDIF
+    			\ENDFOR
+    		\ENDFOR
+    	\UNTIL {no new item sets were put into $C$ int the latest loop}
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]         %算法的开始
+\caption{construct an SLR(1) parse table}             %算法的标题
+\label{alg: lr0construct}
+\begin{algorithmic}[1]                %这个1 表示每一行都显示数字
+\REQUIRE ~~\\                          %算法的输入参数:Input
+    an expanded grammar $G'$
+\ENSURE ~~\\                           %算法的输出:Output
+	ACTION, GOTO
+\STATE calItemSetFamily($G'$);
+\IF {$[A \rightarrow \alpha \cdot a \beta] \in I_i$ \AND GOTO($I_i$, $a$)=$I_j$ \AND $a$ is a terminal symbol}
+	\STATE ACTION[$i$, $a$] $\leftarrow$ (SHIFT, $j$);
+\ELSIF {$[A \rightarrow \alpha \cdot] \in I_i$ \AND $A \neq S'$}
+	\FORALL {$a \in $ FOLLOW($A$)}
+		\STATE ACTION[$i$, $a$] $\leftarrow$ (REDUCE, $A \rightarrow \alpha$);
+	\ENDFOR
+\ELSIF {$[S' \rightarrow S \cdot] \in I_i$}
+	\STATE AXTION[$i$, $a$] $\leftarrow$ (ACCEPT, \_);
+\ENDIF
+\IF {GOTO[$I_i$, $A$]=$I_j$}
+	\STATE GOTO[$i$, $A$] $\leftarrow j$;
+\ENDIF
+\STATE other items are set as (ERR, \_);
+\STATE initial state is the state constructed according to item set which contains [$S' \rightarrow \cdot S$];
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+    \caption{parse($\omega$, ACTION, GOTO)}
+    \label{alg: lr0parse}
+    \begin{algorithmic}[1]
+    	\STATE push(stack, $s_0$);
+    	\STATE buffer$\leftarrow \omega \$$;
+    	\STATE $a \leftarrow$first symbol of $\omega \$$;
+    	\WHILE {\TRUE}
+    		\STATE $s \leftarrow$stack[top];
+    		\IF {ACTION[$s$, $a$]=(SHIFT, $t$)}
+    			\STATE push(stack, $t$);
+    			\STATE $a \leftarrow$next input symbol;
+    		\ELSIF {ACTION[$s$, $a$]=(REDUCE, $A \rightarrow \beta$)}
+    			\FOR {$i \leftarrow 0$; $i \textless |\beta|$; $i \leftarrow i+1$}
+    				\STATE pop(stack, \_);
+    			\ENDFOR
+    			\STATE $t \leftarrow$stack[top];
+    			\STATE push(stack, GOTO[$t$, $A$]);
+    			\PRINT $A \rightarrow \beta$;
+    		\ELSIF {ACTION[$s$, $a$]=(ACCEPT, \_)}
+    			\STATE break;
+    		\ELSE
+    			\STATE recover from error;
+    		\ENDIF
+    	\ENDWHILE
+    \end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]
+    \caption{ItemSet closure($I$)}
+    \label{alg: lr1closure}
+    \begin{algorithmic}[1]
+    	\REPEAT
+    		\FOR {each item $[A \rightarrow \alpha \cdot B \beta, a] \in I$}
+    			\FOR {each production rule $B \rightarrow \gamma \in G'$}
+    				\FOR {each terminal symbol $b \in $ FIRST($\beta a$)}
+    					\STATE $I \leftarrow I \bigcup \{ [B \rightarrow \cdot \gamma, b] \}$;
+    				\ENDFOR
+    			\ENDFOR
+    		\ENDFOR
+    	\UNTIL {no new items were put into $I$ in the latest loop}
+    	\RETURN $I$;
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+    \caption{ItemSet goto($I$, $X$)}
+    \label{alg: lr1goto}
+    \begin{algorithmic}[1]
+    	\STATE $J \leftarrow \phi$;
+    	\FOR {each item $[A \rightarrow \alpha \cdot X \beta, a] \in I$}
+    		\STATE $J \leftarrow J \bigcup \{ [A \rightarrow \alpha X \cdot \beta, a] \}$;
+    	\ENDFOR
+    	\RETURN closure($J$);
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+    \caption{calItemSetFamily($G'$)}
+    \label{alg: lr1itemsetfamily}
+    \begin{algorithmic}[1]
+    	\STATE $C \leftarrow \{$ closure$(\{ [S' \rightarrow \cdot S, \$] \}) \};$
+    	\REPEAT
+    		\FOR {each item $I \in C$}
+    			\FOR {each grammar symbol $X$}
+    				\IF {goto($I$, $X$) $\neq \phi$ \AND goto($I$, $X$) $\notin C$}
+    					\STATE $C \leftarrow C \bigcup $goto($I$, $X$);
+    				\ENDIF
+    			\ENDFOR
+    		\ENDFOR
+    	\UNTIL {no new item sets were put into $C$ int the latest loop}
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]         %算法的开始
+\caption{construct an LR(1) parse table}             %算法的标题
+\label{alg: lr1construct}
+\begin{algorithmic}[1]                %这个1 表示每一行都显示数字
+\REQUIRE ~~\\                          %算法的输入参数:Input
+    an expanded grammar $G'$
+\ENSURE ~~\\                           %算法的输出:Output
+	ACTION, GOTO
+\STATE calItemSetFamily($G'$);
+\IF {$[A \rightarrow \alpha \cdot a \beta, b] \in I_i$ \AND GOTO($I_i$, $a$)=$I_j$ \AND $a$ is a terminal symbol}
+	\STATE ACTION[$i$, $a$] $\leftarrow$ (SHIFT, $j$);
+\ELSIF {$[A \rightarrow \alpha \cdot, a] \in I_i$ \AND $A \neq S'$}
+	\STATE ACTION[$i$, $a$] $\leftarrow$ (REDUCE, $A \rightarrow \alpha$);
+\ELSIF {$[S' \rightarrow S \cdot, \$] \in I_i$}
+	\STATE AXTION[$i$, $a$] $\leftarrow$ (ACCEPT, \_);
+\ENDIF
+\IF {GOTO[$I_i$, $A$]=$I_j$}
+	\STATE GOTO[$i$, $A$] $\leftarrow j$;
+\ENDIF
+\STATE other items are set as (ERR, \_);
+\STATE initial state is the state constructed according to item set which contains [$S' \rightarrow \cdot S, \$$];
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+    \caption{parse($\omega$, ACTION, GOTO)}
+    \label{alg: lr1parse}
+    \begin{algorithmic}[1]
+    	\STATE push(stack, $s_0$);
+    	\STATE buffer$\leftarrow \omega \$$;
+    	\STATE $a \leftarrow$first symbol of $\omega \$$;
+    	\WHILE {\TRUE}
+    		\STATE $s \leftarrow$stack[top];
+    		\IF {ACTION[$s$, $a$]=(SHIFT, $t$)}
+    			\STATE push(stack, $t$);
+    			\STATE $a \leftarrow$next input symbol;
+    		\ELSIF {ACTION[$s$, $a$]=(REDUCE, $A \rightarrow \beta$)}
+    			\FOR {$i \leftarrow 0$; $i \textless |\beta|$; $i \leftarrow i+1$}
+    				\STATE pop(stack, \_);
+    			\ENDFOR
+    			\STATE $t \leftarrow$stack[top];
+    			\STATE push(stack, GOTO[$t$, $A$]);
+    			\PRINT $A \rightarrow \beta$;
+    		\ELSIF {ACTION[$s$, $a$]=(ACCEPT, \_)}
+    			\STATE break;
+    		\ELSE
+    			\STATE recover from error;
+    		\ENDIF
+    	\ENDWHILE
+    \end{algorithmic}
+\end{algorithm}
+\begin{algorithm}[h]         %算法的开始
+\caption{construct an LL(1) parse table}             %算法的标题
+\label{alg: ll1construct}
+\begin{algorithmic}[1]                %这个1 表示每一行都显示数字
+\REQUIRE ~~\\                          %算法的输入参数:Input
+    a grammar $G$
+\ENSURE ~~\\                           %算法的输出:Output
+	M
+\FOR {each production rule $A \rightarrow \alpha \in G$}
+	\FOR {each terminal symbol $a \in $ FIRST($\alpha$)}
+		\STATE $M[A, a] \leftarrow M[A, a] \bigcup \{ A \rightarrow \alpha \}$;
+	\ENDFOR
+	\IF {$\varepsilon \in $ FIRST($\alpha$)}
+		\FOR {each terminal symbol $b \in $ FOLLOW($A$)}
+			\STATE $M[A, b] \leftarrow M[A, b] \bigcup \{ A \rightarrow \alpha \}$;
+		\ENDFOR
+		\IF {$\$ \in $ FOLLOW($A$)}
+			\STATE $M[A, \$] \leftarrow M[A, \$] \bigcup \{ A \rightarrow \alpha \}$;
+		\ENDIF
+	\ENDIF
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[h]
+    \caption{parse($\omega$, $M$)}
+    \label{alg: ll1parse}
+    \begin{algorithmic}[1]
+    	\STATE $ip$ points to the first symbol of $\omega$;
+    	\STATE $X \leftarrow$ stack[top];
+    	\WHILE {$X \neq \$$}
+    		\IF {$X=a$ which $ip$ points to}
+    			\STATE pop(stack, \_);
+    			\STATE make $ip$ move forward a step;
+    		\ELSIF {$X$ is a terminal symbol}
+    			\STATE err;
+    		\ELSIF {$M[X, a]$=err}
+    			\STATE err;
+    		\ELSIF {$M[X, a]=X \rightarrow Y_1 Y_2 \ldots Y_k$}
+    			\STATE print $X \rightarrow Y_1 Y_2 \ldots Y_k$;
+    			\STATE pop(stack, \_);
+    			\FOR {$i$ from $k$ to $1$}
+    				\STATE push(stack, $Y_i$);
+    			\ENDFOR
+    		\ENDIF
+    		\STATE $X \leftarrow $ stack[top];
+    	\ENDWHILE
+    \end{algorithmic}
+\end{algorithm}
+
+\end{document}

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign
+END
+gslice_array_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign/gslice_array_assign.pass.cpp
+END
+move_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign/move_assign.pass.cpp
+END
+mask_array_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign/mask_array_assign.pass.cpp
+END
+copy_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign/copy_assign.pass.cpp
+END
+value_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign/value_assign.pass.cpp
+END
+slice_array_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign/slice_array_assign.pass.cpp
+END
+initializer_list_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign/initializer_list_assign.pass.cpp
+END
+indirect_array_assign.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/numarray/template.valarray/valarray.assign/indirect_array_assign.pass.cpp
+END

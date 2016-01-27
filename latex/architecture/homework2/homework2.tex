@@ -1,0 +1,243 @@
+\documentclass[11pt]{article}
+
+\usepackage{abstract}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{CJKutf8}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{mathdots}
+\usepackage{mathpazo}
+\usepackage{multirow}
+\usepackage{pstricks-add}
+\usepackage{pst-blur}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{wasysym}
+\usepackage{xcolor}
+\usepackage[BoldFont,SlantFont,CJKsetspaces,CJKchecksingle]{xeCJK}
+
+\allowdisplaybreaks
+\DeclareMathOperator*{\argmin}{argmin}
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\pagestyle{empty}
+\parindent 2em   %段首缩进
+\setlength{\parindent}{2em}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKmonofont{SimSun}% 设置缺省中文字体
+\usetikzlibrary{arrows, automata, calc, shapes}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\hytt}[1]{\texttt{\hyphenchar\font=\defaulthyphenchar #1}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  
+% \hyphenation{read-Sym-bol re-ad-Space-Tab-New-line str-Tab}
+
+%\footnotesize
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,            % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\ttfamily\color{mygreen},    
+                                   % comment style
+  deletekeywords={},               % if you want to delete keywords from the given language
+  escapeinside={},                 % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                    % the language of the code
+  morekeywords={},                 % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\pagestyle{fancy}
+\rhead{page \thepage\ of \pageref{LastPage}}
+%\chead{}
+\lhead{计算机体系结构}
+\cfoot{}
+
+\begin{document}
+
+\title{第二章作业}
+\author{计算机1202 \quad 张艺瀚\\学号:20123852}
+\maketitle
+
+\thispagestyle{fancy}
+%\newpage
+\normalsize
+
+\begin{enumerate}
+  \item 
+    \begin{table}[htbp]
+      \centering
+      \begin{tabular}{lll}
+        \hline
+        0000 & xxxxxx & xxxxxx \\
+        $\vdots$ & $\vdots$ & $\vdots$ \\
+        1110 & xxxxxx & xxxxxx \\
+        \hline
+        1111 & 000000 & xxxxxx \\
+        $\vdots$ & $\vdots$ & $\vdots$ \\
+        1111 & 111111 & xxxxxx \\
+        \hline
+      \end{tabular}
+    \end{table}
+    单地址指令 $ = \left( 2^4 - 1 - 10 \right) \times 2^6 + 2^6 = 384 $
+  \item
+    \begin{enumerate}
+      \item
+        等长二进制编码，平均码长 $ = \lceil \log_2 10 \rceil = 4 $
+      \item
+        huffman编码（见图\ref{fig: tree}、表\ref{tab: code}） \\
+        \begin{figure}
+          \begin{center}
+            \begin{tikzpicture}
+              \tikzstyle{level 1} = [sibling distance = 64mm]
+              \tikzstyle{level 2} = [sibling distance = 32mm]
+              \tikzstyle{level 3} = [sibling distance = 16mm]
+              \tikzstyle{level 4} = [sibling distance = 8mm]
+              \tikzstyle{level 5} = [sibling distance = 8mm]
+              \node {1.00}
+                child{
+                  node {0.40}
+                  child{
+                    node {0.23}
+                    child{
+                      node {0.11}
+                      child{
+                        node {0.04}
+                        child{
+                          node {0.01}
+                          edge from parent[left] node {0}
+                        }
+                        child{
+                          node {0.03}
+                          edge from parent[right] node {1}
+                        }
+                        edge from parent[left] node {0}
+                      }
+                      child{
+                        node {0.07}
+                        edge from parent[right] node {1}
+                      }
+                      edge from parent[left] node {0}
+                    }
+                    child{
+                      node {0.12}
+                      edge from parent[right] node {1}
+                    }
+                    edge from parent[left] node {0}
+                  }
+                  child{
+                    node {0.17}
+                    child{
+                      node {0.08}
+                      edge from parent[left] node {0}
+                    }
+                    child{
+                      node {0.09}
+                      edge from parent[right] node {1}
+                    }
+                    edge from parent[right] node {1}
+                  }
+                  edge from parent[left] node {0}
+                }
+                child{
+                  node {0.6}
+                  child{
+                    node {0.28}
+                    child{
+                      node {0.13}
+                      edge from parent[left] node {0}
+                    }
+                    child{
+                      node {0.15}
+                      edge from parent[right] node {1}
+                    }
+                    edge from parent[left] node {0}
+                  }
+                  child{
+                    node {0.32}
+                    child{
+                      node {0.15}
+                      edge from parent[left] node {0}
+                    }
+                    child{
+                      node {0.17}
+                      edge from parent[right] node {1}
+                    }
+                    edge from parent[right] node {1}
+                  }
+                  edge from parent[right] node {1}
+                };
+            \end{tikzpicture}
+            \caption{huffman树\label{fig: tree}}
+          \end{center}
+        \end{figure}
+        \begin{eqnarray*}
+          \text{平均码长} &=& (0.17 + 0.15 + 0.15 + 0.13 + 0.12 + 0.09 + 0.08) \times 3 \\
+          && + 0.07 \times 4 + (0.03 + 0.01) \times 5 \\
+          &=& 3.15
+        \end{eqnarray*}
+      \item 
+        只有2种码长的扩展操作码（见表\ref{tab: code}）
+        \begin{eqnarray*}
+          \text{平均码长} &=& (0.17 + 0.15 + 0.15 + 0.13 + 0.12 + 0.09) \times 3 \\
+          && + (0.08 + 0.07 + 0.03 + 0.01) \times 4 \\
+          &=& 3.19
+        \end{eqnarray*}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{lll}
+    \hline
+    频度 & huffman编码 & 扩展操作码 \\
+    \hline
+    0.17 & 111 & 000 \\
+    0.15 & 101 & 001 \\
+    0.15 & 110 & 010 \\
+    0.13 & 100 & 011 \\
+    0.12 & 001 & 100 \\
+    0.09 & 011 & 101 \\
+    \hline
+    0.08 & 010 & 1100 \\
+    0.07 & 0001 & 1101 \\
+    0.03 & 00001 & 1110 \\
+    0.01 & 00000 & 1111 \\
+    \hline
+  \end{tabular}
+  \caption{编码表\label{tab: code}}
+\end{table}
+
+\end{document}

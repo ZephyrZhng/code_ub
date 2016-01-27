@@ -1,0 +1,2 @@
+epsilon_nfa_to_nfa: epsilon_nfa.cpp epsilon_nfa_to_nfa_converter.cpp nfa.cpp epsilon_nfa_to_nfa.cpp
+	g++ -std=c++0x epsilon_nfa.cpp epsilon_nfa_to_nfa_converter.cpp nfa.cpp epsilon_nfa_to_nfa.cpp -o epsilon_nfa_to_nfa -I.

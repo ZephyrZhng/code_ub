@@ -1,0 +1,31 @@
+program
+begin
+	declaration
+	begin
+		integer i_fuck_you
+		real __i_am_your_1_father__
+		integer shitOnYourHead
+		real __233__
+	end
+
+	statement
+	begin
+		assign begin i_fuck_you add begin begin __i_am_your_1_father__ subtract 12.3 end multiply 60 end divide shitOnYourHead end
+		to __233__
+
+		if begin __233__ end then
+		begin
+			assign begin shitOnYourHead add 42 end
+			to shitOnYourHead
+		end
+		else then
+		begin
+			assign begin 10.5 end to shitOnYourHead
+		end
+
+		while begin __233__ end then
+		begin
+			assign begin __233__ subtract 9 end to __233__
+		end
+	end
+end

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.modifying.operations/alg.reverse
+END
+reverse.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.modifying.operations/alg.reverse/reverse.pass.cpp
+END
+reverse_copy.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.modifying.operations/alg.reverse/reverse_copy.pass.cpp
+END

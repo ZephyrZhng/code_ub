@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/llvm-project/!svn/ver/225300/libcxx/trunk/test/std/atomics
+END
+libcpp-has-no-threads.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/libcpp-has-no-threads.pass.cpp
+END
+version.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/version.pass.cpp
+END
+libcpp-has-no-threads.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/atomics/libcpp-has-no-threads.fail.cpp
+END

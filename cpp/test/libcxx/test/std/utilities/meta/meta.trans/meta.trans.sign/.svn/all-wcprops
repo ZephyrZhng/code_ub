@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/meta/meta.trans/meta.trans.sign
+END
+make_signed.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/meta/meta.trans/meta.trans.sign/make_signed.pass.cpp
+END
+make_unsigned.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/meta/meta.trans/meta.trans.sign/make_unsigned.pass.cpp
+END

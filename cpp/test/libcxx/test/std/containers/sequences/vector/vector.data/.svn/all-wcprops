@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/containers/sequences/vector/vector.data
+END
+data_const.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/containers/sequences/vector/vector.data/data_const.pass.cpp
+END
+data.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/containers/sequences/vector/vector.data/data.pass.cpp
+END

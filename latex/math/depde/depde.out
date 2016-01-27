@@ -1,0 +1,23 @@
+\BOOKMARK [1][-]{section.1}{Introduction and preliminaries}{}
+\BOOKMARK [1][-]{section.2}{Basic concepts and results}{}
+\BOOKMARK [1][-]{section.3}{Basic estimates}{}
+\BOOKMARK [2][-]{subsection.3.1}{Interior H1-estimate for u = f}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{Interior Lp-estimate for i\(aijuj\) = f}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Estimate for -i\(aijuj\)+biui +cu = 0}{section.3}
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Uniform ellipticity}{subsection.3.3}
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Degenerate ellipticity}{subsection.3.3}
+\BOOKMARK [1][-]{section.4}{Difficulties}{}
+\BOOKMARK [1][-]{section.5}{Framework}{}
+\BOOKMARK [1][-]{section.6}{Degenerate non-characteristics}{}
+\BOOKMARK [2][-]{subsection.6.1}{Estimate for u, u2}{section.6}
+\BOOKMARK [2][-]{subsection.6.2}{Estimate for u1}{section.6}
+\BOOKMARK [2][-]{subsection.6.3}{Conclusion}{section.6}
+\BOOKMARK [1][-]{section.7}{Degenerate on characteristics}{}
+\BOOKMARK [2][-]{subsection.7.1}{Energy estimate}{section.7}
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Sgn<0}{subsection.7.1}
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Sgn>0}{subsection.7.1}
+\BOOKMARK [2][-]{subsection.7.2}{Higher regularity}{section.7}
+\BOOKMARK [1][-]{section.8}{Hyperbolic equations}{}
+\BOOKMARK [2][-]{subsection.8.1}{Strict hyperbolicity}{section.8}
+\BOOKMARK [2][-]{subsection.8.2}{Degenerate hyperbolicity}{section.8}
+\BOOKMARK [2][-]{subsection.8.3}{Mixed type}{section.8}

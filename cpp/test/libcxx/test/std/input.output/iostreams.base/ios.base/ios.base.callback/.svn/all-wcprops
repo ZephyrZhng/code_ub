@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/ios.base/ios.base.callback
+END
+register_callback.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/ios.base/ios.base.callback/register_callback.pass.cpp
+END

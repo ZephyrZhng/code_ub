@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/localization/locales/locale/locale.operators
+END
+eq.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/localization/locales/locale/locale.operators/eq.pass.cpp
+END
+compare.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/localization/locales/locale/locale.operators/compare.pass.cpp
+END

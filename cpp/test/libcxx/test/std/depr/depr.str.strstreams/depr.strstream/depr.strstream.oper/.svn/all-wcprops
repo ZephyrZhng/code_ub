@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.str.strstreams/depr.strstream/depr.strstream.oper
+END
+pcount.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.str.strstreams/depr.strstream/depr.strstream.oper/pcount.pass.cpp
+END
+str.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.str.strstreams/depr.strstream/depr.strstream.oper/str.pass.cpp
+END
+freeze.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/depr/depr.str.strstreams/depr.strstream/depr.strstream.oper/freeze.pass.cpp
+END

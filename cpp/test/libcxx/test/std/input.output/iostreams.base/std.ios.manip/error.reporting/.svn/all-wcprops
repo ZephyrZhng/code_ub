@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/error.reporting
+END
+make_error_condition.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/error.reporting/make_error_condition.pass.cpp
+END
+iostream_category.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/error.reporting/iostream_category.pass.cpp
+END
+make_error_code.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/error.reporting/make_error_code.pass.cpp
+END

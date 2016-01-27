@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.point/time.point.observer
+END
+tested_elsewhere.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.point/time.point.observer/tested_elsewhere.pass.cpp
+END

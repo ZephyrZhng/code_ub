@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.nonmembers/string.special
+END
+swap.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.nonmembers/string.special/swap.pass.cpp
+END
+swap_noexcept.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.nonmembers/string.special/swap_noexcept.pass.cpp
+END

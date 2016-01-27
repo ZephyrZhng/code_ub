@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+
+\usepackage{abstract}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{CJKutf8}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{mathdots}
+\usepackage{mathpazo}
+\usepackage{multirow}
+\usepackage{pstricks-add}
+\usepackage{pst-blur}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{wasysym}
+\usepackage{xcolor}
+\usepackage[BoldFont,SlantFont,CJKsetspaces,CJKchecksingle]{xeCJK}
+
+
+
+\allowdisplaybreaks
+\DeclareMathOperator*{\argmin}{argmin}
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\pagestyle{empty}
+\parindent 2em   %段首缩进
+\setlength{\parindent}{2em}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKmonofont{SimSun}% 设置缺省中文字体
+\usetikzlibrary{arrows, automata, calc, shapes}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\hytt}[1]{\texttt{\hyphenchar\font=\defaulthyphenchar #1}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  
+% \hyphenation{read-Sym-bol re-ad-Space-Tab-New-line str-Tab}
+
+%\footnotesize
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,            % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\ttfamily\color{mygreen},    
+                                   % comment style
+  deletekeywords={},               % if you want to delete keywords from the given language
+  escapeinside={},                 % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                    % the language of the code
+  morekeywords={},                 % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\pagestyle{fancy}
+\rhead{page \thepage\ of \pageref{LastPage}}
+%\chead{}
+\lhead{文本智能处理作业}
+\cfoot{}
+
+\begin{document}
+
+\title{医疗问答系统需求分析}
+\author{计算机1202\quad 张艺瀚\\学号:20123852}
+\maketitle
+
+\thispagestyle{fancy}
+%\newpage
+\normalsize
+
+\section{软件受众与应用需求}
+\begin{enumerate}
+\item {\color{red}开发者和数据库管理员}:搭建后台，开发功能，维护数据库，审查用户、问题，问题归类。
+\item {\color{red}提问者和回答者}:提问，回答，搜索/编辑问题/答案，维护账户信息。
+\item {\color{red}浏览者}:浏览问题/答案。
+\end{enumerate}
+
+\section{设计中可能涉及的技术问题}
+\begin{enumerate}
+\item 问答系统多涉及自然语言、信息检索、机器学习等技术问题，同时，不同领域、功能、实现的问答系统也会涉及不尽相同的技术问题。
+\item 我们的医疗问答系统可以问题理解、信息检索、答案抽取3部分。
+\item 与编译技术处理无二义性的程序设计语言不同，问答系统处理的是自然语言，因此需要考虑语法、语义、语用等更丰富、灵活的信息。
+\item 我认为，对于经常被查询/提问的问题，可以通过一批专家进行统一、权威的回答，增加用户的体验好感。对于常问问题以外的问题,可以采用的方法大概可以分为：问题模版和文本搜索。
+\item 同时，作为面向患者的问答系统，应该提供友好的人机交互界面,从管理员和用户两个角度实现各功能。从管理员的角度来看,系统为管理员提供问答数据库管理的功能。从用户的角度来看,系统可以分为医疗系统常问问题的直接查找、问题答案的模板匹配查找、非模板类问题的答案搜索三部分。
+\item 系统还应提供用户反馈机制,以利于知识库的完善和更新。
+\end{enumerate}
+
+\end{document}

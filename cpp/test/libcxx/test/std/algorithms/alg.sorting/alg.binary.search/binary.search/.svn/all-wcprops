@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.sorting/alg.binary.search/binary.search
+END
+binary_search_comp.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.sorting/alg.binary.search/binary.search/binary_search_comp.pass.cpp
+END
+binary_search.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.sorting/alg.binary.search/binary.search/binary_search.pass.cpp
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/llvm-project/!svn/ver/226844/libcxx/trunk/test/libcxx/selftest
+END
+test.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/226844/libcxx/trunk/test/libcxx/selftest/test.pass.cpp
+END
+not_test.sh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/226844/libcxx/trunk/test/libcxx/selftest/not_test.sh.cpp
+END
+test.sh.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/226844/libcxx/trunk/test/libcxx/selftest/test.sh.cpp
+END
+test.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/llvm-project/!svn/ver/226844/libcxx/trunk/test/libcxx/selftest/test.fail.cpp
+END

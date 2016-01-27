@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/llvm-project/!svn/ver/233669/libcxx/trunk/cmake/Modules
+END
+HandleLibCXXABI.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/llvm-project/!svn/ver/232762/libcxx/trunk/cmake/Modules/HandleLibCXXABI.cmake
+END
+MacroEnsureOutOfSourceBuild.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/llvm-project/!svn/ver/121510/libcxx/trunk/cmake/Modules/MacroEnsureOutOfSourceBuild.cmake
+END
+CodeCoverage.cmake
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/233669/libcxx/trunk/cmake/Modules/CodeCoverage.cmake
+END

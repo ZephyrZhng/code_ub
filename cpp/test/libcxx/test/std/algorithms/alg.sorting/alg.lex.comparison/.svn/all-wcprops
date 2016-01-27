@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.sorting/alg.lex.comparison
+END
+lexicographical_compare_comp.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.sorting/alg.lex.comparison/lexicographical_compare_comp.pass.cpp
+END
+lexicographical_compare.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.sorting/alg.lex.comparison/lexicographical_compare.pass.cpp
+END

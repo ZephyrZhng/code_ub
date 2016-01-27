@@ -1,0 +1,21 @@
+2 ab
+2 01
+2 XZ
+a
+Z
+0
+5
+a0Z 1 a XZ
+a0X 1 a XX
+a1X 1 b e
+b1X 1 b e
+beZ 1 b e
+
+K_size K
+Sigma_size Sigma
+Tau_size Tau
+q0
+Z0
+F_size F
+/* real_delta_size = K_size * (Sigma_size + 1) * Tau_size */
+delta_size delta

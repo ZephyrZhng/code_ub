@@ -1,0 +1,14 @@
+5 SABCD
+5 +*0()
+5
+S->AB
+B->+AB|e
+A->CD
+D->*CD|e
+C->(S)|0
+S
+
+VN_size VN
+VT_size VT
+P_size P
+S

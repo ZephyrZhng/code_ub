@@ -1,0 +1,1086 @@
+\documentclass[12pt]{article}
+
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{extarrows}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage{tikz}
+%\usepackage[all,dvips]{xy}
+
+\begin{comment}  
+
+This LaTeX document is a template to be used by Bates mathematics rising seniors to create a thesis proposal. 
+
+As a guide, the document is already filled out to represent a fictitious proposal, and all you need to do is modify the entries below to represent your own proposal.
+
+A PDF version of the fictitious proposal is available on the department's FAQ and Policies pages, at
+                   http://abacus.bates.edu/acad/depts/math/faq.html
+      and
+                   http://abacus.bates.edu/acad/depts/math/policies.html
+      respectively.
+
+Once you have finished your proposal, export it to a PDF file. Give the file a USEFUL name, for example, RiemannThesisProposal.PDF. Email the PDF file to Clementine Brasier, the 
+Academic Administrative Assistant for Hathorn Hall, at cbrasier\@bates.edu
+
+                This LaTex document was created Feb/Mar 2010 by Adriana Salerno and updated Feb 2012 by Meredith Greer
+
+\end{comment}
+
+\setlength{\textheight}{8.5in} \setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in} \setlength{\headsep}{0.0in}
+\setlength{\leftmargin}{0.5in}
+\setlength{\oddsidemargin}{0.0in}
+%\setlength{\parindent}{1pc}
+\setlength{\textwidth}{6.5in}
+%\linespread{1.6}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{lemma*}{Lemma}
+
+\newtheorem{note}{Note}
+\newtheorem*{note*}{Note}
+
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Problem}
+
+\newtheorem{prop}{Proposition}
+\newtheorem*{prop*}{Proposition}
+
+\newtheorem{question}{Question}
+\newtheorem*{question*}{Question}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\bigskip
+\bigskip
+
+\title{Degenerate Elliptic Partial Differential Equations}
+\author{Yihan Zhang}
+\maketitle
+
+\thispagestyle{empty}
+\clearpage
+\tableofcontents\thispagestyle{empty}
+
+\newpage
+\setcounter{page}{1}
+\section{Introduction and preliminaries}
+We discuss regularity of solution of degenerate elliptic partial differential equations by energy estimates. Topics including hyperbolic equations, mixed equations, maximum principles will also be involved. In this note, we mainly care about $H^k$ and $L^p$ estimate.
+
+We always assume that $a_{ij}=a_{ji}$.
+
+Elliptic equations:
+\begin{enumerate}
+	\item Non-divergence: $a_{ij}u_{ij}+b_iu_i+cu=f$
+	\item Divergence: $\partial_i(a_{ij}u_j)+cu=f$
+\end{enumerate}
+
+Notation: 
+\begin{enumerate}
+\item $\dfrac{\partial a_{ij}}{\partial x_k}=a_{ij,k}$
+\item $\dfrac{\partial c}{\partial x_k}=c_{,k}$
+\item Einstein summation convention: repeated index means summation.
+\end{enumerate}
+
+\newpage
+\section{Basic concepts and results}
+Elliptic partial differential equations:
+\begin{enumerate}
+	\item (Strict) elliptic:
+	\[a_{ij}(x)\xi_i\xi_j\ge\lambda|\xi|^2\quad\lambda>0, \forall\xi=(\xi_1,\cdots,\xi_n)\in\mathbb{R}^n, \forall x\in\Omega.\]
+	Or, all eigenvalues of $a_{ij}(x)\ge\lambda$.
+	\item Degenerate elliptic:
+	\[a_{ij}(x)\xi_i\xi_j\ge0\quad\lambda>0, \forall\xi\in\mathbb{R}^n, \forall x\in\Omega.\]
+	\item Uniformly elliptic:
+	\[\Lambda|\xi|^2\ge a_{ij}(x)\xi_i\xi_j\ge\lambda|\xi|^2\quad0<\lambda\le\Lambda, \forall\xi\in\mathbb{R}^n, \forall x\in\Omega.\]
+\end{enumerate}
+
+For uniformly elliptic PDEs, we have following results:
+\begin{enumerate}
+\item Perturbation results(assume $a_{ij}\in C$, and consider $a_{ij}$'s value on a given point, then equation has constant coefficients)
+\begin{enumerate}
+\item (Interior) Schauder Theory(1930s)\\
+If $\Omega' \subset\subset \Omega$, then
+\[a_{ij}, b_i, c, f \in C^{\alpha}(\Omega) \Rightarrow u \in C^{2, \alpha}(\Omega),\]
+and
+\[\|u\|_{C^{2, \alpha}(\Omega')} \le C \left\{ \|u\|_{L^{\infty}(\Omega)} + \|f\|_{C^{\alpha}(\Omega)} \right\},\]
+where $C$ is a constant concerning with dimension of space, elliptic constant $\lambda$, $\Lambda$, and H\"{o}lder module of coefficients.
+More generally, we have
+\[a_{ij}, b_i, c, f \in C^{k, \alpha}(\Omega) \Rightarrow u \in C^{k+2, \alpha}(\Omega).\]
+
+\item $W^{2, p}$ Theory(1950s)\\
+\[a_{ij}\in C, b_i, c \in L^{\infty}, f\in L^P(\Omega) \Rightarrow u \in W^{2, p}(\Omega),\]
+and
+\[\|u\|_{W^{2, p}}(\Omega') \le C\left\{ \|u\|_{L^p(\Omega)} + \|f\|_{L^p(\Omega)} \right\},\]
+where $C$ is a constant concerning with continuous module of $a_{ij}$.
+
+\item $H^k$ Theory(for divergence)\\
+\[ f\in H^k \Rightarrow u \in H^{k+2} .\]
+Due to some historical reason, here $H^k = W^{k, 2}$.
+\end{enumerate}
+
+\item Non-perturbation results(assume $a_{ij}\in L^\infty$)
+\begin{enumerate}
+	\item DeGrorgi-Moser(for divergence, 1960s) $\Rightarrow$ Quasilinear
+	\item Krylov-Safanov(for non-divergence, 1970s) $\Rightarrow$ Fully nonlinear, geometry analysis, etc.
+	\item\label{item: a} $L^p$ estimate $\Rightarrow$ $L^\infty$ estimate (for subsolution) 
+	\item\label{item: b} Weak Harnack (for supsolution) 
+	\item (Combining \ref{item: a} and \ref{item: b}) Harnack $\Rightarrow$ H\"{o}lder continuity (for solution)
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Basic estimates}
+\subsection{Interior $H^1$-estimate for $\Delta u = f$}
+Consider $\Delta u = f$ in $B_1\subset \mathbb{R}^n$. Our goal is to get regularity of $u$ using regularity of $f$. Here technique integration by parts is often used to decrease order of derivative.
+
+We will multiply both side of equation $\Delta u = f$ by $\varphi^2 u$, where cut-off function $\varphi \in C^\infty_0(B_1), \mathrm{supp} \varphi \subset\subset B_1, 0 \le \varphi \le 1$.
+
+First, we try with $-\varphi u$ on $\Delta u = f$.
+\begin{align*}
+\varphi u \Delta u &= \varphi u u_{ii}\\
+&= (\varphi uu_{i})_i - (\varphi u)_i u_i\\
+&= (\varphi uu_i)_i - \varphi u_i^2 - \varphi_i uu_i\\
+\end{align*}
+Then we have
+\[-(\varphi uu_i)_i + \varphi \|\Delta u\|^2 + \varphi_i uu_i = -\varphi uf.\]
+Integrate,
+\begin{align*}
+&\int \varphi |\Delta u|^2 + \int \varphi_i uu_i = -\int \varphi uf \\
+\Rightarrow &\int \varphi |\Delta u|^2 = -\int \varphi_i uu_i - \int \varphi uf.
+\end{align*}
+
+Use Cauchy inequality$\left(|2ab| \le a^2+b^2\right)$,
+\[|\varphi_iuu_i|=\left| \frac{\varphi_iu}{\sqrt{\varphi}}\sqrt{\varphi}u_i \right| \le \frac{1}{2}\left( \varphi|\nabla u|^2 + \frac{|\nabla \varphi|^2}{\varphi}u^2 \right)\]
+
+\begin{align*}
+&\Rightarrow \int \varphi |\nabla u|^2 \le \frac{1}{2}\int\left( \varphi |\nabla u|^2 + \frac{|\nabla \varphi|^2}{\varphi}u^2 \right) - \int \varphi uf \\
+&\Rightarrow \int \varphi |\nabla u|^2 \le \int \frac{|\nabla \varphi|^2}{\varphi}u^2 - 2\int \varphi uf.
+\end{align*}
+
+Notice that when $\varphi = 0$, the first term on right side of inequality does not make sense. Replace $\varphi$ by $\varphi^2$, notice
+\[ \frac{\left|\nabla \varphi^2\right|^2}{\varphi^2} = \frac{|2\varphi \nabla \varphi|^2}{\varphi^2} = 4|\nabla \varphi|^2, \]
+then we have
+\[ \int \varphi^2 |\nabla u|^2 \le 4\int |\nabla \varphi|^2u^2 - 2\int\varphi^2 uf. \]
+Notice
+\[ 2\varphi^2uf = 2(\varphi u)(\varphi f) \le \varphi^2u^2 + \varphi^2f^2 ,\]
+then
+\[ \int \varphi^2|\nabla u|^2 \le \int \left( 4|\nabla \varphi|^2 + \varphi^2 \right)u^2 + \int \varphi^2f^2. \eqno(*)\]
+This is interior $H^1$-estimate, in other words,
+\[ u, f \in L^2 \Rightarrow \nabla u \in L^2 .\]
+
+\subsection{Interior $L^p$-estimate for $\partial_i(a_{ij}u_j) = f$}
+Consider $\partial_i(a_{ij}u_j) = f, a_{ij}\in L^\infty$.
+And we have Poincar\'{e} inequality, if $u\in H^1_0(B_1)$, then
+\[ \int_{B_1} u^2 \le c(n)\int_{B_1} |\nabla u|^2 .\]
+And Sobolev inequality, if $u\in H^1_0(B_1)$, then
+\[ \left( \int_{B_1}u^{2\chi} \right)^{\frac{1}{\chi}} \le c(n) \int_{B_1} |\nabla u|^2, \]
+where
+\begin{equation*}
+\chi =
+\begin{cases}
+\dfrac{n}{n - 2}&n \ge 3\\
+\mathrm{arbitrary}&n=2
+\end{cases}.
+\end{equation*}
+
+For instance, take $n=3$, then $\chi = 3$, we have\
+\[ \left( \int_{B_1}u^{6} \right)^{\frac{1}{3}} \le c(3) \int_{B_1} |\nabla u|^2. \]
+
+Notice
+\[ |\nabla (\varphi u)|^2 = |\varphi \nabla u + \nabla \varphi u|^2 .\]
+Use another form of Cauchy inequality$\left((a+b)^2 \le 2\left(a^2+b^2\right)\right)$, then
+\[ |\nabla (\varphi u)| \le 2\left(\varphi^2|\nabla u|^2 + |\nabla\varphi|^2u^2\right). \]
+Thus we have
+\[(*)\Rightarrow \int |\nabla(\varphi u)|^2 \le \int \left( 10|\nabla\varphi|^2 + 2\varphi^2 \right)u^2 + 2\int\varphi^2f^2,\]
+which shows
+\[\varphi u \in H_0^1(B_1).\]
+Use Sobolev inequality and we have
+\[ \left( \int (\varphi u)^{2\chi} \right)^{\frac{1}{\chi}} \le C\left\{ \int \left(|\nabla \varphi|^2 + \varphi^2\right)u^2 + \int \varphi^2f^2 \right\}.  \]
+Interior $L^p-$ estimate
+\[ u\in L^2, f\in L^2 \Rightarrow u\in L^{2\chi}. \]
+
+We easily ask whether such iteration hold to infinity,
+\[ f\in L^\infty, u\in L^2 \Rightarrow u \in L^{2\chi} \Rightarrow u \in L^{2\chi^2} \Rightarrow \cdots \Rightarrow u \in L^\infty. \]
+
+Moser(1964) said yes and gave the so-called Moser iteration.
+
+\subsection{Estimate for $-\partial_i(a_{ij}u_j)+b_iu_i +cu = 0$}
+Consider
+\[-\partial_i(a_{ij}u_j)+b_iu_i+cu = 0.\]
+Strict ellipticity:
+\[ a_{ij}\xi_i\xi_j \ge \lambda|\xi|^2, \lambda > 0. \]
+Degenerate ellipticity:
+\[ a_{ij}\xi_i\xi_j \ge 0. \]
+Multiply both sides of equation by $\varphi^2 u$ and consider the first term of left side,
+\begin{align*}
+-\varphi^2u\partial_i(a_{ij}u_j)&=-\partial_i\left(\varphi^2ua_{ij}u_j\right)+\left(\varphi^2u\right)_ia_{ij}u_j\\
+&=-\partial_i\left(\varphi^2ua_{ij}u_j\right)+\varphi^2a_{ij}u_iu_j+2\varphi u\varphi_ia_{ij}u_j.
+\end{align*}
+
+Notice
+\[ 2\varphi u\varphi_ia_{ij}u_j=2\varphi u\varphi_ja_{ij}u_i. \]
+For uniform ellipticity,
+\[ \Rightarrow -\partial_i\left(\varphi^2ua_{ij}u_j\right)+\varphi^2a_{ij}u_iu_j + \left(\varphi^2b_i+2\varphi a_{ij}\varphi_j\right)uu_i+\varphi^2cu^2=\varphi^2uf. \]
+For degenerate ellipticity, notice
+\[ uu_i=\left(\frac{u^2}{2}\right)_i, \]
+thus we have
+\[ \Rightarrow \partial_i\left(-\varphi^2ua_{ij}u_j+\frac{1}{2}\left(\varphi^2b_i+2\varphi a_{ij}\varphi_j\right)u^2\right)+\varphi^2a_{ij}u_iu_j\]
+\[+\left(\varphi^2c-\frac{1}{2}\left(\varphi^2b_i+2\varphi a_{ij}\varphi_j\right)_i\right)u^2=\varphi^2uf. \]
+
+\subsubsection{Uniform ellipticity}
+Assume uniform ellipticity and integrate, we have
+\[ \int_{B_1}\varphi^2a_{ij}u_iu_j = \int_{B_1}\left[-\left(\varphi^2b_i+2\varphi a_{ij}\varphi_j\right)uu_i-\varphi^2cu^2+\varphi^2uf\right]. \]
+
+We already know
+\[ \int_{B_1}\varphi^2a_{ij}u_iu_j \ge \lambda \int_{B_1} \varphi^2|\nabla u|^2, \]
+
+and apply Cauchy inequality to second term on right side of the equation,
+\begin{align*}
+-\left(\varphi^2b_i+2\varphi a_{ij}\varphi_j\right)uu_i &= -\left(\sqrt{\lambda} \varphi u_i \right)\left(\frac{1}{\sqrt{\lambda}}\left(\varphi b_i+2a_{ij}\varphi_j\right)u\right) \\
+&\le \frac{1}{2}\left( \lambda \varphi^2 |\nabla u|^2 + \frac{1}{\lambda} |\varphi \nabla b + 2a_{ij}\varphi_j|^2u^2 \right),
+\end{align*}
+thus we have
+\[
+\lambda \int \varphi^2 |\nabla u|^2 \le \int \left\{ \left( -2\varphi^2c+\frac{1}{\lambda}|\varphi \nabla b + 2a_{ij}\varphi_j|^2 \right)u^2 + 2\varphi^2uf \right\}.
+\]
+
+Notice
+\[ 2\varphi^2uf \le \varphi^2u^2+\varphi^2f^2, \]
+thus
+\[
+\lambda \int \varphi^2 |\nabla u|^2 \le \int \left\{ \left( -2\varphi^2c+\frac{1}{\lambda}|\varphi \nabla b + 2a_{ij}\varphi_j|^2 +\varphi^2\right)u^2 + \varphi^2f^2 \right\},
+\]
+which shows
+\[ u \in L^2, f\in L^2\Rightarrow \nabla u \in L^2. \]
+
+\subsubsection{Degenerate ellipticity}
+Assume degenerate ellipticity and integrate, we have
+\[
+\int_{B_1} \varphi^2 a_{ij}u_iu_j = \int_{B_1} \left(-\left(\varphi^2b_i+2\varphi a_{ij}\varphi_j\right)uu_i - \varphi^2cu^2+\varphi^2uf\right) \]
+\[\Rightarrow 
+\int_{B_1} \varphi^2 a_{ij}u_iu_j + \int_{B_1} \left(\varphi^2c-\frac{1}{2}\left(\varphi^2 b_i + 2\varphi a_{ij}\varphi_j\right)_i\right)u^2 = \int_{B_1} \varphi^2uf. 
+\]
+
+We only know
+\[ \int_{B_1} \varphi^2 a_{ij}u_iu_j \ge 0, \]
+while our goal is to obtain$\int u^2, \int |\nabla u|^2, \int a_{ij}u_iu_j$.
+
+Global estimate($\varphi \equiv 1$)\\
+At the very beginning, we have
+\[ \partial_i\left( -a_{ij}uu_j + \frac{1}{2}b_iu^2 \right) + a_{ij}u_iu_j + \left( c - \frac{1}{2}b_{i, i} \right) u^2 = uf. \]
+
+Integrate by parts,
+\[ \int_{\partial B_1} \left( -a_{ij}uu_j\nu_i + \frac{1}{2}b_i\nu_iu^2 \right) + \int_{B_1}a_{ij}u_iu_j + \int_{B_1}\left( c-\frac{1}{2}b_{i, i} \right)u^2 = \int_{B_1}uf, \]
+
+where $\nu_i$ is the $i$th component of normal of $\partial B_1$.
+
+Consider Dirichlet problem
+\begin{equation*}
+\begin{cases}
+	-(a_{ij}u_j)_j + b_iu_i + cu = f, &\mathrm{in}\ B_1\\
+	u=0, &\mathrm{on}\ \partial B_1
+\end{cases}
+.
+\end{equation*}
+
+\[ \Rightarrow \int_{B_1} a_{ij}u_iu_j + \int_{B_1}\left( c - \frac{1}{2}b_{i, i} \right)u^2 = \int_{B_1} uf \]
+
+(Kohn-Nirenberg) Assume $c-\frac{1}{2}b_{i, i} \ge 1$ in $B_1$,
+
+\[\Rightarrow \int_{B_1} u^2 \le \int_{B_1} uf \le \frac{1}{2}\int_{B_1} \left(u^2 + f^2\right) \]
+\[\Rightarrow \int_{B_1} u^2 \le \int_{B_1} f^2 ,\]
+which shows
+\[f\in L^2 \Rightarrow u\in L^2.\]
+
+In fact, 
+\begin{align*}
+c-\frac{1}{2}b_{i, i}\ge k&\Rightarrow \mathrm{estimates\ of\ derivative\ of\ } k\mathrm{th\ oder}\\
+&\not\Rightarrow u \mathrm{\ smooth}.
+\end{align*}
+
+\newpage
+\section{Difficulties}
+Given $(a_{ij})$ in $B_1 \subset \mathbb{R}^n$, 
+\[(a_{ij})\ge0\ (\mathrm{all\ eigenvalues\ } \ge 0).\]
+
+Non-degenerate: 
+\[\mathrm{det}(a_{ij})>0\ (\mathrm{all\ eigenvalues} > 0).\]
+
+Degenerate: 
+\[\mathrm{det}(a_{ij})=0\ (\mathrm{some\ eigenvalue} = 0).\]
+
+Characteristic direction($a_{ij}u_{ij}+b_iu_i+cu = 0$): 
+\[ \xi \mathrm{\ is\ a\ characteristic\ direction\ at\ } x_0\mathrm{\ if\ } a_{ij}(x_0)\xi_i\xi_j=0. \]
+
+Under $(a_{ij}(x_0))\ge 0$.
+\begin{equation*}
+a_{ij}(x_0)\xi_i\xi_j = 0 \iff a_{ij}(x_0)\xi_j=
+\left( 
+	\begin{array}{c}
+		a_{1j}(x_0)\xi_j\\
+		\vdots\\
+		a_{nj}(x_0)\xi_j
+	\end{array}
+\right)
+=0, \forall i.
+\end{equation*}
+
+Consider 
+\[ D_i = \left\{ (x, y)\in\mathrm{R}^2:|x|<1, 0<y<\varepsilon \right\} .\]
+\[ (\partial_x, \partial_y) = (\partial_1, \partial_2).\ \nu = (0, -1). \]
+\begin{example}
+$u_{yy} + y^2u_{xx} = f.$
+\begin{equation*}
+A=\left(
+	\begin{array}{cc}
+		y^2 & 0\\
+		0 & 1
+	\end{array}
+\right)\ge 0.
+\end{equation*}
+\[ \mathrm{det}A=y^2=0 \iff y=0. \]
+\begin{equation*}
+	A\nu=\left(
+		\begin{array}{cc}
+			0 & 0\\
+			0 & 1
+		\end{array}
+	\right)=\left(
+		\begin{array}{c}
+			0\\
+			-1
+		\end{array}
+	\right)=\left(
+		\begin{array}{c}
+			0\\
+			-1
+		\end{array}
+	\right).
+\end{equation*}
+Degenerate on non-characteristics.
+\end{example}
+\begin{example}
+$y^2u_{yy} + u_{xx} = f.$
+\begin{equation*}
+A=\left(
+	\begin{array}{cc}
+		1 & 0\\
+		0 & y^2
+	\end{array}
+\right)\ge 0.
+\end{equation*}
+Similarly,
+\begin{equation*}
+	A\nu=\left(
+		\begin{array}{cc}
+			1 & 0\\
+			0 & 0
+		\end{array}
+	\right)=\left(
+		\begin{array}{c}
+			0\\
+			-1
+		\end{array}
+	\right)=\left(
+		\begin{array}{c}
+			0\\
+			0
+		\end{array}
+	\right).
+\end{equation*}
+Degenerate on characteristics, which is hard to deal with. We have to consider a more specific form
+\[ y^2u_{yy}+u_{xx} + b_1u_x + b_2u_y + cu = f. \]
+\end{example}
+
+\newpage
+
+\section{Framework}
+Consider
+\[ -\partial_i(a_{ij}u_j) + b_iu_i + cu = f \mathrm{\ in\ } D_\varepsilon \subset \mathbb{R}^2, \]
+\[ \mathrm{where\ } D_\varepsilon = \{ (x_1, x_2): |x_1|<1, 0<x_2<\varepsilon \} .\]
+\[ (a_{ij})>0 \mathrm{\ in\ } \overline{D_\varepsilon}\backslash \{ x_2 = 0 \}. \]
+All functions are periodic in $x_1$. (Don't need cut-off functions when integrating by parts.)
+
+\begin{enumerate}
+\item[Case 1.] $\{x_2 = 0\}$ is not characteristic.
+\item[Case 2.] $\{x_2=0\}$ is characteristic.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\section{Degenerate non-characteristics}
+\subsection{Estimate for $u$, $u_2$}
+\[ D_\varepsilon = \{ (x_1, x_2): |x_1| < 1,  |x_2| < \varepsilon \}, \varepsilon \in (0, 1]. \]
+All functions are 2-periodic in $x_1$. Consider 
+\[ a_{ij}u_{ij}+b_iu_i + cu = f \ \mathrm{in\ } D_1. \]
+Assume degenerate on $ \{ x_2 = 0 \} $, which is non-characteristic.
+\[ \nu = (0, 1). \]
+\[
+(0, 1) \left(
+\begin{array}{cc}
+	a_{11} & a_{12}\\
+	a_{21} & a_{22}
+\end{array}
+\right)\left(
+\begin{array}{c}
+	0\\
+	1
+\end{array}
+\right)=a_{22}
+\ne 0 \mathrm{\ on\ } \{ x_2 = 0 \}.
+\]
+
+Assume
+\[ a_{ij}\xi_i\xi_j \ge \lambda_1\xi_1^2 + \lambda_2\xi_2^2, \]
+\[ (0 < )\lambda \le \lambda_2 \le \Lambda, 0 \le \lambda_1 \le \Lambda. \]
+Energy estimate in $D_\varepsilon$.\\
+Multiply both sides of $ a_{ij}u_{ij} + b_iu_i + cu = f $ by $-u$,
+\[ -a_{ij}uu_{ij} = -(a_{ij}uu_j)_i + a_{ij}u_iu_j + a_{ij, i}uu_j \]
+\[ \Rightarrow -(a_{ij}uu_j)_i + a_{ij}u_iu_j + (a_{ij, j} - b_i)uu_i - cu^2 = -uf. \]
+Notice
+\[ uu_i = \left( \frac{u^2}{2} \right)_i. \]
+\[ \Rightarrow \left(-a_{ij}uu_j + \frac{1}{2}(a_{ij, j} - b_i)u^2\right)_i + a_{ij}u_iu_j - (a_{ij, ij} - b_{i, i})\frac{u^2}{2} - cu^2 = -uf \]
+\[ \Rightarrow \left(-a_{ij}uu_j + \frac{1}{2}(a_{ij, j} - b_i)u^2\right)_i + a_{ij}u_iu_j - \left(c - \frac{1}{2}b_{i, i} + \frac{1}{2}a_{ij, ij}\right)u^2 = -uf \]
+Integrate in $ D_\varepsilon $,
+\[
+\int_{\{ x_2 = \pm \varepsilon \}} \left( -a_{ij}uu_j + \frac{1}{2}(a_{ij, j} - b_i)u^2\right)\nu_i + \int_{D_\varepsilon} a_{ij}u_iu_j - \int_{D_\varepsilon} \left( c-\frac{1}{2}b_{i, i} + \frac{1}{2}a_{ij, ij} \right)u^2 \]
+\[= -\int_{D_\varepsilon} uf 
+\le \int_{D_\varepsilon} \left(\frac{u^2}{2}+\frac{f^2}{2} \right)
+, 
+\]
+where
+\[ \nu_i = (0, 1) \mathrm{\ on\ } x_2 = \varepsilon, \nu_i = (0, -1)\mathrm{\ on\ } x_2 = -\varepsilon . \]
+Recall
+\[ a_{ij}u_iu_j \ge \lambda u_2^2. \]
+Set
+\[ M = \sup_{B_1} c + \left|\nabla^2 a_{ij}\right|_{L^\infty(B_1)} + |\nabla b|_{L^\infty(B_1)} + 1. \]
+\[ \int_{D_\varepsilon} a_{ij}u_iu_j + \int_{D_\varepsilon} \left( -c + \frac{1}{2}b_{i, i} - \frac{1}{2}a_{ij, ij} - \frac{1}{2} \right)u^2 \le BI + \int_{D_\varepsilon} f^2, \]
+where $BI$ represents boundary integral concerning with $ u^2 $ and $ uu_2 $.
+\[ \int_{D_\varepsilon}a_{ij}u_iu_j \le \int_{D_\varepsilon} \left( c - \frac{1}{2}b_{i, i} + \frac{1}{2}a_{ij, ij} + \frac{1}{2} \right)u^2 + BI + \int_{D_\varepsilon} f^2 \]
+\[ \Rightarrow \int_{D_\varepsilon} a_{ij}u_iu_j \le BI + M\int_{D_\varepsilon}u^2 + \int_{D_\varepsilon} f^2, \]
+where 
+\[ \int_{D_\varepsilon} a_{ij}u_iu_j \ge \lambda \int_{D_\varepsilon} u^2_2. \]
+Recall Poincar\'{e} inequality. Assume $ u \in C_0^1 (\Omega) $, then
+\[ \int_\Omega u^2 \le C(\Omega)\int_\Omega |\nabla u|^2. \]
+Integrate from $ (x_1, -\varepsilon) $ to $ (x_1, x_2) $,
+\[ u(x_1, x_2) = u(x_1, -\varepsilon) + \int_{-\varepsilon}^{x_2} u_2(x_1, s)\mathrm{d}s. \]
+Square both sides of the equation,
+\begin{align*}
+u^2(x_1, x_2) &\le 2u^2(x_1, -\varepsilon) + 2(x_2 + \varepsilon)\int_{-\varepsilon}^{x_2}u^2_2(x_1, s) \mathrm{d}s \\
+&\le 2u^2(x_1, -\varepsilon) + 4\varepsilon \int_{-\varepsilon}^{\varepsilon} u^2_2(x_1, s)\mathrm{d}s 
+\end{align*}
+\[ \Rightarrow \int_{D_\varepsilon} u^2(x_1, x_2) \le 4\varepsilon \int_{x_2=-\varepsilon}u^2\mathrm{d}x_1+8\varepsilon^2\int_{D_\varepsilon}u^2_2, \]
+which we call Poincar\'{e} inequality in narrow domain.
+\[ \Rightarrow \lambda \int_{D_\varepsilon} u^2_2 \le BI + M\left\{ 4\varepsilon\int_{x_2=-\varepsilon}u^2+8\varepsilon^2\int_{D_\varepsilon}u^2_2 \right\}+\int_{D_\varepsilon}f^2. \]
+If $ 8\varepsilon^2M\le\frac{\lambda}{2} $, then
+\[ \frac{\lambda}{2}\int_{D_\varepsilon} u^2_2 \le BI + 4\varepsilon M\int_{x_2=-\varepsilon}u^2 + \int_{D_\varepsilon}f^2. \]
+\[ \Rightarrow \int_{D_\varepsilon}u^2_2 \le C\left\{ \int_{x_2=\pm\varepsilon}\left(u^2+u^2_2\right)+\int_{D_\varepsilon}f^2 \right\} \]
+Use Poincar\'{e} inequality,
+\[ \Rightarrow\int_{D_\varepsilon}(u^2+u^2_2)\le C\left\{ \int_{x_2=\pm\varepsilon}\left(u^2+u^2_2\right)+\int_{D_\varepsilon}f^2 \right\}. \]
+
+\begin{lemma}
+Set
+\[ M = \sup_{B_1} c + \left|\nabla^2 a_{ij}\right|_{L^\infty(B_1)} + |\nabla b|_{L^\infty(B_1)} + 1.\]
+If $ 4\varepsilon \sqrt{M}\le1 $, then
+\[ \int_{D_\varepsilon} (u^2+u^2_2)\le C\left\{ \int_{x_2=\pm\varepsilon}(u^2+u^2_2)+\int_{D_\varepsilon}f^2 \right\}, \]
+where $ C=C(n, \lambda, \Lambda, |\nabla a_{ij}|, |b|). $
+\end{lemma}
+Comparing with uniformly elliptic equation,
+\[ \int |\nabla u|^2 \le C\left\{ \int u^2 + \int f^2 \right\}. \]
+
+\subsection{Estimate for $u_1$}
+Next, how about $ \int_{D_\varepsilon}u_1^2 $\ ?\\
+Recall
+\[ a_{ij}u_{ij}+b_iu_i + cu = f. \]
+Derive an equation for $ u_1 $.
+\[ a_{ij}(u_1)_{ij} + b_i(u_1)_i + cu_1 + a_{ij, 1}u_{ij}+b_{i, 1}u_i+c_{, 1}u = f_1, \]
+where
+\[ b_{i, 1}u_i = b_{1, 1}u_1 + b_{2, 1}u_2. \]
+And
+\[ a_{ij, 1}u_{ij} = a_{11, 1}u_{11} + 2a_{12, 1}u_{12}+a_{22, 1}u_{22}. \]
+Recall
+\[ a_{11}u_{11}+2a_{12}u_{12}+a_{22}u_{22}+b_iu_i+cu = f \]
+\[ \Rightarrow u_{22} = -\frac{1}{a_{22}} (a_{11}u_{11} + 2a_{12}u_{12} + b_iu_i+cu-f) \]
+\[ \Rightarrow a_{ij, 1}u_{ij} = \left( a_{11, 1} - \frac{a_{11}}{a_{22}}a_{22, 1} \right)u_{11} + 2\left( a_{12, 1} - \frac{a_{12}}{a_{22}}a_{22, 1} \right)u_{12} - \frac{b_i}{a_{22}}u_i - \frac{c}{a_{22}}u+\frac{1}{a_{22}}f. \]
+We can write
+\[ u_{11}=(u_1)_1, u_{12}=(u_1)_2. \]
+Then
+\begin{align*}
+a_{ij}(u_1)_{ij} &+\left(b_1+a_{11, 1}-\frac{a_{11}}{a_{22}} a_{22, 1} \right)(u_1)_1\\
+ &+\left( b_2+2\left( a_{12, 1} - \frac{a_{12}}{a_{22}}a_{22, 1} \right) \right) (u_1)_2\\
+ &+\left( c+b_{1, 1} - \frac{1}{a_{22}}b_1 \right)u_1\\
+&= f_1 - (\cdots)u-(\cdots)u_2
+\end{align*}
+\begin{align*}
+\Rightarrow &a_{ij}(u_1)_{ij} + b_i^{(1)}(u_1)_i + c^{(1)}u_1 = f^{(1)}\\
+&b^{(1)}_1 = b_1+a_{11, 1}-\frac{a_{11}}{a_{22}} a_{22, 1}\\
+&b^{(1)}_2 = b_2+2\left( a_{12, 1} - \frac{a_{12}}{a_{22}}a_{22, 1} \right)\\
+&c^{(1)} = c+b_{1, 1} - \frac{1}{a_{22}}b_1.
+\end{align*}
+Remark: $ b^{(1)}_i $, $ c^{(1)} $($ b^{(k)}_i $, $ c^{(k)} $) differ from $ b_i $, $ c $ by $\mathrm{1^{st}}$ (and $\mathrm{2^{nd}}$) derivatives of $ a_{ij} $, $ b_i $.
+
+Assume $ a_{22} = 1 $.
+\begin{lemma}
+Assume $ c_0m\varepsilon\sqrt{M}\le1 $ where $c_0$ is universal, then
+\begin{align*}
+\int_{D_\varepsilon} &\left\{ u^2 + \left(\frac{\partial{u}}{\partial x_1} \right)^2 + \cdots + \left( \frac{\partial^{m}u}{\partial x_1^m} \right)^2 \right. \\
+&\left. +\left( \frac{\partial u}{\partial x_2} \right)^2 + \left( \frac{\partial^2 u}{\partial x_2 \partial x_1} \right)^2 + \cdots + \left( \frac{\partial^{m + 1}U}{\partial x_2\partial x_1^{m}} \right)^2 \right\}\\
+&\le C\left\{ BI_m + \int_{D_\varepsilon} \left\{ f^2 + \left( \frac{\partial f}{\partial x_1} \right)^2 + \cdots + \left( \frac{\partial^m f}{\partial x_1^m} \right)^2 \right\} \right\}.
+\end{align*}
+\end{lemma}
+
+Define $ M^{(m)} $ for new $ b^{(m)}_i $, $ c^{(m)} $, then $ M^{(m)} = M\mathcal{O}(m)$.\\
+Examine the estimate
+\begin{equation*}
+\begin{array}{cccc}
+	u & u_1 & u_{11} & \cdots \\
+	u_2 & u_{12} & u_{112} & \cdots
+\end{array}
+\end{equation*}
+Recall
+\[ u_{22} = -(a_{11}u_{11} + 2a_{12}u_{12} + b_iu_i + cu + f). \]
+Then we have
+\begin{equation*}
+\begin{array}{ccccc}
+\mathrm{0^{th}} & u & & & \\
+\mathrm{1^{st}} & u_1 & u_2 & & \\
+\mathrm{2^{nd}} & u_{11} & u_{12} & (u_{22}) & \\
+\mathrm{3^{rd}} & u_{111} & u_{112} & (u_{122}) & (u_{222}) \\
+\cdots & & & & 
+\end{array}
+\end{equation*}
+Terms in bracket can be estimated by previous result.\\
+Thus we can estimate $ \partial_{x_1}^{k_1}\partial_{x_2}^{k_2}u, k_2\ge2. $
+
+\subsection{Conclusion}
+\begin{theorem}
+Assume $ c_0m\varepsilon \sqrt{M}\le1 $, then
+\[ \| u \|_{H^m(D_\varepsilon)} \le C\left\{ BI_m + \| f \|_{H^m(D_\varepsilon)} \right\}. \]
+\end{theorem}
+Remark: Fixed $m$, $\varepsilon \approx \frac{1}{m}$.
+\begin{theorem}
+Consider 
+\[ u_{22}+au_{11} +b_iu_i+cu = f\mathrm{\ in\ }D_1,\]
+where 
+\[ a, b_i, c, f \in C^\infty\left(\overline{D_1}\right), u \in H^1. \]
+Assume 
+\[ a > 0 \mathrm{\ in\ }D_1 \backslash \{ x_2 = 0 \}. \]
+Then
+\[ u \in C^\infty(D_1). \]
+\end{theorem}
+Remark: historically, $ a = x_2^{2m} + {hot} $ is assumed in proof.
+\begin{proof}
+	Assume $ u\in C^\infty(D_1) $, attempt to derive $\|u\|_{H^m(D_1)}, \forall m$.\\
+	Fact: $ \forall \varepsilon > 0, \Omega_\varepsilon = D_1 \backslash D_\varepsilon, \lambda(\varepsilon) \le a \le A. $\\
+	Note: $\lambda(\varepsilon)>0, \forall \varepsilon.$\\
+	Use standard interior $H^k$ theory in $\Omega_\varepsilon$,
+	\[ \|u\|_{H^k{\Omega_\varepsilon}}\le C(\varepsilon)\left\{ \|u\|_{L^2(D_1)} + \|f\|_{H^{k-2}(D_1)} \right\} .\]
+	Fix $m$, take $\varepsilon$ s.t. $c_0m\varepsilon\sqrt{M}\le1$, then
+	\[ \|u\|_{H^m(D_\varepsilon)}\le C\left\{ BI_m + \|f\|_{H^m(D_\varepsilon)} \right\} .\]
+	By combining,
+	\[ \|u\|_{H^m(D_1)}\le C\left\{ \|u\|_{L^2(D_1)} + \|f\|_{H^m(D_1)} \right\} .\]
+\end{proof}
+
+\begin{theorem}
+Consider 
+\[ u_{22} + au_{11} + b_iu_i + cu = f \mathrm{\ in\ }B_1, \]
+where 
+\[ a, b_i, c, f \in C^\infty, u\in H^1. \]
+Assume $ a\ge 0. $ And when looking at $a^{-1}(0)$, finite non-vertical curves intersecting at finitely many points.
+Then
+\[ u\in C^\infty. \]
+\end{theorem}
+
+\begin{question}
+If we consider
+\[ u_{11}u_{12} - u_{12}^2 = a, \]
+where
+\[ u\in C^{1, 1}. \]
+Does conclusion of above theorem hold?
+\end{question}
+
+\newpage
+\section{Degenerate on characteristics}
+\[ D_\varepsilon = \{ (x_1, x_2): |x_1|<1, x_2\in (0, \varepsilon) \}. \]
+All functions are 2-periodic in $x_1$.
+\[ \Sigma_\varepsilon = \{ (x_1, \varepsilon): |x_1|<1 \}. \]
+\[ \Sigma_0 = \{ (x_1, 0): |x_1|<1 \}. \]
+\[ a_{ij}u_{ij} + b_iu_i + cu = f \mathrm{\ in\ } D_1. \]
+Assume
+\begin{enumerate}
+	\item $ (a_{ij})$ is positive definite in $\overline{D_1}\backslash \overline{\Sigma_0} = \{ (x_1, x_2):|x_1|\le 1, 0<x_2\le1 \}$, i.e. degeneracy at $\overline{\Sigma_0}$.
+	\begin{align*}
+	&\Rightarrow \mathrm{det}a_{ij} = a_{11}a_{22} - a_{12}^2 = 0\mathrm{\ on\ } \Sigma_0. \\
+	& \Rightarrow a_{12} = 0 \mathrm{\ on\ }\Sigma_0. 
+	\end{align*}
+	\item $\Sigma_0$ is characteristic.
+	\[ \Rightarrow \nu=(0, 1).\ \nu^\mathrm{T}(a_{ij})\nu = a_{22} = 0 \mathrm{\ on\ }\Sigma_0. \]
+\end{enumerate}
+Assume $a_{11}\ne0$ on $\overline{\Sigma_0}$, i.e. only one of two eigenvalues of $(a_{ij})$ is $0$.\\
+Assume 
+\[ a_{ij}\xi_i\xi_j \ge \lambda_1\xi_1^2 + \lambda_2\xi_2^2, \]
+\[ \Lambda\ge\lambda_1\ge\lambda, \Lambda\ge\lambda_2\ge0. \]
+\subsection{Energy estimate}
+Multiply both sides of 
+\[ a_{ij}u_{ij}+b_iu_i + cu = f \]
+by $-u$,
+\[ -a_{ij}uu_{ij} = (-a_{ij}uu_i)_j + a_{ij}u_iu_j+a_{ij, j}uu_i \]
+\[\Rightarrow (-a_{ij}uu_i)_j+a_{ij}u_iu_j+(a_{ij, j}-b_i)uu_i-cu^2=-uf. \]
+Notice
+\[ uu_i=\left(\frac{u^2}{2} \right)_i. \]
+\begin{align*}
+&\Rightarrow \left(-a_{ij}uu_j+\frac{1}{2}(a_{ij, j}-b_i)u^2 \right)_i+a_{ij}u_iu_j-(a_{ij, ij}-b_{i, i})\frac{u^2}{2}-cu^2=-uf \\
+&\Rightarrow \left(-a_{ij}uu_j+\frac{1}{2}(a_{ij, j}-b_i)u^2 \right)_i+a_{ij}u_iu_j- \left( c-\frac{1}{2}b_{i, i}+\frac{1}{2}a_{ij, ij} \right)u^2 =-uf
+\end{align*}
+Integrate in $D_\varepsilon$,
+\[\int_{D_\varepsilon}a_{ij}u_iu_j-\int_{D_\varepsilon}\left(c-\frac{1}{2}b_{i, i}+\frac{1}{2}a_{ij, ij} \right)u^2+\int_{\partial D_\varepsilon}\left(-a_{ij}uu_j+\frac{1}{2}(a_{ij, j}-b_i)u^2 \right)\nu_i=-\int_{D_\varepsilon}uf, \]
+where 
+\[a_{ij}u_iu_j \ge \lambda_1u_1^2+\lambda_2u_2^2,\ \lambda_2 = 0\mathrm{\ on\ }\Sigma_0. \]
+Let
+\begin{align*}
+BI &= \int_{\{x_2 = \varepsilon \}\cup\{x_2 = 0 \}}\left(-a_{2j}uu_j+\frac{1}{2}(a_{2j,j}-b_2)u^2 \right)\nu_2 \\
+&= \int_{\{x_2=\varepsilon \}}\left(-a_{2j}uu_j+\frac{1}{2}(a_{2j, j}-b_2)u^2 \right)-\int_{\{x_2=0\}}\left(-a_{2j}uu_j+\frac{1}{2}(a_{2j, j}-b_2)u^2 \right).
+\end{align*}
+Notice on $\{x_2=0 \}$,
+\[a_{2j}=0,\ a_{2j, j}=a_{21, 1}+a_{22, 2},\ a_{21, 1}=0. \]
+Thus
+\[a_{2j}uu_j+\frac{1}{2}(a_{2j, j}-b_2)u^2=\frac{1}{2}(a_{22,2}-b_2)u^2. \]
+Multiply both sides of 
+\[a_{ij}u_{ij}+b_iu_i+cu=f \]
+by $u_2$,
+\[a_{ij}u_2u_{ij}=(a_{ij}u_2u_i)_j-a_{ij}u_{2j}u_i-a_{ij, j}u_2u_i. \]
+Notice 
+\[u_{2j}u_i=\left(\frac{u_iu_j}{2} \right)_2 .\]
+Then
+\[a_{ij}u_2u_{ij}=(a_{ij}u_2u_i)_j-\left(\frac{1}{2}a_{ij}u_iu_j \right)_2+\frac{1}{2}a_{ij, 2}u_iu_j-a_{ij, j}u_2u_i. \]
+Thus
+\[(a_{ij}u_2u_i)_j-\left(\frac{1}{2}a_{ij}u_iu_j \right)_2+\frac{1}{2}a_{ij,2}u_iu_j-a_{ij,j}u_2u_i+ b_1u_1u_2+b_2u_2^2+cuu_2=fu^2.  \]
+Notice 
+\[cuu_2=c\left(\frac{u^2}{2} \right)_2=\left(c\frac{u^2}{2} \right)_2-c_{,2}\frac{u^2}{2}. \]
+\begin{align*}
+Q(\nabla u)&=\frac{1}{2}a_{ij, 2}u_iu_j-a_{ij, j}u_2u_i+b_1u_1u_2+b_2u_2^2\\
+&=\left(\frac{1}{2}a_{11,2} \right)u_1^2+(a_{12,2}-a_{1j,j}+b_1)u_1u_2+\left(\frac{1}{2}a_{22,2}-a_{2j,j}+b_2 \right)u^2_2\\
+&=\frac{1}{2}a_{11,2}u_1^2+(b_1-a_{11,1})u_1u_2+\left(b_2-a_{12,1}-\frac{1}{2}a_{22,2} \right)u^2_2 
+\end{align*}
+\[(a_{ij}u_2u_j)_i+\left(-\frac{1}{2}a_{ij}u_iu_j+\frac{1}{2}cu^2 \right)_2\]
+\[+\left(\frac{1}{2}a_{11,2}u_1^2+(b_1-a_{11,1})u_1u_2+\left(b_2-a_{12,1}-\frac{1}{2}a_{22,2} \right)u^2_2 \right)-\frac{c_{,2}}{2}u^2=u_2f \]
+Coefficient for $u_2^2$
+\[b_2-a_{12,1}-\frac{1}{2}a_{22,2}=b_2-\frac{1}{2}a_{22,2}\quad\mathrm{on\ }\Sigma_0. \]
+Define
+\[Sgn(L,\Sigma_0)=b_2-\frac{1}{2}a_{22,2}\quad\mathrm{on\ }\Sigma_0. \]
+Will derive estimates depending on the sign of $Sgn(L,\Sigma_0)$.\\
+Integrate in $D_\varepsilon$,
+\[
+\int_{D_\varepsilon}a_{ij}u_iu_j-\int_{D_\varepsilon}\left(c-\frac{1}{2}b_{i,i}+\frac{1}{2}a_{ij,ij} \right)u^2
+\]
+\[
++\int_{\Sigma_\varepsilon}\left(-a_{2j}uu_j+\frac{1}{2}(a_{2j,j}-b_2)u^2 \right)-\int_{\Sigma_0}\frac{1}{2}(a_{22,2}-b_2)u^2=-\int_{D_\varepsilon}uf,
+\eqno(1)
+\]
+where
+\[a_{ij}u_iu_j=a_{11}u^2_1+2a_{12}u_1u_2+a_{22}u^2_2. \]
+\[\int_{D_\varepsilon}\left\{\frac{1}{2}a_{11,2}u^2_1+(b_1-a_{11,1})u_1u_2+\left(b_2-a_{12,1}-\frac{1}{2}a_{22,2}\right)u^2_2 \right\}-\frac{1}{2}\int_{D_\varepsilon} c_{,2}u^2 \]
+\[+\int_{\Sigma_\varepsilon}\left(a_{2j}u_2u_j-\frac{1}{2}a_{ij}u_iu_j+\frac{1}{2}cu^2 \right)-\int_{\Sigma_0}\left(a_{2j}u_2u_j-\frac{1}{2}a_{ij}u_iu_j+\frac{1}{2}cu^2 \right)=\int_{D_\varepsilon}u_2f, \eqno(2) \]
+where
+\[a_{2j}u_2u_j-\frac{1}{2}a_{ij}u_iu_j+\frac{1}{2}cu^2=-\frac{1}{2}a_{11}u_1^2+\frac{1}{2}cu^2. \]
+
+\subsubsection{$Sgn<0$}
+$Sgn(L,\Sigma_0)\le -2c_0<0$.
+\[\exists \varepsilon>0, \mathrm{\ s.t.\ } b_2-a_{12,1}-\frac{1}{2}a_{22,2}\le-c_0<0. \]
+$M(1)-(2)$. Check quadratic in $\nabla u$ first,
+\begin{align*}
+Q_1(\nabla u)&=\left(Ma_{11}-\frac{1}{2}a_{11,2} \right)u_1^2\\
+&+2\left(Ma_{12}-\frac{1}{2}(b_1-a_{11,1}) \right)u_1u_2\\
+&+\left(Ma_{22}-\left(b_2-a_{12,1}-\frac{1}{2}a_{22,2}\right) \right)u^2_2.
+\end{align*}
+On $\Sigma_0$,
+\begin{align*}
+Q_1(\nabla u)&=\left(Ma_{11}-\frac{1}{2}a_{11,2} \right)u_1^2\\
+&-2\left(\frac{1}{2}(b_1-a_{11,1}) \right)u_1u_2\\
+&-Sgn(L,\Sigma_0)u_2^2.
+\end{align*}
+By choosing $\varepsilon$ small and $M$ large,
+\[C_1|\nabla u|^2\le Q_1(\nabla u) .\]
+On $\Sigma_0$,
+\[
+-\frac{M}{2}(a_{22,2}-b_2)u^2-\frac{1}{2}a_{11}u_1^2+\frac{1}{2}cu^2\]
+\[
+=\frac{1}{2}(c-Ma_{22,2}+Mb_2)u^2-\frac{1}{2}a_{11}u_1^2.
+\]
+\begin{lemma}
+Assume $Sgn(L,\Sigma_0)<0 $ on $\overline{\Sigma_0}$. Then $\exists \varepsilon_0$, s.t. $\forall \varepsilon \in (0, \varepsilon_0)$,
+\[\int_{D_\varepsilon}\left(u^2+|\nabla u|^2\right)\le c_0\left\{\int_{D_\varepsilon}f^2+\int_{\Sigma_\varepsilon}\left(u^2+|\nabla u|^2\right)+\int_{\Sigma_0}\left(u^2+u_1^2\right) \right\}. \]
+Use Poincar\'{e} inequality in narrow domains, first term on the left side $u^2$ is controlled by $u^2_2$. 
+\end{lemma}
+
+\subsubsection{$Sgn>0$}
+$Sgn(L,\Sigma_0)\ge 2c_0>0$.\\
+$\exists \varepsilon>0, $ s.t. $b_2-a_{12,1}-\frac{1}{2}a_{22,2}>c_0>0. $\\
+M(1)+(2). Check quadratic in $\nabla u$ on $\Sigma_0$ first,
+\begin{align*}
+Q_2(\nabla u) &=\left(Ma_{11}+\frac{1}{2}a_{11,2} \right)u_1^2\\
+&+2\left(\frac{1}{2}(b_1-a_{11,1}) \right)u_1u_2\\
+&+Sgn(L,\Sigma_0)u^2_2.	
+\end{align*}
+By choosing $\varepsilon$ small and $M$ large,
+\[C_2|\nabla u|^2 \le Q_2(\nabla u). \]
+On $\Sigma_0$,
+\[-\frac{M}{2}(a_{22,2}-b_2)u^2+\frac{1}{2}a_{11}u_1^2-\frac{1}{2}cu^2 \]
+\[ =\frac{1}{2}(-c-Ma_{22,2}+Mb_2)u^2+\frac{1}{2}a_{11}u^2_1. \]
+Look at several terms,
+\[C_2\int_{D_\varepsilon}|\nabla u|^2+\int_{\Sigma_0}a_{11}u^2_1 \]
+\[ \le \int_{D_\varepsilon}(\cdots)u^2+\int_{\Sigma_\varepsilon}(\cdots)\left(u^2+|\nabla u|^2\right)+\int_{\Sigma_0}(\cdots)u^2+\int_{D_\varepsilon}f^2. \]
+Note: $\int_{\Sigma_0}u^2 $ is not free.
+\begin{align*}
+&u(x_1, 0)=u(x_1,\varepsilon)-\int_0^\varepsilon u_2(x_1,t)\mathrm{d}t\\
+\Rightarrow&u^2(x_1,0)\le 2u^2(x_1,\varepsilon)+2\varepsilon\int_0^\varepsilon u^2_2(x_1,x_2)\mathrm{d}x_2\\
+\Rightarrow&\int_{\Sigma_0}u^2\le 2\int_{\Sigma_\varepsilon}u^2+2\varepsilon\int_{D_\varepsilon}u^2_2
+\end{align*}
+\begin{lemma}
+Assume $Sgn(L, \Sigma_0)>0$ on $\Sigma_0$. Then $\exists \varepsilon_0 $, s.t. $\forall\varepsilon\in(0, \varepsilon_0)$
+\[\int_{D_\varepsilon}\left(u^2+|\nabla u|^2\right)+\int_{\Sigma_0}u^2_1\le c_0\left\{\int_{D_\varepsilon}f^2+\int_{\Sigma_\varepsilon}\left(u^2+|\nabla u|^2\right) \right\}. \]
+\end{lemma}
+The above lemma shows a weird fact that uniqueness of solution is determined by equations itself rather than boundary values.
+
+\subsection{Higher regularity}
+Calculate derivatives of $k$th order of both sides of 
+\[\mathrm{L}u=a_{ij}u_{ij}+b_iu_i+cu = f. \]
+\[a_{ij}u_{kij}+b_iu_{ki}+cu_k+a_{ij,k}u_{ij}+b_{i,k}u_i=f_k-c_{,k}u,\ k=1,2. \]
+\[\mathrm{L}u_1+a_{11,1}u_{11}+2a_{12,1}u_{12}+a_{22,1}u_{22}+b_{1,1}u_1+b_{2,1}u_2=f_1-c_{,1}u \]
+\[\mathrm{L}u_2+a_{11,2}u_{11}+2a_{12,2}u_{12}+a_{22,2}u_{22}+b_{1,2}u_1+b_{2,2}u_2=f_2-c_{,2}u \]
+Let
+\[U=\left(\begin{array}{c}u_1\\u_2 \end{array}\right) .\]
+\[a_{ij}U_{ij}+b_iU_i+cU+\tilde{B_1}U_1+\tilde{B_2}U_2+\tilde{B_0} U=F_2 \]
+\[ 
+\tilde{B_1}U_1+\tilde{B_2}U_2=
+\left(
+\begin{array}{cc}
+a_{11,1}&b_{12}\\
+a_{11,2}&b_{22}
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+u_{11}\\
+u_{21}
+\end{array}
+\right)+
+\left(
+\begin{array}{cc}
+b_{11}^2&a_{22,1}\\
+b_{21}^2&a_{22,2}
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+u_{12}\\
+u_{22}
+\end{array}
+\right)
+\]
+
+\[b_{12}^1+b_{11}^2=2a_{12,1} \]
+\[b_{22}^1+b_{21}^2=2a_{12,2} \]
+$U=\left(\begin{array}{c}u_1\\u_2\end{array}\right) $ satisfies
+\[\mathrm{L_1}u = a_{ij}U_{ij}+\left(b_iI+\tilde{B_i}\right)U_i+\left(cI+\tilde{B_0}\right)U=F. \]
+\begin{align*}
+Sgn(L,\Sigma_0) &=\frac{1}{2} \left(\left(b_2I+\tilde{B_2}\right)+\left(b_2I+\tilde{B_2}\right)^{\mathrm{T}}\right)-\frac{1}{2}a_{22,2}I\\
+&=\left(b_2-\frac{1}{2}a_{22,2}\right)I+\frac{1}{2}\left(\tilde{B_2}+\tilde{B_2}^\mathrm{T}\right) \quad \mathrm{on\ }\Sigma_0.
+\end{align*}
+Notice 
+\[b_2-\frac{1}{2}a_{22,2}I=Sgn(L,\Sigma_0). \]
+Take
+\[ 
+\tilde{B_2}=\left(\begin{array}{cc}0&a_{22,1}\\0&a_{22,2} \end{array} \right)
+=\left(\begin{array}{cc}0&0\\0&a_{22,2} \end{array} \right)\ \mathrm{on\ }\Sigma_0.
+\]
+
+\[
+\Rightarrow Sgn(L,\Sigma_0) = \left(b_2-\frac{1}{2}a_{22,2} \right)I+
+\left(\begin{array}{cc}
+0&0\\
+0&a_{22,2}|_{\Sigma_0}
+\end{array}\right)=\left.
+\left(\begin{array}{cc} 
+b_2-\frac{1}{2}a_{22,2}&0\\
+0&b_2+\frac{1}{2}a_{22,2}
+\end{array} \right)\right|_{\Sigma_0},
+\]
+where
+\[Sgn(L,\Sigma_0)=b_2-\frac{1}{2}a_{22,2}. \]
+\begin{lemma}
+$Sgn(L,\Sigma_0)<0$,
+\[\int_{D_\varepsilon}f^2,\ \int_{\Sigma_0}\left(u^2+u_1^2\right)\xmapsto[]{{\mathrm{control}}}\int_{D_\varepsilon}\left(u^2+|\nabla u|^2\right) .\]
+\end{lemma}
+\begin{lemma}
+$Sgn(L,\Sigma_0)<0$,
+\[\int_{D_\varepsilon}f^2\xmapsto[]{{\mathrm{control}}}\int_{D_\varepsilon}\left(u^2+|\nabla u|^2\right)+\int_{\Sigma_0}u_1^2. \]
+\end{lemma}
+For estimates on $2^{\mathrm{nd}}$ derivative, need
+\[b_2-\frac{1}{2}a_{22,2}<0\ (\Leftarrow)\ b_2+\frac{1}{2}a_{22,2}<0; \]
+or
+\[b_2-\frac{1}{2}a_{22,2}>0\ (\Rightarrow)\ b_2+\frac{1}{2}a_{22,2}>0 \]
+on $\Sigma_0$.
+
+Recall
+\[
+\left.\begin{array}{c}
+a_{22}=0\ \mathrm{on\ }\Sigma_0\\
+a_{22}>0\ \mathrm{in\ }D_\varepsilon
+\end{array}\right\}\Rightarrow a_{22,2}\ge0\ \mathrm{on\ }\Sigma_0.
+\]
+
+\begin{theorem}
+Assume 
+\[\left(b_2-\frac{1}{2}a_{22,2}\right)+(m-1)a_{22,2}<0\] 
+on $\overline{\Sigma_0}$.
+Then
+\[\|u\|_{H^m(D_\varepsilon)}\le C\left\{\|f\|_{H^{m-1}(D_\varepsilon)}+\|u\|_{H^m(\Sigma_\varepsilon)}+\|u\|_{H^m_{{\mathrm{tangent}}}(\Sigma_0)} \right\}. \]
+\end{theorem}
+\begin{theorem}
+Assume
+\[b_2-\frac{1}{2}a_{22,2}>0\mathrm{\ on\ }\overline{\Sigma_0}, \]
+Then
+\[\|u\|_{H^m(D_\varepsilon)}+\|u\|_{H^m_{{\mathrm{tangent}}}(\Sigma_0)}\le C\left\{\|f\|_{H^{m-1}(D_\varepsilon)}+\|u\|_{H^m(\Sigma_\varepsilon)} \right\}.  \]
+\end{theorem}
+
+\begin{question}[Isometric Embedding of Positive Disc]
+$B_1\subset \mathbb{R}^2,\ g $ is a metric in $\overline{B_1}$.
+$K$ is Gaussian curvature. $K>0 $ in $B_1$. $K=0,\ \nabla K\ne 0$ on $\partial B_1$. $\int_{B_1}K\mathrm{d}g=4\pi. $\\
+Question: $\left(\overline{B_1}, g\right)\xhookrightarrow[]{\mathrm{isometric\ embedding}} \mathbb{R}^3. $
+\end{question}
+
+\newpage
+\section{Hyperbolic equations}
+\begin{question}
+$u_{xx}u_{yy}-u_{xy}^2=K(x,y)$ in $B_1\subset\mathbb{R}^2=\{(x,y) \}$. \\
+Notice $\mathrm{det}\left(D^2u\right)=\lambda_1\lambda_2. $\\
+$K>0\iff\lambda_1,\lambda_2$ have the same sign $\Rightarrow$ elliptic.\\
+$K<0\iff\lambda_1,\lambda_2$ have different signs $\Rightarrow$ hyperbolic.\\
+Question(existence of local solution): for any smooth $K$ in $B_1$, does there exist a smooth solution $u$? (Possibly in smaller $B_r$). 
+\end{question}
+
+Analysis
+\begin{enumerate}
+\item $K(0)>0$, elliptic(solved).
+\item $K(0)<0$, hyperbolic(solved).
+\item $K(0)=0$, unknown.
+\end{enumerate}
+
+Results
+\begin{enumerate}
+	\item $K\ge0$, solved.
+	\item $K\le0$, solved with stability requirement.
+	\item $K$ mixed sign.
+	\begin{enumerate}
+	\item $K(x,y)\approx y$, solved.
+	\item $K(x,y)\approx x^2-y^2$, solved.
+	\end{enumerate}
+\end{enumerate}
+
+One-dimensional hyperbolic equation, Cauchy problem($\mathrm{R}^2=\{(x,t) \} $)
+\begin{equation*}
+\begin{cases}
+u_{tt}-a(x,t)u_{xx}+b_0u_t+b_1u_x+cu=f & \mathrm{in\ } \mathbb{R}\times(0,T)\\
+u|_{t=0}=u_0,\ u_t|_{t=0}=u_1 & \mathrm{on\ } \mathbb{R}
+\end{cases}
+\end{equation*}
+
+Strict hyperbolic: $a\ge a_0>0\Rightarrow $ well-posed.
+
+Degenerate hyperbolic: $a\ge0 $.
+\begin{example}[1983]
+$\exists a=a(t) $ smooth, $\exists u_0, u_1 $ smooth,
+\begin{equation*}
+	\begin{cases}
+	u_{tt}-a(t)u_{xx}=0 & \mathrm{in\ }\mathbb{R}\times(0,T)\\
+	u|_{t=0}=u_0,\ u_t|_{t=0}=u_1 & \mathrm{on\ } \mathbb{R}
+	\end{cases}
+\end{equation*}
+\end{example}
+
+\begin{conjecture}
+If $a=a(x,t) $ analytic in $t$, and smooth in $x$, well-posed holds.
+\end{conjecture}
+A strategy: 
+\begin{align*}
+a(x,t) =t^m+c_1(x)t^{m-1}+\cdots+c_m(x)\ge0\quad\mathrm{in\ }\mathbb{R}\times(-T,T),
+\end{align*}
+where $c_1,\cdots,c_m $ smooth in $x$, $m$ even.
+
+Known: $m=2$ and $m=4$.
+
+Back to hyperbolic equation
+\[u_{tt}-au_{xx}=f. \]
+Recall elliptic equation. We multiplied both sides of 
+\[a_{ij}u_{ij}+b_iu_i+cu=f \]
+by $u$.
+
+Now we multiply both sides of hyperbolic equation by $u_t\mathrm{e}^{-\mu t} $.
+\[\mathrm{e}^{-\mu t}u_tu_{tt}=\mathrm{e}^{-\mu t}\left(\frac{u_t^2}{2}\right)_t = \left(\mathrm{e}^{-\mu t}\frac{u_t^2}{2} \right)_t+\mu\mathrm{e}^{-\mu t}\frac{u_t^2}{2} \]
+\[-\mathrm{e}^{-\mu t}au_tu_{xx}=-\left(\mathrm{e}^{-\mu t}au_tu_x \right)_x+\mathrm{e}^{-\mu t} a_xu_tu_x+\mathrm{e}^{-\mu t}au_{xt}u_x \]
+Notice
+\[u_{xt}u_x=\left(\frac{u_x^2}{2} \right)_t. \]
+Then
+\[-\mathrm{e}^{-\mu t}au_tu_{xx}=-\left(\mathrm{e}^{-\mu t}au_tu_x \right)_x+\left(\mathrm{e}^{-\mu t}a\frac{u_x^2}{2} \right)_t+\mu\mathrm{e}^{-\mu t}a\frac{u_x^2}{2}-\mathrm{e}^{-\mu t}a_t\frac{u_x^2}{2}+\mathrm{e}^{-\mu t}a_xu_xu_t \]
+\[\Rightarrow \frac{1}{2}\left(\mathrm{e}^{-\mu t}u_t^2+\mathrm{e}^{-\mu t}au_x^2 \right)_t-\left(\mathrm{e}^{-\mu t}au_tu_x\right)_x+\frac{1}{2}\mu\mathrm{e}^{-\mu t} \left(u_t^2+au_x^2\right)-\frac{1}{2}\mathrm{e}^{-\mu t}a_tu_x^2+\mathrm{e}^{-\mu t}a_xu_tu_x=\mathrm{e}^{-\mu t}u_tf. \]
+
+\subsection{Strict hyperbolicity}
+Strict hyperbolicity: $a\ge a_0>0$.
+
+Cauchy inequality
+\[\left|\mathrm{e}^{-\mu t}a_xu_tu_x \right|\le\mathrm{e}^{-\mu t}|a_x|\frac{1}{2}\left(u_x^2+u_t^2\right). \]
+\[\Rightarrow(\cdots)_t+(\cdots)_x+\frac{1}{2}\mu \mathrm{e}^{-\mu t} \left(u_t^2+au_x^2 \right)\le \frac{1}{2}\mathrm{e}^{-\mu t}\left(|a_t|u_x^2+|a_x|u_x^2+|a_x|u_t^2+u_t^2 \right)+\frac{1}{2}\mathrm{e}^{-\mu t}f^2 \]
+
+Take
+\[\mu = \frac{1}{a_0}|\nabla a|_{L^\infty}+|a_x|_{L^\infty}+2. \]
+\[\Rightarrow (\cdots)_t+(\cdots)_x+\frac{1}{2}\mathrm{e}^{-\mu t}\left(u_t^2+a_0u_x^2 \right)\le \frac{1}{2}\mathrm{e}^{-\mu t}f^2 \]
+Integrate in $\mathbb{R}\times(0,T)$,
+\[\int_{\mathbb{R}\times\{T\}}\mathrm{e}^{-\mu t}\left(u_t^2+au_x^2 \right)+\int_{\mathbb{R}\times(0,T)}\mathrm{e}^{-\mu t}\left(u_t^2+a_0u_x^2 \right) \le \int_{\mathbb{R}\times\{0\}}\left(u_t^2+au_x^2 \right)+\int_{\mathbb{R}\times(0,T)}\mathrm{e}^{-\mu t}f^2. \]
+Key: the positive lower bound for $a$.
+
+\subsection{Degenerate hyperbolicity}
+Degenerate hyperbolicity: $a\ge 0$.
+\[(\cdots)_t-2(\cdots)_x+\mu \mathrm{e}^{-\mu t} \left(u_t^2+au_x^2 \right)=\mathrm{e}^{-\mu t}a_tu_x^2-2\mathrm{e}^{-\mu t}a_xu_tu_x+2\mathrm{e}^{-\mu t}u_tf \]
+\[\left|2\mathrm{e}^{-\mu t}a_xu_tu_x \right|\le \mathrm{e}^{-\mu t} \left(u_t^2+a_x^2u_x^2 \right)\le \mathrm{e}^{-\mu t} \left(u_t^2+C_*au_x^2 \right) \]
+\begin{lemma}
+Suppose $h=h(x)\ge0\in C^2(\mathbb{R})$. Then
+\[\left|\left(\sqrt{h} \right)'(x) \right| =\frac{h'}{2\sqrt{h}}\le C\left(\left|\nabla^2h \right|_{L^\infty} \right). \]
+\end{lemma}
+\begin{proof}
+Use Taylor expansion.
+\end{proof}
+
+\[\Rightarrow(\cdots)_t-2(\cdots)_x+(\mu-\mu_0)\mathrm{e}^{-\mu t}\left(u_t^2+au_x^2 \right)\le \mathrm{e}^{-\mu t}a_tu_x^2+\mathrm{e}^{-\mu t}f^2. \]
+
+If we have $a_t\le Ca$,
+\[\Rightarrow (\cdots)_t-2(\cdots)_x+(\mu-\mu_0^*)\mathrm{e}^{-\mu t}\left(u_t^2+au_x^2 \right)\le \mathrm{e}^{-\mu t}f^2. \]
+However, it's impossible to satisfy $\frac{a_t}{a}\le C $. See
+\begin{example}
+\[a(t)=\prod_{i=1}^m(t-t_i)\]
+\[\Rightarrow \frac{a_t}{a}=\sum_{i=1}^m \frac{1}{t-t_i},\]
+which is $\infty$ for $t=t_i$.
+\end{example}
+Introduce weight function $w=w(x,t)$ and multiply both sides of 
+\[u_{tt}-au_{xx}=f \]
+by $wu_t\mathrm{e}^{-\mu t} $.
+\[\mathrm{e}^{-\mu t}wu_tu_{tt}=\mathrm{e}^{-\mu t}w\left(\frac{u_t^2}{2} \right)_t=\left(\mathrm{e}^{-\mu t}w\frac{u_t^2}{2} \right)_t+\mu\mathrm{e}^{-\mu t}w\frac{u_t^2}{2}-\mathrm{e}^{-\mu t}w_t\frac{u_t^2}{2} \]
+\[-\mathrm{e}^{-\mu t}awu_tu_{xx}=-\left(\mathrm{e}^{-\mu t}awu_tu_x \right)_x+\mathrm{e}^{-\mu t}awu_{xt}u_x+\mathrm{e}^{-\mu t}(aw)_xu_tu_x \]
+Notice
+\[u_{xt}u_x=\left(\frac{u_x^2}{2} \right)_t. \]
+Then
+\[-\mathrm{e}^{-\mu t}awu_tu_{xx}=-\left(\mathrm{e}^{-\mu t}awu_tu_x \right)_x+\left(\mathrm{e}^{-\mu t}aw\frac{u_x^2}{2} \right)_t+\mu\mathrm{e}^{-\mu t}aw\frac{u_x^2}{2}-\mathrm{e}^{-\mu t}(aw)_t\frac{u_x^2}{2}+\mathrm{e}^{-\mu t}(aw)_xu_tu_x. \]
+\[\left(\mathrm{e}^{-\mu t}\left(wu_t^2+wau_x^2 \right) \right)_t-2\left(\mathrm{e}^{-\mu t}awu_tu_x \right)_x+\mu\mathrm{e}^{-\mu t}w\left(u_t^2+au_x^2 \right) \]
+\[=\mathrm{e}^{-\mu t}w_tu_t^2+\mathrm{e}^{-\mu t}(aw)_tu_x^2-2\mathrm{e}^{-\mu t}(aw)_xu_tu_x+2\mathrm{e}^{-\mu t}wu_tf=RHS \]
+\[RHS\le\mathrm{e}^{-\mu t}\left(\frac{w_t}{w}wu_t^2+\frac{(wa)_t}{wa}wau_x^2+2(aw)_xu_tu_x+wu_t^2+wf^2 \right) \]
+Notice
+\[2(aw)_xu_tu_x=2\frac{(aw)_x}{w\sqrt{a}}\left(\sqrt{w}u_t \right)\left(\sqrt{wa}u_x \right)\le\frac{|(aw)_x|}{w\sqrt{a}}wu_t^2+\frac{|(aw)_x|}{w\sqrt{a}}wau_x^2, \]
+and
+\[\frac{(aw)_x}{w\sqrt{a}}=\frac{a_xw}{w\sqrt{a}}+\frac{aw_x}{w\sqrt{a}}=\frac{a_x}{\sqrt{a}}+\frac{w_x}{w}\sqrt{a}, \]
+where $\frac{a_x}{\sqrt{a}} $ is bounded. Then
+\begin{align*}
+RHS\le \mathrm{e}^{-\mu t}&\left( \frac{w_t}{w}wu_t^2+\frac{(wa)_t}{wa}wau_x^2+\frac{|w_x|}{w}\sqrt{a}wu_t^2+\frac{|w_x|}{w}\sqrt{a}wau_x^2\vphantom{\frac{|a_x|}{\sqrt{a}}} \right.\\
+&\left.+\frac{|a_x|}{\sqrt{a}}wu_t^2+\frac{|a_x|}{\sqrt{a}}wau_x^2+wu_t^2+wf^2 \right),
+\end{align*}
+where terms in first line in bracket are uncontrolled while terms in second line are controlled. Require
+\[
+\begin{cases}
+\dfrac{w_t}{w}+\dfrac{|w_x|}{w}\sqrt{a}\le C_1\\
+\dfrac{(wa)_t}{wa}+\dfrac{|w_x|}{w}\sqrt{a}\le C_2
+\end{cases}.\eqno(*)
+\]
+\begin{lemma}
+Assume (*) holds. Then
+\[\int_{\mathbb{R}\times\{T\}}\mathrm{e}^{-\mu t}w\left(u_t^2+au_x^2 \right)+(\mu-\mu_0)\int_{\mathbb{R}\times(0,T)}\mathrm{e}^{-\mu t}\left(wu_t^2+wau_x^2 \right)\]
+\[\le\int_{\mathbb{R}\times\{0\}}w\left(u_t^2+au_x^2 \right)+\int_{\mathbb{R}\times(0,T)}\mathrm{e}^{-\mu t}wf^2. \]
+\end{lemma}
+\begin{example}
+$a\ge0,\partial_t a\ge 0. $ (e.g. $a(x,t)=t^m $ in $\mathbb{R}\times(0,T) $) Take $w=\frac{1}{a} $.
+\[\Rightarrow \frac{w_x}{w}=\frac{-\frac{a_x}{a^2}}{\frac{1}{a}}=-\frac{a_x}{a} \]
+\[\Rightarrow \frac{|w_x|}{w}\sqrt{a}=\frac{|a_x|}{\sqrt{a}}, \]
+which is bounded.
+\[w_t=-\frac{a_t}{a^2}\le0,wa=1. \]
+Hence (*) is verified.
+\[\frac{(wa)_t}{wa}=\frac{w_t}{w}+\frac{a_t}{a} \]
+\[a=\prod_{i=1}^m(t-t_i)\Rightarrow \frac{a_t}{a}=\sum_{i=1}^m\frac{1}{t-t_i} \]
+Consider $a(x,t)=t^m+c_1(x)t^{m-1}+\cdots+c_m(x) $ in $\mathbb{R}\times(0,T)$. Study the set $\{a(x,t)=0 \}$. Fix $x$, $a(x,t)=0$ has $m$ (complex) zeros. For $m$ continuous functions $t=t_i(x),i=1,\cdots,m$, $a(x,t_i(x))=0$.\\
+Question:
+\begin{enumerate}
+\item $t_i=t_i(x)\in C^{\frac{1}{m}}(\mathbb{R})\Rightarrow $ Sobolev embedding. (solved)
+\item $t_i=t_i(x)\in BV(\mathbb{R})\Rightarrow$ Integration by parts. (unsolved)
+\end{enumerate}
+\end{example}
+
+\begin{theorem}
+If $a$ has no complex roots, then $w$ can be chosen to satisfy (*) and hence energy estimates hold.
+\end{theorem}
+\begin{theorem}
+Same if $a$ has at most one pair of complex roots.
+\end{theorem}
+\begin{theorem}
+Same if $\deg a=4$.
+\end{theorem}
+
+\subsection{Mixed type}
+
+\[u_{tt}+tu_{xx}=f \eqno(Tricomi) \]
+Construct a smooth solution in $B_1$.
+\begin{enumerate}
+\item[Step 1.] $B_1^+\subset \Omega_+ $. Solve
+\[ 
+\begin{cases}
+u_{tt}+tu_{xx}=f& \mathrm{in\ }\Omega_+\\
+u=0&\mathrm{on\ } \partial \Omega_+.
+\end{cases}
+\]
+Degenerate elliptic on non-characteristic $x=0$.
+\[\Rightarrow u^+\in C^\infty \left(\overline{\Omega_+}\right) \]
+\item[Step 2.]
+\[
+\begin{cases}
+u_{tt}+tu_{xx}=f \mathrm{\quad in\ }\mathbb{R}\times(-T,0)\\
+u|_{t=0}=0, u_t|_{t=0}=\left.\frac{\partial u^+}{\partial t}\right|_{t=0}
+\end{cases}
+\]
+Degenerate hyperbolic.
+\[\Rightarrow u^-\in C^\infty(\mathbb{R}\times[-T,0]) \]
+\end{enumerate}
+\[\Rightarrow u\in C^\infty(B_1) \]
+Same method applies $u_{tt}+\left(x^2-t^2 \right)u_{xx}=f $. Difficulty: smoothness at the origin.
+
+% \begin{thebibliography}{99}
+% NOTE: change the "9" above to "99" if you have MORE THAN 10 references.
+
+% \bibitem{erdos1} Erd\"{o}s, P. (1973). Problems and results on combinatorial number theory \uppercase\expandafter{\romannumeral 1}. In \textit{A survey of combinatorial theory (Proc. Internat. Sympos., Colorado State Univ., Fort Collins, Colo., 1971)} (pp. 117-138).
+
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document} 

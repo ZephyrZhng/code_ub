@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}Introduction and preliminaries}{1}{section.1}
+\contentsline {section}{\numberline {2}Basic concepts and results}{2}{section.2}
+\contentsline {section}{\numberline {3}Basic estimates}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Interior $H^1$-estimate for $\Delta u = f$}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Interior $L^p$-estimate for $\partial _i(a_{ij}u_j) = f$}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Estimate for $-\partial _i(a_{ij}u_j)+b_iu_i +cu = 0$}{6}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Uniform ellipticity}{7}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Degenerate ellipticity}{7}{subsubsection.3.3.2}
+\contentsline {section}{\numberline {4}Difficulties}{9}{section.4}
+\contentsline {section}{\numberline {5}Framework}{10}{section.5}
+\contentsline {section}{\numberline {6}Degenerate non-characteristics}{11}{section.6}
+\contentsline {subsection}{\numberline {6.1}Estimate for $u$, $u_2$}{11}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Estimate for $u_1$}{13}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Conclusion}{15}{subsection.6.3}
+\contentsline {section}{\numberline {7}Degenerate on characteristics}{17}{section.7}
+\contentsline {subsection}{\numberline {7.1}Energy estimate}{17}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}$Sgn<0$}{19}{subsubsection.7.1.1}
+\contentsline {subsubsection}{\numberline {7.1.2}$Sgn>0$}{20}{subsubsection.7.1.2}
+\contentsline {subsection}{\numberline {7.2}Higher regularity}{21}{subsection.7.2}
+\contentsline {section}{\numberline {8}Hyperbolic equations}{24}{section.8}
+\contentsline {subsection}{\numberline {8.1}Strict hyperbolicity}{25}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Degenerate hyperbolicity}{26}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Mixed type}{28}{subsection.8.3}

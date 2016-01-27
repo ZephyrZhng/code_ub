@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/rand/rand.synopsis
+END
+version.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/rand/rand.synopsis/version.pass.cpp
+END

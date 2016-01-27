@@ -1,0 +1,77 @@
+10
+
+dir
+236232
+http://llvm.org/svn/llvm-project/libcxx/trunk/test/std/iterators/stream.iterators
+http://llvm.org/svn/llvm-project
+
+
+
+2015-04-16T21:36:54.381759Z
+235134
+marshall
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+91177308-0d34-0410-b5e6-96231b3b80d8
+
+ostreambuf.iterator
+dir
+
+nothing_to_do.pass.cpp
+file
+
+
+
+
+2015-04-30T13:39:34.260065Z
+de8ffdb592ab304b14832467aef77cb3
+2014-12-20T01:40:03.335463Z
+224658
+ericwf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+372
+
+ostream.iterator
+dir
+
+iterator.range
+dir
+
+istreambuf.iterator
+dir
+
+istream.iterator
+dir
+

@@ -1,0 +1,251 @@
+\documentclass[12pt]{article}
+
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{extarrows}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{xypic}
+%\usepackage[all,dvips]{xy}
+
+\usetikzlibrary{matrix}
+
+\allowdisplaybreaks
+
+\begin{comment}  
+
+This LaTeX document is a template to be used by Bates mathematics rising seniors to create a thesis proposal. 
+
+As a guide, the document is already filled out to represent a fictitious proposal, and all you need to do is modify the entries below to represent your own proposal.
+
+A PDF version of the fictitious proposal is available on the department's FAQ and Policies pages, at
+                   http://abacus.bates.edu/acad/depts/math/faq.html
+      and
+                   http://abacus.bates.edu/acad/depts/math/policies.html
+      respectively.
+
+Once you have finished your proposal, export it to a PDF file. Give the file a USEFUL name, for example, RiemannThesisProposal.PDF. Email the PDF file to Clementine Brasier, the 
+Academic Administrative Assistant for Hathorn Hall, at cbrasier\@bates.edu
+
+                This LaTex document was created Feb/Mar 2010 by Adriana Salerno and updated Feb 2012 by Meredith Greer
+
+\end{comment}
+
+\setlength{\textheight}{8.5in} \setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in} \setlength{\headsep}{0.0in}
+\setlength{\leftmargin}{0.5in}
+\setlength{\oddsidemargin}{0.0in}
+%\setlength{\parindent}{1pc}
+\setlength{\textwidth}{6.5in}
+%\linespread{1.6}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{lemma*}{Lemma}
+
+\newtheorem{note}{Note}
+\newtheorem*{note*}{Note}
+
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Problem}
+
+\newtheorem{prop}{Proposition}
+\newtheorem*{prop*}{Proposition}
+
+\newtheorem{question}{Question}
+\newtheorem*{question*}{Question}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Introduction to von Neumann Algebra}
+\author{Yihan Zhang}
+\maketitle
+
+% \tableofcontents
+\bigskip
+
+History of von Neumann algebra: von Neumann, Murray, \textit{On rings of operators. \uppercase\expandafter{\romannumeral 1},\uppercase\expandafter{\romannumeral 2},\uppercase\expandafter{\romannumeral 3},\uppercase\expandafter{\romannumeral 4}}; von Neumann, \textit{On rings of operators. Reduction theory}. It comes from ergodic theory and group algebra.
+
+\begin{tabular}{lll}
+$\uppercase\expandafter{\romannumeral 1}_n$ & $M_n(\mathbb C)$ & $\{1,\cdots, n \}$\\
+$\uppercase\expandafter{\romannumeral 1}_\infty$ & $\mathcal B(H), \dim H<\infty$&$\{1,\cdots\}$\\
+$\uppercase\expandafter{\romannumeral 2}_1$ & & $[0,1]$\\
+$\uppercase\expandafter{\romannumeral 2}_\infty$&$\uppercase\expandafter{\romannumeral 2}_\infty=\uppercase\expandafter{\romannumeral 2}_1\otimes\uppercase\expandafter{\romannumeral 1}_\infty$&$\mathbb R$\\
+$\uppercase\expandafter{\romannumeral 3}$&&$\{\infty\}$\\
+\end{tabular}
+
+$G$ is a countable discrete group with identity $e$. Consider Hilbert space $\ell^2(G)= \{\sum_{g\in G}\alpha_g g:\alpha_g\in\mathbb C,\sum_{g\in G}|\alpha_g|^2<\infty \}$ with inner product defined as $\left(\sum_{g\in G}\alpha_g g,\sum_{g'\in G}\beta_{g'}g' \right)=\sum_{g\in G}\alpha_g\overline{\beta_g} $. Observe that $\{\delta_g=g:g\in G \} $ is a family of orthonormal basis of $\ell^2(G)$. Consider left regular representation of $G$ on $\ell^2(G)$. $\forall g\in G,L_g\delta_h=\delta_{gh}. $ Thus $L_g$ can be extended linearly to be a unitary operator on $\ell^2(G)$, s.t.
+\begin{enumerate}
+	\item $g=4, L_e=I$;
+	\item $L_{g_1g_2}\delta_h=\delta_{g_1g_2h}=L_{g_1}\delta_{g_2h}=L_{g_1}L_{g_2}\delta_h \Rightarrow L_{g_1g_2}=L_{g_1}L_{g_2}$;
+	\item $(L_g)^*=L_{g^{-1}}$.
+\end{enumerate}
+$(\delta_h, (L_g)^*\delta_k)=(L_g\delta_h, \delta_k)=(\delta_{gh}, \delta_k)=\begin{cases} 1, & gh=k\\ 0, &gh\ne k \end{cases}; $\\
+$(\delta_h, L_{g^{-1}}\delta_k)=(\delta_h, \delta_{g^{-1}k})=\begin{cases}1, &h=g^{-1}k \\ 0, &  h\ne g^{-1}k \end{cases} .$\\
+Thus $g\mapsto L_g$ is a unitary representation of $G$ on $\ell^2(G)$, called a left regular representation of $G$.
+\begin{definition}
+Group von Neumann algebra $\mathcal L(G)$ is the minimal von Neumann algebra containing $\{L_g:g\in G \}$ in $\mathcal B(\ell^2(G))$, i.e. $\mathcal L(G)=\overline{\mathrm{span}\{L_g:g\in G \}^{SOT}} .$ The superscirpt $SOT$ means strong operator topology.
+\end{definition}
+Remark: $\mathcal C_r^*(G)=\overline{\mathrm{span}\{L_g:g\in G \}^{\|\cdot\|}}.$
+
+We also have right regular representation, $\forall g\in G,R_g\delta_h=\delta_{hg^{-1}}. $
+\begin{enumerate}
+	\item $R_e=I$;
+	\item $R_{g_1g_2}=R_{g_1}R_{g_2}$;
+	\item $(R_g)^*=R_{g^{-1}}$.
+\end{enumerate}
+$\mathcal R(G)=\overline{\mathrm{span}\{R_g:g\in G \}^{SOT}}$.
+
+Observe $\forall g_1,g_2\in G, L_{g_1}R_{g_2}\delta_h=L_{g_1}\delta_{hg_2^{-1}}=\delta_{g_1hg_2^{-1}}=R_{g_2}\delta_{g_1h}=R_{g_2}L_{g_1}\delta_h\Rightarrow L_{g_1}R_{g_2}=R_{g_2}L_{g_1} .$ Thus $\mathcal L(G)\subset \mathcal R(G)',\mathcal R(G)\subset \mathcal L(G)'$.($M\subset \mathcal B(H),M'=\{S\in\mathcal B(H):ST=TS,\forall T\in M \}.$ $M'$ is called the commutator algebra of $M$). 
+
+But what does an element in $\mathcal L(G)$ look like? $\forall x=\sum_{g\in G} \alpha_gg \in \ell^2(G), L_x\delta_h=\sum_{g\in G} \alpha_g\delta_{gh}\in\ell^2(G).$ $L_x$ is a densely defined unbounded operator. $\mathcal D(L_x)\supset \mathbb C(G) = \{\sum_{g\in G}\alpha_g\delta_g:\alpha_g\ has\ finitely\ many\ nonzero\ terms \}.$ $(L_x)^*=L_{x^*}, x^*=\sum_{g\in G}\overline{\alpha_g}g^{-1}\in\ell^2(G)$. 
+\begin{theorem}
+$\mathcal L(G)=\{L_x: x\in \ell^2(G),L_x\ can\ be\ continued\ to\ be\ a\ bounded\ operator\ on\ \ell^2(G) \} $
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+	\item
+		$\forall T\in\mathcal L(G)$, let $x=T\delta_e\in\ell^2(G)$. $\forall h,k\in G$,
+		\begin{align*}
+		&(T\delta_h, \delta_k)\\
+		=&(TR_{h^{-1}}\delta_e, \delta_k)\\
+		=&(R_{h^{-1}}T\delta_e, \delta_k)\\
+		=&(R_{h^{-1}}x,\delta_k)\\
+		=&\left(\sum_{g\in G}\alpha_ggh,\delta_k \right)\\
+		=&(L_x\delta_h,\delta_k).
+		\end{align*}
+		Thus $T\delta_h=L_x\delta_h,\forall h\in G$, that is to say, $L_x$ can be continued to be a bounded operator and $T=L_x$.
+	\item
+		$\forall S\in\mathcal L(G)'$, 
+		\begin{align*}
+		&(L_xS\delta_h, \delta_k)\\
+		=&(S\delta_h,L_{x^*}\delta_k)\\
+		=&\left(S\delta_h,\sum_{g\in G} \overline{\alpha_g}\delta_{g^{-1}k} \right)\\
+		=&\left(\delta_h,S^*\left(\sum_{g\in G}\overline{\alpha_g}\delta_{g^{-1}k} \right) \right)\\
+		=&\sum_{g\in G}(\delta_h,\overline{\alpha_g}S^*\delta_{g^{-1}k})\\
+		=&\sum_{g\in G}(\delta_h,\overline{\alpha_g}S^*L_{g^{-1}}\delta_k)\\
+		=&\sum_{g\in G}(\delta_h,\overline{\alpha_g}L_{g^{-1}}S^*\delta_k)\\
+		=&\sum_{g\in G}(\alpha_gL_g\delta_h,S^*\delta_k)\\
+		=&\sum_{g\in G}(S\alpha_gL_g\delta_h,\delta_k)\\
+		=&\left(S\left(\sum_{g\in G}\alpha_gL_g \right)\delta_h,\delta_k \right)\\
+		=&(SL_x\delta_h,\delta_k).
+		\end{align*}
+		Thus $L_xS=SL_x$. According to von Neumann bicommutant theorem, $L_x\in \mathcal L(G)$.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[von Neumann bicommutant]
+If $M\subset\mathcal B(H)$ is a *-sublgebra with an identity, then $M''=\overline{M^{\mathrm{SOT}}}$.
+\end{theorem}
+
+\begin{theorem}
+$(\mathcal L(G))'=\mathcal R(G), (\mathcal R(G))'=\mathcal L(G)$.
+\end{theorem}
+\begin{proof}
+We only need to prove $(\mathcal R(G))'\subset\mathcal L(G)$. $\forall T\in(\mathcal R(G))'$, let $x=T\delta_e=\sum_{g\in G}\alpha_gg\in\ell^2(G)$. $T\delta_h=TR_{h^{-1}}\delta_e=R_{h^{-1}}T\delta_e=R_{h^{-1}}x=\sum_{g\in G}\alpha_ggh=L_x\delta_h$. Thus $T=L_x\in\mathcal L(G)$.
+\end{proof}
+
+\begin{example}
+$G=\mathbb Z=\{g^n:n\in\mathbb Z \}$. $e_n=\delta_{g^n}$. $L_ge_n=L_g\delta_{g^n}=\delta_{g^{n+1}}=e_{n+1},\forall n\in\mathbb Z$. $\mathcal L(\mathbb Z)$ is the von Neumann algebra generated by $L_g$. $\ell^2(\mathbb Z)\to\ell^2(S^1,m)$, where $m$ is Haar measure and s.t. $e_n\xmapsto[]{U}z^n$. $UL_gU^*z^n=UL_ge_n=Ue_{n+1}=z^{n+1}$. $UL_gU^*=M_z$. $U\mathcal L(\mathbb Z)U^*=\{M_{f(z)}:f(z)\in L^\infty(S^1,m) \}$. We can define a linear functional on $\mathcal L(G)$ s.t. $\forall T\in \mathcal L(G), \tau(T)=(T\delta_e,\delta_e)$.
+\end{example}
+
+\begin{theorem}
+$\tau$ on $\mathcal L(G)$ is subject to the following,
+\begin{enumerate}
+	\item $\tau(I)=1$;
+	\item $\tau(ST)=\tau(TS), \forall S, T\in \mathcal L(G)$;
+	\item $\tau(T^*T)\ge 0$ and $\tau(T^*T)=0\Rightarrow T=0$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Let $x=T\delta_e=\sum_{g\in G}\alpha_gg\in\ell^2(G),y=S\delta_e=\sum_{g\in G}\beta_gg\in\ell^2(G)$. $\tau(ST)=(ST\delta_e,\delta_e)=(T\delta_e,S^*\delta_e)=\left(\sum_{g\in G}\alpha_gg,\sum_{g\in G}\overline{\beta_g}g^{-1} \right)=\sum_{g\in G}\alpha_g\beta_{g^{-1}}$. $\tau(TS)=\sum_{g\in G}\alpha_{g^{-1}}\beta_g$. $\tau(T^*T)=0\Rightarrow(T\delta_e,T\delta_e)=0$. Let $x=T\delta_e, (x,x)=0\Rightarrow x=0$. $T=L_x=0$. 
+\end{proof}
+
+\begin{definition}
+Let $M$ to be a von Neumann algebra, then the center of $M$, $Z(M)=\{S\in M: ST=TS, \forall T\in M \}$.
+\end{definition}
+
+Obviously, $Z(M)\supset\{\lambda I:\lambda\in\mathbb C \}$.
+
+\begin{definition}
+$M$ is called a factor if $Z(M)=\mathbb CI$.
+\end{definition}
+\begin{definition}
+$M$ is called a $\uppercase\expandafter{\romannumeral 2}_1$ factor if $M$ is a infinite dimensional factor and there is a bounded linear functional $\tau$ on $M$ s.t.
+\begin{enumerate}
+ 	\item $\tau(T^*T)\ge 0, \forall T\in M$, $\tau(T^*T)=0\Rightarrow T=0$;
+ 	\item $\tau(ST)=\tau(TS),\forall S,T\in M$;
+ 	\item $\tau$ is continuous under strong operator topology.
+ \end{enumerate} 
+\end{definition}
+\begin{definition}
+A discrete group $G$ is called an i.c.c. (infinite conjugacy class) group if $\forall g\ne e$, $\{hgh^{-1}:h\in G \}$ is an infinite set.
+\end{definition}
+\begin{theorem}
+$\mathcal L(G)$ is called a $\uppercase\expandafter{\romannumeral 2}_1$ factor if $G$ is an i.c.c. group.
+\end{theorem}
+\begin{proof}
+$\forall T\in Z(\mathcal L(G))$, let $x=T\delta_e=\sum_{g\in G}\alpha_gg\in\ell^2(G)$. Notice that $\forall h\in G, L_hT=TL_h$. $L_hTL_{h^{-1}}=T\Rightarrow L_hTL_{h^{-1}}\delta_e=T\delta_e=\sum_{g\in G}\alpha_gg$. $L_hT\delta_{h^{-1}}=L_h\sum_{g\in G}\alpha_ggh^{-1}=\sum_{g\in G}\alpha_ghgh^{-1}\xlongequal[]{hgh^{-1}=g'}\sum_{g'\in G}\alpha_{h^{-1}g'h}g'\sum_{g\in G}\alpha_{h^{-1}gh}g$. $\alpha_{h^{-1}gh}=\alpha_g,\forall g,h\in G$. If $g\ne e$ and $\{h^{-1}gh:h\in G \}$ is infinite, then $\sum_{h\in G}|\alpha_{h^{-1}gh}|^2\le \sum_{k\in G}|\alpha_k|^2<\infty$. Thus $\alpha_g=0,\forall g\ne e$. $T\delta_e=\alpha_ee\Rightarrow T=L_{\alpha_e}e=\alpha_eI$.
+\end{proof}
+\begin{example}
+$F_2=<a,b>$ is i.c.c. 
+\end{example}
+\begin{example}
+$\pi(\mathbb Z)=\{permutations\ of\ \mathbb{Z}\ that\ change\ at\ most\ finitely\ many\ positions \}$.
+\end{example}
+\begin{theorem}[Murray-von Neumann]
+$\mathcal L(F_2)\ncong\mathcal L(\pi(\mathcal Z))$.
+\end{theorem}
+\begin{definition}
+Let $(M,\tau)$ to be a $\uppercase\expandafter{\romannumeral 2}_1$ factor. $M$ is said to have property $\Gamma$ if $\forall \varepsilon>0,\forall x_1,\cdots,x_n\in M,\exists U\in M,\tau(U)=0$, and $\|x_iU-Ux_i\|_2<\varepsilon,i=1,2,\cdots,n$, where $\|x\|_2=\tau(x^*x)^{\frac{1}{2}} $. (Notice that for any unitary operator $v$, $\|vx\|_2=\|xv\|_2=\|x\|_2$.)
+\end{definition}
+\begin{theorem}
+$\mathcal L(\pi(\mathcal Z))$ has property $\Gamma$.
+\end{theorem}
+\begin{theorem}
+$\mathcal L(F_2)$ doesn't have property $\Gamma$.
+\end{theorem}
+$F_2=<a,b>$. For $L_a,L_b$, take $\varepsilon>0$ small enough($\frac{1}{24}$), $\exists U, \tau(U)=0$ and \textcircled{1} $\|L_aU-UL_a\|_2<\varepsilon$, \textcircled{2} $\|L_bU-UL_b\|_2<\varepsilon $. Let $x=U\delta_e=\sum_{g\in F_2\backslash\{e\}}\alpha_gg\in\ell^2(G)(\alpha_e=0)$. As $U$ is a unitary operator, $\sum_{g\in F_2\backslash\{e\}}|\alpha_g|^2=1(\|U\|_2=1)$. $\textcircled{1}\Rightarrow\|L_aUL_{a^{-1}}-U\|_2^2<\varepsilon^2\Rightarrow\sum_{g\in F_2\backslash\{e\}}|\alpha_{a^{-1}ga}-\alpha_g |^2<\varepsilon^2\Rightarrow\sum_{g\in S}|\alpha_g|^2-\sum_{g\in S}|\alpha_{a^{-1}ga} |^2<2\varepsilon$, and $\|L_{a^{-1}}UL_a-U\|_2^2<\varepsilon^2\Rightarrow\sum_{g\in F_2\backslash\{e\}}|\alpha_{aga^{-1}}-\alpha_g |^2<\varepsilon^2\Rightarrow\sum_{g\in S}|\alpha_g|^2-\sum_{g\in S}|\alpha_{aga^{-1}} |^2<2\varepsilon$. $\textcircled{2}\Rightarrow\|L_bUL_{b^{-1}}-U \|_2^2<\varepsilon^2\Rightarrow\sum_{g\in F_2\backslash\{e\}}|\alpha_{b^{-1}gb}-\alpha_g|^2<\varepsilon^2$. Consider $S=\{reduced\ words\ starting\ with\ b^{\pm1} \} \subset F_2$. Observe $aSa^{-1}\cup a^{-1}Sa\cap S \subset F_2\backslash\{e\}$, $b^{-1}Sb\cup S\supset F_2\backslash\{e\}$, which is disjoint pairwise. $\sum_{g\in S}|\alpha_g |^2+\sum_{g\in S}|\alpha_{aga^{-1}} |^2+\sum_{g\in S}|\alpha_{a^{-1}ga} |^2\le 1\approx 3\sum_{g\in S}|\alpha_g |^2+4\varepsilon\le 1$, $\sum_{g\in S}|\alpha_g |^2+\sum_{g\in S}|\alpha_{b^{-1}gb} |^2\approx2\sum_{g\in S}|\alpha_g |^2-2\varepsilon \ge1 $. Thus $\frac{1}{2}\le\sum_{g\in S}|\alpha_g|^2\le\frac{1}{3}$, which is contradicted.
+
+\begin{question}
+Is it true that $\mathcal L(F_2)\ncong\mathcal L(F_3)$?
+\end{question}
+Recent result is shown below.
+\begin{theorem}
+It is alternative that $\mathcal L(F_n)\cong\mathcal L(F_m),\forall n,m$ or $\mathcal L(F_n)\ncong\mathcal L(F_m),\forall n,m $.
+\end{theorem}
+
+% \begin{thebibliography}{99}
+% NOTE: change the "9" above to "99" if you have MORE THAN 10 references.
+
+% \bibitem{erdos1} Erd\"{o}s, P. (1973). Problems and results on combinatorial number theory \uppercase\expandafter{\romannumeral 1}. In \textit{A survey of combinatorial theory (Proc. Internat. Sympos., Colorado State Univ., Fort Collins, Colo., 1971)} (pp. 117-138).
+
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document} 

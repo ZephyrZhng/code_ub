@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons
+END
+convert_inexact.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/convert_inexact.pass.cpp
+END
+rep01.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/rep01.fail.cpp
+END
+rep02.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/rep02.fail.cpp
+END
+rep03.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/rep03.fail.cpp
+END
+convert_inexact.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/convert_inexact.fail.cpp
+END
+convert_int_to_float.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/convert_int_to_float.pass.cpp
+END
+convert_overflow.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/convert_overflow.pass.cpp
+END
+convert_exact.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/convert_exact.pass.cpp
+END
+default.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/default.pass.cpp
+END
+convert_float_to_int.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/convert_float_to_int.fail.cpp
+END
+rep.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/rep.pass.cpp
+END
+rep02.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.cons/rep02.pass.cpp
+END

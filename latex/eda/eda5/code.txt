@@ -1,0 +1,70 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+--  Uncomment the following lines to use the declarations that are
+--  provided for instantiating Xilinx primitive components.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity second is
+    Port ( clk : in std_logic;
+           clr1 : in std_logic;
+           clr2 : in std_logic;
+           en : in std_logic;
+           s1 : out std_logic_vector(3 downto 0);
+           s2 : out std_logic_vector(3 downto 0);
+           m1 : out std_logic_vector(3 downto 0);
+           m2 : out std_logic_vector(3 downto 0);
+           h1 : out std_logic_vector(3 downto 0);
+           h2 : out std_logic_vector(3 downto 0));
+end second;
+
+architecture Behavioral of second is
+  signal cq0,cq1,cq2,cq3,cq4,cq5:std_logic_vector(3 downto 0);
+begin
+process(clk,clr1,clr2)				
+begin
+   if( clr1='0' )then
+     cq0<="1000"; cq1<="0101";
+     cq2<="1000"; cq3<="0101";
+     cq4<="1001"; cq5<="0001";
+   elsif( clr2='0' )then
+     cq0<="1000"; cq1<="0101";
+     cq2<="1000"; cq3<="0101";
+     cq4<="0011"; cq5<="0010";
+   elsif clk='1' and clk'event then				
+     if(en='1') then
+       if cq0="1001" and cq1="0101" then
+	     cq0<="0000"; cq1<="0000"; 
+	     if cq2="1001" and cq3="0101" then
+		   cq2<="0000"; cq3<="0000";
+		   if cq4="0011" and cq5="0010" then
+		      cq4<="0000"; cq5<="0000";
+		   elsif cq4="1001" then
+			 cq4<="0000"; cq5<=cq5+1;
+		   else  
+			 cq4<=cq4+1;
+		   end if;
+	     elsif(cq2="1001") then 
+		   cq2<="0000"; cq3<=cq3+1;
+	     else 
+		   cq2<=cq2+1;
+	     end if;
+	  elsif(cq0="1001")   then
+	     cq1<=cq1+1; cq0<="0000";
+	  else 
+          cq0<=cq0+1;
+	  end if;
+     end if;
+   end if;
+end process;
+s1<=cq0;
+s2<=cq1;
+m1<=cq2;
+m2<=cq3;
+h1<=cq4;
+h2<=cq5;
+
+end Behavioral;

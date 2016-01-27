@@ -1,0 +1,48 @@
+PROGRAM 			-> program begin DELCARATION_LIST STATEMENT_LIST end
+
+DECLARATION_LIST 	-> declaration begin DECLARATION  end
+
+DECLARATION 		-> TYPE ID __DECLARATION__
+__DECLARATION__		-> DECLARATION __DECLARATION__
+__DECLARATION__ 	->
+
+STATEMENT_LIST 		-> statement begin STATEMENT end
+
+STATEMENT 			-> IF __STATEMENT__
+STATEMENT 			-> WHILE __STATEMENT__
+STATEMENT 			-> ASSIGN __STATEMENT__
+STATEMENT 			-> SET __STATEMENT__ 
+__STATEMENT__ 		-> STATEMENT __STATEMENT__
+__STATEMENT__ 		->
+
+IF 					-> if begin LOGIC end 
+					   then {GENERATE_THEN} begin STATEMENT end 
+					   else {GENERATE_ELSE} then begin STATEMENT end {GENERATE_IF_END}
+
+WHILE 				-> while {GENERATE_WHILE} begin LOGIC end 
+					   then {GENERATE_WHILE_BEGIN} begin STATEMENT end {GENERATE_WHILE_END}
+
+ASSIGN 				-> assign begin EXPRESSION end
+					   to ID {GENERATE_ASSIGN}
+
+SET 				-> set ID {PUSH_ID} as begin LOGIC end {GENERATE_SET}
+
+EXPRESSION 			-> TERM __EXPRESSION__
+__EXPRESSION__ 		-> add TERM {GENERATE_ADD} __EXPRESSION__
+__EXPRESSION__ 		-> subtract TERM {GENERATE_SUBTRACT} __EXPRESSION__
+__EXPRESSION__ 		-> 
+TERM 				-> FACTOR __TERM__
+__TERM__ 			-> multiply FACTOR {GENERATE_MULTIPLY} __TERM__
+__TERM__ 			-> divide FACTOR {GENERATE_DIVIDE} __TERM__
+__TERM__ 			-> 
+FACTOR 				-> begin EXPRESSION end
+FACTOR 				-> ID {PUSH_ID}
+FACTOR 				-> NUMBER {PUSH_NUMBER}
+
+LOGIC				-> ID {PUSH_ID} 
+LOGIC 				-> true {PUSH_BOOLEAN_CONSTANT} 
+LOGIC 				-> false {PUSH_BOOLEAN_CONSTANT} 
+
+TYPE 				-> integer
+TYPE 				-> real
+TYPE 				-> boolean 

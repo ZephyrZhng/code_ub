@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/235134/libcxx/trunk/test/std/iterators/stream.iterators/istreambuf.iterator
+END
+types.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/llvm-project/!svn/ver/235134/libcxx/trunk/test/std/iterators/stream.iterators/istreambuf.iterator/types.pass.cpp
+END

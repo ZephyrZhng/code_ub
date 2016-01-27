@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+
+\usepackage{abstract}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{CJKutf8}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{mathdots}
+\usepackage{mathpazo}
+\usepackage{multirow}
+\usepackage{pstricks-add}
+\usepackage{pst-blur}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{wasysym}
+\usepackage{xcolor}
+\usepackage[BoldFont,SlantFont,CJKsetspaces,CJKchecksingle]{xeCJK}
+
+\allowdisplaybreaks
+\DeclareMathOperator*{\argmin}{argmin}
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\pagestyle{empty}
+\parindent 2em   %段首缩进
+\setlength{\parindent}{2em}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKmonofont{SimSun}% 设置缺省中文字体
+\usetikzlibrary{arrows, automata, calc, shapes}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\hytt}[1]{\texttt{\hyphenchar\font=\defaulthyphenchar #1}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  
+% \hyphenation{read-Sym-bol re-ad-Space-Tab-New-line str-Tab}
+
+%\footnotesize
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,            % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\ttfamily\color{mygreen},    
+                                   % comment style
+  deletekeywords={},               % if you want to delete keywords from the given language
+  escapeinside={},                 % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                    % the language of the code
+  morekeywords={},                 % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\pagestyle{fancy}
+\rhead{page \thepage\ of \pageref{LastPage}}
+%\chead{}
+\lhead{操作系统实验报告}
+\cfoot{}
+
+\begin{document}
+
+\title{操作系统实验1 \quad 熟悉Linux系统}
+\author{计算机1202 \quad 张艺瀚\\学号:20123852}
+\maketitle
+
+\thispagestyle{fancy}
+%\newpage
+\normalsize
+
+\section{题目}
+熟悉Linux系统的基本操作和开发环境
+
+\section{目的}
+熟悉和掌握Linux基本命令，熟悉Linux编程环境，为以后的实验做好准备。
+
+\section{要求}
+\begin{enumerate}
+\item 熟练掌握Linux基本文件命令。
+\item 掌握Linux编辑程序、对源代码进行编译、连接、运行及调试的过程。
+\item 认真做好预习，书写预习报告。
+\item 实验完成后要认真总结、完成实验报告。
+\end{enumerate}
+
+\section{常用Linux命令及含义}
+见表\ref{tab: linux}
+
+\begin{table}[htbp]
+\centering  % 表居中
+\begin{tabular}{ll}  % {lccc} 表示各列元素对齐方式，left-l,right-r,center-c
+\hline
+命令 & 用法 \\
+\hline  % \hline 在此行下面画一横线
+创建子目录命令 \texttt{mkdir} & \texttt{mkdir subdir} \\
+切换路径命令 \texttt{cd} & \texttt{cd subdir} \\
+显示当前工作路径命令 \texttt{pwd} & \texttt{pwd} \\
+拷贝文件命令 \texttt{cp} & \texttt{cp sfile dfile} \\
+删除文件命令 \texttt{rm} & \texttt{rm filename} \\
+删除目录命令 \texttt{rmdir} & \texttt{rmdir sdir(子目录为空目录)} \\
+显示文件内容或把file1与file2的连接 \texttt{cat} & 显示文件内容 \texttt{cat filename} \\
+                                            & 把file1与file2的连接 \texttt{cat file1 file2 > file3} \\
+改变文件或目录的防问权限 \texttt{chmod -rwxr-x--x} & \texttt{chmod +/- 数值 filename} \\
+改变文件或目录的拥有者 \texttt{chown} & \texttt{chown filename username} \\
+列表显示文件名或目录名 \texttt{ls} & \texttt{ls} 或 \texttt{ls -l} \\
+查找文件或目录 \texttt{find} & \texttt{find 文件或目录}  \\
+显示进程或状态 \texttt{ps} & \texttt{ps} \\
+杀进程命令 \texttt{kill} & \texttt{kill pid} \\
+编译 & \texttt{gcc -o 目标文件 源文件(.c)} \\
+    & \texttt{g++ -o 目标文件 源文件(.cpp)} \\
+运行 & \texttt{./目标文件} \\
+保存运行结果 & \texttt{./目标文件>文件名} \\
+显示运行结果 & \texttt{cat 文件名} \\
+移动相对路径下的文件到绝对路径下 & \texttt{mv 路径/文件 路径/文件} \\
+在当前目录下改名 & \texttt{mv 文件名 新名称} \\
+编译 & \texttt{make} \\
+安装编译好的源码包 & \texttt{make install} \\
+安装包 & \texttt{sudo apt-get install package} \\
+删除包 & \texttt{sudo apt-get remove package} \\
+更新源 & \texttt{sudo apt-get update} \\
+更新已安装的包 & \texttt{sudo apt-get upgrade} \\
+升级系统 & \texttt{sudo apt-get dist-upgrade} \\
+使用dselect升级 & \texttt{sudo apt-get dselect-upgrade} \\
+安装相关的编译环境 & \texttt{sudo apt-get build-dep package} \\
+下载该包的源代码 & \texttt{apt-get source package} \\
+检查是否有损坏的依赖 & \texttt{sudo apt-get check} \\
+清理所有软件缓存 & \texttt{sudo apt-get clean} \\
+\hline
+\end{tabular}
+\caption{常用Linux命令及含义\label{tab: linux}}
+\end{table}
+
+\section{在Linux环境下编制、调试源程序的过程}
+在Ubuntu 120.4 LTS下编制C++程序。有源文件\texttt{thread.cpp}，\texttt{pcb.h}，\texttt{pcb.cpp}，\texttt{group\_tree.h}，\texttt{group\_tree.cpp}。它们的include关系如下（见代码清单\ref{lst: thread_cpp}-\ref{lst: group_tree_cpp}）：
+
+\begin{center}
+\begin{lstlisting}[caption = {\texttt{thread.cpp}的include关系}, label = {lst: thread_cpp}]
+// thread.cpp
+#include "pcb.h"
+#include "group_tree.h"
+\end{lstlisting}
+\end{center}
+
+\begin{center}
+\begin{lstlisting}[caption = {\texttt{pcb.h}的include关系}, label = {lst: pcb_h}]
+// pcb.h
+#ifndef PCB_H
+#define PCB_H
+#endif // PCB_H
+\end{lstlisting}
+\end{center}
+
+\begin{center}
+\begin{lstlisting}[caption = {\texttt{pcb.cpp}的include关系}, label = {lst: pcb_cpp}]
+// pcb.cpp
+#include "pcb.h"
+\end{lstlisting}
+\end{center}
+
+\begin{center}
+\begin{lstlisting}[caption = {\texttt{group\_tree.h}的include关系}, label = {lst: group_tree_h}]
+// group_tree.h
+#ifndef GROUP_TREE_H
+#define GROUP_TREE_H
+#include "pcb.h"
+#endif // GROUP_TREE_H
+\end{lstlisting}
+\end{center}
+
+\begin{center}
+\begin{lstlisting}[caption = {\texttt{group\_tree.cpp}的include关系}, label = {lst: group_tree_cpp}]
+// group_tree.cpp
+#include "group_tree.h"
+\end{lstlisting}
+\end{center}
+
+编写\texttt{makefile}如下：
+\begin{center}
+\begin{lstlisting}[caption = {\texttt{makefile}代码清单}, label = {lst: makefile}]
+thread: thread.o pcb.o group_tree.o
+  g++ -std=c++14 -o thread thread.o pcb.o group_tree.o
+thread.o: thread.cpp pcb.h group_tree.h
+  g++ -std=c++14 -c thread.cpp
+pcb.o: pcb.cpp pcb.h
+  g++ -std=c++14 -c pcb.cpp
+group_tree.o: group_tree.cpp group_tree.h pcb.h
+  g++ -std=c++14 -c group_tree.cpp
+\end{lstlisting}
+\end{center}
+
+在终端中\texttt{cd}到当前目录下，运行\texttt{make}编译源代码，显示如下信息：
+\begin{center}
+\begin{figure}[htbp]
+\includegraphics[width=\textwidth]{os-12-1.png}
+\caption{编译通过效果图}
+\label{fig: compile}
+\end{figure}
+\end{center}
+
+说明编译通过。输入\texttt{./thread}运行可执行文件。
+
+\end{document}

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/output.streams/ostream.manip
+END
+ends.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/output.streams/ostream.manip/ends.pass.cpp
+END
+flush.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/output.streams/ostream.manip/flush.pass.cpp
+END
+endl.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostream.format/output.streams/ostream.manip/endl.pass.cpp
+END

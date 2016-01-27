@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/rand/rand.util/rand.util.canonical
+END
+generate_canonical.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/numerics/rand/rand.util/rand.util.canonical/generate_canonical.pass.cpp
+END

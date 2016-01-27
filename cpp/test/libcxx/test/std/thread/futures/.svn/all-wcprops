@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/llvm-project/!svn/ver/228783/libcxx/trunk/test/std/thread/futures
+END
+version.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/thread/futures/version.pass.cpp
+END
+test_allocator.h
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/llvm-project/!svn/ver/225541/libcxx/trunk/test/std/thread/futures/test_allocator.h
+END

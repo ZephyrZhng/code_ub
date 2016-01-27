@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct
+END
+bad_escape.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/bad_escape.pass.cpp
+END
+iter_iter.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/iter_iter.pass.cpp
+END
+string.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/string.pass.cpp
+END
+awk_oct.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/awk_oct.pass.cpp
+END
+ptr_size_flg.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/ptr_size_flg.pass.cpp
+END
+copy.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/copy.pass.cpp
+END
+il_flg.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/il_flg.pass.cpp
+END
+ptr_flg.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/ptr_flg.pass.cpp
+END
+iter_iter_flg.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/iter_iter_flg.pass.cpp
+END
+string_flg.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/string_flg.pass.cpp
+END
+default.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/default.pass.cpp
+END
+ptr.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.regex/re.regex.construct/ptr.pass.cpp
+END

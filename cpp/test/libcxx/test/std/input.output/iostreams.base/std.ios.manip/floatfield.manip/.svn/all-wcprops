@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/floatfield.manip
+END
+fixed.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/floatfield.manip/fixed.pass.cpp
+END
+scientific.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/floatfield.manip/scientific.pass.cpp
+END
+defaultfloat.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/floatfield.manip/defaultfloat.pass.cpp
+END
+hexfloat.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/std.ios.manip/floatfield.manip/hexfloat.pass.cpp
+END

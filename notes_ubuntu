@@ -1,0 +1,162 @@
+produce key
+zephyr@ubuntu:~$ /usr/bin/ssh-keygen -t rsa
+
+ls -l
+ll
+cp src_path/src_file_name dst_path/dst_file_name
+mv file_name folder_name
+touch file_name
+mkdir folder_name
+rm file_name1 file_name2 file_name3...
+rm -rf folder_name
+
+view process: ps -e
+kill process: killall program_name
+
+sudo rmmod psmouse
+sudo modprobe psmouse
+sudo gedit /etc/modprobe.d/blacklist.conf + [blacklist psmouse]
+
+neea id 3314329(toefl) pwd ZephyrZhng1573
+neea id 71279065(gre) pwd 533750536911Zhng 出生城市？济南
+
+zephyr@ubuntu:~/Downloads/utorrent-server-alpha-v3_3$ ./utserver
+http://localhost:8080/gui/web/index.html
+username: admin password:
+
+cd ~/
+djvu2pdf book.djvu
+
+clisp
+(load "~/file_path") // (.lisp)
+(function_name)
+(quit)
+
+scheme-ieee-1178-1990
+(load "testscheme.scm")
+(load "testscheme")
+(exit)
+
+haskell
+ghci
+cd to file path of your code
+:l xxx.hs
+function_name parameter1 parameter2 parameter3 ...
+
+g++ -std=c++0x program_name.cpp -o exe_name
+
+g++ `pkg-config opencv --libs --cflags opencv` -std=c++0x program_name.cpp -o exe_name
+./exe_name
+
+openmp
+gcc -fopenmp hello.c -o hello
+cat /proc/cpuinfo
+
+gcc testopengl.c -o testopengl -lGL -lGLU -lglut
+./testopengl
+
+~/cudasamples/NVIDIA_CUDA-6.0_Samples/bin/x86_64/linux/release
+ls
+./sample_name
+
+~/code/cuda/testcuda
+testcuda.cu
+testc.c
+testcpp.cpp
+
+compile method 1 (compile seperately, merge in the end)
+	for C
+	$nvcc -c testcuda.cu
+	$gcc  -c testc.c
+	$gcc  -o testc testcuda.o testc.o -lcudart -L/usr/local/cuda/lib64
+
+	for C++
+	$nvcc -c testcuda.cu
+	$g++  -c testcpp.cpp
+	$g++  -o testcpp testcuda.o testcpp.o -lcudart -L/usr/local/cuda/lib64
+
+compile method 2 (make a lib)
+	for C
+	$nvcc -lib testcuda.cu -o libtestcu.a
+	$gcc       testc.c -ltestcu -L. -lcudart -L/usr/local/cuda/lib64 -o testc
+
+	for C++
+	$nvcc -lib testcuda.cu -o libtestcu.a
+	$g++       testcpp.cpp -ltestcu -L. -lcudart -L/usr/local/cuda/lib64 -o testcpp
+
+javac program_name.java
+java program_name
+javadoc -d folder_name -version -author program_name.java
+
+gcc `pkg-config --cflags --libs gtk+-2.0` gtk_test.c -o gtk_test
+
+ocamlc hello.ml -o hello
+ocamlopt hello.ml -o hello
+
+c++ thread
+
+opencv:
+1.detect number/letter
+2.detect face
+
+scala
+scalac testscala.scala
+scala testscala.scala
+
+node.js
+node testnodejs.js
+http://127.0.0.1:8124/
+
+how to use lm-sensors
+$ sensors
+
+$ evince xxx.pdf
+
+vim
+:w save
+:x save and exit
+/pattern find pattern
+	n next
+	N previous
+:%s/old_symbol/new_symbol/g  find and replace
+:%s/old_symbol/new_symbol/gc find, replace and verify one by one
+
+whereis gcc
+whereis g++
+
+change default version of gcc and g++
+sudo update-alternatives --remove-all gcc
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 40
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 40
+sudo update-alternatives --config gcc
+sudo update-alternatives --config g++ 
+
+eth1 is my wireless network adapter
+
+g++ -Wall
+
+deb install: sudo dpkg -i xxx.deb
+
+flex -o test_flex.c test_flex.l 
+gcc test_flex.c -o test_flex -lfl // without main 
+
+create and first commit+push
+//create a repository on github(web GUi)
+git init // navigate to your project root
+git add * // after modification
+git commit -m "your comment"
+git remote add origin https://github.com/ZephyrZhng/xxxxxxxxxxxxx.git
+git push origin master
+
+modify and commit+push
+git add *
+git commit -m "your comment"
+git push origin master
+
+set terminator as default
+sudo update-alternatives --config x-terminal-emulator
+gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
+
+dpkg -i xxx.deb
+
+ftp://192.168.1.100:2121

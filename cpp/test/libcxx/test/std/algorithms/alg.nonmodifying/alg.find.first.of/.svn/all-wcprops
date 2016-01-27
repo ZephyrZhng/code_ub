@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.nonmodifying/alg.find.first.of
+END
+find_first_of_pred.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.nonmodifying/alg.find.first.of/find_first_of_pred.pass.cpp
+END
+find_first_of.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.nonmodifying/alg.find.first.of/find_first_of.pass.cpp
+END

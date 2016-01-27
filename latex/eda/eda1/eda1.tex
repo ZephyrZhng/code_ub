@@ -1,0 +1,114 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{CJKutf8}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{mathdots}
+\usepackage{tikz}
+\usepackage{wasysym}
+\usepackage{xcolor}
+
+\setlength{\parindent}{2em}
+
+\usetikzlibrary{shapes,arrows, automata}
+
+\allowdisplaybreaks
+
+\newcommand{\hytt}[1]{\texttt{\hyphenchar\font=\defaulthyphenchar #1}}
+\hyphenation{read-Sym-bol re-ad-Space-Tab-New-line str-Tab}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+%\footnotesize
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,            % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\ttfamily\color{mygreen},    
+                                   % comment style
+  deletekeywords={},               % if you want to delete keywords from the given language
+  escapeinside={},                 % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=VHDL,                    % the language of the code
+  morekeywords={},                 % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+\CJKtilde
+
+\title{实验一（1）计数器设计实验}
+
+\author{计算机1202 张艺瀚\\学号：20123852}
+\maketitle
+
+\section{实验目的}
+\begin{enumerate}
+\item 学习Ise系统的操作与使用。
+\item 学习用VHDL语言设计程序的方法和原理图编辑器的使用方法。
+\item 学习多功能EDA开发系统的使用。
+\end{enumerate}
+
+\section{实验内容}
+用原理图编辑器设计输入十进制计数器（如图~\ref{fig: afig} ）。
+\begin{center}
+\begin{figure}[h!]
+\includegraphics[width=\textwidth]{a.jpg}
+\caption{十进制计数器原理图}
+\label{fig: afig}
+\end{figure}
+\end{center}
+
+\section{实验设备}
+\begin{enumerate}
+\item 清华同方PⅣ 2.4G/256M60G
+\item ISE 6.2i—Windows软件系统
+\item 多功能EDA实验系统
+\end{enumerate}
+
+%\section{实验步骤}
+
+%\section{实验程序}
+
+\section{仿真结果}
+
+\begin{center}
+\begin{figure}[h!]
+\includegraphics[width=\textwidth]{1-1.jpg}
+\caption{十进制计数器逻辑图}
+\label{fig: xfig}
+\end{figure}
+
+\begin{figure}[h!]
+\includegraphics[width=\textwidth]{1-2.jpg}
+\caption{十进制计数器仿真波形图}
+\label{fig: yfig}
+\end{figure}
+\end{center}
+
+\end{CJK*}
+\end{document}

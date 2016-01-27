@@ -1,0 +1,292 @@
+\documentclass[12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{epsfig}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\pagestyle{empty}
+\usepackage{color}
+%\usepackage[all,dvips]{xy}
+
+\begin{comment}  
+
+This LaTeX document is a template to be used by Bates mathematics rising seniors to create a thesis proposal. 
+
+As a guide, the document is already filled out to represent a fictitious proposal, and all you need to do is modify the entries below to represent your own proposal.
+
+A PDF version of the fictitious proposal is available on the department's FAQ and Policies pages, at
+                   http://abacus.bates.edu/acad/depts/math/faq.html
+      and
+                   http://abacus.bates.edu/acad/depts/math/policies.html
+      respectively.
+
+Once you have finished your proposal, export it to a PDF file. Give the file a USEFUL name, for example, RiemannThesisProposal.PDF. Email the PDF file to Clementine Brasier, the 
+Academic Administrative Assistant for Hathorn Hall, at cbrasier\@bates.edu
+
+                This LaTex document was created Feb/Mar 2010 by Adriana Salerno and updated Feb 2012 by Meredith Greer
+
+\end{comment}
+
+\setlength{\textheight}{8.5in} \setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in} \setlength{\headsep}{0.0in}
+\setlength{\leftmargin}{0.5in}
+\setlength{\oddsidemargin}{0.0in}
+%\setlength{\parindent}{1pc}
+\setlength{\textwidth}{6.5in}
+%\linespread{1.6}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{lemma*}{Lemma}
+
+\newtheorem{note}{Note}
+\newtheorem*{note*}{Note}
+
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Problem}
+
+\newtheorem{prop}{Proposition}
+\newtheorem*{prop*}{Proposition}
+
+\newtheorem{question}{Question}
+\newtheorem*{question*}{Question}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\thispagestyle{empty}
+
+\bigskip
+\bigskip
+
+\centerline{\textbf{\Large{Personal Statement}}}
+
+\bigskip
+\bigskip
+
+\noindent \textbf{Applicant's name:} %Your name goes here.
+Yihan Zhang
+
+\bigskip
+
+\noindent \textbf{Major:} %Write your majors, minors or GECs.
+Mathematics
+
+\bigskip 
+
+\noindent \textbf{Proposed Topic:} %Write a brief description of the topic you wish to work on. This should be done in 40 words or less. 
+My research interest mainly lies in algebraic and combinatorial number theory with strong computer science techniques, in particular, problems connected with Van der Waerden's theorem and Szemer\'{e}di's theorem. I am also interested in algebraic representation theory.
+
+\bigskip
+
+%\noindent\textbf{My thesis proposal is} %Remove the comment (percentage) symbol in front of the appropriate category:
+%mathematics only.
+%double with another major.
+
+%\bigskip
+
+%\noindent\textbf{I am considering the following thesis option(s):}%Remove the comment (percentage) symbol in front of the appropriate category:
+%\begin{itemize}
+%\item fall one-semester 
+%%\item winter one-semester 
+%%\item two-semester non-honors
+%\item two-semester honors
+%\end{itemize}
+
+%\bigskip
+
+\noindent \textbf{Potential Advisor:} %Write the name of any professor(s) you think you might want to work with on this topic. You may leave this section blank if you don't know. 
+Wushi Goldring
+
+\bigskip
+
+\section{Why I wish to do Ph.D. work in algebraic number theory}
+I am currently an undergraduate majoring in computer science and technology. However, I am enthusiastic about pure mathematics, especially algebra-related topics. In fact, I have taken most courses of mathematics major or learned them by myself. And as known to us, computer science is also strongly related to algebra and combinatorics, thus it is not a huge switch for me. Take topics that I am familiar with as examples, quantum computing involves techniques of operator algebra and representation theory, algorithm requires knowledge of combinatorics and graph theory, and cryptography is a direct application of number theory. Beauty and rigor of algebra always keep me spellbound. I am familiar with fundamental algebra and learned group representation theory by myself. I am ready to dedicate myself to research of algebraic number theory and representation theory, and I believe I can make it.
+
+\bigskip 
+
+\section{Combinatorial number theory with strong computer science techniques}
+\subsection{Overview of combinatorial number theory}
+
+%This is where you would explain, in detail, what you plan to work on. This should be 1 to 3 pages in length. Here is an example of how you would cite your references in the body of your proposal.
+
+In combinatorial number theory, many conjectures are motivated by Van der Waerden's and Szemer\'{e}di's theorem and more related questions can be posed. Although these problems have been discussed for a long time since their formulation, many of them still remain open, and some of them even seem far from clear. I intend to access these topics step by step from fundamental and special cases. My main resource for posing, history and progress of problems is the serial papers \textit{Problems and results on combinatorial number theory \uppercase\expandafter{\romannumeral 1}\cite{erdos1}, \uppercase\expandafter{\romannumeral 2}\cite{erdos2}, \uppercase\expandafter{\romannumeral 2}'\cite{erdos2_} and \uppercase\expandafter{\romannumeral 3}\cite{erdos3}} by Erd\"{o}s P.
+
+In particular, I will adopt computer techniques in research. For one thing, it will partly solve a problem. For another, results can be verified step by step on machine automatically, during which underlying error will be reported. To be specific, I want to computationally verify my results' validity and obtain empirical data to have a refined understanding of my hypothesis. If the hypothesis is true, computational method will give me actual examples; otherwise, it will produce a counterexample. The latter case is pretty significant when construction of counterexample is sophisticated and lacking in regularity, in other words, it can hardly be engineered by combining known facts. In such cases, I will turn to computer to find counterexamples and analyse why they occur. Then I will revise my hypothesis until things go well in every corner.
+
+\bigskip
+
+\subsection{Background of Van der Waerden's theorem and Szemer\'{e}di's theorem and related topics}\label{backgnd}
+
+To make it more self contained, Van der Waerden's theorem and Szemer\'{e}di's theorem are shown below:
+
+\begin{theorem}[Van der Waerden's theorem\cite{van}]
+$\forall r, k \in \mathbb{Z}^{+}$, $\exists N$, $s.t.$ if integers $\{1, 2, \hdots, N\}$ are coloured, each with one of ~$r$ different colors, then there are $\geq k$ integers in arithmetic progression all of the same color. The least such $N$ is the Van der Waerden number(function) $W(r, k)$.
+\end{theorem}
+
+\begin{note}[\cite{erdos}]
+In terms of hypergraph, we can sate the above theorem by considering the hypergraph whose vertices are the integers and whose edges are the $k$ term arithmetic progressions. This hypergraph has chromatic number $+\infty$.
+\end{note}
+
+\begin{theorem}[Szemer\'{e}di's theorem\cite{sz}]
+$\forall \delta > 0, k \in \mathbb{Z}^{+}$, $\exists N$, $s.t.$ every subset $A$ of set $\{1, 2, \hdots, N\}$ of size ~$\geq \delta N$ contains an arithmetic progression of length $k$.
+\end{theorem}
+
+\begin{note}[\cite{sz}]
+In terms of density\cite{density}, the above theorem can be stated as follows: any subset of $\{1, 2, \hdots, N\}$ with positive upper density contains infinite arithmetic progressions of length $k$ for all positive integers $k$. Here, a subset A of $\{1, 2,\hdots, N\}$ is said to have positive upper density iff. 
+\[  \overline{d}(A) = \limsup_{n \to +\infty} \frac{|A \cap \{1, 2, \hdots, N\}|}{n} > 0. \]
+\end{note}
+
+\begin{note}[\cite{sz}]
+If we define function $r_k(N)$ as the the size of the largest subset of $\{1, 2, \hdots, N\}$ without an arithmetic progression of length $k$, the above theorem can be stated as 
+\[ r_k(N) = o(N). \]
+We will come to this later.
+\end{note}
+
+\subsubsection{Conjectures related to $f(n)$}
+
+Van der Waerden\cite{vanpaper} proved that: there is an $f(n)$ so that if we divide integers $1 \leq t \leq f(n)$ into two classes, at least one of them contains an arithmetic progression of $n$ terms. Then mathematicians want to establish satisfactory upper and lower bound for $f(n)$. Paul Erd\"{o}s conjectured that:
+\begin{equation}\label{fn}
+\lim_{n \to +\infty}f(n)^{\frac{1}{n}}=+\infty.
+\end{equation}
+
+But considering the difficulty of \eqref{fn}, Erd\"{o}s later gave an easier version: let $\frac{1}{2}n < u \leq n$, let $f(u, n)$ be the smallest integer s.t. if we divide integers $1 \leq t \leq f(u, n)$ into two classes, there is always an arithmetic progression of $n$ terms, in which one of the classes has $\geq u$ terms. However, we still know little about $f(u, n)$. We can get 
+\begin{equation}
+f(u, n) > (1+c(\varepsilon))^n\quad \text{for}\ u > \frac{n}{2}(1+\varepsilon)
+\end{equation}
+by probability method. But more interesting and challenging problems can be posed. It is reasonable to begin by determining or estimate $f(u, n)$ for $u$ and $n$ which are fixed or conform to some special condition. Van der Waerden\cite{vanpaper} even extend $f(n)$ to more than two variables in his original paper which proved Van der Waerden's theorem. This is of course further more difficult to evaluate.
+
+Again, because of the very difficulty to determine upper bound for $f(n)$, Tur\'{a}n and Erd\"{o}s\cite{erdosconj} conjectured that every sequence of positive upper density contains arbitrarily long arithmetic progressions. Or, equivalently, let $r_k(n)$ be the smallest integer s.t. if $1 \leq a_1 < \hdots < a_{r_k(n)} \leq n$, then $(a_i)_{i=1}^{r_k(n)}$ contains an arithmetic progression of $k$ terms. Then the above conjecture can be sated as 
+\begin{equation}
+r_k(n)=o(n).
+\end{equation}
+Szemer\'{e}di\cite{szpaper} proved this which is known as the glamorous Szemer\'{e}di theorem. Here I want to mention that F\"{u}rstenberg\cite{fur} later proved the theorem using ergodic theory and topological dynamics, which is a stunningly amazement in the area of combinatorial number theory. Similarly, obtaining asymptotic bound for $r_k(n)$ is still a hard task. Szemer\'{e}di remarked that we don't even know whether it's true that 
+\begin{equation}
+\frac{r_k(n)}{r_{k+1}(n)}\to 0 \quad (n \to +\infty).
+\end{equation}
+
+\subsubsection{Other problems related to Van der Waerden's and Szemer\'{e}di's theorem}
+
+Let $A(n, k)$ be the largest integer s.t. if we divide integers $1 \leq t \leq n$ into two classes, there are $\geq A(n, k)$ $k$-term arithmetic progressions all whose terms are in the same class. Then the result 
+\begin{equation}
+A(n, k)>c(k)n^2
+\end{equation}
+can be obtained by applying Van der Waerden's theorem, and 
+\begin{equation}
+A(n, k) < \frac{n^2}{2(k-1)2^{k-1}}(1+o(1))
+\end{equation}
+follows from some probability method. 
+
+Let $f_k(n, \alpha)$ be the largest integer s.t. every set of $\alpha n$ integers $\leq n$ contains $\geq f_k(n, \alpha)$ arithmetic progressions of $k$ terms. Then the result 
+\begin{equation}
+f_k(n, \alpha)>c(\alpha, k)n^2
+\end{equation}
+can be obtained by applying Szemer\'{e}di's theorem. 
+
+It's also a challenge to obtain an asymptotic bound for $A(n, k)$ and $f_k(n, \alpha)$.
+
+\bigskip
+
+\subsection{Planned Study}
+
+To commence, as student who majors in Computer Science and Technology during undergraduate time, I have to show the interaction between number theory and computer science. It's twofold: firstly, a computer science student can use computers to form conjectures or obtain intuition regarding unsolved conjectures based on patterns coming from running a large scale of calculations; secondly, it's also a common technique to divide a conjecture into several cases and prove by reduction by hand that the core part is true for sufficiently large integers, then resort to computers to knock off corner cases. 
+
+Basically, I will use computer science skills to search for regularities in congruences and identities for proposed conjectures. Then it will be easier to apply techniques from the field of modular forms, analytics, ergodic theory, topological dynamics etc. During this process, generating functions will certainly play a significant role. For many combinatorial objects, generating functions turn out to have certain symmetries when looked at as functions. In other words, when viewed algebraically, one can get deep understanding of combinatorial objects using knowledge of group, fields and stuffs with nice symmetries; when viewed from an analytical point, one will usually get familiar with functions by evaluate their analytical qualities. Using the two techniques allows one to move knowledge from one side to the other. According to W. T. Gowers\cite{gowers}, combinatorial number theory lies on the interface of additive number theory, harmonic analysis and combinatorics where neither algebraic method nor analytical method, such as Riemann zeta function $\zeta(s)$ plays a central role. As shown in section \ref{backgnd}, it's hard to say which field of knowledge would get involved in this the area of combinatorial number theory. When F\"{u}rstenberg first introduced ergodic theory and topological dynamics into combinatorial number theory, one cannot immediately evaluate influence and prospective of such invasion, just as the application of analytics to combinatorial number theory. In fact, time witnessed the formulation of a new specialization called analytical number theory after the application of analytics. Nowadays ergodic theory and topological dynamics also seem to become most powerful tools in number theory research which are worth of further development.
+
+Combinatorial number theory also involves determining some function(finding certain identities) and evaluating upper and lower bound for it(building satisfactory inequalities). The basic motivation for this process is counting objects. Here counting is a generalized concept, possibly delineating some quality of certain set which has certain known relation with other different types of sets.
+
+There is another thing I want to explain. As is known to all, finding valuable problems to work on is perhaps the hardest part of mathematics research. Personally speaking, I intend to begin from existing unsolved problems or conjectures. For one thing, those problems are formulated by previous mathematicians, which means they have certain meaningful background. For another, there have been some progress regarding many of them, which means I can adopt some classical methods or ideas rather than do everything from scratch.
+
+To be specific, procedures of research are shown below. 
+
+\begin{enumerate}
+\item \label{hypo} Formulate a hypothesis regarding a conjecture by beginning with some intuition about what might be true. 
+\item \label{check} Test the hypothesis with as many cases as possible using computers, either programming languages or symbolic computation software. As a student who has received systematic education of computer science, I am capable of choosing examples which are both good enough to indicate main characteristics of the core case and to cover enough corner cases. Moreover, knowledge of algorithm and data structure also allows me to design efficient algorithms. Finally, engineering techniques, such as parallel computing, will lend support to implementing these algorithms so that computers can run a large scale of data in tolerable time with reasonable memory, in other word, I can get results without much cost.
+\item If guess from step \ref{hypo} doesn't work out for all cases, revise hypothesis based on step \ref{check} (either generalize the hypothesis, i.e. weaken condition of it, or classify correct cases in original hypothesis, i.e. restrict conclusion of it). Return to step \ref{check} to check again. So on and so forth until I'm sure that it's true, i.e. step \ref{hypo} works out for all cases checked in step \ref{check}. Finally, the most important step, prove in precise mathematical manner that my hypothesis holds in general. Usually methods like induction and generating functions are applied. But sometimes techniques out of expectation might be needed as shown in section \ref{backgnd}.
+\end{enumerate}
+
+\bigskip
+
+\section{Topic in computer science which is strongly connected to mathematics}
+\subsection{Introduction to Graph Isomorphism Problem}
+Recently, L\'{a}szl\'{o} Babai\cite{babai} from University of Chicago posted a digest of a series of talks and claimed that he found an algorithm to solve Graph Isomorphism Problem (GI) in quasi-polynomial time, which might be the most significant breakthrough in recent decade in theoretical computer science. It’s an interesting topic and worth of further research.
+
+To commence with, I will first introduce $P$ and $NP$. We claim that a problem is in $P$ if it can be solved by Deterministic Turing Machine in polynomial time. And we claim that a problem is in $NP$ if it can be verified by Deterministic Turing Machine in polynomial time. To determine whether $P$ is equal to $NP$ or not is a major open problem in theoretical computer science. And Graph Isomorphism Problem has strong connections to $P/NP$ problem. As the name implies, GI asks us to determine whether two finite graphs are isomorphic.
+
+\bigskip
+
+\subsection{Relations of GI with computational complexity and quantum computing}
+What does it mean if $P=NP$? Briefly speaking, it means we can solve a problem if we can judge its answer, which seems amazing. The most common way to show that two sets are different is to find an element which lies in set $A$ but doesn’t lie in set $B$. In computational complexity, those elements are defined to be $NP$-intermediate ($NPI$) problems. They lies in $NP$ but doesn’t lie in $P$. 
+
+Therefore, Graph Isomorphism Problem is significant because it’s one of two candidates of $NPI$ problems. The other one is Factoring Problem. The existence of $NPI$ problems leads to a claim that $P\ne NP$. And obtaining a quasi-polynomial time algorithm means that GI is either more likely to get into $P$ or more likely to stay outside of $P$ forever, if someone shows that the time complexity of Babai’s algorithm is a strict lower bound. 
+
+Famous theoretical computer scientist Scott Aaronson from MIT made some comments regarding Babai’s result on his blog\cite{aaronson}, which might lead us to a deeper understanding of Babai’s work. He mentioned that the problem solved by Babai is actually String Isomorphism Problem (Given two string on a finite set and several permutations as generators of a group $G$, the problem asks: can we find a permutation $\sigma$ in $G$ such that $\sigma(x)=y$?) 
+
+Moreover, GI also has strong connections to quantum computing. GI is a special case of Hidden Subgroup Problem (HSP) in quantum computing. HSP is described as: given a group $G$ and a function $f:G \to \{0,1\}^n$, find a subgroup $H$ of $G$ such that $f(x)=f(y)$ if and only if $x-y\in H$, where $x$ and $y$ are 0-1 strings. In terms of graph theory, an isomorphism between two graphs is a permutation, and $S_n$ is a hidden subgroup. In fact, many scientists tried to bring GI into $BQP$ class, which is to say, find a polynomial algorithm for GI on quantum computer. But they all failed. 
+
+\bigskip
+
+\subsection{Why I am competent for related topics}
+Clearly, many problems remain open and more related questions can be posed regarding this topic. I intend to access these topics step by step from fundamental and special cases. As is known to us, theoretical computer science has strong connections to mathematics and many mathematical techniques are involved in theoretical computer science research. I believe I have a solid foundation of mathematics comparing with other undergraduates who major in computer science and technology. Specially, I am familiar with algebra and group representation, which are commonly used in quantum computing. Also, I have taken, currently am taking courses or learn by myself many mathematics courses to support my theory research, including partial differential equations, algebra, group representation theory, algebraic topology, functional analysis, etc. Compared with general specializations in computer engineering, the key distinction lies in the level of formality and rigor necessary to call something a “proof”. I never stop training myself be rigorous which is essential in theory research. 
+
+Moreover, I received systematic computer science and engineering education and grasp many technologies to implement algorithm and form or verify conjectures according to a large scale of calculation. Although it cannot substitute a rigorous proof, I can easily obtain intuition or determine whether a result is likely to be true or not, which will facilitate my theory research. 
+
+\bigskip
+
+\begin{thebibliography}{99}
+% NOTE: change the "9" above to "99" if you have MORE THAN 10 references.
+\bibitem{babai} L\'{a}szl\'{o} Babai: Talks, Nov 10-Dec 1, 2015. In \textit{L\'{a}szl\'{o} Babai's homepage of University of Chicago} from \url{http://people.cs.uchicago.edu/~laci/quasipoly.html.}
+
+\bibitem{aaronson} G. Phi. Fo. Fum. In \textit{Scott Aaronson's blog} \url{http://www.scottaaronson.com/blog/?p=2521}
+
+\bibitem{erdos1} Erd\"{o}s, P. (1973). Problems and results on combinatorial number theory \uppercase\expandafter{\romannumeral 1}. In \textit{A survey of combinatorial theory (Proc. Internat. Sympos., Colorado State Univ., Fort Collins, Colo., 1971)} (pp. 117-138).
+
+\bibitem{erdos2} Erd\"{o}s, P. (1974). Problems and results on combinatorial number theory \uppercase\expandafter{\romannumeral 2}. In \textit{Journ\'{e}es Arithm\'{e}tiques de Bordeaux} (pp. 295-310).
+
+\bibitem{erdos2_} Erd\"{o}s, P. (1977). Problems and results on combinatorial number theory \uppercase\expandafter{\romannumeral 2}'. In \textit{J. Indian Math. Soc.} (pp. 285-298).
+
+\bibitem{erdos3} Erd\"{o}s, P. (1977). Problems and results on combinatorial number theory \uppercase\expandafter{\romannumeral 3}. In \textit{Number Theory Day} (pp. 43-72). Springer Berlin Heidelberg.
+
+\bibitem{van} Van der Waerden's theorem. (2015, October 28). In \textit{Wikipedia, The Free Encyclopedia}. Retrieved 04:38, October 29, 2015, from \url{https://en.wikipedia.org/w/index.php?title=Van_der_Waerden%27s_theorem&oldid=646964802}
+
+\bibitem{sz} Szemer\'{e}di's theorem. (2015, September 30). In \textit{Wikipedia, The Free Encyclopedia}. Retrieved 04:52, October 29, 2015, from \url{https://en.wikipedia.org/w/index.php?title=Szemer%C3%A9di%27s_theorem&oldid=683519170}
+
+\bibitem{density} Natural density. (2015, October 13). In \textit{Wikipedia, The Free Encyclopedia}. Retrieved 04:55, October 29, 2015, from \url{https://en.wikipedia.org/w/index.php?title=Natural_density&oldid=685623708}
+
+\bibitem{gowers} Gowers, W. T. (2001). Some unsolved problems in additive/combinatorial number theory. \textit{preprint}.
+
+\bibitem{erdos} Erd\"{o}s, P. (1980). A survey of problems in combinatorial number theory. \textit{Ann. Discrete Math, 6}, 89-115.
+
+\bibitem{vanpaper} Van der Waerden, B. L. (1927). Beweis einer baudetschen vermutung. \textit{Nieuw Arch. Wisk, 15}(2), 212-216.
+
+\bibitem{erdosconj} Erd\"{o}s, P.; Tur\'{a}n, P. (1936). On some sequences of integers. \textit{Journal of the London Mathematical Society, 11}(4), 261-264.
+
+\bibitem{szpaper} Szemer\'{e}di, E. (1975). On sets of integers containing no $k$ elements in arithmetic progression. \textit{Acta Arith, 27}(2), 199-245.
+
+\bibitem{fur} F\"{u}rstenberg, H. (1977). Ergodic behavior of diagonal measures and a theorem of Szemer\'{e}di on arithmetic progressions. \textit{Journal d'Analyse Mathématique, 31}(1), 204-256.
+
+\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document} 

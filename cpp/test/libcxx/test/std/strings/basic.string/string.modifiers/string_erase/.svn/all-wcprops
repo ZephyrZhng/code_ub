@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase
+END
+erase_iter_iter_db3.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/erase_iter_iter_db3.pass.cpp
+END
+erase_iter_iter_db4.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/erase_iter_iter_db4.pass.cpp
+END
+pop_back.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/pop_back.pass.cpp
+END
+iter.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/iter.pass.cpp
+END
+size_size.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/size_size.pass.cpp
+END
+iter_iter.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/iter_iter.pass.cpp
+END
+erase_iter_db1.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/erase_iter_db1.pass.cpp
+END
+erase_iter_db2.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/erase_iter_db2.pass.cpp
+END
+erase_iter_iter_db1.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/erase_iter_iter_db1.pass.cpp
+END
+erase_iter_iter_db2.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/strings/basic.string/string.modifiers/string_erase/erase_iter_iter_db2.pass.cpp
+END

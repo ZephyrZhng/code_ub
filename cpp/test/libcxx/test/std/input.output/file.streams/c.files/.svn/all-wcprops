@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/llvm-project/!svn/ver/233275/libcxx/trunk/test/std/input.output/file.streams/c.files
+END
+cinttypes.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/file.streams/c.files/cinttypes.pass.cpp
+END
+cstdio.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/llvm-project/!svn/ver/233275/libcxx/trunk/test/std/input.output/file.streams/c.files/cstdio.pass.cpp
+END
+gets.fail.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/file.streams/c.files/gets.fail.cpp
+END
+version_cinttypes.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/file.streams/c.files/version_cinttypes.pass.cpp
+END
+version_ccstdio.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/file.streams/c.files/version_ccstdio.pass.cpp
+END

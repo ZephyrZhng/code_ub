@@ -1,0 +1,34 @@
+program
+begin
+	declaration
+	begin
+		integer i1
+		real r1
+		integer i2
+		real r2
+		boolean b
+	end
+
+	statement
+	begin
+		set b as begin false end
+
+		assign begin i1 add begin begin r1 subtract 1.2 end multiply 2 end divide i2 end
+		to r2
+
+		if begin b end then
+		begin
+			assign begin i2 add 3 end
+			to i2
+		end
+		else then
+		begin
+			assign begin 5 end to i2
+		end
+
+		while begin b end then
+		begin
+			assign begin r2 subtract 9 end to r2
+		end
+	end
+end

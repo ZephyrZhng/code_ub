@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/llvm-project/!svn/ver/228344/libcxx/trunk/test/std/utilities/date.time
+END
+tested_elsewhere.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/llvm-project/!svn/ver/228344/libcxx/trunk/test/std/utilities/date.time/tested_elsewhere.pass.cpp
+END

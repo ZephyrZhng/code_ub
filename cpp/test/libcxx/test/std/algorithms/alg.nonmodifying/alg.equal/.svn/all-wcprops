@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.nonmodifying/alg.equal
+END
+equal.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.nonmodifying/alg.equal/equal.pass.cpp
+END
+equal_pred.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/algorithms/alg.nonmodifying/alg.equal/equal_pred.pass.cpp
+END

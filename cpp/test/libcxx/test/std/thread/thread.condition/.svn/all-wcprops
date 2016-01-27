@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/thread/thread.condition
+END
+cv_status.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/thread/thread.condition/cv_status.pass.cpp
+END
+notify_all_at_thread_exit.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/thread/thread.condition/notify_all_at_thread_exit.pass.cpp
+END
+version.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/thread/thread.condition/version.pass.cpp
+END

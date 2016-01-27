@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/fpos/fpos.operations
+END
+eq_int.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/fpos/fpos.operations/eq_int.pass.cpp
+END
+ctor_int.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/fpos/fpos.operations/ctor_int.pass.cpp
+END
+offset.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/fpos/fpos.operations/offset.pass.cpp
+END
+streamsize.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/fpos/fpos.operations/streamsize.pass.cpp
+END
+difference.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/fpos/fpos.operations/difference.pass.cpp
+END
+addition.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/fpos/fpos.operations/addition.pass.cpp
+END
+subtraction.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/input.output/iostreams.base/fpos/fpos.operations/subtraction.pass.cpp
+END

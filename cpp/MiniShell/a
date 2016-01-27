@@ -1,0 +1,6 @@
+total 36
+-rw-rw-r-- 1 zephyr zephyr   245 Nov  8 11:20 a
+-rwxrwxr-x 1 zephyr zephyr 13136 Nov  8 11:24 MShell
+-rw-r--r-- 1 zephyr zephyr  4837 Nov  8 11:23 MShell.c
+-rw-rw-r-- 1 zephyr zephyr  5186 Nov  8 11:23 MShell.c.dump
+01:04 MShell.c.dump

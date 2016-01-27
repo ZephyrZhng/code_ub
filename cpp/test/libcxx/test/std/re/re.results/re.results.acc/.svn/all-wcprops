@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/llvm-project/!svn/ver/227384/libcxx/trunk/test/std/re/re.results/re.results.acc
+END
+cbegin_cend.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.results/re.results.acc/cbegin_cend.pass.cpp
+END
+length.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.results/re.results.acc/length.pass.cpp
+END
+position.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.results/re.results.acc/position.pass.cpp
+END
+suffix.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.results/re.results.acc/suffix.pass.cpp
+END
+index.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/llvm-project/!svn/ver/227384/libcxx/trunk/test/std/re/re.results/re.results.acc/index.pass.cpp
+END
+str.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.results/re.results.acc/str.pass.cpp
+END
+begin_end.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.results/re.results.acc/begin_end.pass.cpp
+END
+prefix.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/re/re.results/re.results.acc/prefix.pass.cpp
+END

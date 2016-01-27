@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.comparisons
+END
+op_less.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.comparisons/op_less.pass.cpp
+END
+op_equal.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/utilities/time/time.duration/time.duration.comparisons/op_equal.pass.cpp
+END

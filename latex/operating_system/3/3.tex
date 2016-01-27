@@ -1,0 +1,543 @@
+\documentclass[11pt]{article}
+
+\usepackage{abstract}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{CJKutf8}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{epsfig}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{listings}
+\usepackage{mathdots}
+\usepackage{mathpazo}
+\usepackage{multirow}
+\usepackage{pstricks-add}
+\usepackage{pst-blur}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{wasysym}
+\usepackage{xcolor}
+\usepackage[BoldFont,SlantFont,CJKsetspaces,CJKchecksingle]{xeCJK}
+
+\allowdisplaybreaks
+\DeclareMathOperator*{\argmin}{argmin}
+\definecolor{Blue}{rgb}{1.,0.75,0.8}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\pagestyle{empty}
+\parindent 2em   %段首缩进
+\setlength{\parindent}{2em}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\setCJKmonofont{SimSun}% 设置缺省中文字体
+\usetikzlibrary{arrows, automata, calc, shapes}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\hytt}[1]{\texttt{\hyphenchar\font=\defaulthyphenchar #1}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}   
+\renewcommand{\algorithmicensure}{\textbf{Output:}}  
+% \hyphenation{read-Sym-bol re-ad-Space-Tab-New-line str-Tab}
+
+%\footnotesize
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\ttfamily,            % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\ttfamily\color{mygreen},    
+                                   % comment style
+  deletekeywords={},               % if you want to delete keywords from the given language
+  escapeinside={},                 % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C++,                    % the language of the code
+  morekeywords={},                 % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\pagestyle{fancy}
+\rhead{page \thepage\ of \pageref{LastPage}}
+%\chead{}
+\lhead{操作系统实验报告}
+\cfoot{}
+
+\begin{document}
+
+\title{操作系统实验3 \quad 进程同步和通信}
+\author{计算机1202 \quad 张艺瀚\\学号:20123852}
+\maketitle
+
+\thispagestyle{fancy}
+%\newpage
+\normalsize 
+
+\section{实验题目}
+生产者和消费者问题模拟
+
+\section{实验目的}
+这是一个验证型实验。通过对给出的程序进行验证、修改，进一步加深理解进程的概念，了解同步和通信的过程，掌握进程通信和同步的机制，特别是利用缓冲区进行同步和通信的过程。通过补充新功能，加强对知识的灵活运用，培养创新能力。
+
+\section{实验要求}
+\begin{enumerate}
+  \item 调试、运行给出的程序，从操作系统原理的角度验证程序的正确性。
+  \item 发现并修改程序中的原理性错误或不完善的地方。 
+  \item 鼓励在程序中增加新的功能。完成基本。
+  \item 在程序中适当地加入注释。
+  \item 认真进行预习，阅读原程序，发现其中的原理性错误，完成预习报告。
+  \item 实验完成后，要认真总结，完成实验报告。
+\end{enumerate}
+
+\section{程序流程图}
+见图\ref{fig: main}-\ref{fig: runc}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{operation} = [rectangle, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{judge} = [diamond, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=2cm]
+%定义流程图具体形状
+\node (a) [startstop] at(0,-1)       {开始};
+\node (b) [operation] at(0,-2.5)      {初始化};
+\node (c) [operation] at(0,-4)      {输入};
+\node (d) [judge] at(0,-6)      {命令？};
+
+\node (e) [operation] at(0,-8)      {runp};
+\node (f) [judge] at(0,-10)      {状态？};
+\node (g) [operation] at(0,-12.5)      {生产者阻塞};
+\node (h) [judge] at(0,-17)      {生产者wait？};
+\node (i) [operation] at(0,-20)      {生产者计数+1};
+
+\node (p) [operation] at(-3,-11)      {唤醒消费者};
+\node (q) [operation] at(-3,-12.5)      {runc};
+\node (r) [operation] at(-3,-14)      {消费者计数-1};
+
+\node (k) [operation] at(3.2,-8)      {runc};
+\node (l) [judge] at(3.2,-10)      {状态？};
+\node (m) [operation] at(3.2,-12.5)      {消费者阻塞};
+\node (n) [judge] at(3.2,-17)      {消费者wait？};
+\node (o) [operation] at(3.2,-20)      {消费者计数+1};
+
+\node (s) [operation] at(6.2,-11)      {唤醒生产者};
+\node (t) [operation] at(6.2,-12.5)      {runp};
+\node (u) [operation] at(6.2,-14)      {生产者计数-1};
+
+\node (j) [startstop] at(0,-22)      {结束};
+
+%连接具体形状
+\draw [arrow](a) -- (b);
+\draw [arrow](b) -- (c);
+\draw [arrow](c) -- (d);
+
+\draw [arrow](d.west) -- (-5, -6) -- node[anchor=south] {'e'} (-1, -6) -| (-5, -21.2) -- (0, -21.2) -- (j.north);
+
+\draw [arrow](d) -- node[anchor=west] {'p'} (0, -7.2) -- (e);
+\draw [arrow](e) -- (f);
+\draw [arrow](f) -- node[anchor=east] {sleep} (0, -11.5) -- (g);
+\draw [arrow](g) -- (h);
+\draw [arrow](h) -- node[anchor=east] {Y} (0, -19.3) -- (i);
+
+\draw [arrow](f.west) -- node[anchor=south] {awake} (-3, -10) -- (-3, -10) -- (p.north);
+\draw [arrow](p) -- (q);
+\draw [arrow](q) -- (r);
+\draw [arrow](r) -- (-3, -15) -- (0, -15);
+
+\draw [arrow](d.east) -- (3.2, -6) -- node[anchor=west] {'c'} (3.2, -7.2) -- (k.north);
+\draw [arrow](k) -- (l);
+\draw [arrow](l) -- node[anchor=west] {sleep} (3.2, -11.5) -- (m);
+\draw [arrow](m) -- (n);
+\draw [arrow](n) -- node[anchor=west] {Y} (3.2, -19.3) -- (o);
+
+\draw [arrow](l.east) -- node[anchor=south] {awake} (6.2, -10) -- (6.2, -10) -- (s.north);
+\draw [arrow](s) -- (t);
+\draw [arrow](t) -- (u);
+\draw [arrow](u) -- (6.2, -15) -- (3.2, -15);
+
+\draw [arrow](i) -- (0, -20.9) -- (9.2, -20.9) -- (9.2, -3.25) -- (0, -3.25);
+\draw [arrow](o) -- (3.2, -20.9);
+\draw [arrow](h.west) -- node[anchor=south] {N} (-3, -17) -- (-3, -17) -- (-3, -20.9) -- (0, -20.9);
+\draw [arrow](n.east) -- node[anchor=south] {N} (6.2, -17) -- (6.2, -17) -- (6.2, -20.9);
+%\draw [arrow]( ) -- node[anchor=east] {是} ( );
+%\draw [arrow]( ) -- node[anchor=south] {否} ( );
+\end{tikzpicture}
+\caption{主过程}
+\label{fig: main}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=2cm]
+%定义流程图具体形状
+\node (a) [startstop] at(0,-0.35)       {入口};
+\node (b) [operation] at(0,-1.85)      {修改状态为run};
+\node (c) [judge] at(0,-3.85)      {管道满？};
+\node (d) [operation] at(0,-6)      {数据送管道};
+\node (e) [operation] at(0,-7.5)      {修改写指针};
+\node (f) [operation] at(0,-9)      {数据计数+1};
+\node (g) [operation] at(0,-10.5)      {生产者运行次数+1};
+\node (h) [operation] at(0,-12)      {修改状态为ready};
+\node (i) [judge] at(0,-15)      {\begin{tabular}{c} 消费者等待 \\ 队列不空？ \end{tabular}};
+
+\node (k) [operation] at(3,-6)      {修改状态为wait};
+\node (l) [startstop] at(3,-7.5)      {返回sleep};
+
+\node (m) [startstop] at(-3,-18)      {返回normal};
+
+\node (j) [startstop] at(0,-18)      {返回awake};
+
+%连接具体形状
+\draw [arrow](a) -- (b);
+\draw [arrow](b) -- (c);
+\draw [arrow](c) -- node[anchor=east] {N} (0, -5.2) -- (d);
+\draw [arrow](d) -- (e);
+\draw [arrow](e) -- (f);
+\draw [arrow](f) -- (g);
+\draw [arrow](g) -- (h);
+\draw [arrow](h) -- (i);
+\draw [arrow](i) -- node[anchor=west] {Y} (0, -17.2) -- (j);
+
+\draw [arrow](c) -- node[anchor=south] {Y} (3, -3.85) -- (3, -3.85) -- (k);
+\draw [arrow](k) -- (l);
+
+\draw [arrow](i) -- node[anchor=south] {N} (-3, -15) -- (-3, -15) -- (m);
+
+%\draw [arrow]( ) -- node[anchor=east] {是} ( );
+%\draw [arrow]( ) -- node[anchor=south] {否} ( );
+\end{tikzpicture}
+\caption{runp}
+\label{fig: runp}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=2cm]
+%定义流程图具体形状
+\node (a) [startstop] at(0,-0.35)       {入口};
+\node (b) [operation] at(0,-1.85)      {修改状态为run};
+\node (c) [judge] at(0,-3.85)      {管道空？};
+\node (d) [operation] at(0,-6)      {取数据};
+\node (e) [operation] at(0,-7.5)      {修改读指针};
+\node (f) [operation] at(0,-9)      {数据计数-1};
+\node (g) [operation] at(0,-10.5)      {消费者运行次数+1};
+\node (h) [operation] at(0,-12)      {修改状态为ready};
+\node (i) [judge] at(0,-15)      {\begin{tabular}{c} 生产者等待 \\ 队列不空？ \end{tabular}};
+
+\node (k) [operation] at(3,-6)      {修改状态为wait};
+\node (l) [startstop] at(3,-7.5)      {返回sleep};
+
+\node (m) [startstop] at(-3,-18)      {返回normal};
+
+\node (j) [startstop] at(0,-18)      {返回awake};
+
+%连接具体形状
+\draw [arrow](a) -- (b);
+\draw [arrow](b) -- (c);
+\draw [arrow](c) -- node[anchor=east] {N} (0, -5.2) -- (d);
+\draw [arrow](d) -- (e);
+\draw [arrow](e) -- (f);
+\draw [arrow](f) -- (g);
+\draw [arrow](g) -- (h);
+\draw [arrow](h) -- (i);
+\draw [arrow](i) -- node[anchor=west] {Y} (0, -17.2) -- (j);
+
+\draw [arrow](c) -- node[anchor=south] {Y} (3, -3.85) -- (3, -3.85) -- (k);
+\draw [arrow](k) -- (l);
+
+\draw [arrow](i) -- node[anchor=south] {N} (-3, -15) -- (-3, -15) -- (m);
+
+%\draw [arrow]( ) -- node[anchor=east] {是} ( );
+%\draw [arrow]( ) -- node[anchor=south] {否} ( );
+\end{tikzpicture}
+\caption{runc}
+\label{fig: runc}
+\end{figure}
+
+\section{源程序}
+增加生产者计数和消费者计数，作用相当与生产者等待队列和消费者等待队列。若有等待消费者，则生产的数据不会出现在队列中，知道满足所有等待消费者，讲述写入上次指针位置。
+
+\begin{lstlisting}[caption = {代码清单}, label = {lst: code}]
+/***************************************************************/
+/*         PROGRAM NAME:         PRODUCER_CONSUMER             */
+/*    This program simulates two processes, producer which     */
+/* continues  to produce message and  put it into a buffer     */
+/* [implemented by PIPE], and consumer which continues to get  */
+/* message from the buffer and use it.                         */
+/*    The program also demonstrates the synchronism between    */
+/* processes and uses of PIPE.                                 */
+/***************************************************************/
+
+#define PIPESIZE 8
+
+#define PRODUCER 0
+#define CONSUMER 1
+
+#define RUN      0    /* statu of process */
+#define WAIT     1    /* statu of process */
+#define READY    2    /* statu of process */
+
+#define NORMAL   0
+#define SLEEP    1
+#define AWAKE    2
+
+#include <stdio.h>
+struct pcb
+{
+  char *name;
+  int  statu;
+  int  time;  /* times of execution */
+};
+
+struct pipetype
+{
+  char type;
+  int  writeptr;
+  int  readptr;
+  struct pcb *pointp; /* write wait point */ // producer queue
+  struct pcb *pointc; /* read wait point  */ // consumer queue
+};
+
+int pipe[PIPESIZE];
+struct pipetype pipetb;
+struct pcb process[2];
+int count=0;  // resource count
+int producerCount=0, consumerCount=0; // semaphore
+
+int runp(int out, struct pcb p[], int pipe[], struct pipetype *tb, int t)
+{
+  p[t].statu=RUN;
+  printf("run PRODUCER. product %d     ",out);
+  if(count >= 8)  // full
+  {
+    p[t].statu=WAIT;
+    return(SLEEP);
+  }
+  pipe[tb->writeptr]=out;
+  tb->writeptr=++tb->writeptr%8;  // revised
+  // tb->writeptr++;
+  printf("writeptr%d\n",tb->writeptr);  // revised
+  count++;  // revised
+  printf("count = %d\n",count); // revised
+  p[t].time++;
+  printf("time = %d\n",p[t].time);  // revised
+  p[t].statu=READY;
+  if((tb->pointc) != NULL)
+  {
+    printf("return AWAKE");
+    return(AWAKE);
+  }
+  return(NORMAL);
+}
+
+int runc(struct pcb p[], int pipe[], struct pipetype *tb, int t)
+{
+  int c;
+  p[t].statu = RUN;
+  printf("run CONSUMER. ");
+  if(count <= 0)  //
+  {
+    p[t].statu=WAIT;
+    return(SLEEP);
+  }
+  c=pipe[tb->readptr];
+  pipe[tb->readptr]=0; // revised
+  // tb->readptr++;
+  tb->readptr=++tb->readptr%8;  // revised
+  printf("readptr=%d\n",tb->readptr); // revised
+  printf(" use %d      ",c);
+  // delete some code
+  // if(tb->readptr >= tb->writeptr)
+  // {
+  //  tb->readptr=tb->writeptr=0;
+  // }
+  count--;// revised
+  printf("count = %d\n",count); // revised
+  p[t].time++; 
+  printf("time = %d\n",p[t].time);  // revised
+  p[t].statu=READY;
+  if(tb->pointp != NULL)
+  {
+    printf("return AWAKE\n"); // revised
+    return(AWAKE);
+  }
+  return(NORMAL);
+}
+
+void prn(struct pcb p[], int pipe[], struct pipetype tb)
+{
+  int i;
+  printf("\n         ");
+  for(i=0;i<PIPESIZE;i++)
+  {
+    printf("------ ");  // print upper border
+  }
+  printf("\n        |");  // left dash
+  for(i=0;i<PIPESIZE;i++) // second line and vertical bar
+  {
+    if(pipe[i] != 0)
+    {
+      printf("  %2d  |",pipe[i]);
+    }
+    else
+    {
+      printf("      |");
+    }
+  }
+  printf("\n         ");
+  for(i=0;i<PIPESIZE;i++) // print lower border
+  {
+    printf("------ ");
+  }
+  printf("\nwriteptr = %d, readptr = %d,  ",tb.writeptr,tb.readptr);
+  if(p[PRODUCER].statu == WAIT)
+  {
+    printf("PRODUCER wait ");
+  }
+  else
+  {
+    printf("PRODUCER ready ");
+  }
+  if(p[CONSUMER].statu == WAIT)
+  {
+    printf("CONSUMER wait ");
+  }
+  else
+  {
+    printf("CONSUMER ready ");
+  }
+  printf("\n");
+}
+
+int main(int argc, char** argv)
+{
+  int output,ret,i;
+  char in[2];
+
+  pipetb.type = 'c';
+  pipetb.writeptr = 0;
+  pipetb.readptr = 0;
+  pipetb.pointp = pipetb.pointc = NULL;
+  process[PRODUCER].name = "Producer\0";
+  process[CONSUMER].name = "Consumer\0";
+  process[PRODUCER].statu = process[CONSUMER].statu = READY;
+  process[PRODUCER].time = process[CONSUMER].time = 0;
+  output = 0;
+  printf("Now starting the program!\n");
+  printf("Press 'p' to run PRODUCER, press 'c' to run CONSUMER.\n");
+  printf("Press 'e' to exit from the program.\n");
+  for(i=0;i<1000;i++)
+  {
+    in[0]='N';
+    while(in[0] == 'N')
+    {
+      scanf("%s",in);
+      if(in[0] != 'e'&&in[0] != 'p'&&in[0] != 'c')  // if input is not e/p/c, input again
+      {
+        in[0]='N';
+      }
+    }
+    if(in[0] == 'e')
+    {
+      return 1; // exit(1);
+    }
+    if(in[0] == 'p'&&process[PRODUCER].statu == READY)
+    {
+      if(count<8) // revised
+      {
+        output = (output+1)%100;
+      }
+      if((ret=runp(output,process,pipe,&pipetb,PRODUCER)) == SLEEP)
+      {
+        pipetb.pointp = &process[PRODUCER];
+      }
+      if(ret == AWAKE)
+      {
+        (pipetb.pointc)->statu=READY;
+        runc(process,pipe,&pipetb,CONSUMER);  // revised
+        consumerCount--;  // revised
+        printf("consumerCount=%d\n",consumerCount); // revised
+        if(consumerCount == 0)  // revised
+        { // revised
+          pipetb.pointc=NULL;// revised
+        } // revised
+      }
+    }
+    if(in[0] == 'c'&&process[CONSUMER].statu == READY)
+    {
+      if((ret=runc(process,pipe,&pipetb,CONSUMER)) == SLEEP)
+      {
+        pipetb.pointc = &process[CONSUMER];
+      }
+      if(ret == AWAKE)
+      {
+        (pipetb.pointp)->statu=READY;
+        output=(output+1)%100;  // revised
+        runp(output,process,pipe,&pipetb,PRODUCER);
+        producerCount--;  // revised
+        printf("producerCount=%d\n",producerCount); // revised
+        if(producerCount == 0)  // revised
+        { // revised
+          pipetb.pointp=NULL;// revised
+        } // revised
+      }
+    }
+    if(in[0] == 'p'&&process[PRODUCER].statu == WAIT)
+    {
+      producerCount++;  // revised
+      printf("producerCount=%d\n",producerCount); // revised
+      printf("PRODUCER is waiting, can't be scheduled.\n");
+    }
+    if(in[0] == 'c'&&process[CONSUMER].statu == WAIT)
+    {
+      consumerCount++;  // revised
+      printf("consumerCount=%d\n",consumerCount); // revised
+      printf("CONSUMER is waiting, can't be scheduled.\n");
+    }
+    prn(process,pipe,pipetb); 
+    in[0]='N';
+  }
+  return 0;
+}
+\end{lstlisting}
+
+\section{运行结果及其说明}
+队列满后继续生产，生产者阻塞，且修改生产者计数；队列空后继续消费，消费者阻塞，且修改消费者计数。生产者生产数据后，若有等待的消费者，则唤醒，否则数据送管道。
+
+\begin{center}
+  \centering
+  \includegraphics[width=0.4\textwidth]{3-1.png} 
+  \includegraphics[width=0.4\textwidth]{3-2.png} 
+  \includegraphics[width=0.4\textwidth]{3-3.png} 
+  \includegraphics[width=0.4\textwidth]{3-4.png} 
+  \includegraphics[width=0.4\textwidth]{3-5.png} 
+  \includegraphics[width=0.4\textwidth]{3-6.png} 
+  \includegraphics[width=0.4\textwidth]{3-7.png} 
+\end{center}
+
+\end{document}

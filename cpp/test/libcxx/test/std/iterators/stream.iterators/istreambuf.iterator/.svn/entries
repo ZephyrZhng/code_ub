@@ -1,0 +1,83 @@
+10
+
+dir
+236232
+http://llvm.org/svn/llvm-project/libcxx/trunk/test/std/iterators/stream.iterators/istreambuf.iterator
+http://llvm.org/svn/llvm-project
+
+
+
+2015-04-16T21:36:54.381759Z
+235134
+marshall
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+91177308-0d34-0410-b5e6-96231b3b80d8
+
+istreambuf.iterator_equal
+dir
+
+istreambuf.iterator_op==
+dir
+
+istreambuf.iterator_op!=
+dir
+
+istreambuf.iterator.cons
+dir
+
+istreambuf.iterator_proxy
+dir
+
+types.pass.cpp
+file
+
+
+
+
+2015-04-30T13:39:34.224065Z
+b898b844ed0e1a95cefcd7d057a0ef67
+2015-04-16T21:36:54.381759Z
+235134
+marshall
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2854
+
+istreambuf.iterator_op_astrk
+dir
+
+istreambuf.iterator_op++
+dir
+

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/iterators/iterator.primitives/iterator.operations
+END
+next.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/iterators/iterator.primitives/iterator.operations/next.pass.cpp
+END
+advance.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/iterators/iterator.primitives/iterator.operations/advance.pass.cpp
+END
+distance.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/iterators/iterator.primitives/iterator.operations/distance.pass.cpp
+END
+prev.pass.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/llvm-project/!svn/ver/224658/libcxx/trunk/test/std/iterators/iterator.primitives/iterator.operations/prev.pass.cpp
+END

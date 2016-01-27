@@ -1,0 +1,67 @@
+5 E T A F B
+5 + * ( ) 0
+5
+E->TA
+A->+TA|e
+T->FB
+B->*FB|e
+F->(E)|0
+E
+
+5 E T A F B
+5 + - * / ( ) 0 1 2 3 4 5 6 7 8 9
+5
+E->TA
+A->+TA|-TA|e
+T->FB
+B->*FB|/FB|e
+F->(E)|0|1|2|3|4|5|6|7|8|9
+E
+// use-case from dragon book for nullable, first, follow test and LL(1) test
+
+3 E T F
+5 + * ( ) 0
+3
+E->E+T|T
+T->T*F|F
+F->(E)|0
+E
+
+3 E T F
+16 + - * / ( ) 0 1 2 3 4 5 6 7 8 9
+3
+E->E+T|E-T|T
+T->T*F|T/F|F
+F->(E)|0|1|2|3|4|5|6|7|8|9
+E
+// use-case from dragon book for LR(1) test
+
+2 A Z
+2 a b
+2
+Z->AA
+A->aA|b
+Z
+// use-case frome dragon book for LR(1) test
+
+3 Z X Y
+3 a d c
+6
+Z->d
+Z->XYZ
+Y->e
+Y->c
+X->Y
+X->a
+Z
+// use-case from tiger book for nullable, first, follow test
+
+3 E T F
+6 a b + * ( )
+5
+E->E+T
+E->T
+T->T*F
+T->F
+F->(E)|a|b
+E
