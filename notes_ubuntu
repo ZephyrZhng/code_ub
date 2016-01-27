@@ -141,7 +141,7 @@ flex -o test_flex.c test_flex.l
 gcc test_flex.c -o test_flex -lfl // without main 
 
 create and first commit+push
-//create a repository on github(web GUi)
+//create a repository on github(web GUI)
 git init // navigate to your project root
 git add * // after modification
 git commit -m "your comment"
@@ -149,7 +149,7 @@ git remote add origin https://github.com/ZephyrZhng/xxxxxxxxxxxxx.git
 git push origin master
 
 modify and commit+push
-git add *
+git add -u
 git commit -m "your comment"
 git push origin master
 
