@@ -14,8 +14,10 @@ for
 if
 int
 long
+main
 return
 short
+struct
 switch
 true
 unsigned

@@ -20,7 +20,7 @@ sudo gedit /etc/modprobe.d/blacklist.conf + [blacklist psmouse]
 neea id 3314329(toefl) pwd ZephyrZhng1573
 neea id 71279065(gre) pwd 533750536911Zhng 出生城市？济南
 
-zephyr@ubuntu:~/Downloads/utorrent-server-alpha-v3_3$ ./utserver
+zephyr@ubuntu:~/Downloads/utorrent-server-alpha-v3$ ./utserver
 http://localhost:8080/gui/web/index.html
 username: admin password:
 
@@ -160,3 +160,4 @@ gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
 dpkg -i xxx.deb
 
 ftp://192.168.1.100:2121
+

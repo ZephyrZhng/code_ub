@@ -1,4 +1,4 @@
-app = test_makefile
+app = mycc
 
 SRCEXT = cpp
 SRCDIR = src
@@ -8,7 +8,7 @@ INCDIR = include
 
 DEBUG = 1
 
-CFLAGS = -Wall
+CFLAGS = -Wall -std=c++14
 LDFLAGS =
 LIBS =
 LIBDIR =
@@ -31,7 +31,7 @@ OBJS := $(patsubst %.$(SRCEXT),$(OBJDIR)/%.o,$(SRCS))
 ifeq ($(SRCEXT),cpp)
 	CC = $(CXX)
 else
-	CFLAGS += -std=C++14
+	CFLAGS += 
 endif
 
 .phony: all clean distclean
