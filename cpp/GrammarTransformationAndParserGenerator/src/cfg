@@ -1,0 +1,34 @@
+3 S A B
+2 a b
+3
+S->AB
+A->BS|b
+B->SA|a
+toGNF
+
+5 S A B C D
+2 a b
+5
+S->A|BB|B|CaD|ABCC
+A->bb|a
+B->e|bbb
+D->e|a|A
+C->e|bb
+
+2 S A
+1 a
+2
+S->a
+A->a
+S
+eliminateUselessSymbolics2
+
+4 S A B C
+2 a b
+4
+S->A|B
+A->aB|bS|b
+B->AB|Ba
+C->AS|b
+S
+eliminateUselessSymbolics1

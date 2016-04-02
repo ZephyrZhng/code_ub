@@ -1,0 +1,105 @@
+---------------------- depth = 0 ----------------------
+blankIndex: 7
+currNode.lastMove: 0
+currNode.parent: 0
+currNode.depth: 0
+--------------------
+open[0] 283104765 weight: 4 lastMove: 3 depth: 1 parent: 0
+open[1] 283164750 weight: 6 lastMove: 4 depth: 1 parent: 0
+open[2] 283164075 weight: 6 lastMove: 2 depth: 1 parent: 0
+closed[0] 283164705 parent: -1
+
+---------------------- depth = 1 ----------------------
+blankIndex: 4
+currNode.lastMove: 3
+currNode.parent: 1
+currNode.depth: 1
+--------------------
+open[0] 283014765 weight: 5 lastMove: 2 depth: 2 parent: 1
+open[1] 203184765 weight: 5 lastMove: 3 depth: 2 parent: 1
+open[2] 283140765 weight: 6 lastMove: 4 depth: 2 parent: 1
+open[3] 283164750 weight: 6 lastMove: 4 depth: 1 parent: 0
+open[4] 283164075 weight: 6 lastMove: 2 depth: 1 parent: 0
+closed[0] 283164705 parent: -1
+closed[1] 283104765 parent: 0
+
+---------------------- depth = 2 ----------------------
+blankIndex: 3
+currNode.lastMove: 2
+currNode.parent: 2
+currNode.depth: 2
+--------------------
+open[0] 203184765 weight: 5 lastMove: 3 depth: 2 parent: 1
+open[1] 083214765 weight: 6 lastMove: 3 depth: 3 parent: 2
+open[2] 283140765 weight: 6 lastMove: 4 depth: 2 parent: 1
+open[3] 283164750 weight: 6 lastMove: 4 depth: 1 parent: 0
+open[4] 283164075 weight: 6 lastMove: 2 depth: 1 parent: 0
+open[5] 283714065 weight: 7 lastMove: 1 depth: 3 parent: 2
+closed[0] 283164705 parent: -1
+closed[1] 283104765 parent: 0
+closed[2] 283014765 parent: 1
+
+---------------------- depth = 2 ----------------------
+blankIndex: 1
+currNode.lastMove: 3
+currNode.parent: 3
+currNode.depth: 2
+--------------------
+open[0] 023184765 weight: 5 lastMove: 2 depth: 3 parent: 3
+open[1] 083214765 weight: 6 lastMove: 3 depth: 3 parent: 2
+open[2] 283140765 weight: 6 lastMove: 4 depth: 2 parent: 1
+open[3] 283164750 weight: 6 lastMove: 4 depth: 1 parent: 0
+open[4] 283164075 weight: 6 lastMove: 2 depth: 1 parent: 0
+open[5] 230184765 weight: 7 lastMove: 4 depth: 3 parent: 3
+open[6] 283714065 weight: 7 lastMove: 1 depth: 3 parent: 2
+closed[0] 283164705 parent: -1
+closed[1] 283104765 parent: 0
+closed[2] 283014765 parent: 1
+closed[3] 203184765 parent: 1
+
+---------------------- depth = 3 ----------------------
+blankIndex: 0
+currNode.lastMove: 2
+currNode.parent: 4
+currNode.depth: 3
+--------------------
+open[0] 123084765 weight: 5 lastMove: 1 depth: 4 parent: 4
+open[1] 083214765 weight: 6 lastMove: 3 depth: 3 parent: 2
+open[2] 283140765 weight: 6 lastMove: 4 depth: 2 parent: 1
+open[3] 283164750 weight: 6 lastMove: 4 depth: 1 parent: 0
+open[4] 283164075 weight: 6 lastMove: 2 depth: 1 parent: 0
+open[5] 230184765 weight: 7 lastMove: 4 depth: 3 parent: 3
+open[6] 283714065 weight: 7 lastMove: 1 depth: 3 parent: 2
+closed[0] 283164705 parent: -1
+closed[1] 283104765 parent: 0
+closed[2] 283014765 parent: 1
+closed[3] 203184765 parent: 1
+closed[4] 023184765 parent: 3
+
+---------------------- depth = 4 ----------------------
+blankIndex: 3
+currNode.lastMove: 1
+currNode.parent: 5
+currNode.depth: 4
+--------------------
+open[0] 123804765 weight: 5 lastMove: 4 depth: 5 parent: 5
+open[1] 083214765 weight: 6 lastMove: 3 depth: 3 parent: 2
+open[2] 283140765 weight: 6 lastMove: 4 depth: 2 parent: 1
+open[3] 283164750 weight: 6 lastMove: 4 depth: 1 parent: 0
+open[4] 283164075 weight: 6 lastMove: 2 depth: 1 parent: 0
+open[5] 123784065 weight: 7 lastMove: 1 depth: 5 parent: 5
+open[6] 230184765 weight: 7 lastMove: 4 depth: 3 parent: 3
+open[7] 283714065 weight: 7 lastMove: 1 depth: 3 parent: 2
+closed[0] 283164705 parent: -1
+closed[1] 283104765 parent: 0
+closed[2] 283014765 parent: 1
+closed[3] 203184765 parent: 1
+closed[4] 023184765 parent: 3
+closed[5] 123084765 parent: 4
+
+[0] 283164705
+[1] 283104765
+[2] 203184765
+[3] 023184765
+[4] 123084765
+[5] 123804765
