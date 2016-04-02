@@ -8,7 +8,7 @@ INCDIR = include
 
 DEBUG = 1
 
-CFLAGS = -Wall -std=c++14
+CFLAGS = -Wall -std=c++1y
 LDFLAGS =
 LIBS =
 LIBDIR =

@@ -161,3 +161,14 @@ dpkg -i xxx.deb
 
 ftp://192.168.1.100:2121
 
+an epsilon of room
+2.2 amenability, ping-pong lemma, banach-tarski paradox
+2.4 well-ordered sets, ordinals, zorn's lemma
+3.4 completeness and compactness theorems of first-order logic
+3.9 p=np, relativisation, multiple choice exams
+3.11 aks primality test
+3.14 grothendieck's definition of groups
+4.13 free nilpotent group
+
+sudo ntfsfix /dev/sda5
+sudo ntfsfix /dev/sda6
