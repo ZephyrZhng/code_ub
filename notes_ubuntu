@@ -149,7 +149,7 @@ git remote add origin https://github.com/ZephyrZhng/xxxxxxxxxxxxx.git
 git push origin master
 
 modify and commit+push
-git add -u
+git add -u :/
 git commit -m "your comment"
 git push origin master
 
