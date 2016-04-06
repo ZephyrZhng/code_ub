@@ -63,10 +63,8 @@ public:
 	void displayNullableSymbols();
 	void displayUnitPairs();
 
-	string getS();
-	vector<string> getV();
+	int getVariableIndex(const string& a);
 
-private:
 	vector<string> v;
 	vector<string> t;
 	vector<Production> p;
@@ -76,6 +74,8 @@ private:
 	vector<string> reachableSymbols;
 	vector<string> nullableSymbols;
 	vector<pair<string, string>> unitPairs;
+
+private:
 
 };
 

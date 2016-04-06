@@ -1,5 +1,5 @@
-#ifndef CYK_H
-#define CYK_H
+#ifndef UTILITY_H
+#define UTILITY_H
 
 #include <algorithm>
 #include <cassert>
@@ -22,21 +22,12 @@
 #include <utility>
 #include <vector>
 
-#include "CFG.h"
-
 using namespace std;
 
-class CYKParser
+template<typename T>
+bool in(const T& e, const vector<T>& v)
 {
-public:
-	CYKParser() = default;
-	~CYKParser() = default;
+	return find(v.begin(), v.end(), e) != v.end();
+}
 
-	bool parse(const vector<string>& str);
-
-private:
-	CFG g; // in CNF
-
-};
-
-#endif /*CYK_H*/
+#endif /*UTILITY_H*/

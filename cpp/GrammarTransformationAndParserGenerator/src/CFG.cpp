@@ -1,4 +1,5 @@
 #include "CFG.h"
+#include "utility.h"
 
 Production::Production(const string& l, const vector<string>& r)
 {
@@ -108,12 +109,6 @@ CFG::CFG()
 	};
 
 	s = "E";
-}
-
-template<typename T>
-bool in(const T& e, const vector<T>& v)
-{
-	return find(v.begin(), v.end(), e) != v.end();
 }
 
 void CFG::findGeneratingSymbols()
@@ -616,12 +611,7 @@ void CFG::displayUnitPairs()
 	cout << "}" << endl << endl;
 }
 
-string CFG::getS()
+int CFG::getVariableIndex(const string& a)
 {
-	return s;
-}
-
-vector<string> CFG::getV()
-{
-	return v;
+	return find(v.begin(), v.end(), a) - v.begin();
 }
