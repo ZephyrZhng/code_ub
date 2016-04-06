@@ -1,3 +1,7 @@
-build/src/main.o: src/main.cpp include/simplifyCFG.h
+build/src/main.o: src/main.cpp include/CFG.h include/CYK.h include/CFG.h
 
-include/simplifyCFG.h:
+include/CFG.h:
+
+include/CYK.h:
+
+include/CFG.h:

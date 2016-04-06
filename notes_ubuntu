@@ -149,7 +149,7 @@ git remote add origin https://github.com/ZephyrZhng/xxxxxxxxxxxxx.git
 git push origin master
 
 modify and commit+push
-git add -u :/
+git add -A :/
 git commit -m "your comment"
 git push origin master
 
@@ -158,8 +158,6 @@ sudo update-alternatives --config x-terminal-emulator
 gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
 
 dpkg -i xxx.deb
-
-ftp://192.168.1.100:2121
 
 an epsilon of room
 2.2 amenability, ping-pong lemma, banach-tarski paradox

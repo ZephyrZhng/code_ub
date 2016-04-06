@@ -1,4 +1,6 @@
-#include "simplifyCFG.h"
+// #include "simplifyCFG.h"
+#include "CFG.h"
+#include "CYK.h"
 
 // #ifdef WINDOWS
 // #include <direct.h>
@@ -10,7 +12,6 @@
 
 using namespace std;
 
-
 int main(int argc, char** argv)
 {
 	// char cCurrentPath[FILENAME_MAX];
@@ -21,8 +22,12 @@ int main(int argc, char** argv)
 	// cCurrentPath[sizeof(cCurrentPath) - 1] = '\0'; /* not really required */
 	// cout << cCurrentPath << endl;
 
-	ContextFreeGrammar cfg("../src/cfg");
-	cfg.simplifyCFG();
+	// ContextFreeGrammar cfg("../src/cfg");
+	// cfg.simplifyCFG();
+
+	CFG g;
+	g.displayGrammar();
+	g.putInCNF();
 
 	return 0;
 }
