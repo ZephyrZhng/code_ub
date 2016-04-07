@@ -25,9 +25,13 @@ int main(int argc, char** argv)
 	// ContextFreeGrammar cfg("../src/cfg");
 	// cfg.simplifyCFG();
 
-	CFG g;
-	g.displayGrammar();
-	g.putInCNF();
+	// CYKParser p = CYKParser(CFG());
+	// p.parse({"b", "a", "a", "b", "a"});
+	// p.displayCYKTable();
+
+	CYKParser p = CYKParser(CFG());
+	p.parse({"she", "eats", "a", "fish", "with", "a", "fork"});
+	p.displayCYKTable();
 
 	return 0;
 }

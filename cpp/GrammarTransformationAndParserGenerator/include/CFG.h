@@ -65,6 +65,9 @@ public:
 
 	int getVariableIndex(const string& a);
 
+	void computeFirst();
+	void computeFollow();
+
 	vector<string> v;
 	vector<string> t;
 	vector<Production> p;

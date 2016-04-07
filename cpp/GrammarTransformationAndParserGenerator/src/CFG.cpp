@@ -82,33 +82,97 @@ CFG::CFG()
 
 	// s = "A";
 
-	// test putInCNF
+	// // test putInCNF
+	// v = {
+	// 	"E",
+	// 	"T",
+	// 	"F",
+	// };
+
+	// t = {
+	// 	"a",
+	// 	"b",
+	// 	"+",
+	// 	"*",
+	// 	"(",
+	// 	")",
+	// };
+
+	// p = {
+	// 	Production("E", {"E", "+", "T"}),
+	// 	Production("E", {"T"}),
+	// 	Production("T", {"T", "*", "F"}),
+	// 	Production("T", {"F"}),
+	// 	Production("F", {"(", "E", ")"}),
+	// 	Production("F", {"a"}),
+	// 	Production("F", {"b"}),
+	// };
+
+	// s = "E";
+
+	// // test CYK
+	// v = {
+	// 	"S",
+	// 	"A",
+	// 	"B",
+	// 	"C",
+	// };
+
+	// t = {
+	// 	"a",
+	// 	"b",
+	// };
+
+	// p = {
+	// 	Production("S", {"A", "B"}),
+	// 	Production("S", {"B", "C"}),
+	// 	Production("A", {"B", "A"}),
+	// 	Production("A", {"a"}),
+	// 	Production("B", {"C", "C"}),
+	// 	Production("B", {"b"}),
+	// 	Production("C", {"A", "B"}),
+	// 	Production("C", {"a"}),
+	// };
+
+	// s = "S";
+
+	// test CYK
 	v = {
-		"E",
-		"T",
-		"F",
+		"S",
+		"NP",
+		"VP",
+		"PP",
+		"V",
+		"P",
+		"Det",
+		"N",
 	};
 
 	t = {
+		"eats",
+		"she",
+		"with",
+		"fish",
+		"fork",
 		"a",
-		"b",
-		"+",
-		"*",
-		"(",
-		")",
 	};
 
 	p = {
-		Production("E", {"E", "+", "T"}),
-		Production("E", {"T"}),
-		Production("T", {"T", "*", "F"}),
-		Production("T", {"F"}),
-		Production("F", {"(", "E", ")"}),
-		Production("F", {"a"}),
-		Production("F", {"b"}),
+		Production("S", {"NP", "VP"}),
+		Production("VP", {"VP", "PP"}),
+		Production("VP", {"V", "NP"}),
+		Production("VP", {"eats"}),
+		Production("PP", {"P", "NP"}),
+		Production("NP", {"Det", "N"}),
+		Production("NP", {"she"}),
+		Production("V", {"eats"}),
+		Production("P", {"with"}),
+		Production("N", {"fish"}),
+		Production("N", {"fork"}),
+		Production("Det", {"a"}),
 	};
 
-	s = "E";
+	s = "S";
 }
 
 void CFG::findGeneratingSymbols()
@@ -614,4 +678,14 @@ void CFG::displayUnitPairs()
 int CFG::getVariableIndex(const string& a)
 {
 	return find(v.begin(), v.end(), a) - v.begin();
+}
+
+void CFG::computeFirst()
+{
+
+}
+
+void CFG::computeFollow()
+{
+
 }

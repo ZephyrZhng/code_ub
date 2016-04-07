@@ -1,5 +1,5 @@
-#ifndef CYK_H
-#define CYK_H
+#ifndef LL1PARSER_H
+#define LL1PARSER_H
 
 #include <algorithm>
 #include <cassert>
@@ -26,23 +26,17 @@
 
 using namespace std;
 
-class CYKParser
+class LL1Parser
 {
 public:
-	CYKParser() = default;
-	~CYKParser() = default;
-	CYKParser(const CFG& cfg);
+	LL1Parser() = default;
+	~LL1Parser() = default;
+	LL1Parser(const CFG& cfg);
 
 	bool parse(const vector<string>& str);
 
-	void displayCYKTable();
-
 private:
-	CFG g; // in CNF
-	int n;
-	int r;
-	vector<vector<vector<bool>>> m;
-	vector<vector<vector<string>>> t;
+	CFG g;
 };
 
-#endif /*CYK_H*/
+#endif /*LL1PARSER_H*/
