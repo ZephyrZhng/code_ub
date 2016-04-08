@@ -64,6 +64,7 @@ public:
 	void displayUnitPairs();
 
 	int getVariableIndex(const string& a);
+	int getTerminalIndex(const string& a);
 
 	int getFirstIndex(const string& symbol);
 	int getFollowIndex(const string& symbol);

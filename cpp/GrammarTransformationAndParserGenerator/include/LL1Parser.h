@@ -33,10 +33,15 @@ public:
 	~LL1Parser() = default;
 	LL1Parser(const CFG& cfg);
 
+	bool setM(int row, int column, int index);
+	bool constructLL1Table();
+
 	bool parse(const vector<string>& str);
 
 private:
 	CFG g;
+	vector<vector<int>> m;
+
 };
 
 #endif /*LL1PARSER_H*/

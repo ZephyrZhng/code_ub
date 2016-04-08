@@ -33,35 +33,35 @@ bool in(const T& e, const vector<T>& v)
 template<typename T>
 bool add(vector<T>& v1, const vector<T>& v2)
 {
-	bool ret = false;
+	bool added = false;
 	for(size_t i = 0; i < v2.size(); ++i)
 	{
 		if(!in(v2[i], v1))
 		{
 			v1.push_back(v2[i]);
-			ret = true;
+			added = true;
 		}
 	}
-	return ret;
+	return added;
 }
 
 template<typename T>
 bool del(vector<T>& v, const T& e)
 {
-	bool ret = false;
+	bool deleted = false;
 	for(size_t i = 0; i < v.size(); ++i)
 	{
 		if(v[i] == e)
 		{
 			v.erase(v.begin() + i);
-			ret = true;
+			deleted = true;
 		}
 		else
 		{
 			++i;
 		}
 	}
-	return ret;
+	return deleted;
 }
 
 #endif /*UTILITY_H*/

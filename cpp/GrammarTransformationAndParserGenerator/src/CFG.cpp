@@ -677,10 +677,41 @@ void CFG::displayUnitPairs()
 
 int CFG::getVariableIndex(const string& a)
 {
-	return find(v.begin(), v.end(), a) - v.begin();
+	auto it = find(v.begin(), v.end(), a);
+	return it == v.end()? -1: it - v.begin();
+}
+
+int CFG::getTerminalIndex(const string& a)
+{
+	auto it = find(t.begin(), t.end(), a);
+	return it == t.end()? -1: it - t.begin();
+}
+
+int CFG::getFirstIndex(const string& symbol)
+{
+	return find_if(
+		first.begin(), 
+		first.end(), 
+		[symbol](pair<string, vector<string>> pr){
+			return pr.first == symbol;
+		}
+	) - first.begin();
+}
+
+int CFG::getFollowIndex(const string& symbol)
+{
+	return find_if(
+		follow.begin(), 
+		follow.end(), 
+		[symbol](pair<string, vector<string>> pr){
+			return pr.first == symbol;
+		}
+	) - follow.begin();
 }
 
 void CFG::computeFirst()
+// elements are terminals
+// for all grammar symbols
 {
 	first.clear();
 
@@ -751,39 +782,18 @@ void CFG::computeFirst()
 	}while(updated);
 }
 
-int CFG::getFirstIndex(const string& symbol)
-{
-	return find_if(
-		first.begin(), 
-		first.end(), 
-		[symbol](pair<string, vector<string>> pr){
-			return pr.first == symbol;
-		}
-	) - first.begin();
-}
-
-int CFG::getFollowIndex(const string& symbol)
-{
-	return find_if(
-		follow.begin(), 
-		follow.end(), 
-		[symbol](pair<string, vector<string>> pr){
-			return pr.first == symbol;
-		}
-	) - follow.begin();
-}
-
 vector<string> CFG::computeFirst(const vector<string>& str)
+// for any string of grammar symbols
 {
 	// str = Y1 ...
-	vector<string> ret;
+	vector<string> firstStr;
 	size_t i = 0;
 	for(; i < str.size(); )
 	{
 		vector<string> firstY = first[getFirstIndex(str[i])].second;
 
 		del(firstY, string(""));
-		add(ret, firstY);
+		add(firstStr, firstY);
 
 		if(in(string(""), firstY))
 		{
@@ -796,13 +806,17 @@ vector<string> CFG::computeFirst(const vector<string>& str)
 	}
 	if(i == str.size())
 	{
-		if(add(ret, {""}));
+		if(add(firstStr, {""}));
 	}
-	return ret;
+	return firstStr;
 }
 
 void CFG::computeFollow()
+// elements are terminals
+// for all nonterminals
 {
+	follow.clear();
+
 	for(size_t i = 0; i < v.size(); ++i)
 	{
 		follow.push_back(make_pair(v[i], vector<string>()));
