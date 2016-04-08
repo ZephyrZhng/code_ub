@@ -682,10 +682,187 @@ int CFG::getVariableIndex(const string& a)
 
 void CFG::computeFirst()
 {
+	first.clear();
 
+	for(size_t i = 0; i < t.size(); ++i)
+	{
+		first.push_back(make_pair(t[i], vector<string>({t[i]})));
+	}
+
+	for(size_t i = 0; i < v.size(); ++i)
+	{
+		first.push_back(make_pair(v[i], vector<string>()));
+	}
+
+	bool updated = false;
+	do
+	{
+		updated = false;
+
+		for(size_t i = 0; i < v.size(); ++i)
+		{
+			int xFirstIndex = getFirstIndex(v[i]);
+			vector<string> firstX = first[xFirstIndex].second;
+
+			for(size_t j = 0; j < p.size(); ++j)
+			{
+				if(p[j].left == v[i])
+				// X -> Y1 ...
+				{
+					if(p[j].right.size() == 1 && p[j].right[0] == "")
+					{
+						if(add(firstX, {""}))
+						{
+							updated = true;
+						}
+					}
+					else
+					{
+						size_t k = 0;
+						for(; k < p[j].right.size(); )
+						{
+							vector<string> firstY = first[getFirstIndex(p[j].right[k])].second;
+
+							del(firstY, string(""));
+							if(add(firstX, firstY))
+							{
+								updated = true;
+							}
+
+							if(in(string(""), firstY))
+							{
+								++k;
+							}
+							else
+							{
+								break;
+							}
+						}
+						if(k == p[j].right.size())
+						{
+							if(add(firstX, {""}));
+						}
+					}
+				}
+			}
+
+			first[xFirstIndex].second = firstX;
+		}
+	}while(updated);
+}
+
+int CFG::getFirstIndex(const string& symbol)
+{
+	return find_if(
+		first.begin(), 
+		first.end(), 
+		[symbol](pair<string, vector<string>> pr){
+			return pr.first == symbol;
+		}
+	) - first.begin();
+}
+
+int CFG::getFollowIndex(const string& symbol)
+{
+	return find_if(
+		follow.begin(), 
+		follow.end(), 
+		[symbol](pair<string, vector<string>> pr){
+			return pr.first == symbol;
+		}
+	) - follow.begin();
+}
+
+vector<string> CFG::computeFirst(const vector<string>& str)
+{
+	// str = Y1 ...
+	vector<string> ret;
+	size_t i = 0;
+	for(; i < str.size(); )
+	{
+		vector<string> firstY = first[getFirstIndex(str[i])].second;
+
+		del(firstY, string(""));
+		add(ret, firstY);
+
+		if(in(string(""), firstY))
+		{
+			++i;
+		}
+		else
+		{
+			break;
+		}
+	}
+	if(i == str.size())
+	{
+		if(add(ret, {""}));
+	}
+	return ret;
 }
 
 void CFG::computeFollow()
 {
+	for(size_t i = 0; i < v.size(); ++i)
+	{
+		follow.push_back(make_pair(v[i], vector<string>()));
+		// $ represents the end of input
+	}
 
+	follow[getFollowIndex(s)].second.push_back("$");
+
+	bool updated = false;
+	do
+	{
+		updated = false;
+
+		for(size_t i = 0; i < v.size(); ++i)
+		{
+			int aFollowIndex = getFollowIndex(v[i]);
+			vector<string> followA = follow[aFollowIndex].second;
+
+			for(size_t j = 0; j < p.size(); ++j)
+			{
+				// A -> alpha B beta
+				if(p[j].left == v[i])
+				{
+					for(size_t k = 0; k < p[j].right.size(); ++k)
+					{
+						if(in(p[j].right[k], v))
+						{
+							int bFollowIndex = getFollowIndex(p[j].right[k]);
+							vector<string> followB = follow[bFollowIndex].second;
+
+							vector<string> beta;
+							for(size_t l = k + 1; l < p[j].right.size(); ++l)
+							{
+								beta.push_back(p[j].right[l]);
+							}
+
+							vector<string> firstBeta = computeFirst(beta);
+
+							if(in(string(""), firstBeta) || k == p[j].right.size() - 1)
+							{
+								if(add(followB, followA))
+								{
+									updated = true;
+								}
+							}
+
+							del(firstBeta, string(""));
+
+							if(add(followB, firstBeta));
+							{
+								updated = true;
+							}
+
+							follow[bFollowIndex].second = followB;
+						}
+					}
+				}
+			}
+
+			follow[aFollowIndex].second = followA;
+		}
+	}while(updated);
 }

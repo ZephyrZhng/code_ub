@@ -29,9 +29,11 @@ int main(int argc, char** argv)
 	// p.parse({"b", "a", "a", "b", "a"});
 	// p.displayCYKTable();
 
-	CYKParser p = CYKParser(CFG());
-	p.parse({"she", "eats", "a", "fish", "with", "a", "fork"});
-	p.displayCYKTable();
+	// CYKParser p = CYKParser(CFG());
+	// p.parse({"she", "eats", "a", "fish", "with", "a", "fork"});
+	// p.displayCYKTable();
+
+	
 
 	return 0;
 }

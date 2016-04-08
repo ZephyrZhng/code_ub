@@ -65,7 +65,10 @@ public:
 
 	int getVariableIndex(const string& a);
 
+	int getFirstIndex(const string& symbol);
+	int getFollowIndex(const string& symbol);
 	void computeFirst();
+	vector<string> computeFirst(const vector<string>& str);
 	void computeFollow();
 
 	vector<string> v;
@@ -77,6 +80,9 @@ public:
 	vector<string> reachableSymbols;
 	vector<string> nullableSymbols;
 	vector<pair<string, string>> unitPairs;
+
+	vector<pair<string, vector<string>>> first;
+	vector<pair<string, vector<string>>> follow;
 
 private:
 
