@@ -54,16 +54,16 @@ bool CYKParser::parse(const vector<string>& str)
 		}
 	}
 
-	bool ret;
+	bool accept;
 	if(m[n - 1][0][g.getVariableIndex(s)])
 	{
-		ret = true;
+		accept = true;
 	}
 	else
 	{
-		ret = false;
+		accept = false;
 	}
-	return ret;
+	return accept;
 }
 
 void CYKParser::displayCYKTable()

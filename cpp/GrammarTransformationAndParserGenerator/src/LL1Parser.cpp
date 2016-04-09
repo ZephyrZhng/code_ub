@@ -77,5 +77,43 @@ bool LL1Parser::constructLL1Table()
 
 bool LL1Parser::parse(const vector<string>& str)
 {
+	bool accept = true;
 
+	vector<string> w = str;
+	w.push_back("$");
+	vector<string> stk = {"S", "$"}; // stk.front(): top, stk.back(): bottom
+	int ip = 0;
+	string x = stk.front();
+
+	while(x != "$")
+	{
+		string a = w[ip];
+		if(x == a)
+		{
+			stk.erase(stk.begin());
+			++ip;
+		}
+		else if(in(x, g.t))
+		{
+			accept = false;
+			break;
+		}
+		else if(m[g.getVariableIndex(x)][g.getTerminalIndex(a)] == -1)
+		{
+			accept = false;
+			break;
+		}
+		else
+		{
+			Production pr = g.p[m[g.getVariableIndex(x)][g.getTerminalIndex(a)]];
+			stk.erase(stk.begin());
+			for(size_t i = pr.right.size() - 1; i >= 0; ++i)
+			{
+				stk.insert(stk.begin(), pr.right[i]);
+			}
+		}
+		x = stk.front();
+	}
+
+	return accept;
 }
