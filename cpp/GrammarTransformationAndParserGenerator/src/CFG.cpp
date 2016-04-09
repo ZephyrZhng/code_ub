@@ -7,6 +7,15 @@ Production::Production(const string& l, const vector<string>& r)
 	right = r;
 }
 
+void Production::display()
+{
+	cout << left << " -> ";
+	for(size_t j = 0; j < right.size(); ++j)
+	{
+		cout << right[j] << " ";
+	}
+}
+
 CFG::CFG()
 {
 	// // test eliminateUselessSymbols
@@ -136,43 +145,73 @@ CFG::CFG()
 
 	// s = "S";
 
-	// test CYK
+	// // test CYK
+	// v = {
+	// 	"S",
+	// 	"NP",
+	// 	"VP",
+	// 	"PP",
+	// 	"V",
+	// 	"P",
+	// 	"Det",
+	// 	"N",
+	// };
+
+	// t = {
+	// 	"eats",
+	// 	"she",
+	// 	"with",
+	// 	"fish",
+	// 	"fork",
+	// 	"a",
+	// };
+
+	// p = {
+	// 	Production("S", {"NP", "VP"}),
+	// 	Production("VP", {"VP", "PP"}),
+	// 	Production("VP", {"V", "NP"}),
+	// 	Production("VP", {"eats"}),
+	// 	Production("PP", {"P", "NP"}),
+	// 	Production("NP", {"Det", "N"}),
+	// 	Production("NP", {"she"}),
+	// 	Production("V", {"eats"}),
+	// 	Production("P", {"with"}),
+	// 	Production("N", {"fish"}),
+	// 	Production("N", {"fork"}),
+	// 	Production("Det", {"a"}),
+	// };
+
+	// s = "S";
+
+	// test first, follow
 	v = {
-		"S",
-		"NP",
-		"VP",
-		"PP",
-		"V",
-		"P",
-		"Det",
-		"N",
+		"E",
+		"T",
+		"E_",
+		"F",
+		"T_",
 	};
 
 	t = {
-		"eats",
-		"she",
-		"with",
-		"fish",
-		"fork",
-		"a",
+		"+",
+		"*",
+		"(",
+		")",
+		"0",
 	};
 
 	p = {
-		Production("S", {"NP", "VP"}),
-		Production("VP", {"VP", "PP"}),
-		Production("VP", {"V", "NP"}),
-		Production("VP", {"eats"}),
-		Production("PP", {"P", "NP"}),
-		Production("NP", {"Det", "N"}),
-		Production("NP", {"she"}),
-		Production("V", {"eats"}),
-		Production("P", {"with"}),
-		Production("N", {"fish"}),
-		Production("N", {"fork"}),
-		Production("Det", {"a"}),
+		Production("E", {"T", "E_"}),
+		Production("E_", {"+", "T", "E_"}),
+		Production("E_", {""}),
+		Production("T", {"F", "T_"}),
+		Production("T_", {"*", "F", "T_"}),
+		Production("T_", {""}),
+		Production("F", {"(", "E", ")"}),
+		Production("F", {"0"}),
 	};
 
-	s = "S";
+	s = "E";
 }
 
 void CFG::findGeneratingSymbols()
@@ -787,27 +826,36 @@ vector<string> CFG::computeFirst(const vector<string>& str)
 {
 	// str = Y1 ...
 	vector<string> firstStr;
-	size_t i = 0;
-	for(; i < str.size(); )
+
+	if(str.size() == 1 && str[0] == "")
 	{
-		vector<string> firstY = first[getFirstIndex(str[i])].second;
-
-		del(firstY, string(""));
-		add(firstStr, firstY);
-
-		if(in(string(""), firstY))
+		firstStr = {""};
+	}
+	else
+	{
+		size_t i = 0;
+		for(; i < str.size(); )
 		{
-			++i;
+			vector<string> firstY = first[getFirstIndex(str[i])].second;
+
+			bool epsilon = del(firstY, string(""));
+			add(firstStr, firstY);
+
+			if(epsilon)
+			{
+				++i;
+			}
+			else
+			{
+				break;
+			}
 		}
-		else
+		if(i == str.size())
 		{
-			break;
+			if(add(firstStr, {""}));
 		}
 	}
-	if(i == str.size())
-	{
-		if(add(firstStr, {""}));
-	}
+	
 	return firstStr;
 }
 
@@ -815,6 +863,8 @@ void CFG::computeFollow()
 // elements are terminals
 // for all nonterminals
 {
+	computeFirst();
+
 	follow.clear();
 
 	for(size_t i = 0; i < v.size(); ++i)
@@ -830,53 +880,94 @@ void CFG::computeFollow()
 	{
 		updated = false;
 
-		for(size_t i = 0; i < v.size(); ++i)
+		for(size_t j = 0; j < p.size(); ++j)
 		{
-			int aFollowIndex = getFollowIndex(v[i]);
-			vector<string> followA = follow[aFollowIndex].second;
+			// A -> alpha B beta
+			// case1: A -> alpha B ==>==> follow(A) subset follow(B)
+			// case2: A -> alpha B beta ==> (first(beta) except {epsilon}) subset follow(B)
+			//                              epsilon in first(beta) ==> follow(A) subset follow(B)
 
-			for(size_t j = 0; j < p.size(); ++j)
+			for(size_t k = 0; k < p[j].right.size(); ++k)
 			{
-				// A -> alpha B beta
-				if(p[j].left == v[i])
+				if(in(p[j].right[k], v))
 				{
-					for(size_t k = 0; k < p[j].right.size(); ++k)
+					int aFollowIndex = getFollowIndex(p[j].left);
+					vector<string> followA = follow[aFollowIndex].second;
+
+					int bFollowIndex = getFollowIndex(p[j].right[k]);
+					vector<string> followB = follow[bFollowIndex].second;
+
+					vector<string> beta;
+					vector<string> firstBeta;
+
+					if(k < p[j].right.size() - 1)
 					{
-						if(in(p[j].right[k], v))
+						for(size_t l = k + 1; l < p[j].right.size(); ++l)
 						{
-							int bFollowIndex = getFollowIndex(p[j].right[k]);
-							vector<string> followB = follow[bFollowIndex].second;
+							beta.push_back(p[j].right[l]);
+						}
 
-							vector<string> beta;
-							for(size_t l = k + 1; l < p[j].right.size(); ++l)
-							{
-								beta.push_back(p[j].right[l]);
-							}
+						firstBeta = computeFirst(beta);
 
-							vector<string> firstBeta = computeFirst(beta);
+						bool epsilon = del(firstBeta, string(""));
 
-							if(in(string(""), firstBeta) || k == p[j].right.size() - 1)
-							{
-								if(add(followB, followA))
-								{
-									updated = true;
-								}
-							}
+						bool added = add(followB, firstBeta);
+						if(added)
+						{
+							updated = true;
+						}
 
-							del(firstBeta, string(""));
-
-							if(add(followB, firstBeta));
+						if(epsilon)
+						{
+							bool added = add(followB, followA);
+							if(added)
 							{
 								updated = true;
 							}
-
-							follow[bFollowIndex].second = followB;
 						}
 					}
+					else
+					{
+						bool added = add(followB, followA);
+						if(added)
+						{
+							updated = true;
+						}
+					}
+
+					follow[bFollowIndex].second = followB;
 				}
 			}
-
-			follow[aFollowIndex].second = followA;
 		}
 	}while(updated);
+}
+
+void CFG::displayFirst()
+{
+	for(size_t i = 0; i < first.size(); ++i)
+	{
+		cout << "first(" << first[i].first << ") = {" << endl;
+
+		for(size_t j = 0; j < first[i].second.size(); ++j)
+		{
+			cout << "\t" << first[i].second[j] << "," << endl;
+		}
+
+		cout << "}" << endl << endl;
+	}
+}
+
+void CFG::displayFollow()
+{
+	for(size_t i = 0; i < follow.size(); ++i)
+	{
+		cout << "follow(" << follow[i].first << ") = {" << endl;
+
+		for(size_t j = 0; j < follow[i].second.size(); ++j)
+		{
+			cout << "\t" << follow[i].second[j] << "," << endl;
+		}
+
+		cout << "}" << endl << endl;
+	}
 }

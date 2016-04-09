@@ -21,6 +21,8 @@ bool LL1Parser::constructLL1Table()
 {
 	m.clear();
 
+	g.computeFollow();
+
 	vector<string> v = g.v;
 	vector<string> t = g.t;
 	vector<Production> p = g.p;
@@ -73,6 +75,28 @@ bool LL1Parser::constructLL1Table()
 	}
 
 	return succeed;
+}
+
+void LL1Parser::displayLL1Table()
+{
+	cout << "LL1Parser = {" << endl;
+	for(size_t i = 0; i < m.size(); ++i)
+	{
+		for(size_t j = 0; j < m[i].size(); ++j)
+		{
+			cout << "\t(" << g.v[i] << ", " << (j == g.t.size()? "$": g.t[j]) << ") ";
+			if(m[i][j] != -1)
+			{
+				g.p[m[i][j]].display();
+			}
+			else
+			{
+				cout << "error";
+			}
+			cout << "," << endl;
+		}
+	}
+	cout << "}" << endl;
 }
 
 bool LL1Parser::parse(const vector<string>& str)

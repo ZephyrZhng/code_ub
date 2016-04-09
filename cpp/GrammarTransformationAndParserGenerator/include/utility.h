@@ -49,7 +49,7 @@ template<typename T>
 bool del(vector<T>& v, const T& e)
 {
 	bool deleted = false;
-	for(size_t i = 0; i < v.size(); ++i)
+	for(size_t i = 0; i < v.size(); )
 	{
 		if(v[i] == e)
 		{
@@ -62,6 +62,17 @@ bool del(vector<T>& v, const T& e)
 		}
 	}
 	return deleted;
+}
+
+template<typename T>
+void display(const vector<T>& v)
+{
+	cout << "{ ";
+	for(size_t i = 0; i < v.size(); ++i)
+	{
+		cout << v[i] << ", ";
+	}
+	cout << "}";
 }
 
 #endif /*UTILITY_H*/

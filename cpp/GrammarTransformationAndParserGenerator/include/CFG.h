@@ -31,6 +31,8 @@ public:
 	~Production() = default;
 	Production(const string& l, const vector<string>& r);
 
+	void display();
+
 	string left;
 	vector<string> right;
 
@@ -71,6 +73,9 @@ public:
 	void computeFirst();
 	vector<string> computeFirst(const vector<string>& str);
 	void computeFollow();
+
+	void displayFirst();
+	void displayFollow();
 
 	vector<string> v;
 	vector<string> t;

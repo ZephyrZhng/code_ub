@@ -36,6 +36,8 @@ public:
 	bool setM(int row, int column, int index);
 	bool constructLL1Table();
 
+	void displayLL1Table();
+
 	bool parse(const vector<string>& str);
 
 private:

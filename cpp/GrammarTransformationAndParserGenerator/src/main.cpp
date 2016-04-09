@@ -1,6 +1,8 @@
 // #include "simplifyCFG.h"
 #include "CFG.h"
 #include "CYK.h"
+#include "LL1Parser.h"
+#include "utility.h"
 
 // #ifdef WINDOWS
 // #include <direct.h>
@@ -33,7 +35,9 @@ int main(int argc, char** argv)
 	// p.parse({"she", "eats", "a", "fish", "with", "a", "fork"});
 	// p.displayCYKTable();
 
-	
+	LL1Parser ll1 = LL1Parser(CFG());
+	ll1.constructLL1Table();
+	ll1.displayLL1Table();
 
 	return 0;
 }
