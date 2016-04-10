@@ -38,6 +38,15 @@ int main(int argc, char** argv)
 	LL1Parser ll1 = LL1Parser(CFG());
 	ll1.constructLL1Table();
 	ll1.displayLL1Table();
+	ll1.parse(vector<string>{"0", "+", "0", "*", "0"});
+
+	// vector<int> v = {1,2,3,4,5}, v2;
+	// for(auto it = v.rbegin(); it != v.rend(); ++it)
+	// {
+	// 	v2.insert(v2.begin(), *it);
+	// }
+	// display(v2);
+	// cout << endl;
 
 	return 0;
 }

@@ -101,43 +101,69 @@ void LL1Parser::displayLL1Table()
 
 bool LL1Parser::parse(const vector<string>& str)
 {
+	fstream f("../src/log");
+	f.clear();
+
 	bool accept = true;
 
 	vector<string> w = str;
 	w.push_back("$");
-	vector<string> stk = {"S", "$"}; // stk.front(): top, stk.back(): bottom
+	vector<string> stk = {g.s, "$"}; // stk.front(): top, stk.back(): bottom
 	int ip = 0;
 	string x = stk.front();
 
 	while(x != "$")
 	{
+		f << "stk: ";
+		display(stk, f);
+		f << endl;
+
 		string a = w[ip];
+		int xIndex = g.getVariableIndex(x);
+		int aIndex = g.getTerminalIndex(a) == -1? g.t.size(): g.getTerminalIndex(a);
+
+		f << "x: " << x << endl << "a: " << a << endl;
+
 		if(x == a)
 		{
+			f << "match " << a << endl;
 			stk.erase(stk.begin());
 			++ip;
 		}
 		else if(in(x, g.t))
 		{
+			f << "error" << endl;
 			accept = false;
 			break;
 		}
-		else if(m[g.getVariableIndex(x)][g.getTerminalIndex(a)] == -1)
+		else if(m[xIndex][aIndex] == -1)
 		{
+			f << "error" << endl;
 			accept = false;
 			break;
 		}
 		else
 		{
-			Production pr = g.p[m[g.getVariableIndex(x)][g.getTerminalIndex(a)]];
+			Production pr = g.p[m[xIndex][aIndex]];
+			pr.display(f);
+			f << endl;
+
 			stk.erase(stk.begin());
-			for(size_t i = pr.right.size() - 1; i >= 0; ++i)
+			if(!(pr.right.size() == 1 && pr.right[0] == ""))
 			{
-				stk.insert(stk.begin(), pr.right[i]);
+				for(auto it = pr.right.rbegin(); it != pr.right.rend(); ++it)
+				{
+					stk.insert(stk.begin(), *it);
+				}
 			}
 		}
+
+		f << endl;
+
 		x = stk.front();
 	}
+
+	f.close();
 
 	return accept;
 }

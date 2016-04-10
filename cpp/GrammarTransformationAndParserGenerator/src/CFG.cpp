@@ -16,6 +16,15 @@ void Production::display()
 	}
 }
 
+void Production::display(fstream& f)
+{
+	f << left << " -> ";
+	for(size_t j = 0; j < right.size(); ++j)
+	{
+		f << right[j] << " ";
+	}
+}
+
 CFG::CFG()
 {
 	// // test eliminateUselessSymbols

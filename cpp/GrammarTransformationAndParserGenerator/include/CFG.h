@@ -32,6 +32,7 @@ public:
 	Production(const string& l, const vector<string>& r);
 
 	void display();
+	void display(fstream& f);
 
 	string left;
 	vector<string> right;

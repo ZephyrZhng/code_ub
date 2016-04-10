@@ -75,4 +75,15 @@ void display(const vector<T>& v)
 	cout << "}";
 }
 
+template<typename T>
+void display(const vector<T>& v, fstream& f)
+{
+	f << "{ ";
+	for(size_t i = 0; i < v.size(); ++i)
+	{
+		f << v[i] << ", ";
+	}
+	f << "}";
+}
+
 #endif /*UTILITY_H*/

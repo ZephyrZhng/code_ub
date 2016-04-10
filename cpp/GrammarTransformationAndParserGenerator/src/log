@@ -1,0 +1,80 @@
+stk: { E, $, }
+x: E
+a: 0
+E -> T E_ 
+
+stk: { T, E_, $, }
+x: T
+a: 0
+T -> F T_ 
+
+stk: { F, T_, E_, $, }
+x: F
+a: 0
+F -> 0 
+
+stk: { 0, T_, E_, $, }
+x: 0
+a: 0
+match 0
+
+stk: { T_, E_, $, }
+x: T_
+a: +
+T_ ->  
+
+stk: { E_, $, }
+x: E_
+a: +
+E_ -> + T E_ 
+
+stk: { +, T, E_, $, }
+x: +
+a: +
+match +
+
+stk: { T, E_, $, }
+x: T
+a: 0
+T -> F T_ 
+
+stk: { F, T_, E_, $, }
+x: F
+a: 0
+F -> 0 
+
+stk: { 0, T_, E_, $, }
+x: 0
+a: 0
+match 0
+
+stk: { T_, E_, $, }
+x: T_
+a: *
+T_ -> * F T_ 
+
+stk: { *, F, T_, E_, $, }
+x: *
+a: *
+match *
+
+stk: { F, T_, E_, $, }
+x: F
+a: 0
+F -> 0 
+
+stk: { 0, T_, E_, $, }
+x: 0
+a: 0
+match 0
+
+stk: { T_, E_, $, }
+x: T_
+a: $
+T_ ->  
+
+stk: { E_, $, }
+x: E_
+a: $
+E_ ->  
+
