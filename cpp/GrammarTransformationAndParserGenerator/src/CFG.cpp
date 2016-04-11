@@ -25,8 +25,21 @@ void Production::display(fstream& f)
 	}
 }
 
+LR0Item::LR0Item(int pi, int dp)
+{
+	productionIndex = pi;
+	dotPosition = dp;
+}
+
+bool operator ==(const LR0Item& l, const LR0Item& r)
+{
+	return l.productionIndex == r.productionIndex && l.dotPosition == r.dotPosition;
+}
+
 CFG::CFG()
 {
+	augmented = false;
+
 	// // test eliminateUselessSymbols
 	// v = {
 	// 	"S",
@@ -192,7 +205,7 @@ CFG::CFG()
 
 	// s = "S";
 
-	// test first, follow
+	// test first, follow, ll1parser
 	v = {
 		"E",
 		"T",
@@ -979,4 +992,126 @@ void CFG::displayFollow()
 
 		cout << "}" << endl << endl;
 	}
+}
+
+void CFG::augmentGrammar()
+{
+	p.push_back(Production("_" + s, {s}));
+	v.push_back("_" + s);
+	augmented = true;
+}
+
+vector<LR0Item> CFG::closure(const vector<LR0Item>& is)
+{
+	vector<LR0Item> js = is;
+	bool updated = false;
+
+	do
+	{
+		updated = false;
+
+		for(size_t i = 0; i < js.size(); ++i)
+		{
+			// A -> alpha . B beta
+			string b = p[js[i].productionIndex].right[js[i].dotPosition];
+			if(in(b, v))
+			{
+				for(size_t j = 0; j < p.size(); ++j)
+				{
+					if(p[j].left == b)
+					{
+						bool exist = false;
+
+						for(size_t k = 0; k < js.size(); ++k)
+						{
+							if(js[k].productionIndex == j
+								&& js[k].dotPosition == 0)
+							{
+								exist = true;
+								break;
+							}
+						}
+
+						if(!exist)
+						{
+							js.push_back(LR0Item(j, 0));
+							updated = true;
+						}
+					}
+				}
+			}
+		}
+	}while(updated);
+
+	return js;
+}
+
+vector<LR0Item> CFG::goTo(const vector<LR0Item>& is, const string& x)
+{
+	vector<LR0Item> js;
+
+	for(size_t i = 0; i < is.size(); ++i)
+	{
+		Production pr = p[is[i].productionIndex];
+		if(!(pr.right.size() == 1 && pr.right[0] == "")
+			&& is[i].dotPosition < pr.right.size()
+			&& pr.right[is[i].dotPosition] == x)
+		{
+			js.push_back(LR0Item(is[i].productionIndex, is[i].dotPosition + 1));
+		}
+	}
+	
+	return closure(js);
+}
+
+void CFG::constructCanonicalLR0Collection()
+{
+	if(!augmented)
+	{
+		augmentGrammar();
+	}
+
+	vector<vector<LR0Item>> c = vector<vector<LR0Item>>(
+	{
+		closure(
+			vector<LR0Item>(
+			{
+				LR0Item(
+					find_if(
+						p.begin(), 
+						p.end(),
+						[this](const Production& pr)
+						{
+							return pr.left == "_" + s 
+								&& pr.right.size() == 1 
+								&& pr.right[0] == s;
+						}
+					) - p.begin(),
+					0
+				)
+			})
+		)
+	});
+
+	bool updated = false;
+	vector<string> symbols = v;
+	symbols.insert(symbols.end(), t.begin(), t.end());
+
+	do
+	{
+		updated = false;
+
+		for(size_t i = 0; i < c.size(); ++i)
+		{
+			for(size_t j = 0; j < symbols.size(); ++j)
+			{
+				vector<LR0Item> goToIX = goTo(c[i], symbols[j]);
+				if(goToIX.size() != 0 && !in(goToIX, c))
+				{
+					c.push_back(goToIX);
+					updated = true;
+				}
+			}
+		}
+	}while(updated);
 }

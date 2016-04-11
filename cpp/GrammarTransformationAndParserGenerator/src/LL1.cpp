@@ -1,4 +1,4 @@
-#include "LL1Parser.h"
+#include "LL1.h"
 #include "utility.h"
 
 LL1Parser::LL1Parser(const CFG& cfg)
@@ -101,7 +101,7 @@ void LL1Parser::displayLL1Table()
 
 bool LL1Parser::parse(const vector<string>& str)
 {
-	fstream f("../src/log");
+	fstream f("../src/LL1Log");
 	f.clear();
 
 	bool accept = true;

@@ -41,6 +41,26 @@ private:
 
 };
 
+class LR0Item
+{
+public:
+	LR0Item() = default;
+	~LR0Item() = default;
+	LR0Item(int pi, int dp);
+
+	friend bool operator ==(const LR0Item& l, const LR0Item& r);
+
+	unsigned int productionIndex;
+	unsigned int dotPosition;
+	// dotPosition == i <==> dot lies before the production.right[i]
+	// dotPosition == production.right[i].size() <==> dot lies at the end of production.right
+
+	// A -> epsilon: A -> .
+
+private:
+
+};
+
 class CFG
 {
 public:
@@ -78,6 +98,14 @@ public:
 	void displayFirst();
 	void displayFollow();
 
+	void augmentGrammar();
+
+	vector<LR0Item> closure(const vector<LR0Item>& is);
+	vector<LR0Item> goTo(const vector<LR0Item>& is, const string& x);
+	// x in (v union t)
+
+	void constructCanonicalLR0Collection();
+
 	vector<string> v;
 	vector<string> t;
 	vector<Production> p;
@@ -90,6 +118,10 @@ public:
 
 	vector<pair<string, vector<string>>> first;
 	vector<pair<string, vector<string>>> follow;
+
+	bool augmented;
+
+	vector<vector<LR0Item>> canonicalLR0Collection;
 
 private:
 
