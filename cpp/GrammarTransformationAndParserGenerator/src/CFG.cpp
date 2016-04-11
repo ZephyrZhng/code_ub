@@ -998,6 +998,7 @@ void CFG::augmentGrammar()
 {
 	p.push_back(Production("_" + s, {s}));
 	v.push_back("_" + s);
+	s = "_" + s;
 	augmented = true;
 }
 
@@ -1114,4 +1115,10 @@ void CFG::constructCanonicalLR0Collection()
 			}
 		}
 	}while(updated);
+}
+
+int CFG::getItemSetIndex(const vector<LR0Item>& is)
+{
+	auto it = find(canonicalLR0Collection.begin(), canonicalLR0Collection.end(), is);
+	return it == canonicalLR0Collection.end()? -1: it - canonicalLR0Collection.begin();
 }

@@ -106,6 +106,8 @@ public:
 
 	void constructCanonicalLR0Collection();
 
+	int getItemSetIndex(const vector<LR0Item>& is);
+
 	vector<string> v;
 	vector<string> t;
 	vector<Production> p;

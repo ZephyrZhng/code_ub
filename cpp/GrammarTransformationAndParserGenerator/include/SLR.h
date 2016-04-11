@@ -26,6 +26,30 @@
 
 using namespace std;
 
+enum ActionBehavior
+{
+	shift,
+	reduce,
+	accept,
+	error,
+};
+
+class SLRActionEntry
+{
+public:
+	SLRActionEntry() = default;
+	~SLRActionEntry() = default;
+	SLRActionEntry(const ActionBehavior& b, int i);
+
+	ActionBehavior behavior;
+	int index;
+	// behavior = shift, index = index of item set
+	// behavior = reduce, inde = index of production
+
+private:
+
+};
+
 class SLRParser
 {
 public:
@@ -33,7 +57,17 @@ public:
 	~SLRParser() = default;
 	SLRParser(const CFG& cfg);
 
+	bool constructSLRTable();
+
 	bool parse(const vector<string>& str);
+
+	vector<vector<SLRActionEntry>> action;
+	// row: state(index of item set)
+	// column: t union {$}
+
+	vector<vector<int>> goTo;
+	// row: state(index of item set)
+	// column: v
 
 private:
 	CFG g;
