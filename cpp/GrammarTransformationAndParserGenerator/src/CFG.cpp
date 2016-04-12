@@ -1129,7 +1129,7 @@ void CFG::constructCanonicalLR0Collection()
 	}while(updated);
 }
 
-int CFG::getItemSetIndex(const vector<LR0Item>& is)
+int CFG::getLR0ItemSetIndex(const vector<LR0Item>& is)
 {
 	auto it = find(canonicalLR0Collection.begin(), canonicalLR0Collection.end(), is);
 	return it == canonicalLR0Collection.end()? -1: it - canonicalLR0Collection.begin();
@@ -1249,4 +1249,10 @@ void CFG::constructCanonicalLR1Collection()
 			}
 		}
 	}while(updated);
+}
+
+int CFG::getLR1ItemSetIndex(const vector<LR1Item>& is)
+{
+	auto it = find(canonicalLR1Collection.begin(), canonicalLR1Collection.end(), is);
+	return it == canonicalLR1Collection.end()? -1: it - canonicalLR1Collection.begin();
 }

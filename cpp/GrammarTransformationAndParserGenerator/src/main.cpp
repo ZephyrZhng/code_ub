@@ -1,6 +1,8 @@
 #include "CFG.h"
 #include "CYK.h"
 #include "LL1.h"
+#include "SLR.h"
+#include "CLR.h"
 #include "utility.h"
 
 // #ifdef WINDOWS

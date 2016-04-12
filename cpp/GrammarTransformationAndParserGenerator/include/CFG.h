@@ -122,14 +122,14 @@ public:
 	// x in (v union t)
 
 	void constructCanonicalLR0Collection();
-
-	int getItemSetIndex(const vector<LR0Item>& is);
+	int getLR0ItemSetIndex(const vector<LR0Item>& is);
 
 	vector<LR1Item> closure(const vector<LR1Item>& is);
 	vector<LR1Item> goTo(const vector<LR1Item>& is, const string& x);
 	// x in (v union t)
 
 	void constructCanonicalLR1Collection();
+	int getLR1ItemSetIndex(const vector<LR1Item>& is);
 
 	vector<string> v;
 	vector<string> t;

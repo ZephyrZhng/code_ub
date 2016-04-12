@@ -39,26 +39,31 @@ bool SLRParser::constructSLRTable()
 		for(size_t j = 0; j < Ii.size(); ++j)
 		{
 			Production pr = p[Ii[j].productionIndex];
-			int productionIndex = Ii[j].productionIndex;
-			string a = pr.right[Ii[j].dotPosition];
-			int aIndex = g.getTerminalIndex(a);
+			int productionIndex = Ii[j].productionIndex;			
 			string A = pr.left;
 			int AIndex = g.getVariableIndex(A);
 
 			// construct action
-			if(Ii[j].dotPosition < pr.right.size() && in(a, t))
+			if(Ii[j].dotPosition < pr.right.size()/* && in(a, t)*/)
 			{
-				vector<LR0Item> Ij = g.goTo(Ii, a);
-				if(action[i][aIndex].behavior != error)
+				string a = pr.right[Ii[j].dotPosition];
+				if(in(a, t))
 				{
-					succeed = false;
+					int aIndex = g.getTerminalIndex(a);
+					vector<LR0Item> Ij = g.goTo(Ii, a);
+					if(action[i][aIndex].behavior != error)
+					{
+						succeed = false;
+					}
+					action[i][aIndex] = SLRActionEntry(shift, g.getLR0ItemSetIndex(Ij));
 				}
-				action[i][aIndex] = SLRActionEntry(shift, g.getItemSetIndex(Ij));
 			}
 			else if(Ii[j].dotPosition == pr.right.size() && A != s)
 			{
-				for(size_t k = 0; k < g.follow[g.getFollowIndex(A)].second.size(); ++k)
+				pair<string, vector<string>> followA = g.follow[g.getFollowIndex(A)];
+				for(size_t k = 0; k < followA.second.size(); ++k)
 				{
+					int aIndex = g.getTerminalIndex(followA.first);
 					if(action[i][aIndex].behavior != error)
 					{
 						succeed = false;
@@ -83,7 +88,7 @@ bool SLRParser::constructSLRTable()
 				{
 					succeed = false;
 				}
-				goTo[i][AIndex] = g.getItemSetIndex(Ij);
+				goTo[i][AIndex] = g.getLR0ItemSetIndex(Ij);
 			}
 		}
 	}

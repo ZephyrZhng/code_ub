@@ -23,16 +23,9 @@
 #include <vector>
 
 #include "CFG.h"
+#include "LR.h"
 
 using namespace std;
-
-enum ActionBehavior
-{
-	shift,
-	reduce,
-	accept,
-	error,
-};
 
 class SLRActionEntry
 {
