@@ -7,21 +7,12 @@ Production::Production(const string& l, const vector<string>& r)
 	right = r;
 }
 
-void Production::display()
+void Production::display(ostream& os)
 {
-	cout << left << " -> ";
+	os << left << " -> ";
 	for(size_t j = 0; j < right.size(); ++j)
 	{
-		cout << right[j] << " ";
-	}
-}
-
-void Production::display(fstream& f)
-{
-	f << left << " -> ";
-	for(size_t j = 0; j < right.size(); ++j)
-	{
-		f << right[j] << " ";
+		os << right[j] << " ";
 	}
 }
 
@@ -219,13 +210,41 @@ CFG::CFG()
 
 	// s = "S";
 
-	// test first, follow, ll1parser
+	// // test first, follow, ll1parser
+	// v = {
+	// 	"E",
+	// 	"T",
+	// 	"E_",
+	// 	"F",
+	// 	"T_",
+	// };
+
+	// t = {
+	// 	"+",
+	// 	"*",
+	// 	"(",
+	// 	")",
+	// 	"0",
+	// };
+
+	// p = {
+	// 	Production("E", {"T", "E_"}),
+	// 	Production("E_", {"+", "T", "E_"}),
+	// 	Production("E_", {""}),
+	// 	Production("T", {"F", "T_"}),
+	// 	Production("T_", {"*", "F", "T_"}),
+	// 	Production("T_", {""}),
+	// 	Production("F", {"(", "E", ")"}),
+	// 	Production("F", {"0"}),
+	// };
+
+	// s = "E";
+
+	// test closure, goto, canonical lr0 collection
 	v = {
 		"E",
 		"T",
-		"E_",
 		"F",
-		"T_",
 	};
 
 	t = {
@@ -237,14 +256,12 @@ CFG::CFG()
 	};
 
 	p = {
-		Production("E", {"T", "E_"}),
-		Production("E_", {"+", "T", "E_"}),
-		Production("E_", {""}),
-		Production("T", {"F", "T_"}),
-		Production("T_", {"*", "F", "T_"}),
-		Production("T_", {""}),
-		Production("F", {"(", "E", ")"}),
-		Production("F", {"0"}),
+		/*0*/Production("E", {"E", "+", "T"}),
+		/*1*/Production("E", {"T"}),
+		/*2*/Production("T", {"T", "*", "F"}),
+		/*3*/Production("T", {"F"}),
+		/*4*/Production("F", {"(", "E", ")"}),
+		/*5*/Production("F", {"0"}),
 	};
 
 	s = "E";
@@ -1016,6 +1033,19 @@ void CFG::augmentGrammar()
 	augmented = true;
 }
 
+int CFG::getProductionIndex(const Production& production)
+{
+	return find_if(
+		p.begin(), 
+		p.end(), 
+		[production](const Production& pr)
+		{
+			return pr.left == production.left
+				&& pr.right == pr.right;
+		}
+	) - p.begin();
+}
+
 vector<LR0Item> CFG::closure(const vector<LR0Item>& is)
 {
 	vector<LR0Item> js = is;
@@ -1028,29 +1058,34 @@ vector<LR0Item> CFG::closure(const vector<LR0Item>& is)
 		for(size_t i = 0; i < js.size(); ++i)
 		{
 			// A -> alpha . B beta
-			string b = p[js[i].productionIndex].right[js[i].dotPosition];
-			if(in(b, v))
+			Production pr = p[js[i].productionIndex];
+			if(js[i].dotPosition < pr.right.size())
+			// revised!!!
 			{
-				for(size_t j = 0; j < p.size(); ++j)
+				string b = pr.right[js[i].dotPosition];
+				if(in(b, v))
 				{
-					if(p[j].left == b)
+					for(size_t j = 0; j < p.size(); ++j)
 					{
-						bool exist = false;
-
-						for(size_t k = 0; k < js.size(); ++k)
+						if(p[j].left == b)
 						{
-							if(js[k].productionIndex == j
-								&& js[k].dotPosition == 0)
+							bool exist = false;
+
+							for(size_t k = 0; k < js.size(); ++k)
 							{
-								exist = true;
-								break;
+								if(js[k].productionIndex == j
+									&& js[k].dotPosition == 0)
+								{
+									exist = true;
+									break;
+								}
 							}
-						}
 
-						if(!exist)
-						{
-							js.push_back(LR0Item(j, 0));
-							updated = true;
+							if(!exist)
+							{
+								js.push_back(LR0Item(j, 0));
+								updated = true;
+							}
 						}
 					}
 				}
@@ -1133,6 +1168,127 @@ int CFG::getLR0ItemSetIndex(const vector<LR0Item>& is)
 {
 	auto it = find(canonicalLR0Collection.begin(), canonicalLR0Collection.end(), is);
 	return it == canonicalLR0Collection.end()? -1: it - canonicalLR0Collection.begin();
+}
+
+void CFG::displayLR0ItemSet(const vector<LR0Item>& is, ostream& os)
+{
+	os << "{" << endl;
+	for(size_t i = 0; i < is.size(); ++i)
+	{
+		Production pr = p[is[i].productionIndex];
+		os << "\t" << pr.left << " -> ";
+		for(size_t k = 0; k < pr.right.size(); ++k)
+		{
+			if(k == is[i].dotPosition)
+			{
+				os << ". ";
+			}
+			os << pr.right[k] << " ";
+		}
+		os << ", " << endl;
+	}
+	os << "}" << endl << endl;
+}
+
+void CFG::displayCanonicalLR0Collection()
+{
+	cout << "canonicalLR0Collection = {" << endl;
+
+	for(size_t i = 0; i < canonicalLR0Collection.size(); ++i)
+	{
+		cout << "\tI" << i << " = {";
+
+		for(size_t j = 0; j < canonicalLR0Collection[i].size(); ++j)
+		{
+			cout << "\t\t";
+			Production pr = p[canonicalLR0Collection[i][j].productionIndex];
+			cout << pr.left << " -> ";
+			for(size_t k = 0; k < pr.right.size(); ++k)
+			{
+				if(k == canonicalLR0Collection[i][j].dotPosition)
+				{
+					cout << ". ";
+				}
+				cout << pr.right[k] << " ";
+			}
+			cout << ", " << endl;
+		}
+
+		cout << "\t}" << endl;
+	}
+
+	cout << "}" << endl << endl;
+}
+
+void CFG::testLR0Closure1(int i, const vector<LR0Item>& Ii, ostream& os)
+{
+	os << "I" << i << ":" << endl;
+	displayLR0ItemSet(Ii, os);
+	vector<LR0Item> closureIi = closure(Ii);
+	os << "closureI" << i << ":" << endl;
+	displayLR0ItemSet(closureIi, os);
+}
+
+void CFG::testLR0Closure()
+{
+	// use grammar for test of closure, goto, canonical lr0 collection
+	// E -> E + T | T
+	// T -> T * F | F
+	// F -> ( E ) | 0
+
+	augmentGrammar();
+
+	fstream f("../src/SLRLog");
+
+	testLR0Closure1(0, vector<LR0Item>({
+		LR0Item(6, 0)
+	}), f);
+
+	testLR0Closure1(1, vector<LR0Item>({
+		LR0Item(6, 1), LR0Item(0, 1)
+	}), f);
+
+	testLR0Closure1(2, vector<LR0Item>({
+		LR0Item(1, 1), LR0Item(2, 1)
+	}), f);
+
+	testLR0Closure1(3, vector<LR0Item>({
+		LR0Item(3, 1)
+	}), f);
+
+	testLR0Closure1(4, vector<LR0Item>({
+		LR0Item(4, 1)
+	}), f);
+
+	testLR0Closure1(5, vector<LR0Item>({
+		LR0Item(5, 1)
+	}), f);
+
+	testLR0Closure1(6, vector<LR0Item>({
+		LR0Item(0, 2)
+	}), f);
+
+	testLR0Closure1(7, vector<LR0Item>({
+		LR0Item(2, 2)
+	}), f);
+
+	testLR0Closure1(8, vector<LR0Item>({
+		LR0Item(0, 1), LR0Item(4, 2)
+	}), f);
+
+	testLR0Closure1(9, vector<LR0Item>({
+		LR0Item(0, 3), LR0Item(2, 1)
+	}), f);
+
+	testLR0Closure1(10, vector<LR0Item>({
+		LR0Item(2, 3)
+	}), f);
+
+	testLR0Closure1(11, vector<LR0Item>({
+		LR0Item(4, 3)
+	}), f);
+
+	f.close();
 }
 
 vector<LR1Item> CFG::closure(const vector<LR1Item>& is)
@@ -1255,4 +1411,54 @@ int CFG::getLR1ItemSetIndex(const vector<LR1Item>& is)
 {
 	auto it = find(canonicalLR1Collection.begin(), canonicalLR1Collection.end(), is);
 	return it == canonicalLR1Collection.end()? -1: it - canonicalLR1Collection.begin();
+}
+
+void CFG::displayLR1ItemSet(const vector<LR1Item>& is)
+{
+	cout << "{" << endl;
+	for(size_t i = 0; i < is.size(); ++i)
+	{
+		Production pr = p[is[i].productionIndex];
+		cout << "\t" << pr.left << " -> ";
+		for(size_t k = 0; k < pr.right.size(); ++k)
+		{
+			if(k == is[i].dotPosition)
+			{
+				cout << ". ";
+			}
+			cout << pr.right[k] << " ";
+		}
+		cout << ", " << is[i].lookahead << "," << endl;
+	}
+	cout << "}" << endl << endl;
+}
+
+void CFG::displayCanonicalLR1Collection()
+{
+	cout << "canonicalLR1Collection = {" << endl;
+
+	for(size_t i = 0; i < canonicalLR1Collection.size(); ++i)
+	{
+		cout << "\tI" << i << " = {";
+
+		for(size_t j = 0; j < canonicalLR1Collection[i].size(); ++j)
+		{
+			cout << "\t\t";
+			Production pr = p[canonicalLR1Collection[i][j].productionIndex];
+			cout << pr.left << " -> ";
+			for(size_t k = 0; k < pr.right.size(); ++k)
+			{
+				if(k == canonicalLR1Collection[i][j].dotPosition)
+				{
+					cout << ". ";
+				}
+				cout << pr.right[k] << " ";
+			}
+			cout << ", " << canonicalLR1Collection[i][j].lookahead << "," << endl;
+		}
+
+		cout << "\t}" << endl;
+	}
+
+	cout << "}" << endl << endl;
 }

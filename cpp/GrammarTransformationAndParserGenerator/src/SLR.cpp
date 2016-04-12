@@ -130,7 +130,7 @@ bool SLRParser::parse(const vector<string>& str)
 			int t = stk.front();
 			stk.push_back(goTo[t][g.getVariableIndex(pr.left)]);
 
-			pr.display();
+			pr.display(cout);
 		}
 		else if(action[s][aIndex].behavior == accept)
 		{

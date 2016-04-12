@@ -31,8 +31,7 @@ public:
 	~Production() = default;
 	Production(const string& l, const vector<string>& r);
 
-	void display();
-	void display(fstream& f);
+	void display(ostream& os);
 
 	string left;
 	vector<string> right;
@@ -117,6 +116,8 @@ public:
 
 	void augmentGrammar();
 
+	int getProductionIndex(const Production& production);
+
 	vector<LR0Item> closure(const vector<LR0Item>& is);
 	vector<LR0Item> goTo(const vector<LR0Item>& is, const string& x);
 	// x in (v union t)
@@ -124,12 +125,21 @@ public:
 	void constructCanonicalLR0Collection();
 	int getLR0ItemSetIndex(const vector<LR0Item>& is);
 
+	void displayLR0ItemSet(const vector<LR0Item>& is, ostream& os);
+	void displayCanonicalLR0Collection();
+
+	void testLR0Closure1(int i, const vector<LR0Item>& Ii, ostream& os);
+	void testLR0Closure();
+
 	vector<LR1Item> closure(const vector<LR1Item>& is);
 	vector<LR1Item> goTo(const vector<LR1Item>& is, const string& x);
 	// x in (v union t)
 
 	void constructCanonicalLR1Collection();
 	int getLR1ItemSetIndex(const vector<LR1Item>& is);
+
+	void displayLR1ItemSet(const vector<LR1Item>& is);
+	void displayCanonicalLR1Collection();
 
 	vector<string> v;
 	vector<string> t;
