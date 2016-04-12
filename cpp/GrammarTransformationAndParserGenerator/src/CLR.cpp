@@ -44,7 +44,7 @@ bool CLRParser::constructCLRTable()
 			int AIndex = g.getVariableIndex(A);
 
 			// construct action
-			if(Ii[j].dotPosition < pr.right.size()/* && in(a, t)*/)
+			if(Ii[j].dotPosition < pr.right.size())
 			{
 				string a = pr.right[Ii[j].dotPosition];
 				if(in(a, t))
