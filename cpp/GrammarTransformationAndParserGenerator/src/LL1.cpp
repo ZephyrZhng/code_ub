@@ -120,7 +120,11 @@ bool LL1Parser::parse(const vector<string>& str)
 
 		string a = w[ip];
 		int xIndex = g.getVariableIndex(x);
-		int aIndex = g.getTerminalIndex(a) == -1? g.t.size(): g.getTerminalIndex(a);
+		int aIndex = g.getTerminalIndex(a);
+		if(aIndex == -1)
+		{
+			aIndex = g.t.size();
+		}
 
 		f << "x: " << x << endl << "a: " << a << endl;
 

@@ -93,8 +93,50 @@ bool SLRParser::constructSLRTable()
 
 bool SLRParser::parse(const vector<string>& str)
 {
-	bool accept = true;
+	bool acc = true;
 
+	vector<string> w = str;
+	w.push_back("$");
+	vector<int> stk = {0};
+	auto a = w.begin();
 
-	return accept;
+	while(1)
+	{
+		int s = stk.front();
+		int aIndex = g.getTerminalIndex(*a);
+		if(aIndex == -1)
+		{
+			aIndex = g.t.size();
+		}
+
+		if(action[s][aIndex].behavior == shift)
+		{
+			stk.push_back(action[s][aIndex].index);
+			++a;
+		}
+		else if(action[s][aIndex].behavior == reduce)
+		{
+			Production pr = g.p[action[s][aIndex].index];
+			for(size_t i = 0; i < pr.right.size(); ++i)
+			{
+				stk.erase(stk.begin());
+			}
+
+			int t = stk.front();
+			stk.push_back(goTo[t][g.getVariableIndex(pr.left)]);
+
+			pr.display();
+		}
+		else if(action[s][aIndex].behavior == accept)
+		{
+			break;
+		}
+		else
+		{
+			acc = false;
+			break;
+		}
+	}
+
+	return acc;
 }

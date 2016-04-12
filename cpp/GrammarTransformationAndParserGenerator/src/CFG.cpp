@@ -36,6 +36,20 @@ bool operator ==(const LR0Item& l, const LR0Item& r)
 	return l.productionIndex == r.productionIndex && l.dotPosition == r.dotPosition;
 }
 
+LR1Item::LR1Item(unsigned int pi, unsigned int dp, const string& la)
+{
+	productionIndex = pi;
+	dotPosition = dp;
+	lookahead = la;
+}
+
+bool operator ==(const LR1Item& l, const LR1Item& r)
+{
+	return l.productionIndex == r.productionIndex
+		&& l.dotPosition == r.dotPosition
+		&& l.lookahead == r.lookahead;
+}
+
 CFG::CFG()
 {
 	augmented = false;
@@ -1083,9 +1097,7 @@ void CFG::constructCanonicalLR0Collection()
 						p.end(),
 						[this](const Production& pr)
 						{
-							return pr.left == "_" + s 
-								&& pr.right.size() == 1 
-								&& pr.right[0] == s;
+							return pr.left == s; 
 						}
 					) - p.begin(),
 					0
@@ -1121,4 +1133,120 @@ int CFG::getItemSetIndex(const vector<LR0Item>& is)
 {
 	auto it = find(canonicalLR0Collection.begin(), canonicalLR0Collection.end(), is);
 	return it == canonicalLR0Collection.end()? -1: it - canonicalLR0Collection.begin();
+}
+
+vector<LR1Item> CFG::closure(const vector<LR1Item>& is)
+{
+	vector<LR1Item> js = is;
+	bool updated = false;
+
+	do
+	{
+		updated = false;
+
+		for(size_t i = 0; i < js.size(); ++i)
+		{
+			// (A -> alpha . B beta, a)
+			Production pr = p[js[i].productionIndex];
+			string B = pr.right[js[i].dotPosition];
+			vector<string> betaa;
+			for(size_t k = js[i].dotPosition + 1; k < pr.right.size(); ++k)
+			{
+				betaa.push_back(pr.right[k]);
+			}
+			betaa.push_back(js[i].lookahead);
+			vector<string> firstBetaa = computeFirst(betaa);
+
+			for(size_t j = 0; j < p.size(); ++j)
+			{
+				if(p[j].left == B)
+				{
+					for(size_t k = 0; k < firstBetaa.size(); ++k)
+					{
+						string b = firstBetaa[k];
+						if(b != "")
+						{
+							js.push_back(LR1Item(j, 0, b));
+							updated = true;
+						}
+					}
+				}
+			}
+		}
+	}while(updated);
+
+	return js;
+}
+
+vector<LR1Item> CFG::goTo(const vector<LR1Item>& is, const string& x)
+{
+	vector<LR1Item> js;
+	for(size_t i = 0; i < is.size(); ++i)
+	{
+		Production pr = p[is[i].productionIndex];
+		if(!(pr.right.size() == 1 && pr.right[0] == "")
+			&& is[i].dotPosition < pr.right.size()
+			&& pr.right[is[i].dotPosition] == x)
+		{
+			js.push_back(
+				LR1Item(
+					is[i].productionIndex, 
+					is[i].dotPosition + 1, 
+					is[i].lookahead
+				)
+			);
+		}
+	}
+	return js;
+}
+
+void CFG::constructCanonicalLR1Collection()
+{
+	if(!augmented)
+	{
+		augmentGrammar();
+	}
+
+	vector<vector<LR1Item>> c = vector<vector<LR1Item>>(
+	{
+		closure(
+			vector<LR1Item>(
+			{
+				LR1Item(
+					find_if(
+						p.begin(), 
+						p.end(),
+						[this](const Production& pr)
+						{
+							return pr.left == s; 
+						}
+					) - p.begin(),
+					0,
+					"$"
+				)
+			})
+		)
+	});
+
+	bool updated = false;
+	vector<string> symbols = v;
+	symbols.insert(symbols.end(), t.begin(), t.end());
+
+	do
+	{
+		updated = false;
+
+		for(size_t i = 0; i < c.size(); ++i)
+		{
+			for(size_t j = 0; j < symbols.size(); ++j)
+			{
+				vector<LR1Item> goToIX = goTo(c[i], symbols[j]);
+				if(goToIX.size() != 0 && !in(goToIX, c))
+				{
+					c.push_back(goToIX);
+					updated = true;
+				}
+			}
+		}
+	}while(updated);
 }
