@@ -10,6 +10,8 @@
 #include <sstream>
 #include <vector>
 
+#include <unistd.h>
+
 using namespace std;
 
 /////////////////////////////////////////////////////////////
@@ -307,19 +309,20 @@ int main()
 
 
 	/////////////////////////////////////////////////////////////
-	std::string s ("this subject has a submarine as a subsequence");
-	std::smatch m;
-	std::regex e ("\\b(sub)([^ ]*)");   // matches words beginning by "sub"
+	// // running error!!!
+	// std::string s ("this subject has a submarine as a subsequence");
+	// std::smatch m;
+	// std::regex e ("\\b(sub)([^ ]*)");   // matches words beginning by "sub"
 
-	std::cout << "Target sequence: " << s << std::endl;
-	std::cout << "Regular expression: /\\b(sub)([^ ]*)/" << std::endl;
-	std::cout << "The following matches and submatches were found:" << std::endl;
+	// std::cout << "Target sequence: " << s << std::endl;
+	// std::cout << "Regular expression: /\\b(sub)([^ ]*)/" << std::endl;
+	// std::cout << "The following matches and submatches were found:" << std::endl;
 
-	while (std::regex_search (s,m,e)) {
-		for (auto x:m) std::cout << x << " ";
-		std::cout << std::endl;
-		s = m.suffix().str();
-	}
+	// while (std::regex_search (s,m,e)) {
+	// 	for (auto x:m) std::cout << x << " ";
+	// 	std::cout << std::endl;
+	// 	s = m.suffix().str();
+	// }
 
 	/////////////////////////////////////////////////////////////
 	std::uniform_int_distribution<int> distribution(0, 99);
@@ -340,6 +343,15 @@ int main()
 	gfunc (myfunc, std::ref(myi)); // 'g<void(int &r),reference_wrapper<int>>' is instantiated
 						   // then 'i' will be modified.
 	std::cout << myi << std::endl; // Output -> 1
+
+	/////////////////////////////////////////////////////////////
+	char currentPath[FILENAME_MAX];
+	if (!getcwd(currentPath, sizeof(currentPath)))
+	{
+		return errno;
+	}
+	currentPath[sizeof(currentPath) - 1] = '\0'; /* not really required */
+	cout << currentPath << endl;
 
 	return 0;
 }
