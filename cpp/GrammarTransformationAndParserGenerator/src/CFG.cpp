@@ -644,7 +644,15 @@ vector<string> CFG::computeFirst(const vector<string>& str)
 		size_t i = 0;
 		for(; i < str.size(); )
 		{
-			vector<string> firstY = first[getFirstIndex(str[i])].second;
+			vector<string> firstY;
+			if(str[i] == "$")
+			{
+				firstY = {"$"};
+			}
+			else
+			{
+				firstY = first[getFirstIndex(str[i])].second;
+			}
 
 			bool epsilon = del(firstY, string(""));
 			add(firstStr, firstY);
@@ -815,7 +823,6 @@ vector<LR0Item> CFG::closure(const vector<LR0Item>& is)
 			// A -> alpha . B beta
 			Production pr = p[js[i].productionIndex];
 			if(js[i].dotPosition < pr.right.size())
-			// revised!!!
 			{
 				string b = pr.right[js[i].dotPosition];
 				if(in(b, v))
@@ -998,26 +1005,50 @@ vector<LR1Item> CFG::closure(const vector<LR1Item>& is)
 		{
 			// (A -> alpha . B beta, a)
 			Production pr = p[js[i].productionIndex];
-			string B = pr.right[js[i].dotPosition];
-			vector<string> betaa;
-			for(size_t k = js[i].dotPosition + 1; k < pr.right.size(); ++k)
-			{
-				betaa.push_back(pr.right[k]);
-			}
-			betaa.push_back(js[i].lookahead);
-			vector<string> firstBetaa = computeFirst(betaa);
 
-			for(size_t j = 0; j < p.size(); ++j)
+			if(js[i].dotPosition < pr.right.size())
 			{
-				if(p[j].left == B)
+				string B = pr.right[js[i].dotPosition];
+				if(in(B, v))
 				{
-					for(size_t k = 0; k < firstBetaa.size(); ++k)
+					vector<string> betaa;
+					for(size_t k = js[i].dotPosition + 1; k < pr.right.size(); ++k)
 					{
-						string b = firstBetaa[k];
-						if(b != "")
+						betaa.push_back(pr.right[k]);
+					}
+					betaa.push_back(js[i].lookahead);
+
+					vector<string> firstBetaa = computeFirst(betaa);
+
+					for(size_t j = 0; j < p.size(); ++j)
+					{
+						if(p[j].left == B)
 						{
-							js.push_back(LR1Item(j, 0, b));
-							updated = true;
+							for(size_t k = 0; k < firstBetaa.size(); ++k)
+							{
+								string b = firstBetaa[k];
+								if(b != "")
+								{
+									bool exist = false;
+
+									for(size_t l = 0; l < js.size(); ++l)
+									{
+										if(js[l].productionIndex == j
+											&& js[l].dotPosition == 0
+											&& js[l].lookahead == b)
+										{
+											exist = true;
+											break;
+										}
+									}
+
+									if(!exist)
+									{
+										js.push_back(LR1Item(j, 0, b));
+										updated = true;
+									}
+								}
+							}
 						}
 					}
 				}
@@ -1047,7 +1078,7 @@ vector<LR1Item> CFG::goTo(const vector<LR1Item>& is, const string& x)
 			);
 		}
 	}
-	return js;
+	return closure(js);
 }
 
 void CFG::constructCanonicalLR1Collection()
@@ -1057,7 +1088,9 @@ void CFG::constructCanonicalLR1Collection()
 		augmentGrammar();
 	}
 
-	vector<vector<LR1Item>> c = vector<vector<LR1Item>>(
+	canonicalLR1Collection.clear();
+
+	canonicalLR1Collection = vector<vector<LR1Item>>(
 	{
 		closure(
 			vector<LR1Item>(
@@ -1086,14 +1119,14 @@ void CFG::constructCanonicalLR1Collection()
 	{
 		updated = false;
 
-		for(size_t i = 0; i < c.size(); ++i)
+		for(size_t i = 0; i < canonicalLR1Collection.size(); ++i)
 		{
 			for(size_t j = 0; j < symbols.size(); ++j)
 			{
-				vector<LR1Item> goToIX = goTo(c[i], symbols[j]);
-				if(goToIX.size() != 0 && !in(goToIX, c))
+				vector<LR1Item> goToIX = goTo(canonicalLR1Collection[i], symbols[j]);
+				if(goToIX.size() != 0 && !in(goToIX, canonicalLR1Collection))
 				{
-					c.push_back(goToIX);
+					canonicalLR1Collection.push_back(goToIX);
 					updated = true;
 				}
 			}
@@ -1107,56 +1140,60 @@ int CFG::getLR1ItemSetIndex(const vector<LR1Item>& is)
 	return it == canonicalLR1Collection.end()? -1: it - canonicalLR1Collection.begin();
 }
 
-void CFG::displayLR1ItemSet(const vector<LR1Item>& is)
+void CFG::displayLR1ItemSet(const vector<LR1Item>& is, ostream& os)
 {
-	cout << "{" << endl;
+	os << "{" << endl;
 	for(size_t i = 0; i < is.size(); ++i)
 	{
 		Production pr = p[is[i].productionIndex];
-		cout << "\t" << pr.left << " -> ";
+		os << "\t" << pr.left << " -> ";
 		for(size_t k = 0; k < pr.right.size(); ++k)
 		{
 			if(k == is[i].dotPosition)
 			{
-				cout << ". ";
+				os << ". ";
 			}
-			cout << pr.right[k] << " ";
+			os << pr.right[k] << " ";
 		}
-		cout << ", " << is[i].lookahead << "," << endl;
+		if(is[i].dotPosition == pr.right.size())
+		{
+			os << ". ";
+		}
+		os << ", " << is[i].lookahead << "," << endl;
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 }
 
-void CFG::displayCanonicalLR1Collection()
+void CFG::displayCanonicalLR1Collection(ostream& os)
 {
-	cout << "canonicalLR1Collection = {" << endl;
+	os << "canonicalLR1Collection = {" << endl;
 
 	for(size_t i = 0; i < canonicalLR1Collection.size(); ++i)
 	{
-		cout << "\tI" << i << " = {";
+		os << "\tI" << i << " = {" << endl;
 
 		for(size_t j = 0; j < canonicalLR1Collection[i].size(); ++j)
 		{
-			cout << "\t\t";
+			os << "\t\t";
 			Production pr = p[canonicalLR1Collection[i][j].productionIndex];
-			cout << pr.left << " -> ";
+			os << pr.left << " -> ";
 			for(size_t k = 0; k < pr.right.size(); ++k)
 			{
 				if(k == canonicalLR1Collection[i][j].dotPosition)
 				{
-					cout << ". ";
+					os << ". ";
 				}
-				cout << pr.right[k] << " ";
+				os << pr.right[k] << " ";
 			}
 			if(canonicalLR1Collection[i][j].dotPosition == pr.right.size())
 			{
-				cout << ". ";
+				os << ". ";
 			}
-			cout << ", " << canonicalLR1Collection[i][j].lookahead << "," << endl;
+			os << ", " << canonicalLR1Collection[i][j].lookahead << "," << endl;
 		}
 
-		cout << "\t}" << endl;
+		os << "\t}" << endl << endl;
 	}
 
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 }

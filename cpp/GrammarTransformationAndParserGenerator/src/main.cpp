@@ -20,16 +20,15 @@ int main(int argc, char** argv)
 
 	// cyk.testCYK();
 
-	g.testComputeFirst();
-	g.testComputeFollow();
+	// g.testComputeFirst();
+	// g.testComputeFollow();
 
-	LL1Parser ll1 = LL1Parser(g);
+	// LL1Parser ll1 = LL1Parser(g);
 
-	ll1.testConstructLL1Table();
-	ll1.testParse();
+	// ll1.testConstructLL1Table();
+	// ll1.testParse();
 
 	// g.testLR0Closure();
-	// // notice the revised version!!!
 
 	// g.testLR0GoTo();
 	
@@ -39,6 +38,8 @@ int main(int argc, char** argv)
 
 	// slr.testConstructSLRTable();
 	// slr.testParse();
+
+	g.testConstructCanonicalLR1Collection();
 
 	return 0;
 }

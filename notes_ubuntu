@@ -170,3 +170,5 @@ an epsilon of room
 
 sudo ntfsfix /dev/sda5
 sudo ntfsfix /dev/sda6
+
+valgrind --tool=memcheck --leak-check=yes ./my_app

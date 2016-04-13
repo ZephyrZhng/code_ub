@@ -193,7 +193,7 @@ void CFG::testLR0Closure()
 	// T -> T * F | F
 	// F -> ( E ) | 0
 
-	// test closure, goto, canonical lr0 collection
+	// test closure, goto, canonical lr0 collection, slr
 	v = {
 		"E",
 		"T",
@@ -305,5 +305,48 @@ void CFG::testConstructCanonicalLR0Collection()
 	fstream f("../src/LogLR0Collection");
 	f.clear();
 	displayCanonicalLR0Collection(f);
+	f.close();
+}
+
+void CFG::testLR1Closure()
+{
+	
+}
+
+void CFG::testLR1GoTo()
+{
+
+}
+
+void CFG::testConstructCanonicalLR1Collection()
+{
+	v = {
+		"S",
+		"C",
+	};
+
+	t = {
+		"c",
+		"d",
+	};
+
+	p = {
+		Production("S", {"C", "C"}),
+		Production("C", {"c", "C"}),
+		Production("C", {"d"}),
+	};
+
+	s = "S";
+
+	augmentGrammar();
+
+	computeFirst();
+
+	displayGrammar();
+
+	constructCanonicalLR1Collection();
+	fstream f("../src/LogLR1Collection");
+	f.clear();
+	displayCanonicalLR1Collection(f);
 	f.close();
 }

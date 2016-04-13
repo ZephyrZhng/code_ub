@@ -122,8 +122,8 @@ public:
 	void displayFollow(ostream& os = cout);
 	void displayLR0ItemSet(const vector<LR0Item>& is, ostream& os = cout);
 	void displayCanonicalLR0Collection(ostream& os = cout);
-	void displayLR1ItemSet(const vector<LR1Item>& is);
-	void displayCanonicalLR1Collection();
+	void displayLR1ItemSet(const vector<LR1Item>& is, ostream& os = cout);
+	void displayCanonicalLR1Collection(ostream& os = cout);
 
 	int getVariableIndex(const string& a);
 	int getTerminalIndex(const string& a);
@@ -142,6 +142,9 @@ public:
 	void testLR0Closure();
 	void testLR0GoTo();
 	void testConstructCanonicalLR0Collection();
+	void testLR1Closure();
+	void testLR1GoTo();
+	void testConstructCanonicalLR1Collection();
 
 	vector<string> v;
 	vector<string> t;
