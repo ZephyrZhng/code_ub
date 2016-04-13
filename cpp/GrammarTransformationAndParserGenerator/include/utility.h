@@ -65,25 +65,14 @@ bool del(vector<T>& v, const T& e)
 }
 
 template<typename T>
-void display(const vector<T>& v)
+void display(const vector<T>& v, ostream& os = cout)
 {
-	cout << "{ ";
+	os << "{ ";
 	for(size_t i = 0; i < v.size(); ++i)
 	{
-		cout << v[i] << ", ";
+		os << v[i] << ", ";
 	}
-	cout << "}";
-}
-
-template<typename T>
-void display(const vector<T>& v, fstream& f)
-{
-	f << "{ ";
-	for(size_t i = 0; i < v.size(); ++i)
-	{
-		f << v[i] << ", ";
-	}
-	f << "}";
+	os << "}";
 }
 
 #endif /*UTILITY_H*/

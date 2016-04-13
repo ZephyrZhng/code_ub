@@ -16,36 +16,36 @@ closureI0:
 
 I1:
 {
-	_E -> E , 
+	_E -> E . , 
 	E -> E . + T , 
 }
 
 closureI1:
 {
-	_E -> E , 
+	_E -> E . , 
 	E -> E . + T , 
 }
 
 I2:
 {
-	E -> T , 
+	E -> T . , 
 	T -> T . * F , 
 }
 
 closureI2:
 {
-	E -> T , 
+	E -> T . , 
 	T -> T . * F , 
 }
 
 I3:
 {
-	T -> F , 
+	T -> F . , 
 }
 
 closureI3:
 {
-	T -> F , 
+	T -> F . , 
 }
 
 I4:
@@ -66,12 +66,12 @@ closureI4:
 
 I5:
 {
-	F -> 0 , 
+	F -> 0 . , 
 }
 
 closureI5:
 {
-	F -> 0 , 
+	F -> 0 . , 
 }
 
 I6:
@@ -114,33 +114,33 @@ closureI8:
 
 I9:
 {
-	E -> E + T , 
+	E -> E + T . , 
 	T -> T . * F , 
 }
 
 closureI9:
 {
-	E -> E + T , 
+	E -> E + T . , 
 	T -> T . * F , 
 }
 
 I10:
 {
-	T -> T * F , 
+	T -> T * F . , 
 }
 
 closureI10:
 {
-	T -> T * F , 
+	T -> T * F . , 
 }
 
 I11:
 {
-	F -> ( E ) , 
+	F -> ( E ) . , 
 }
 
 closureI11:
 {
-	F -> ( E ) , 
+	F -> ( E ) . , 
 }
 

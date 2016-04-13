@@ -23,11 +23,20 @@ int main(int argc, char** argv)
 	// ll1.parse(vector<string>{"0", "+", "0", "*", "0"});
 
 	CFG g = CFG();
-	g.testLR0Closure();
-	// notice the revised version!!!
 
-	// g.constructCanonicalLR0Collection();
-	// g.displayCanonicalLR0Collection();
+	// g.testEliminateUselessSymbols();
+
+	// g.testLR0Closure();
+	// // notice the revised version!!!
+
+	// g.testLR0GoTo();
+	
+	g.testConstructCanonicalLR0Collection();
+
+	SLRParser slr = SLRParser(g);
+
+	slr.testConstructSLRTable();
+	slr.testParse();
 
 	return 0;
 }

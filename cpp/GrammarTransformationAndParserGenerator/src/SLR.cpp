@@ -30,20 +30,20 @@ bool SLRParser::constructSLRTable()
 	vector<vector<LR0Item>> c = g.canonicalLR0Collection;
 
 	action.assign(c.size(), vector<SLRActionEntry>(t.size() + 1, SLRActionEntry(error, -1)));
-	goTo.assign(c.size(), vector<int>(v.size(), -1));
+	goTo.assign(c.size(), vector<int>(v.size() - 1, -1));
 
 	for(size_t i = 0; i < c.size(); ++i)
 	{
 		vector<LR0Item> Ii = c[i];
 		
+		// construct action
 		for(size_t j = 0; j < Ii.size(); ++j)
 		{
 			Production pr = p[Ii[j].productionIndex];
 			int productionIndex = Ii[j].productionIndex;			
 			string A = pr.left;
-			int AIndex = g.getVariableIndex(A);
+			// int AIndex = g.getVariableIndex(A);
 
-			// construct action
 			if(Ii[j].dotPosition < pr.right.size())
 			{
 				string a = pr.right[Ii[j].dotPosition];
@@ -63,7 +63,11 @@ bool SLRParser::constructSLRTable()
 				pair<string, vector<string>> followA = g.follow[g.getFollowIndex(A)];
 				for(size_t k = 0; k < followA.second.size(); ++k)
 				{
-					int aIndex = g.getTerminalIndex(followA.first);
+					int aIndex = g.getTerminalIndex(followA.second[k]);
+					if(aIndex == -1)
+					{
+						aIndex = t.size();
+					}
 					if(action[i][aIndex].behavior != error)
 					{
 						succeed = false;
@@ -79,17 +83,19 @@ bool SLRParser::constructSLRTable()
 				}
 				action[i][t.size()] = SLRActionEntry(accept, -1);
 			}
+		}
 
-			// construct goTo
-			for(size_t i = 0; i < v.size(); ++i)
+		// construct goTo
+		for(size_t j = 0; j < v.size() - 1; ++j)
+		// notice that augmented grammar has one more element in v, "_" + s
+		{
+			string A = v[j];
+			vector<LR0Item> Ij = g.goTo(Ii, A);
+			if(goTo[i][j] != -1)
 			{
-				vector<LR0Item> Ij = g.goTo(Ii, A);
-				if(goTo[i][AIndex] != -1)
-				{
-					succeed = false;
-				}
-				goTo[i][AIndex] = g.getLR0ItemSetIndex(Ij);
+				succeed = false;
 			}
+			goTo[i][j] = g.getLR0ItemSetIndex(Ij);
 		}
 	}
 
@@ -99,6 +105,7 @@ bool SLRParser::constructSLRTable()
 bool SLRParser::parse(const vector<string>& str)
 {
 	bool acc = true;
+	fstream f("../src/LogSLR");
 
 	vector<string> w = str;
 	w.push_back("$");
@@ -107,6 +114,11 @@ bool SLRParser::parse(const vector<string>& str)
 
 	while(1)
 	{
+		f << "stk: ";
+		display(stk, f);
+		f << endl;
+		f << "a: " << *a << endl;
+
 		int s = stk.front();
 		int aIndex = g.getTerminalIndex(*a);
 		if(aIndex == -1)
@@ -114,34 +126,96 @@ bool SLRParser::parse(const vector<string>& str)
 			aIndex = g.t.size();
 		}
 
+		f << "s: " << s << endl;
+
 		if(action[s][aIndex].behavior == shift)
 		{
-			stk.push_back(action[s][aIndex].index);
+			f << "shift" << endl;
+			stk.insert(stk.begin(), action[s][aIndex].index);
 			++a;
 		}
 		else if(action[s][aIndex].behavior == reduce)
 		{
 			Production pr = g.p[action[s][aIndex].index];
+
+			f << "reduce ";
+			pr.display(f);
+			f << endl;
+
 			for(size_t i = 0; i < pr.right.size(); ++i)
 			{
 				stk.erase(stk.begin());
 			}
 
 			int t = stk.front();
-			stk.push_back(goTo[t][g.getVariableIndex(pr.left)]);
-
-			pr.display(cout);
+			stk.insert(stk.begin(), goTo[t][g.getVariableIndex(pr.left)]);
 		}
 		else if(action[s][aIndex].behavior == accept)
 		{
+			f << "accept" << endl;
 			break;
 		}
 		else
 		{
+			f << "error" << endl;
 			acc = false;
 			break;
 		}
+
+		f << endl;
 	}
 
+	f.close();
+
 	return acc;
+}
+
+void SLRParser::displaySLRTable(ostream& os)
+{
+	os << "action = {" << endl;
+	for(size_t i = 0; i < action.size(); ++i)
+	{
+		for(size_t j = 0; j < action[i].size(); ++j)
+		{
+			os << "\t(" << i << ", " << (j == action[i].size() - 1? "$": g.t[j]) << ") ";
+			if(action[i][j].behavior == shift)
+			{
+				os << "shift " << action[i][j].index;
+			}
+			else if(action[i][j].behavior == reduce)
+			{
+				os << "reduce ";
+				g.p[action[i][j].index].display(os);
+			}
+			else if(action[i][j].behavior == accept)
+			{
+				os << "accept";
+			}
+			else if(action[i][j].behavior == error)
+			{
+				os << "error";
+			}
+			os << ", " << endl;
+		}
+	}
+	os << "}" << endl << endl;
+
+	os << "goTo = {" << endl;
+	for(size_t i = 0; i < goTo.size(); ++i)
+	{
+		for(size_t j = 0; j < goTo[i].size(); ++j)
+		{
+			os << "\t(" << i << ", " << g.v[j] << ") ";
+			if(goTo[i][j] != -1)
+			{
+				os << goTo[i][j];
+			}
+			else
+			{
+				os << "error";
+			}
+			os << "," << endl;
+		}
+	}
+	os << "}" << endl << endl;
 }

@@ -54,6 +54,11 @@ public:
 
 	bool parse(const vector<string>& str);
 
+	void displaySLRTable(ostream& os);
+
+	void testConstructSLRTable();
+	void testParse();
+
 	vector<vector<SLRActionEntry>> action;
 	// row: state(index of item set)
 	// column: t union {$}

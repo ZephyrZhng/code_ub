@@ -31,7 +31,7 @@ public:
 	~Production() = default;
 	Production(const string& l, const vector<string>& r);
 
-	void display(ostream& os);
+	void display(ostream& os = cout);
 
 	string left;
 	vector<string> right;
@@ -96,50 +96,48 @@ public:
 
 	void putInCNF();
 
+	void computeFirst();
+	vector<string> computeFirst(const vector<string>& str);
+
+	void computeFollow();
+
+	void augmentGrammar();
+
+	vector<LR0Item> closure(const vector<LR0Item>& is);
+	vector<LR0Item> goTo(const vector<LR0Item>& is, const string& x);
+	// x in (v union t)
+	void constructCanonicalLR0Collection();
+
+	vector<LR1Item> closure(const vector<LR1Item>& is);
+	vector<LR1Item> goTo(const vector<LR1Item>& is, const string& x);
+	// x in (v union t)
+	void constructCanonicalLR1Collection();
+
 	void displayGrammar();
 	void displayGeneratingSymbols();
 	void displayReachableSymbols();
 	void displayNullableSymbols();
 	void displayUnitPairs();
+	void displayFirst();
+	void displayFollow();
+	void displayLR0ItemSet(const vector<LR0Item>& is, ostream& os);
+	void displayCanonicalLR0Collection(ostream& os);
+	void displayLR1ItemSet(const vector<LR1Item>& is);
+	void displayCanonicalLR1Collection();
 
 	int getVariableIndex(const string& a);
 	int getTerminalIndex(const string& a);
-
+	int getProductionIndex(const Production& production);
 	int getFirstIndex(const string& symbol);
 	int getFollowIndex(const string& symbol);
-	void computeFirst();
-	vector<string> computeFirst(const vector<string>& str);
-	void computeFollow();
-
-	void displayFirst();
-	void displayFollow();
-
-	void augmentGrammar();
-
-	int getProductionIndex(const Production& production);
-
-	vector<LR0Item> closure(const vector<LR0Item>& is);
-	vector<LR0Item> goTo(const vector<LR0Item>& is, const string& x);
-	// x in (v union t)
-
-	void constructCanonicalLR0Collection();
 	int getLR0ItemSetIndex(const vector<LR0Item>& is);
-
-	void displayLR0ItemSet(const vector<LR0Item>& is, ostream& os);
-	void displayCanonicalLR0Collection();
-
-	void testLR0Closure1(int i, const vector<LR0Item>& Ii, ostream& os);
-	void testLR0Closure();
-
-	vector<LR1Item> closure(const vector<LR1Item>& is);
-	vector<LR1Item> goTo(const vector<LR1Item>& is, const string& x);
-	// x in (v union t)
-
-	void constructCanonicalLR1Collection();
 	int getLR1ItemSetIndex(const vector<LR1Item>& is);
 
-	void displayLR1ItemSet(const vector<LR1Item>& is);
-	void displayCanonicalLR1Collection();
+	void testEliminateUselessSymbols();
+	void testLR0Closure1(int i, const vector<LR0Item>& Ii, ostream& os);
+	void testLR0Closure();
+	void testLR0GoTo();
+	void testConstructCanonicalLR0Collection();
 
 	vector<string> v;
 	vector<string> t;
