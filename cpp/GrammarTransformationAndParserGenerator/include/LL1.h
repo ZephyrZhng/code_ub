@@ -36,9 +36,12 @@ public:
 	bool setM(int row, int column, int index);
 	bool constructLL1Table();
 
-	void displayLL1Table();
+	void displayLL1Table(ostream& os = cout);
 
 	bool parse(const vector<string>& str);
+
+	void testConstructLL1Table();
+	void testParse();
 
 private:
 	CFG g;

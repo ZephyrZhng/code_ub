@@ -113,15 +113,15 @@ public:
 	// x in (v union t)
 	void constructCanonicalLR1Collection();
 
-	void displayGrammar();
-	void displayGeneratingSymbols();
-	void displayReachableSymbols();
-	void displayNullableSymbols();
-	void displayUnitPairs();
-	void displayFirst();
-	void displayFollow();
-	void displayLR0ItemSet(const vector<LR0Item>& is, ostream& os);
-	void displayCanonicalLR0Collection(ostream& os);
+	void displayGrammar(ostream& os = cout);
+	void displayGeneratingSymbols(ostream& os = cout);
+	void displayReachableSymbols(ostream& os = cout);
+	void displayNullableSymbols(ostream& os = cout);
+	void displayUnitPairs(ostream& os = cout);
+	void displayFirst(ostream& os = cout);
+	void displayFollow(ostream& os = cout);
+	void displayLR0ItemSet(const vector<LR0Item>& is, ostream& os = cout);
+	void displayCanonicalLR0Collection(ostream& os = cout);
 	void displayLR1ItemSet(const vector<LR1Item>& is);
 	void displayCanonicalLR1Collection();
 
@@ -134,7 +134,11 @@ public:
 	int getLR1ItemSetIndex(const vector<LR1Item>& is);
 
 	void testEliminateUselessSymbols();
-	void testLR0Closure1(int i, const vector<LR0Item>& Ii, ostream& os);
+	void testEliminateUnitProductions();
+	void testPutInCNF();
+	void testComputeFirst();
+	void testComputeFollow();
+	void testLR0Closure1(int i, const vector<LR0Item>& Ii, ostream& os = cout);
 	void testLR0Closure();
 	void testLR0GoTo();
 	void testConstructCanonicalLR0Collection();

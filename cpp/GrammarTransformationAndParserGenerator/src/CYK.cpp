@@ -66,7 +66,7 @@ bool CYKParser::parse(const vector<string>& str)
 	return accept;
 }
 
-void CYKParser::displayCYKTable()
+void CYKParser::displayCYKTable(ostream& os)
 {
 	t.clear();
 
@@ -87,18 +87,18 @@ void CYKParser::displayCYKTable()
 		}
 	}
 
-	cout << "CYKTable = {" << endl;
+	os << "CYKTable = {" << endl;
 	for(int i = 0; i <= n - 1; ++i)
 	{
 		for(int j = 0; j <= n - i - 1; ++j)
 		{
-			cout << "\t(" << i << ", " << j << ") { ";
+			os << "\t(" << i << ", " << j << ") { ";
 			for(size_t k = 0; k < t[i][j].size(); ++k)
 			{
-				cout << t[i][j][k] << ", ";
+				os << t[i][j][k] << ", ";
 			}
-			cout << "}," << endl;
+			os << "}," << endl;
 		}
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 }

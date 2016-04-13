@@ -35,7 +35,9 @@ public:
 
 	bool parse(const vector<string>& str);
 
-	void displayCYKTable();
+	void displayCYKTable(ostream& os = cout);
+
+	void testCYK();
 
 private:
 	CFG g; // in CNF

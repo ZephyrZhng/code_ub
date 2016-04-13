@@ -33,6 +33,148 @@ void CFG::testEliminateUselessSymbols()
 
 	displayGrammar();
 	eliminateUselessSymbols();
+	displayGeneratingSymbols();
+	displayReachableSymbols();
+	displayGrammar();
+
+	// test eliminateUselessSymbols
+	v = {
+		"S",
+		"A",
+		"B",
+	};
+
+	t = {
+		"a",
+		"b",
+	};
+
+	p = {
+		Production("S", {"A", "B"}),
+		Production("S", {"a"}),
+		Production("A", {"a"}),
+	};
+
+	s = "S";
+
+	displayGrammar();
+	eliminateUselessSymbols();
+	displayGeneratingSymbols();
+	displayReachableSymbols();
+	displayGrammar();
+}
+
+void CFG::testEliminateUnitProductions()
+{
+	// test eliminateUnitProductions
+	v = {
+		"A",
+		"B",
+		"C",
+		"D",
+	};
+
+	t = {
+		"a",
+		"b",
+		"c",
+	};
+
+	p = {
+		Production("A", {"B"}),
+		Production("B", {"C"}),
+		Production("C", {"D"}),
+		Production("B", {"a"}),
+		Production("C", {"b"}),
+		Production("D", {"c"}),
+	};
+
+	s = "A";
+
+	displayGrammar();
+	eliminateUselessSymbols();
+	eliminateEpsilonProductions();
+	eliminateUnitProductions();
+	displayUnitPairs();
+	displayGrammar();
+}
+
+void CFG::testPutInCNF()
+{
+	// test putInCNF
+	v = {
+		"E",
+		"T",
+		"F",
+	};
+
+	t = {
+		"a",
+		"b",
+		"+",
+		"*",
+		"(",
+		")",
+	};
+
+	p = {
+		Production("E", {"E", "+", "T"}),
+		Production("E", {"T"}),
+		Production("T", {"T", "*", "F"}),
+		Production("T", {"F"}),
+		Production("F", {"(", "E", ")"}),
+		Production("F", {"a"}),
+		Production("F", {"b"}),
+	};
+
+	s = "E";
+
+	displayGrammar();
+	putInCNF();
+	displayGrammar();
+}
+
+void CFG::testComputeFirst()
+{
+	// test first, follow, ll1parser
+	v = {
+		"E",
+		"T",
+		"E_",
+		"F",
+		"T_",
+	};
+
+	t = {
+		"+",
+		"*",
+		"(",
+		")",
+		"0",
+	};
+
+	p = {
+		Production("E", {"T", "E_"}),
+		Production("E_", {"+", "T", "E_"}),
+		Production("E_", {""}),
+		Production("T", {"F", "T_"}),
+		Production("T_", {"*", "F", "T_"}),
+		Production("T_", {""}),
+		Production("F", {"(", "E", ")"}),
+		Production("F", {"0"}),
+	};
+
+	s = "E";
+
+	displayGrammar();
+	computeFirst();
+	displayFirst();
+}
+
+void CFG::testComputeFollow()
+{
+	computeFollow();
+	displayFollow();
 }
 
 void CFG::testLR0Closure1(int i, const vector<LR0Item>& Ii, ostream& os)
@@ -50,6 +192,32 @@ void CFG::testLR0Closure()
 	// E -> E + T | T
 	// T -> T * F | F
 	// F -> ( E ) | 0
+
+	// test closure, goto, canonical lr0 collection
+	v = {
+		"E",
+		"T",
+		"F",
+	};
+
+	t = {
+		"+",
+		"*",
+		"(",
+		")",
+		"0",
+	};
+
+	p = {
+		/*0*/Production("E", {"E", "+", "T"}),
+		/*1*/Production("E", {"T"}),
+		/*2*/Production("T", {"T", "*", "F"}),
+		/*3*/Production("T", {"F"}),
+		/*4*/Production("F", {"(", "E", ")"}),
+		/*5*/Production("F", {"0"}),
+	};
+
+	s = "E";
 
 	augmentGrammar();
 

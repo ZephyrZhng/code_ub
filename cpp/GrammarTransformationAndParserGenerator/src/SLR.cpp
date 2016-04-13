@@ -106,6 +106,7 @@ bool SLRParser::parse(const vector<string>& str)
 {
 	bool acc = true;
 	fstream f("../src/LogSLR");
+	f.clear();
 
 	vector<string> w = str;
 	w.push_back("$");

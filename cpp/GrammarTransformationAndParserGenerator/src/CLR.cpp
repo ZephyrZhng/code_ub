@@ -126,7 +126,7 @@ bool CLRParser::parse(const vector<string>& str)
 			int t = stk.front();
 			stk.push_back(goTo[t][g.getVariableIndex(pr.left)]);
 
-			pr.display(cout);
+			pr.display();
 		}
 		else if(action[s][aIndex].behavior == accept)
 		{

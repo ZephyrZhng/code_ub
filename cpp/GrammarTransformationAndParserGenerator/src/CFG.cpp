@@ -44,199 +44,6 @@ bool operator ==(const LR1Item& l, const LR1Item& r)
 CFG::CFG()
 {
 	augmented = false;
-
-	// // test eliminateUselessSymbols
-	// v = {
-	// 	"S",
-	// 	"A",
-	// 	"B",
-	// };
-
-	// t = {
-	// 	"a",
-	// 	"b",
-	// };
-
-	// p = {
-	// 	Production("S", {"A", "B"}),
-	// 	Production("S", {"a"}),
-	// 	Production("A", {"a"}),
-	// };
-
-	// s = "S";
-
-	// // test eliminateUnitPair
-	// v = {
-	// 	"A",
-	// 	"B",
-	// 	"C",
-	// 	"D",
-	// };
-
-	// t = {
-	// 	"a",
-	// 	"b",
-	// 	"c",
-	// };
-
-	// p = {
-	// 	Production("A", {"B"}),
-	// 	Production("B", {"C"}),
-	// 	Production("C", {"D"}),
-	// 	Production("B", {"a"}),
-	// 	Production("C", {"b"}),
-	// 	Production("D", {"c"}),
-	// };
-
-	// s = "A";
-
-	// // test putInCNF
-	// v = {
-	// 	"E",
-	// 	"T",
-	// 	"F",
-	// };
-
-	// t = {
-	// 	"a",
-	// 	"b",
-	// 	"+",
-	// 	"*",
-	// 	"(",
-	// 	")",
-	// };
-
-	// p = {
-	// 	Production("E", {"E", "+", "T"}),
-	// 	Production("E", {"T"}),
-	// 	Production("T", {"T", "*", "F"}),
-	// 	Production("T", {"F"}),
-	// 	Production("F", {"(", "E", ")"}),
-	// 	Production("F", {"a"}),
-	// 	Production("F", {"b"}),
-	// };
-
-	// s = "E";
-
-	// // test CYK
-	// v = {
-	// 	"S",
-	// 	"A",
-	// 	"B",
-	// 	"C",
-	// };
-
-	// t = {
-	// 	"a",
-	// 	"b",
-	// };
-
-	// p = {
-	// 	Production("S", {"A", "B"}),
-	// 	Production("S", {"B", "C"}),
-	// 	Production("A", {"B", "A"}),
-	// 	Production("A", {"a"}),
-	// 	Production("B", {"C", "C"}),
-	// 	Production("B", {"b"}),
-	// 	Production("C", {"A", "B"}),
-	// 	Production("C", {"a"}),
-	// };
-
-	// s = "S";
-
-	// // test CYK
-	// v = {
-	// 	"S",
-	// 	"NP",
-	// 	"VP",
-	// 	"PP",
-	// 	"V",
-	// 	"P",
-	// 	"Det",
-	// 	"N",
-	// };
-
-	// t = {
-	// 	"eats",
-	// 	"she",
-	// 	"with",
-	// 	"fish",
-	// 	"fork",
-	// 	"a",
-	// };
-
-	// p = {
-	// 	Production("S", {"NP", "VP"}),
-	// 	Production("VP", {"VP", "PP"}),
-	// 	Production("VP", {"V", "NP"}),
-	// 	Production("VP", {"eats"}),
-	// 	Production("PP", {"P", "NP"}),
-	// 	Production("NP", {"Det", "N"}),
-	// 	Production("NP", {"she"}),
-	// 	Production("V", {"eats"}),
-	// 	Production("P", {"with"}),
-	// 	Production("N", {"fish"}),
-	// 	Production("N", {"fork"}),
-	// 	Production("Det", {"a"}),
-	// };
-
-	// s = "S";
-
-	// // test first, follow, ll1parser
-	// v = {
-	// 	"E",
-	// 	"T",
-	// 	"E_",
-	// 	"F",
-	// 	"T_",
-	// };
-
-	// t = {
-	// 	"+",
-	// 	"*",
-	// 	"(",
-	// 	")",
-	// 	"0",
-	// };
-
-	// p = {
-	// 	Production("E", {"T", "E_"}),
-	// 	Production("E_", {"+", "T", "E_"}),
-	// 	Production("E_", {""}),
-	// 	Production("T", {"F", "T_"}),
-	// 	Production("T_", {"*", "F", "T_"}),
-	// 	Production("T_", {""}),
-	// 	Production("F", {"(", "E", ")"}),
-	// 	Production("F", {"0"}),
-	// };
-
-	// s = "E";
-
-	// test closure, goto, canonical lr0 collection
-	v = {
-		"E",
-		"T",
-		"F",
-	};
-
-	t = {
-		"+",
-		"*",
-		"(",
-		")",
-		"0",
-	};
-
-	p = {
-		/*0*/Production("E", {"E", "+", "T"}),
-		/*1*/Production("E", {"T"}),
-		/*2*/Production("T", {"T", "*", "F"}),
-		/*3*/Production("T", {"F"}),
-		/*4*/Production("F", {"(", "E", ")"}),
-		/*5*/Production("F", {"0"}),
-	};
-
-	s = "E";
 }
 
 void CFG::findGeneratingSymbols()
@@ -296,10 +103,8 @@ void CFG::findReachableSymbols()
 
 void CFG::eliminateUselessSymbols()
 {
-	cout << "------------ eliminateUselessSymbols begin ------------" << endl;
-
 	findGeneratingSymbols();
-	displayGeneratingSymbols();
+
 	// generating symbols can be in v
 	for(size_t i = 0; i < v.size(); )
 	{
@@ -341,7 +146,7 @@ void CFG::eliminateUselessSymbols()
 	}
 
 	findReachableSymbols();
-	displayReachableSymbols();
+
 	// reachable symbols can be in v or t
 	for(size_t i = 0; i < v.size(); )
 	{
@@ -392,10 +197,6 @@ void CFG::eliminateUselessSymbols()
 			++i;
 		}
 	}
-
-	displayGrammar();
-
-	cout << "------------ eliminateUselessSymbols end ------------" << endl << endl << endl;
 }
 
 void CFG::findNullableSymbols()
@@ -439,8 +240,6 @@ void CFG::findNullableSymbols()
 
 void CFG::eliminateEpsilonProductions()
 {
-	cout << "------------ eliminateEpsilonProductions begin ------------" << endl;
-
 	findNullableSymbols();
 	for(size_t i = 0; i < p.size(); ++i)
 	{
@@ -508,10 +307,6 @@ void CFG::eliminateEpsilonProductions()
 			p.push_back(Production(s, {""}));
 		}
 	}
-
-	displayGrammar();
-
-	cout << "------------ eliminateEpsilonProductions end ------------" << endl << endl << endl;
 }
 
 bool CFG::isUnitProduction(const Production& production)
@@ -561,8 +356,6 @@ void CFG::findUnitPairs()
 
 void CFG::eliminateUnitProductions()
 {
-	cout << "------------ eliminateUnitProductions begin ------------" << endl;
-
 	findUnitPairs();
 
 	vector<Production> nonUnitProductions;
@@ -578,10 +371,6 @@ void CFG::eliminateUnitProductions()
 	}
 	p.clear();
 	p = nonUnitProductions;
-
-	displayGrammar();
-
-	cout << "------------ eliminateUnitProductions end ------------" << endl << endl << endl;
 }
 
 void CFG::putInCNF()
@@ -589,8 +378,6 @@ void CFG::putInCNF()
 	eliminateUselessSymbols();
 	eliminateEpsilonProductions();
 	eliminateUnitProductions();
-
-	cout << "------------ putInCNF begin ------------" << endl;
 
 	vector<string> terminalsInBody;
 	for(size_t i = 0; i < p.size(); ++i)
@@ -658,85 +445,81 @@ void CFG::putInCNF()
 			++i;
 		}
 	}
-
-	displayGrammar();
-
-	cout << "------------ putInCNF end ------------" << endl << endl << endl;
 }
 
-void CFG::displayGrammar()
+void CFG::displayGrammar(ostream& os)
 {
-	cout << "G = (V, T, P, S)" << endl << endl;
+	os << "G = (V, T, P, S)" << endl << endl;
 
-	cout << "V = {" << endl;
+	os << "V = {" << endl;
 	for(size_t i = 0; i < v.size(); ++i)
 	{
-		cout << "\t" << v[i] << "," << endl;
+		os << "\t" << v[i] << "," << endl;
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 
-	cout << "T = {" << endl;
+	os << "T = {" << endl;
 	for(size_t i = 0; i < t.size(); ++i)
 	{
-		cout << "\t" << t[i] << "," << endl;
+		os << "\t" << t[i] << "," << endl;
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 
-	cout << "P = {" << endl;
+	os << "P = {" << endl;
 	for(size_t i = 0; i < p.size(); ++i)
 	{
-		cout << "\t{ " << p[i].left << " -> ";
+		os << "\t{ " << p[i].left << " -> ";
 		for(size_t j = 0; j < p[i].right.size(); ++j)
 		{
-			cout << p[i].right[j] << " ";
+			os << p[i].right[j] << " ";
 		}
-		cout << "}," << endl;
+		os << "}," << endl;
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 
-	cout << "S = " << s << endl << endl;
+	os << "S = " << s << endl << endl;
 
-	cout << endl;
+	os << endl;
 }
 
-void CFG::displayGeneratingSymbols()
+void CFG::displayGeneratingSymbols(ostream& os)
 {
-	cout << "generatingSymbols = {" << endl;
+	os << "generatingSymbols = {" << endl;
 	for(size_t i = 0; i < generatingSymbols.size(); ++i)
 	{
-		cout << "\t" << generatingSymbols[i] << "," << endl;
+		os << "\t" << generatingSymbols[i] << "," << endl;
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 }
 
-void CFG::displayReachableSymbols()
+void CFG::displayReachableSymbols(ostream& os)
 {
-	cout << "reachableSymbols = {" << endl;
+	os << "reachableSymbols = {" << endl;
 	for(size_t i = 0; i < reachableSymbols.size(); ++i)
 	{
-		cout << "\t" << reachableSymbols[i] << "," << endl;
+		os << "\t" << reachableSymbols[i] << "," << endl;
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 }
 
-void CFG::displayNullableSymbols()
+void CFG::displayNullableSymbols(ostream& os)
 {
-	cout << "nullableSymbols = {" << endl;
+	os << "nullableSymbols = {" << endl;
 	for(size_t i = 0; i < nullableSymbols.size(); ++i)
 	{
-		cout << "\t" << nullableSymbols[i] << "," << endl;
+		os << "\t" << nullableSymbols[i] << "," << endl;
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 }
 
-void CFG::displayUnitPairs()
+void CFG::displayUnitPairs(ostream& os)
 {
-	cout << "unitPairs = {" << endl;
+	os << "unitPairs = {" << endl;
 	for(size_t i = 0; i < unitPairs.size(); ++i)
 	{
-		cout << "\t(" << unitPairs[i].first << ", " << unitPairs[i].second << ")," << endl;
+		os << "\t(" << unitPairs[i].first << ", " << unitPairs[i].second << ")," << endl;
 	}
-	cout << "}" << endl << endl;
+	os << "}" << endl << endl;
 }
 
 int CFG::getVariableIndex(const string& a)
@@ -967,33 +750,33 @@ void CFG::computeFollow()
 	}while(updated);
 }
 
-void CFG::displayFirst()
+void CFG::displayFirst(ostream& os)
 {
 	for(size_t i = 0; i < first.size(); ++i)
 	{
-		cout << "first(" << first[i].first << ") = {" << endl;
+		os << "first(" << first[i].first << ") = {" << endl;
 
 		for(size_t j = 0; j < first[i].second.size(); ++j)
 		{
-			cout << "\t" << first[i].second[j] << "," << endl;
+			os << "\t" << first[i].second[j] << "," << endl;
 		}
 
-		cout << "}" << endl << endl;
+		os << "}" << endl << endl;
 	}
 }
 
-void CFG::displayFollow()
+void CFG::displayFollow(ostream& os)
 {
 	for(size_t i = 0; i < follow.size(); ++i)
 	{
-		cout << "follow(" << follow[i].first << ") = {" << endl;
+		os << "follow(" << follow[i].first << ") = {" << endl;
 
 		for(size_t j = 0; j < follow[i].second.size(); ++j)
 		{
-			cout << "\t" << follow[i].second[j] << "," << endl;
+			os << "\t" << follow[i].second[j] << "," << endl;
 		}
 
-		cout << "}" << endl << endl;
+		os << "}" << endl << endl;
 	}
 }
 

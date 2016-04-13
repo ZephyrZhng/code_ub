@@ -7,6 +7,7 @@ void SLRParser::testConstructSLRTable()
 	g.computeFollow();
 	constructSLRTable();
 	fstream f("../src/LogSLRTable");
+	f.clear();
 	displaySLRTable(f);
 	f.close();
 }

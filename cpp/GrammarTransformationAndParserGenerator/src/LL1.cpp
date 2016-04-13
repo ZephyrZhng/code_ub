@@ -77,31 +77,31 @@ bool LL1Parser::constructLL1Table()
 	return succeed;
 }
 
-void LL1Parser::displayLL1Table()
+void LL1Parser::displayLL1Table(ostream& os)
 {
-	cout << "LL1Parser = {" << endl;
+	os << "LL1Table = {" << endl;
 	for(size_t i = 0; i < m.size(); ++i)
 	{
 		for(size_t j = 0; j < m[i].size(); ++j)
 		{
-			cout << "\t(" << g.v[i] << ", " << (j == g.t.size()? "$": g.t[j]) << ") ";
+			os << "\t(" << g.v[i] << ", " << (j == g.t.size()? "$": g.t[j]) << ") ";
 			if(m[i][j] != -1)
 			{
-				g.p[m[i][j]].display(cout);
+				g.p[m[i][j]].display();
 			}
 			else
 			{
-				cout << "error";
+				os << "error";
 			}
-			cout << "," << endl;
+			os << "," << endl;
 		}
 	}
-	cout << "}" << endl;
+	os << "}" << endl;
 }
 
 bool LL1Parser::parse(const vector<string>& str)
 {
-	fstream f("../src/LL1Log");
+	fstream f("../src/LogLL1");
 	f.clear();
 
 	bool accept = true;

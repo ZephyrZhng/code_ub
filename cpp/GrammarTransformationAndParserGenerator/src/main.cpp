@@ -9,34 +9,36 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	// CYKParser p = CYKParser(CFG());
-	// p.parse({"b", "a", "a", "b", "a"});
-	// p.displayCYKTable();
-
-	// CYKParser p = CYKParser(CFG());
-	// p.parse({"she", "eats", "a", "fish", "with", "a", "fork"});
-	// p.displayCYKTable();
-
-	// LL1Parser ll1 = LL1Parser(CFG());
-	// ll1.constructLL1Table();
-	// ll1.displayLL1Table();
-	// ll1.parse(vector<string>{"0", "+", "0", "*", "0"});
-
 	CFG g = CFG();
 
 	// g.testEliminateUselessSymbols();
+	// g.testEliminateUnitProductions();
+	// g.testPutInCNF();
+
+
+	// CYKParser cyk = CYKParser(g);
+
+	// cyk.testCYK();
+
+	g.testComputeFirst();
+	g.testComputeFollow();
+
+	LL1Parser ll1 = LL1Parser(g);
+
+	ll1.testConstructLL1Table();
+	ll1.testParse();
 
 	// g.testLR0Closure();
 	// // notice the revised version!!!
 
 	// g.testLR0GoTo();
 	
-	g.testConstructCanonicalLR0Collection();
+	// g.testConstructCanonicalLR0Collection();
 
-	SLRParser slr = SLRParser(g);
+	// SLRParser slr = SLRParser(g);
 
-	slr.testConstructSLRTable();
-	slr.testParse();
+	// slr.testConstructSLRTable();
+	// slr.testParse();
 
 	return 0;
 }
