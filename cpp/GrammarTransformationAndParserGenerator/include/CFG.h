@@ -142,8 +142,6 @@ public:
 	void testLR0Closure();
 	void testLR0GoTo();
 	void testConstructCanonicalLR0Collection();
-	void testLR1Closure();
-	void testLR1GoTo();
 	void testConstructCanonicalLR1Collection();
 
 	vector<string> v;

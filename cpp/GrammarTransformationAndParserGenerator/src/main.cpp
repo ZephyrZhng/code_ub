@@ -41,5 +41,9 @@ int main(int argc, char** argv)
 
 	g.testConstructCanonicalLR1Collection();
 
+	CLRParser clr = CLRParser(g);
+
+	clr.testConstructCLRTable();
+
 	return 0;
 }

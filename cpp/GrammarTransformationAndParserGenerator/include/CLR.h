@@ -54,6 +54,10 @@ public:
 
 	bool parse(const vector<string>& str);
 
+	void displayCLRTable(ostream& os = cout);
+
+	void testConstructCLRTable();
+
 	vector<vector<CLRActionEntry>> action;
 	// row: state(index of item set)
 	// column: t union {$}

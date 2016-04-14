@@ -308,16 +308,6 @@ void CFG::testConstructCanonicalLR0Collection()
 	f.close();
 }
 
-void CFG::testLR1Closure()
-{
-	
-}
-
-void CFG::testLR1GoTo()
-{
-
-}
-
 void CFG::testConstructCanonicalLR1Collection()
 {
 	v = {
