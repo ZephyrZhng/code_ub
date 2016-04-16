@@ -1197,3 +1197,27 @@ void CFG::displayCanonicalLR1Collection(ostream& os)
 
 	os << "}" << endl << endl;
 }
+
+bool CFG::hasSameCore(const vector<LR1Item>& is1, const vector<LR1Item>& is2)
+{
+	bool hasSameCore = true;
+
+	for(size_t i = 0; i < is1.size(); ++i)
+	{
+		LR1Item i1 = is1[i];
+		if(find_if(
+			is2.begin(),
+			is2.end(),
+			[i1](const LR1Item& i2)
+			{
+				return i1.productionIndex == i2.productionIndex
+					&& i1.dotPosition == i2.dotPosition;
+			}) == is2.end())
+		{
+			hasSameCore = false;
+			break;
+		}
+	}
+
+	return hasSameCore;
+}

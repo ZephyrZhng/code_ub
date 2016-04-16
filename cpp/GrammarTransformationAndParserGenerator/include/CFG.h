@@ -113,6 +113,8 @@ public:
 	// x in (v union t)
 	void constructCanonicalLR1Collection();
 
+	bool hasSameCore(const vector<LR1Item>& is1, const vector<LR1Item>& is2);
+
 	void displayGrammar(ostream& os = cout);
 	void displayGeneratingSymbols(ostream& os = cout);
 	void displayReachableSymbols(ostream& os = cout);
