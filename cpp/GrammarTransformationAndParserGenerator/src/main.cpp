@@ -3,6 +3,7 @@
 #include "LL1.h"
 #include "SLR.h"
 #include "CLR.h"
+#include "LALR.h"
 #include "utility.h"
 
 using namespace std;
@@ -41,9 +42,13 @@ int main(int argc, char** argv)
 
 	g.testConstructCanonicalLR1Collection();
 
-	CLRParser clr = CLRParser(g);
+	// CLRParser clr = CLRParser(g);
 
-	clr.testConstructCLRTable();
+	// clr.testConstructCLRTable();
+
+	LALRParser lalr = LALRParser(g);
+
+	lalr.testConstructLALRTable();
 
 	return 0;
 }

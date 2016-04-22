@@ -930,8 +930,32 @@ void CFG::constructCanonicalLR0Collection()
 
 int CFG::getLR0ItemSetIndex(const vector<LR0Item>& is)
 {
-	auto it = find(canonicalLR0Collection.begin(), canonicalLR0Collection.end(), is);
-	return it == canonicalLR0Collection.end()? -1: it - canonicalLR0Collection.begin();
+	// auto it = find(canonicalLR0Collection.begin(), canonicalLR0Collection.end(), is);
+	// return it == canonicalLR0Collection.end()? -1: it - canonicalLR0Collection.begin();
+
+	int index = -1;
+	for(size_t i = 0; i < canonicalLR0Collection.size(); ++i)
+	{
+		if(canonicalLR0Collection[i].size() == is.size())
+		{
+			bool equal = true;
+			for(size_t j = 0; j < is.size(); ++j)
+			{
+				if(!in(is[j], canonicalLR0Collection[i]))
+				{
+					equal = false;
+					break;
+				}
+			}
+			if(equal)
+			{
+				index = i;
+				break;
+			}
+		}
+	}
+
+	return index;
 }
 
 void CFG::displayLR0ItemSet(const vector<LR0Item>& is, ostream& os)
@@ -1136,8 +1160,32 @@ void CFG::constructCanonicalLR1Collection()
 
 int CFG::getLR1ItemSetIndex(const vector<LR1Item>& is)
 {
-	auto it = find(canonicalLR1Collection.begin(), canonicalLR1Collection.end(), is);
-	return it == canonicalLR1Collection.end()? -1: it - canonicalLR1Collection.begin();
+	// auto it = find(canonicalLR1Collection.begin(), canonicalLR1Collection.end(), is);
+	// return it == canonicalLR1Collection.end()? -1: it - canonicalLR1Collection.begin();
+
+	int index = -1;
+	for(size_t i = 0; i < canonicalLR1Collection.size(); ++i)
+	{
+		if(canonicalLR1Collection[i].size() == is.size())
+		{
+			bool equal = true;
+			for(size_t j = 0; j < is.size(); ++j)
+			{
+				if(!in(is[j], canonicalLR1Collection[i]))
+				{
+					equal = false;
+					break;
+				}
+			}
+			if(equal)
+			{
+				index = i;
+				break;
+			}
+		}
+	}
+
+	return index;
 }
 
 void CFG::displayLR1ItemSet(const vector<LR1Item>& is, ostream& os)

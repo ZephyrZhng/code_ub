@@ -54,10 +54,9 @@ public:
 
 	bool parse(const vector<string>& str);
 
-	// void displayLALRTable(ostream& os);
+	void displayLALRTable(ostream& os);
 
-	// void testConstructLALRTable();
-	// void testParse();
+	void testConstructLALRTable();
 
 	vector<vector<LALRActionEntry>> action;
 	// row: state(index of item set)
