@@ -790,10 +790,13 @@ void CFG::displayFollow(ostream& os)
 
 void CFG::augmentGrammar()
 {
-	p.push_back(Production("_" + s, {s}));
-	v.push_back("_" + s);
-	s = "_" + s;
-	augmented = true;
+	if(!augmented)
+	{
+		p.push_back(Production("_" + s, {s}));
+		v.push_back("_" + s);
+		s = "_" + s;
+		augmented = true;
+	}
 }
 
 int CFG::getProductionIndex(const Production& production)
