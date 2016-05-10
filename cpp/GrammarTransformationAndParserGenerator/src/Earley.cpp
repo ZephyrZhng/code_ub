@@ -92,10 +92,10 @@ void EarleyParser::parse(const vector<string>& w)
 					scan(s, w, k);
 					cout << "scan" << endl;
 				}
-				// else
-				// {
-				// 	cout << "fuck" << endl;
-				// }
+				else
+				{
+					cout << "fuck" << endl;
+				}
 			}
 			else
 			{
