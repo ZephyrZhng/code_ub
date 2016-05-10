@@ -29,7 +29,7 @@ void EarleyParser::predict(const EarleyState& s, int k)
 	{
 		if(g.p[i].left == Y)
 		{
-			add(S[k], {EarleyState(s.productionIndex, 0, k)});
+			add(S[k], {EarleyState(i, 0, k)});
 		}
 	}
 }
@@ -67,6 +67,7 @@ void EarleyParser::complete(const EarleyState& s, int k)
 
 void EarleyParser::parse(const vector<string>& w)
 {
+	S.clear();
 	g.augmentGrammar();
 	S.assign(w.size() + 1, vector<EarleyState>());
 	add(S[0], {EarleyState(g.p.size() - 1, 0, 0)});
@@ -75,6 +76,7 @@ void EarleyParser::parse(const vector<string>& w)
 	{
 		for(size_t i = 0; i < S[k].size(); ++i)
 		{
+			cout << "(" << k << ", " << i << ") ";
 			EarleyState s = S[k][i];
 			Production pr = g.p[s.productionIndex];
 
@@ -83,16 +85,54 @@ void EarleyParser::parse(const vector<string>& w)
 				if(in(pr.right[s.dotPosition], g.v))
 				{
 					predict(s, k);
+					cout << "predict" << endl;
 				}
-				else
+				else if(k < w.size())
 				{
 					scan(s, w, k);
+					cout << "scan" << endl;
 				}
+				// else
+				// {
+				// 	cout << "fuck" << endl;
+				// }
 			}
 			else
 			{
 				complete(s, k);
+				cout << "complete" << endl;
 			}
 		}
 	}
+}
+
+void EarleyParser::displayS(ostream& os)
+{
+	os << "S = {" << endl;
+
+	for(size_t i = 0; i < S.size(); ++i)
+	{
+		for(size_t j = 0; j < S[i].size(); ++j)
+		{
+			os << "\t(" << i << ", " << j << ") " << "(";
+
+			Production pr = g.p[S[i][j].productionIndex];
+			os << pr.left << " -> ";
+			for(size_t k = 0; k < pr.right.size(); ++k)
+			{
+				if(k == S[i][j].dotPosition)
+				{
+					os << ". ";
+				}
+				os << pr.right[k] << " ";
+			}
+			if(S[i][j].dotPosition == pr.right.size())
+			{
+				os << ". ";
+			}
+			os << ", " << S[i][j].originPosition << ")" << endl;
+		}
+	}
+
+	os << "}" << endl << endl;
 }

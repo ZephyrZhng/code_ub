@@ -56,6 +56,10 @@ public:
 	void complete(const EarleyState& s, int k);
 	void parse(const vector<string>& w);
 
+	void displayS(ostream& os = cout);
+
+	void testEarley();
+
 private:
 	CFG g;
 	vector<vector<EarleyState>> S;

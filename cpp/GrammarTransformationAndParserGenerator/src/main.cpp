@@ -4,6 +4,7 @@
 #include "SLR.h"
 #include "CLR.h"
 #include "LALR.h"
+#include "Earley.h"
 #include "utility.h"
 
 using namespace std;
@@ -40,15 +41,18 @@ int main(int argc, char** argv)
 	// slr.testConstructSLRTable();
 	// slr.testParse();
 
-	g.testConstructCanonicalLR1Collection();
+	// g.testConstructCanonicalLR1Collection();
 
 	// CLRParser clr = CLRParser(g);
 
 	// clr.testConstructCLRTable();
 
-	LALRParser lalr = LALRParser(g);
+	// LALRParser lalr = LALRParser(g);
 
-	lalr.testConstructLALRTable();
+	// lalr.testConstructLALRTable();
+
+	EarleyParser earley = EarleyParser(g);
+	earley.testEarley();
 
 	return 0;
 }

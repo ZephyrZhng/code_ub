@@ -131,8 +131,6 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 40
 sudo update-alternatives --config gcc
 sudo update-alternatives --config g++ 
 
-eth1 is my wireless network adapter
-
 g++ -Wall
 
 deb install: sudo dpkg -i xxx.deb
