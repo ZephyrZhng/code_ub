@@ -31,7 +31,9 @@ void CYKParser::testCYK()
 
 	g.displayGrammar();
 	parse({"b", "a", "a", "b", "a"});
-	displayCYKTable();
+	fstream f("../src/LogCYK");
+	f.clear();
+	displayCYKTable(f);
 
 	// test CYK
 	g.v = {
@@ -73,5 +75,6 @@ void CYKParser::testCYK()
 
 	g.displayGrammar();
 	parse({"she", "eats", "a", "fish", "with", "a", "fork"});
-	displayCYKTable();
+	displayCYKTable(f);
+	f.close();
 }

@@ -13,14 +13,14 @@ int main(int argc, char** argv)
 {
 	CFG g = CFG();
 
-	// g.testEliminateUselessSymbols();
-	// g.testEliminateUnitProductions();
-	// g.testPutInCNF();
+	g.testEliminateUselessSymbols();
+	g.testEliminateUnitProductions();
+	g.testPutInCNF();
 
 
-	// CYKParser cyk = CYKParser(g);
+	CYKParser cyk = CYKParser(g);
 
-	// cyk.testCYK();
+	cyk.testCYK();
 
 	// g.testComputeFirst();
 	// g.testComputeFollow();
@@ -51,8 +51,32 @@ int main(int argc, char** argv)
 
 	// lalr.testConstructLALRTable();
 
-	EarleyParser earley = EarleyParser(g);
-	earley.testEarley();
+	// EarleyParser earley = EarleyParser(g);
+	// earley.testEarley();
+
+	// grammar transformation
+	// testEliminateUselessSymbols
+	// testEliminateUnitProductions
+	// testPutInCNF
+	// testComputeFirst
+	// testComputeFollow
+	// testLR0Closure1
+	// testLR0Closure
+	// testLR0GoTo
+	// testConstructCanonicalLR0Collection
+	// testConstructCanonicalLR1Collection
+
+	// parser generator
+	// testConstructCLRTable
+	// testCYK
+	// testEarley
+	// testConstructLALRTable
+	// testConstructLL1Table
+	// testParse
+	// testConstructSLRTable
+	// testParse
+
+	
 
 	return 0;
 }
