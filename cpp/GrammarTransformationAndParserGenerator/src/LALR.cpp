@@ -89,13 +89,6 @@ bool LALRParser::constructLALRTable()
 					int aIndex = g.getTerminalIndex(a);
 					vector<LR1Item> Ij = g.goTo(Ii, a);
 
-					cout << "---------------------------" << endl;
-					cout << "I" << i << endl;
-					g.displayLR1ItemSet(Ii);
-					cout << "goTo(" << a << ")" << endl;
-					g.displayLR1ItemSet(Ij);
-					cout << "---------------------------" << endl;
-
 					if(action[i][aIndex].behavior != error)
 					{
 						succeed = false;

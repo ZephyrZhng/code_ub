@@ -14,6 +14,8 @@ SLRParser::SLRParser(const CFG& cfg)
 
 bool SLRParser::constructSLRTable()
 {
+	g.computeFollow();
+	
 	bool succeed = true;
 
 	if(!g.augmented)

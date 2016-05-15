@@ -87,7 +87,7 @@ void LL1Parser::displayLL1Table(ostream& os)
 			os << "\t(" << g.v[i] << ", " << (j == g.t.size()? "$": g.t[j]) << ") ";
 			if(m[i][j] != -1)
 			{
-				g.p[m[i][j]].display();
+				g.p[m[i][j]].display(os);
 			}
 			else
 			{

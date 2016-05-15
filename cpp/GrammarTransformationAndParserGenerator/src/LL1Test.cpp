@@ -4,7 +4,9 @@
 void LL1Parser::testConstructLL1Table()
 {
 	constructLL1Table();
-	displayLL1Table();
+	fstream f("../src/LogLL1Table");
+	displayLL1Table(f);
+	f.close();
 }
 
 void LL1Parser::testParse()

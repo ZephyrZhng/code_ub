@@ -221,6 +221,8 @@ void CFG::testLR0Closure()
 
 	augmentGrammar();
 
+	displayGrammar();
+
 	fstream f("../src/LogLR0Closure");
 	f.clear();
 

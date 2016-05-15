@@ -1,82 +1,133 @@
 #include "CFG.h"
+#include "CLR.h"
 #include "CYK.h"
+#include "Earley.h"
+#include "LALR.h"
 #include "LL1.h"
 #include "SLR.h"
-#include "CLR.h"
-#include "LALR.h"
-#include "Earley.h"
 #include "utility.h"
 
 using namespace std;
 
 int main(int argc, char** argv)
 {
+	cout
+	<< "Test grammar transformation:\n"
+	<< "\t<0>Test eliminate useless symbols.\n"
+	<< "\t<1>Test eliminate unit productions.\n"
+	<< "\t<2>Test put in CNF.\n"
+	<< "\t<3>Test compute First and Follow.\n"
+	<< "\t<4>Test construct canonical LR(0) collection.\n"
+	<< "\t<5>Test construct canonical LR(1) collection.\n"
+	<< "Test parser generator:\n"
+	<< "\t<6>Test CYK parser.\n"
+	<< "\t<7>Test Earley parser.\n"
+	<< "\t<8>Test LL(1) parser(construct LL(1) table, parse).\n"
+	<< "\t<9>Test SLR parser(construct SLR table, parse).\n"
+	<< "\t<10>Test CLR parser(construct CLR table).\n"
+	<< "\t<11>Test LALR parser(construct LALR table).\n"
+	;
+
 	CFG g = CFG();
 
-	g.testEliminateUselessSymbols();
-	g.testEliminateUnitProductions();
-	g.testPutInCNF();
+	int option = 0;
+	cin >> option;
+	switch(option)
+	{
+		case 0: 
+		{
+			g.testEliminateUselessSymbols();
+		}
+		break; 
 
+		case 1: 
+		{
+			g.testEliminateUnitProductions();
+		}
+		break; 
 
-	CYKParser cyk = CYKParser(g);
+		case 2: 
+		{
+			g.testPutInCNF();
+		}
+		break; 
 
-	cyk.testCYK();
+		case 3: 
+		{
+			g.testComputeFirst();
+			g.testComputeFollow();
+		}
+		break; 
 
-	// g.testComputeFirst();
-	// g.testComputeFollow();
+		case 4: 
+		{
+			g.testLR0Closure();
+			g.testLR0GoTo();
+			g.testConstructCanonicalLR0Collection();
+		}
+		break; 
 
-	// LL1Parser ll1 = LL1Parser(g);
+		case 5: 
+		{
+			g.testConstructCanonicalLR1Collection();
+		}
+		break; 
 
-	// ll1.testConstructLL1Table();
-	// ll1.testParse();
+		case 6:
+		{
+			CYKParser cyk = CYKParser(g);
+			cyk.testCYK();
+		}
+		break;
 
-	// g.testLR0Closure();
+		case 7: 
+		{
+			EarleyParser earley = EarleyParser(g);
+			earley.testEarley();
+		}
+		break;
 
-	// g.testLR0GoTo();
-	
-	// g.testConstructCanonicalLR0Collection();
+		case 8: 
+		{
+			g.testComputeFirst();
+			g.testComputeFollow();
 
-	// SLRParser slr = SLRParser(g);
+			LL1Parser ll1 = LL1Parser(g);
+			ll1.testConstructLL1Table();
+			ll1.testParse();
+		}
+		break;
 
-	// slr.testConstructSLRTable();
-	// slr.testParse();
+		case 9: 
+		{
+			g.testLR0Closure();
+			g.testLR0GoTo();
+			g.testConstructCanonicalLR0Collection();
 
-	// g.testConstructCanonicalLR1Collection();
+			SLRParser slr = SLRParser(g);
+			slr.testConstructSLRTable();
+			slr.testParse();
+		}
+		break;
 
-	// CLRParser clr = CLRParser(g);
+		case 10: 
+		{
+			g.testConstructCanonicalLR1Collection();
 
-	// clr.testConstructCLRTable();
+			CLRParser clr = CLRParser(g);
+			clr.testConstructCLRTable();
+		}
+		break;
 
-	// LALRParser lalr = LALRParser(g);
-
-	// lalr.testConstructLALRTable();
-
-	// EarleyParser earley = EarleyParser(g);
-	// earley.testEarley();
-
-	// grammar transformation
-	// testEliminateUselessSymbols
-	// testEliminateUnitProductions
-	// testPutInCNF
-	// testComputeFirst
-	// testComputeFollow
-	// testLR0Closure1
-	// testLR0Closure
-	// testLR0GoTo
-	// testConstructCanonicalLR0Collection
-	// testConstructCanonicalLR1Collection
-
-	// parser generator
-	// testConstructCLRTable
-	// testCYK
-	// testEarley
-	// testConstructLALRTable
-	// testConstructLL1Table
-	// testParse
-	// testConstructSLRTable
-	// testParse
-
-	
+		case 11: 
+		{
+			g.testConstructCanonicalLR1Collection();
+			
+			LALRParser lalr = LALRParser(g);
+			lalr.testConstructLALRTable();
+		}
+		break;
+	}
 
 	return 0;
 }
