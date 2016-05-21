@@ -1,4 +1,4 @@
-app = GrammarTransformationAndParserGenerator
+app = GrammarTransformationAndParserGenerators
 
 SRCEXT = cpp
 SRCDIR = src

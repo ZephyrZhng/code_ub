@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Grammar Transformation}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Notations and preliminaries}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Iteration to a fixed point}{4}{0}{1}
+\beamer@sectionintoc {2}{Parser Generators}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{CYK algorithm and its improvement}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Earley algorithm and its improvement}{10}{0}{2}
+\beamer@sectionintoc {3}{System Design}{13}{0}{3}
+\beamer@sectionintoc {4}{System Implementation}{17}{0}{4}
+\beamer@sectionintoc {5}{System Testing}{18}{0}{5}
+\beamer@sectionintoc {6}{Conclusions}{24}{0}{6}

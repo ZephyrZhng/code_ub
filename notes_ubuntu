@@ -170,3 +170,4 @@ sudo ntfsfix /dev/sda5
 sudo ntfsfix /dev/sda6
 
 valgrind --tool=memcheck --leak-check=yes ./my_app
+卧槽看我刷出了什么一位我自校内网时代以来暗暗仰慕已久的TCS godess居然加了我fb
