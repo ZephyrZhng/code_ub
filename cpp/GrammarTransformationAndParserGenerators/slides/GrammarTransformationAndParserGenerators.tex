@@ -79,6 +79,7 @@
 \usepackage{algorithm, algorithmic}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{caption}
+\usepackage{ctex}
 \usepackage{graphicx} % Allows including images
 \usepackage{mathtools}
 \usepackage{subcaption}
@@ -92,9 +93,9 @@
 %   TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[Short title]{Research and Implementation of Grammar Transformation and Parser Generators} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Short title]{Design and Implementation of Automated Grammar Transformation and Parser Generators\\文法自动变换及解析器生成器的设计与实现} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Yihan Zhang} % Your name
+\author{Yihan Zhang\\张艺瀚} % Your name
 \institute[NEU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
 Northeastern University \\ % Your institution for the title page
@@ -114,21 +115,21 @@ Northeastern University \\ % Your institution for the title page
 \tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
 \end{frame}
 
-\section{Grammar Transformation}
-\subsection{Notations and preliminaries}
+\section{文法自动变换}
+\subsection{预备知识与记号}
 \begin{frame}
-\frametitle{Notations and preliminaries}
+\frametitle{预备知识与记号}
 \begin{definition}
-A context-free grammar\cite{cfg} $G$ is a quadruple $G=(V,T,P,S)$, where $V$ is nonterminal(variable) set, $T$ is terminal set, $P$ is production set with productions shaped like $A\to \alpha, A\in V, \alpha\in (V\cup T)^*$, $S$ is start variable.
+A context-free grammar(上下文无关文法) $G$ is a quadruple(四元组) $G=(V,T,P,S)$, where $V$ is nonterminal(variable,非终结符号或变元) set, $T$ is terminal(终结符号) set, $P$ is production(产生式) set with productions shaped like $A\to \alpha, A\in V, \alpha\in (V\cup T)^*$, $S$ is start variable(开始变元).
 \end{definition}
 \end{frame}
 
-\subsection{Iteration to a fixed point}
+\subsection{迭代到不动点}
 \begin{frame}
-\frametitle{Iteration to a fixed point}
-In this frame, we will introduce a technique called "iteration to a fixed point". Take computing the generating symbols as an example. A symbol is said to be generating if $A\xRightarrow[]{*} \omega, \omega\in T^*$. In most textbooks, generating symbols are generally computed by the following rules\cite{automata}:
+\frametitle{迭代到不动点}
+In this frame, we will introduce a technique called "iteration to a fixed point(迭代到不动点)". Take computing the generating symbols(可产生的符号) as an example. A symbol is said to be generating if $A\xRightarrow[]{*} \omega, \omega\in T^*$. In most textbooks, generating symbols are generally computed by the following rules:
 \begin{itemize}
-\item All nonterminals are generating;
+\item All terminals are generating;
 \item If $A\to \alpha\in P$, $\alpha=\varepsilon$ or every symbol in $\alpha$ is generating. Then $A$ is generating.
 \end{itemize}
 \end{frame}
@@ -154,15 +155,14 @@ Given any system of set equations, it's easy to get corresponding algorithm usin
 \end{algorithm}
 \end{frame}
 
-\section{Parser Generators}
-\subsection{CYK algorithm and its improvement}
+\section{解析器生成器}
+\subsection{CYK算法及其改进}
 \begin{frame}
-\frametitle{Original CYK algorithm}
+\frametitle{原始CYK算法}
 \begin{algorithm}[H]
 \begin{algorithmic}[1]
 
 \REQUIRE $G=(V,T,P,S)$ in CNF, $a_1a_2\cdots a_n\in T^n$
-\ENSURE 
 
 \FOR{$i=0$ \TO $n-1$}
 \STATE $ T_{i0}=\{ A:A\to a_i\in P \} $
@@ -185,16 +185,15 @@ Given any system of set equations, it's easy to get corresponding algorithm usin
 
 \begin{frame}
 \begin{remark}
-CYK algorithm\cite{y}\cite{k} requires the input grammar to be in CNF, whose productions are all in the form $A\to BC, B, C\in V$. Definition of $T_{ij}$ in the algorithm is $T_{ij}=\{ A: A\xRightarrow[]{*}a_ia_{i+1}\cdots a_{i+j-2}a_{i+j-1} \}$. After running the algorithm, if $S\in T_{1n}$, then $a_1a_2\cdots a_n\in L(G)$.
+CYK algorithm requires the input grammar to be in CNF(乔姆斯基范式), whose productions are all in the form $A\to BC, B, C\in V$. Definition of $T_{ij}$ in the algorithm is $T_{ij}=\{ A: A\xRightarrow[]{*}a_ia_{i+1}\cdots a_{i+j-2}a_{i+j-1} \}$. After running the algorithm, if $S\in T_{1n}$, then $a_1a_2\cdots a_n\in L(G)$.
 \end{remark}
 \end{frame}
 
 \begin{frame}
-\frametitle{Improved CYK algorithm}
+\frametitle{改进CYK算法}
 \begin{algorithm}[H]
 \begin{algorithmic}[1]
 
-\REQUIRE $G=(V,T,P,S)$ in CNF, $a_1a_2\cdots a_n\in T^n$
 \ENSURE $M=$ all \FALSE, $M[0,i,j]=$\TRUE, $i=0,1,\cdots,n,V_j\to a_i\in P$
 
 \FOR{$i=1$ \TO $n-1$}
@@ -217,33 +216,32 @@ CYK algorithm\cite{y}\cite{k} requires the input grammar to be in CNF, whose pro
 
 \begin{frame}
 \begin{remark}
-After running the improved version, if $M[n-1,0,S]$, then $V_S\in L(G)$. In fact, $V_k\in T[i,j] \iff M[i,j,k]$. Considering $V$ is a finite set, we use a 3-dimensional boolean matrix $M$ to represent whether a variable is in an entry of the original 2-dimensional variable-set matrix $T$. This improvement avoids union-find operation of sets which may have a high-complexity implementation and makes the algorithm more practical.
+After running the improved version, if $M[n-1,0,S]$, then $V_S\in T_{1n}$. In fact, $V_k\in T[i,j] \iff M[i,j,k]$. Considering $V$ is a finite set, we use a 3-dimensional boolean matrix(三维布尔矩阵) $M$ to represent whether a variable is in an entry of the original 2-dimensional variable-set matrix(二维变元集合矩阵) $T$. This improvement avoids union-find operation of sets(集合的并查操作) which may have a high-complexity implementation and makes the algorithm more practical.
 \end{remark}
 \end{frame}
 
-\subsection{Earley algorithm and its improvement}
+\subsection{Earley算法及其改进}
 \begin{frame}
-\frametitle{Original Earley algorithm}
-Given any augmented CFG(with additional variable $S'$ and production $S'\to S$) $G$ and $a_1a_2\cdots a_n\in T^n$, Earley algorithm\cite{earley} maintains a list of $n+1$ sets and can be divided into two stages:
+\frametitle{原始Earley算法}
+Given any augmented CFG(增广文法,with additional variable $S'$ and production $S'\to S$) $G$ and $a_1a_2\cdots a_n\in T^n$, Earley algorithm maintains a list of $n+1$ sets and can be divided into two stages:
 \begin{enumerate}
-\item Initialization: $S_0=\{(S'\to\cdot S, 0) \} $;
+\item Initialization(初始化): $S_0=\{(S'\to\cdot S, 0) \} $;
 \item Assuming the current position is in the $k$-th slot of input string, perform the following operation until a fixed point:
 \begin{itemize}
-\item Predict $S_k$;
-\item Scan $S_k$;
-\item Complete $S_k$.
+\item Predict(预测) $S_k$;
+\item Scan(扫描) $S_k$;
+\item Complete(扩充) $S_k$.
 \end{itemize}
 \end{enumerate}
 \end{frame}
 
 \begin{frame}
-\frametitle{Improved Earley algorithm}
+\frametitle{改进Earley算法}
 \begin{algorithm}[H]
 \caption{Earley}
 \label{fig: earley}
 
 \begin{algorithmic}[1]
-\ENSURE $ S_0 = \{ (S'\to\cdot S, 0) \} $
 
 \FOR{$k = 0$ \TO $n$}
 \FORALL{$ s\in S_k $}
@@ -264,16 +262,16 @@ Given any augmented CFG(with additional variable $S'$ and production $S'\to S$) 
 
 \begin{frame}
 \begin{remark}
-The improved version modifies three operations to make them act on a single state rather than a state set and puts them into a wider loop, reducing repeated search.
+The improved version modifies three operations to make them act on a single state rather than a state set and puts them into a wider loop, reducing repeated search(减少重复搜索).
 \end{remark}
 \end{frame}
 
-\section{System Design}
+\section{系统设计}
  \begin{frame}
- \frametitle{System Design}
+ \frametitle{系统设计}
 \begin{figure}
 \includegraphics[height=0.75\textheight]{GrammarTransformation.jpg}
-\caption{Use case diagram for grammar tramsformer}
+\caption{文法自动变换用例图}
 \label{fig: gt}
 \end{figure}
  \end{frame}
@@ -281,7 +279,7 @@ The improved version modifies three operations to make them act on a single stat
   \begin{frame}
 \begin{figure}
 \includegraphics[height=0.8\textheight]{ParserGenerators.jpg}
-\caption{Use case diagram for parser generators}
+\caption{解析器生成器用例图}
 \label{fig: pg}
 \end{figure}
  \end{frame}
@@ -289,34 +287,32 @@ The improved version modifies three operations to make them act on a single stat
    \begin{frame}
 \begin{figure}
 \includegraphics[height=0.8\textheight]{ClassDiagram.jpg}
-\caption{Class diagram}
+\caption{类图}
 \label{fig: class}
 \end{figure}
  \end{frame}
  
  \begin{frame}
-      Grammar transformer(simplify any given CFG and compute relevant sets automatically): 
+      Automated grammar transformer(simplify any given CFG and compute relevant sets automatically,文法自动变换:自动化简任意CFG并计算相关集合): 
       \begin{itemize}
-      \item Eliminate useless symbols; 
-      \item Eliminate $\varepsilon$-productions; 
-     \item Eliminate unit production; 
-      \item Put in CNF. 
+      \item Eliminate useless symbols(去除无用符号); 
+      \item Eliminate $\varepsilon$-productions(去除$\varepsilon$-产生式); 
+     \item Eliminate unit production(去除单一产生式); 
+      \item Put in CNF(化为乔姆斯基范式). 
       \end{itemize}
      
-     Parser generators(generate parse table for any given CFG automatically): 
+     Parser generators(generate parse table for any given CFG automatically,解析器生成器:自动生成任意CFG的语法分析表): 
      \begin{itemize}
-\item Earley 
+\item CYK, Earley 
 \item LL(1) 
-\item SLR 
-\item CLR 
-\item LALR
+\item SLR, CLR, LALR
     \end{itemize}
   
  \end{frame}
 
-\section{System Implementation}
+\section{系统实现}
  \begin{frame}
- \frametitle{System Implementation}
+ \frametitle{系统实现}
  \begin{itemize}
  \item Hardware:ThinkPad-Edge-E530, 3.5GiB memory, Intel Core i5-3210M CPU, 2.50GHzx4, Intel Ivybridge Mobile;
  \item Operating system: Ubuntu 14.04 LTS, 64-bit;
@@ -325,7 +321,7 @@ The improved version modifies three operations to make them act on a single stat
  \end{itemize}
  \end{frame}
 
-\section{System Testing}
+\section{系统测试}
  \begin{frame}
 \begin{figure}
     \centering
@@ -353,7 +349,7 @@ The improved version modifies three operations to make them act on a single stat
  \end{frame}
 
  \begin{frame}
-   \frametitle{System Testing}
+   \frametitle{系统测试}
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
@@ -432,45 +428,22 @@ The improved version modifies three operations to make them act on a single stat
 \end{figure}
 \end{frame}
 
-\section{Conclusions}
+\section{结论}
  \begin{frame}
- \frametitle{Conclusions}
- We design a C-like grammar which supports most basic syntax of C and use (part of) it to test the system. Conclusions are shown below:
+ \frametitle{结论}
+ We design a C-like grammar(类C文法) which supports most basic syntax of C and use (part of) it to test the system. Conclusions are shown below:
 \begin{itemize}
 \item Any grammar which $L(G)\backslash\{\varepsilon\}\neq \emptyset$ can be put in CNF;
-\item Complexity of CYK and Earley are both $O(n^3)$, while $O(n^2)$ for Earley when handling unambiguous grammars;
-\item Construction of parser generators is equivalent to construction of parse tables;
-\item LL(1) parser is equivalent to recursive descent parser without backtrack;
+\item Complexity of CYK and Earley are both $O(n^3)$, while $O(n^2)$ for Earley when handling unambiguous grammars(无二义性文法);
+\item Construction of parser generators(解析器生成器) is equivalent to construction of parse tables(语法分析表);
+\item LL(1) parser is equivalent to recursive descent parser without backtrack(无回溯递归下降语法分析器);
 \item Range of applicable grammars: $\mathrm{SLR}\subset\mathrm{LALR}\subset\mathrm{CLR} $, scale of generated parse tables: $\mathrm{SLR}=\mathrm{LALR}<\mathrm{CLR} $.
 \end{itemize}
  \end{frame}
 
 %------------------------------------------------
 
-\begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[HMU79]{automata} John E. Hopcroft, Rajeev Motwani, Jeffery D. Ullman. (1979)
-\newblock Introduction to Automata Theory, Languages, and Computation
 
-\bibitem[You76]{y} Daniel H. Younger. (1976)
-\newblock Recognition and Parsing of Context-Free Languages in Time $n^3$
-\newblock \emph{Information and Control} 10(2): 189-208.
-
-\bibitem[Kas65]{k} T. Kasami. (1965)
-\newblock An Efficient Recognition and Syntax-Analysis Algorithm for Context-Free Languages
-
-\bibitem[Ear70]{earley} Jay Earley. (1970)
-\newblock An Efficient Context-Free Parsing Algorithm
-\newblock \emph{Communications of ACM} 13(2): 94-102.
-
-\bibitem[Cho56]{cfg} Chomsky, N. (1956)
-\newblock Three models for the description of language
-\newblock \emph{Information Theory} 2(3): 113-124.
-\end{thebibliography}
-}
-\end{frame}
 
 %------------------------------------------------
 

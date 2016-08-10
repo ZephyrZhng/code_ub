@@ -24,65 +24,7 @@ zephyr@ubuntu:~/Downloads/utorrent-server-alpha-v3$ ./utserver
 http://localhost:8080/gui/web/index.html
 username: admin password:
 
-cd ~/
-djvu2pdf book.djvu
-
-clisp
-(load "~/file_path") // (.lisp)
-(function_name)
-(quit)
-
-scheme-ieee-1178-1990
-(load "testscheme.scm")
-(load "testscheme")
-(exit)
-
-haskell
-ghci
-cd to file path of your code
-:l xxx.hs
-function_name parameter1 parameter2 parameter3 ...
-
 g++ -std=c++0x program_name.cpp -o exe_name
-
-g++ `pkg-config opencv --libs --cflags opencv` -std=c++0x program_name.cpp -o exe_name
-./exe_name
-
-openmp
-gcc -fopenmp hello.c -o hello
-cat /proc/cpuinfo
-
-gcc testopengl.c -o testopengl -lGL -lGLU -lglut
-./testopengl
-
-~/cudasamples/NVIDIA_CUDA-6.0_Samples/bin/x86_64/linux/release
-ls
-./sample_name
-
-~/code/cuda/testcuda
-testcuda.cu
-testc.c
-testcpp.cpp
-
-compile method 1 (compile seperately, merge in the end)
-	for C
-	$nvcc -c testcuda.cu
-	$gcc  -c testc.c
-	$gcc  -o testc testcuda.o testc.o -lcudart -L/usr/local/cuda/lib64
-
-	for C++
-	$nvcc -c testcuda.cu
-	$g++  -c testcpp.cpp
-	$g++  -o testcpp testcuda.o testcpp.o -lcudart -L/usr/local/cuda/lib64
-
-compile method 2 (make a lib)
-	for C
-	$nvcc -lib testcuda.cu -o libtestcu.a
-	$gcc       testc.c -ltestcu -L. -lcudart -L/usr/local/cuda/lib64 -o testc
-
-	for C++
-	$nvcc -lib testcuda.cu -o libtestcu.a
-	$g++       testcpp.cpp -ltestcu -L. -lcudart -L/usr/local/cuda/lib64 -o testcpp
 
 javac program_name.java
 java program_name
@@ -90,36 +32,10 @@ javadoc -d folder_name -version -author program_name.java
 
 gcc `pkg-config --cflags --libs gtk+-2.0` gtk_test.c -o gtk_test
 
-ocamlc hello.ml -o hello
-ocamlopt hello.ml -o hello
-
-c++ thread
-
-opencv:
-1.detect number/letter
-2.detect face
-
-scala
-scalac testscala.scala
-scala testscala.scala
-
-node.js
-node testnodejs.js
-http://127.0.0.1:8124/
-
 how to use lm-sensors
 $ sensors
 
 $ evince xxx.pdf
-
-vim
-:w save
-:x save and exit
-/pattern find pattern
-	n next
-	N previous
-:%s/old_symbol/new_symbol/g  find and replace
-:%s/old_symbol/new_symbol/gc find, replace and verify one by one
 
 whereis gcc
 whereis g++
@@ -157,16 +73,11 @@ gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
 
 dpkg -i xxx.deb
 
-an epsilon of room
-2.2 amenability, ping-pong lemma, banach-tarski paradox
-2.4 well-ordered sets, ordinals, zorn's lemma
-3.4 completeness and compactness theorems of first-order logic
-3.9 p=np, relativisation, multiple choice exams
-3.11 aks primality test
-3.14 grothendieck's definition of groups
-4.13 free nilpotent group
-
 sudo ntfsfix /dev/sda5
 sudo ntfsfix /dev/sda6
 
 valgrind --tool=memcheck --leak-check=yes ./my_app
+
+convert -density 300 input.pdf output.jpg
+pdftk input.pdf cat 51-100 output output.pdf
+ebook-convert input.epub output.pdf
