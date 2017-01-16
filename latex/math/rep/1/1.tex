@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+
+\usepackage{amscd}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage{epsfig}
+\usepackage{extarrows}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usepackage{tikz-cd} 
+\usepackage{xypic}
+%\usepackage[all,dvips]{xy}
+
+\usetikzlibrary{matrix}
+
+\begin{comment}  
+
+This LaTeX document is a template to be used by Bates mathematics rising seniors to create a thesis proposal. 
+
+As a guide, the document is already filled out to represent a fictitious proposal, and all you need to do is modify the entries below to represent your own proposal.
+
+A PDF version of the fictitious proposal is available on the department's FAQ and Policies pages, at
+                   http://abacus.bates.edu/acad/depts/math/faq.html
+      and
+                   http://abacus.bates.edu/acad/depts/math/policies.html
+      respectively.
+
+Once you have finished your proposal, export it to a PDF file. Give the file a USEFUL name, for example, RiemannThesisProposal.PDF. Email the PDF file to Clementine Brasier, the 
+Academic Administrative Assistant for Hathorn Hall, at cbrasier\@bates.edu
+
+                This LaTex document was created Feb/Mar 2010 by Adriana Salerno and updated Feb 2012 by Meredith Greer
+
+\end{comment}
+
+\setlength{\textheight}{8.5in} \setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in} \setlength{\headsep}{0.0in}
+\setlength{\leftmargin}{0.5in}
+\setlength{\oddsidemargin}{0.0in}
+%\setlength{\parindent}{1pc}
+\setlength{\textwidth}{6.5in}
+%\linespread{1.6}
+
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem*{corollary*}{Corollary}
+
+\newtheorem{definition}{Definition}
+\newtheorem*{definition*}{Definition}
+
+\newtheorem{example}{Example}
+\newtheorem*{example*}{Example}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{lemma*}{Lemma}
+
+\newtheorem{note}{Note}
+\newtheorem*{note*}{Note}
+
+\newtheorem{problem}{Problem}
+\newtheorem*{problem*}{Problem}
+
+\newtheorem{prop}{Proposition}
+\newtheorem*{prop*}{Proposition}
+
+\newtheorem{question}{Question}
+\newtheorem*{question*}{Question}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Linear Representations of Finite Groups\\Generalities on Linear Representations}
+\author{Yihan Zhang}
+\maketitle
+
+%\tableofcontents
+\bigskip
+
+Let $V$ be a vector space over $\mathbb C$ of dimension $n$ with basis $\{e_i\}_{i=1}^n$. Denote the general linear group over $V$ by 
+\begin{align*}
+GL(V)=&\{a:V\to V|a\text{ is an isomorphism}\}\\
+=&\left\{(a_{ij})_{n\times n}\in\mathbb C^{n\times n}:a(e_j)=\sum_{i=1}^na_{ij}e_i,\det(a_{ij})\ne 0\right\}.
+\end{align*}
+
+Let $G$ be a group of finite order with identity $e$ and multiplication $(s,t)\mapsto st$. A linear representation of $G$ in $V$ is a homomorphism
+\begin{align*}
+\rho:&G\to GL(V)\\
+&s\mapsto \rho(s).
+\end{align*}
+We call $V$ a representation (space) of $G$, and $\deg\rho=\dim V=n$. It must hold that 
+\begin{enumerate}
+	\item \[\det\rho(s)\ne0.\]
+	\item \[\rho(st)=\rho(s)\rho(t),\text{ i.e., }\rho(st)(i,j)=\sum_{k=1}^n\rho(s)(i,k)\rho(t)(k,j).\]
+\end{enumerate}
+
+Let $\rho:G\to GL(V),\rho':G\to GL(V')$ be two representations of same degree. $\rho$ is isomorphic to $\rho'$ if $\exists \tau:V\to V'$ a linear isomorphism, such that $\forall s\in G, \tau\circ \rho(s)=\rho'(s)\circ\tau$, i.e.
+\[\begin{tikzcd}
+V \arrow{r}{\rho(s)} \arrow[swap]{d}{\tau} & V \arrow{d}{\tau} \\%
+V' \arrow{r}{\rho'(s)}& V'
+\end{tikzcd}\]
+is commutative, or $\exists T\in GL_n(\mathbb C)$, such that $\forall s\in G,T\rho(s)=\rho'(s)T$, or $\rho(s)=T^{-1}\rho'(s)T$.
+
+\begin{example}
+Let $\rho:G\to\mathbb C^{\times}$ be a representation of $G$ of degree 1. $\forall s\in G$, it has finite order $m$,
+\[1=\rho(1)=\rho(s^m)=\rho(s)^m.\]
+Thus $\forall s\in G,|\rho(s)|=1$. In particular, 
+\begin{align*}
+\mathds1:&G\to\mathbb C^{\times}\\
+&s\mapsto1
+\end{align*}
+is called the unit (trivial) representation.
+\end{example}
+
+\begin{example}
+Let $G$ be a group of order $g$ and $V$ be a vector space of dimension $g$ with basis $\{e_t\}_{t\in G}$ indexed by elements in $G$. A representation 
+\begin{align*}
+\rho:&G\to GL(V)\\
+&s\mapsto\rho(s)\\
+\rho(s):&V\to V\\
+&e_t\mapsto e_{st}
+\end{align*}
+is called a regular representation. Thus $\{\rho(s)(e_1)=e_s:s\in G\}$ forms a basis of $V$.
+
+Conversely, for a representation 
+\begin{align*}
+\sigma:&G\to GL(W)\\
+&s\mapsto\sigma(s),
+\end{align*}
+if $\{\sigma(s)(w):s\in G\}$ forms a basis of $W$, then $\sigma$ is isomorphic to $\rho$
+\end{example}
+
+\begin{example}
+Let $G$ act on a finite set $X$, i.e. $\forall s\in G,x\mapsto sx$, such that 
+\begin{enumerate}
+	\item \[1x=x.\]
+	\item \[s(tx)=(st)x,\forall s,t\in G,\forall x\in X.\]
+\end{enumerate}
+Let $V$ be a vector space of dimension $X$ with basis $\{e_x\}_{x\in X}$. The following representation is called a permutation representation
+\begin{align*}
+\rho:&G\to GL(V)\\
+&s\mapsto\rho(s)\\
+\rho(s):&V\to V\\
+&e_x\mapsto e_{sx}.
+\end{align*}
+\end{example}
+
+% \begin{thebibliography}{99}
+% NOTE: change the "9" above to "99" if you have MORE THAN 10 references.
+
+% \bibitem{erdos1} Erd\"{o}s, P. (1973). Problems and results on combinatorial number theory \uppercase\expandafter{\romannumeral 1}. In \textit{A survey of combinatorial theory (Proc. Internat. Sympos., Colorado State Univ., Fort Collins, Colo., 1971)} (pp. 117-138).
+
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document} 
